@@ -767,7 +767,7 @@ body {
   </div>
 </div>
 
-<script src="audio_data/audio_all.js"></script>
+<script async src="audio_data/audio_all.js"></script>
 <script>
 // ====== BOOK DATA ======
 const bookData = {
@@ -1688,40 +1688,33 @@ async function loadAudio(unitId) {
   }
 }
 
-// Lazy preloader: after page renders, preload units in background
-let preloadQueue = [];
-let preloading = false;
+// Lazy preloader: audio_all.js 异步加载，就绪后逐个 unit 填入缓存
+let preloadTimer = null;
 
-function enqueuePreload(unitIds) {
-  preloadQueue.push(...unitIds);
-  if (!preloading) processPreloadQueue();
-}
-
-async function processPreloadQueue() {
-  preloading = true;
-  while (preloadQueue.length > 0) {
-    const uid = preloadQueue.shift();
-    if (!audioCache[uid]) {
-      try {
-        const resp = await fetch(`audio_data/audio_${uid}.json`);
-        if (resp.ok) audioCache[uid] = await resp.json();
-      } catch(e) { /* ignore */ }
-      await new Promise(r => setTimeout(r, 200));
-    }
+function startAudioPreload() {
+  if (!window.AD) {
+    // window.AD 还没加载完毕，继续等待
+    preloadTimer = setTimeout(startAudioPreload, 200);
+    return;
   }
-  preloading = false;
+  // 逐个 unit 填入 audioCache，每间隔 200ms 避免卡顿
+  const ids = [];
+  bookData.chapters.forEach(ch => ch.units.forEach(u => ids.push(u.id)));
+  let idx = 0;
+  function fillNext() {
+    if (idx >= ids.length) { preloadTimer = null; return; }
+    const uid = ids[idx++];
+    if (!audioCache[uid] && window.AD[uid]) {
+      audioCache[uid] = window.AD[uid];
+    }
+    preloadTimer = setTimeout(fillNext, 200);
+  }
+  fillNext();
 }
 
-// Start preloading all units after page is fully interactive
+// 页面完全加载后启动后台预加载
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    const ids = [];
-    bookData.chapters.forEach(ch => ch.units.forEach(u => ids.push(u.id)));
-    if (ids.length > 0) {
-      loadAudio(ids[0]);
-      enqueuePreload(ids.slice(1));
-    }
-  }, 500);
+  setTimeout(startAudioPreload, 300);
 });
 
 function resetPlayButtons() {
@@ -1943,26 +1936,28 @@ document.getElementById('sidebarOverlay').onclick = toggleSidebar;
 
 // ====== INIT ======
 function init() {
+  // 1. 立即渲染目录
   buildTOC();
 
-  // Build all unit content
-  const container = document.getElementById('unitContentContainer');
-  let allHtml = '';
-  bookData.chapters.forEach(ch => {
-    ch.units.forEach(u => {
-      allHtml += buildUnitContent(u);
+  // 2. 下一帧构建单元内容（不阻塞目录显示）
+  requestAnimationFrame(() => {
+    const container = document.getElementById('unitContentContainer');
+    let allHtml = '';
+    bookData.chapters.forEach(ch => {
+      ch.units.forEach(u => {
+        allHtml += buildUnitContent(u);
+      });
     });
-  });
-  container.innerHTML = allHtml;
+    container.innerHTML = allHtml;
 
-  // Expand first chapter by default
-  const firstChapter = document.querySelector('.unit-list');
-  if (firstChapter) {
-    firstChapter.classList.remove('collapsed');
-    // Remove collapsed from first chapter title too
-    const firstTitle = firstChapter.previousElementSibling;
-    if (firstTitle) firstTitle.classList.remove('collapsed');
-  }
+    // Expand first chapter by default
+    const firstChapter = document.querySelector('.unit-list');
+    if (firstChapter) {
+      firstChapter.classList.remove('collapsed');
+      const firstTitle = firstChapter.previousElementSibling;
+      if (firstTitle) firstTitle.classList.remove('collapsed');
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);
