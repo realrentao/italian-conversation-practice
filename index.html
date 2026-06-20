@@ -1668,6 +1668,12 @@ function toggleSpeed() {
 
 async function loadAudio(unitId) {
   if (audioCache[unitId]) return;
+  // Priority 1: already in window.AD (preloaded via audio_all.js)
+  if (window.AD && window.AD[unitId]) {
+    audioCache[unitId] = window.AD[unitId];
+    return;
+  }
+  // Priority 2: fetch individual JSON (works on HTTPS/GitHub Pages)
   try {
     const resp = await fetch(`audio_data/audio_${unitId}.json`);
     if (resp.ok) {
@@ -1956,5 +1962,9 @@ function init() {
 
 document.addEventListener('DOMContentLoaded', init);
 </script>
+
+<!-- Non-blocking audio data preload (deferred - doesn't block rendering) -->
+<script defer src="audio_data/audio_all.js"></script>
+
 </body>
 </html>
