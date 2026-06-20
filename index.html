@@ -1773,12 +1773,35 @@ function setButtonPlaying(btnEl) {
   activePlayBtn = btnEl;
 }
 
+// base64 → Blob URL（解决 iOS Safari data URI 大小限制问题）
+let blobUrlCache = {};
+
+function base64ToBlobUrl(base64data, mime) {
+  const key = base64data.substring(0, 80);
+  if (blobUrlCache[key]) return blobUrlCache[key];
+  try {
+    const byteStr = atob(base64data);
+    const len = byteStr.length;
+    const buf = new ArrayBuffer(len);
+    const view = new Uint8Array(buf);
+    for (let i = 0; i < len; i++) view[i] = byteStr.charCodeAt(i);
+    const blob = new Blob([buf], { type: mime || 'audio/mp3' });
+    const url = URL.createObjectURL(blob);
+    blobUrlCache[key] = url;
+    return url;
+  } catch (e) {
+    console.warn('base64 decode failed:', e);
+    return 'data:audio/mp3;base64,' + base64data;
+  }
+}
+
 function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
   if (!base64data) {
     if (callback) callback();
     return;
   }
-  const audio = new Audio('data:audio/mp3;base64,' + base64data);
+  const audioUrl = base64ToBlobUrl(base64data, 'audio/mp3');
+  const audio = new Audio(audioUrl);
   audio.playbackRate = rate || 1.0;
   
   // Apply highlight when audio actually starts playing
