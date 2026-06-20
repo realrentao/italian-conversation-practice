@@ -1698,8 +1698,16 @@ async function loadAudio(unitId) {
   }
 }
 
-// 后台逐个预加载单元音频，先加载的单元先可用（不等全部加载完）
+// 后台逐个预加载单元音频，加载后预解码为 Blob URL（手机端点击即播，零等待）
 let preloadTimer = null;
+
+function predecodeUnit(uid) {
+  const data = audioCache[uid];
+  if (!data) return;
+  for (const key of Object.keys(data)) {
+    base64ToBlobUrl(data[key], 'audio/mp3');
+  }
+}
 
 function startAudioPreload() {
   const ids = [];
@@ -1709,18 +1717,28 @@ function startAudioPreload() {
   function fetchNext() {
     if (idx >= ids.length) { preloadTimer = null; return; }
     const uid = ids[idx++];
-    // 有真实数据才跳过
-    if (audioCache[uid] && Object.keys(audioCache[uid]).length > 0) { fetchNext(); return; }
-
-    // 优先 fetch 单个 JSON（快，~500KB/个），仅填非空数据
+    // 已有数据 → 预解码后跳过
+    if (audioCache[uid] && Object.keys(audioCache[uid]).length > 0) {
+      predecodeUnit(uid);
+      fetchNext();
+      return;
+    }
+    // 优先 fetch 单个 JSON
     fetch(`audio_data/audio_${uid}.json`)
       .then(r => { if (r.ok) return r.json(); })
-      .then(data => { if (data && Object.keys(data).length > 0) audioCache[uid] = data; })
-      .catch(() => {
-        // fetch 失败（如 file:// 协议），回退到 window.AD
-        if (window.AD && window.AD[uid]) audioCache[uid] = window.AD[uid];
+      .then(data => {
+        if (data && Object.keys(data).length > 0) {
+          audioCache[uid] = data;
+          predecodeUnit(uid); // 后台解码，播放时零等待
+        }
       })
-      .finally(() => setTimeout(fetchNext, 100)); // 100ms 间隔，进度更快
+      .catch(() => {
+        if (window.AD && window.AD[uid]) {
+          audioCache[uid] = window.AD[uid];
+          predecodeUnit(uid);
+        }
+      })
+      .finally(() => setTimeout(fetchNext, 100));
   }
   fetchNext();
 }
