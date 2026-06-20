@@ -292,7 +292,7 @@ body {
   border-left: 4px solid var(--green);
 }
 .scene-intro h3 {
-  font-size: 15px;
+  font-size: 18px;
   color: var(--green);
   margin-bottom: 8px;
   display: flex;
@@ -300,7 +300,7 @@ body {
   gap: 8px;
 }
 .scene-intro p {
-  font-size: 14px;
+  font-size: 17px;
   color: #555;
 }
 
@@ -704,9 +704,6 @@ body {
 </style>
 </head>
 <body>
-
-<!-- ====== Preload All Audio Data ====== -->
-<script src="audio_data/audio_all.js"></script>
 
 <!-- ====== Sidebar Overlay ====== -->
 <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -1671,14 +1668,60 @@ function toggleSpeed() {
 
 async function loadAudio(unitId) {
   if (audioCache[unitId]) return;
-  // Audio data preloaded via audio_data/audio_all.js -> window.AD
-  if (window.AD && window.AD[unitId]) {
-    audioCache[unitId] = window.AD[unitId];
-  } else {
-    console.warn(`Audio data not found for ${unitId}`);
+  try {
+    const resp = await fetch(`audio_data/audio_${unitId}.json`);
+    if (resp.ok) {
+      audioCache[unitId] = await resp.json();
+    } else {
+      audioCache[unitId] = {};
+    }
+  } catch(e) {
+    console.warn(`Audio load failed for ${unitId}:`, e);
     audioCache[unitId] = {};
   }
 }
+
+// Lazy preloader: after page load, preload units one by one in background
+let preloadQueue = [];
+let preloading = false;
+
+function enqueuePreload(unitIds) {
+  preloadQueue.push(...unitIds);
+  if (!preloading) processPreloadQueue();
+}
+
+async function processPreloadQueue() {
+  preloading = true;
+  while (preloadQueue.length > 0) {
+    const uid = preloadQueue.shift();
+    if (!audioCache[uid]) {
+      try {
+        const resp = await fetch(`audio_data/audio_${uid}.json`);
+        if (resp.ok) {
+          audioCache[uid] = await resp.json();
+        }
+      } catch(e) {
+        // silently ignore
+      }
+      // Small delay between preloads to not hog bandwidth
+      await new Promise(r => setTimeout(r, 200));
+    }
+  }
+  preloading = false;
+}
+
+// Start preloading all units on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const allUnitIds = [];
+  bookData.chapters.forEach(ch => {
+    ch.units.forEach(u => allUnitIds.push(u.id));
+  });
+  // Preload first unit immediately, rest in background
+  if (allUnitIds.length > 0) {
+    loadAudio(allUnitIds[0]);
+    enqueuePreload(allUnitIds.slice(1));
+  }
+});
 
 function resetPlayButtons() {
   document.querySelectorAll('.vocab-item .play-icon, .sentence-item .s-play').forEach(el => {
