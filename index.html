@@ -1852,8 +1852,9 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
 }
 
 async function speakWord(unitId, key, btnEl) {
-  await loadAudio(unitId);
-  const data = audioCache[unitId]?.[key];
+  loadAudio(unitId);
+  // 双保险：audioCache 取不到则直接从 window.AD 读
+  const data = audioCache[unitId]?.[key] || (window.AD && window.AD[unitId] && window.AD[unitId][key]);
   stopSpeech();
   isDialogAudio = false; // 生词/常用语不响应对话倍速
   playBase64Audio(data, null, btnEl);
@@ -1866,9 +1867,10 @@ async function speakLine(el, idx) {
   const dialog = unit.dialogue[idx];
   if (!dialog) return;
 
-  await loadAudio(unitId);
+  loadAudio(unitId);
   const key = `d_${idx}`;
-  const data = audioCache[unitId]?.[key];
+  // 双保险：audioCache 取不到则直接从 window.AD 读
+  const data = audioCache[unitId]?.[key] || (window.AD && window.AD[unitId] && window.AD[unitId][key]);
 
   stopSpeech();
   document.querySelectorAll('.active-line').forEach(e => e.classList.remove('active-line'));
@@ -1893,7 +1895,7 @@ async function playAll(unitId) {
     return;
   }
 
-  await loadAudio(unitId);
+  loadAudio(unitId);
   const lines = document.querySelectorAll(`#uc-${unitId} .dialogue-line`);
   let i = 0;
 
@@ -1912,7 +1914,8 @@ async function playAll(unitId) {
     progressFill.style.width = `${progress}%`;
 
     const key = `d_${i}`;
-    const data = audioCache[unitId]?.[key];
+    // 双保险：audioCache 取不到则直接从 window.AD 读
+    const data = audioCache[unitId]?.[key] || (window.AD && window.AD[unitId] && window.AD[unitId][key]);
     const rate = dialogSpeechRate[unitId] || 1.0;
     playBase64Audio(data, () => {
       i++;
