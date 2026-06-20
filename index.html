@@ -767,7 +767,7 @@ body {
   </div>
 </div>
 
-<script async src="audio_data/audio_all.js"></script>
+<script src="audio_data/audio_all.js"></script>
 <script>
 // ====== BOOK DATA ======
 const bookData = {
@@ -1676,87 +1676,39 @@ function toggleSpeed(unitId) {
   }
 }
 
-async function loadAudio(unitId) {
-  // 已有真实数据则跳过
-  if (audioCache[unitId] && Object.keys(audioCache[unitId]).length > 0) return;
-  // 优先从 window.AD（audio_all.js）取——所有单元数据都在里面
-  if (window.AD && window.AD[unitId]) {
-    audioCache[unitId] = window.AD[unitId];
-    return;
-  }
-  // 尝试 fetch 单个 JSON（服务器环境）
-  try {
-    const resp = await fetch(`audio_data/audio_${unitId}.json`);
-    if (resp.ok) {
-      const data = await resp.json();
-      if (data && Object.keys(data).length > 0) {
-        audioCache[unitId] = data;
-        return;
-      }
-    }
-  } catch(e) {
-    console.warn(`Audio fetch failed for ${unitId}:`, e);
-  }
-  // 最后兜底：等 audio_all.js（8.9MB）下载完，从 window.AD 取
-  if (!window.AD) {
-    await new Promise(r => {
-      const poll = () => { if (window.AD) r(); else setTimeout(poll, 150); };
-      poll();
-    });
-  }
+function loadAudio(unitId) {
+  if (audioCache[unitId]) return;
+  // audio_all.js 同步加载，window.AD 立即可用
   if (window.AD && window.AD[unitId]) {
     audioCache[unitId] = window.AD[unitId];
   }
 }
 
-// 后台逐个预加载单元音频，加载后预解码为 Blob URL（手机端点击即播，零等待）
+// 页面加载后，逐个将 window.AD 数据复制到 audioCache（内存操作，极快）
 let preloadTimer = null;
 
-function predecodeUnit(uid) {
-  const data = audioCache[uid];
-  if (!data) return;
-  for (const key of Object.keys(data)) {
-    base64ToBlobUrl(data[key], 'audio/mp3');
-  }
-}
-
 function startAudioPreload() {
+  if (!window.AD) return;
   const ids = [];
   bookData.chapters.forEach(ch => ch.units.forEach(u => ids.push(u.id)));
   let idx = 0;
-
-  function fetchNext() {
+  function fillNext() {
     if (idx >= ids.length) { preloadTimer = null; return; }
     const uid = ids[idx++];
-    // 已有数据 → 预解码后跳过
-    if (audioCache[uid] && Object.keys(audioCache[uid]).length > 0) {
-      predecodeUnit(uid);
-      fetchNext();
-      return;
+    if (!audioCache[uid] && window.AD[uid]) {
+      audioCache[uid] = window.AD[uid];
+      // 预解码所有 blob URL
+      for (const key of Object.keys(audioCache[uid])) {
+        base64ToBlobUrl(audioCache[uid][key], 'audio/mpeg');
+      }
     }
-    // 优先 fetch 单个 JSON
-    fetch(`audio_data/audio_${uid}.json`)
-      .then(r => { if (r.ok) return r.json(); })
-      .then(data => {
-        if (data && Object.keys(data).length > 0) {
-          audioCache[uid] = data;
-          predecodeUnit(uid); // 后台解码，播放时零等待
-        }
-      })
-      .catch(() => {
-        if (window.AD && window.AD[uid]) {
-          audioCache[uid] = window.AD[uid];
-          predecodeUnit(uid);
-        }
-      })
-      .finally(() => setTimeout(fetchNext, 100));
+    preloadTimer = setTimeout(fillNext, 50);
   }
-  fetchNext();
+  fillNext();
 }
 
-// 页面完全加载后启动后台预加载
 window.addEventListener('load', () => {
-  setTimeout(startAudioPreload, 300);
+  setTimeout(startAudioPreload, 200);
 });
 
 function resetPlayButtons() {
