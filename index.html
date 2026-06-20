@@ -1703,7 +1703,29 @@ async function loadAudio(unitId) {
 
 // DOMContentLoaded 后后台按序预加载音频（不等 load 事件，不阻塞渲染）
 let preloadTimer = null;
+const loadingSet = new Set(); // 防止重复 fetch
 
+// 将 unit 音频数据填入 cache + 预解码 Blob URL
+function cacheAndDecode(uid, data) {
+  if (!data || Object.keys(data).length === 0) return;
+  audioCache[uid] = data;
+  for (const k of Object.keys(data)) base64ToBlobUrl(data[k]);
+}
+
+// 优先加载指定单元（用户选择时触发）
+function preloadPriority(unitId) {
+  if (audioCache[unitId] || loadingSet.has(unitId)) return;
+  loadingSet.add(unitId);
+  cacheAndDecode(unitId, window.AD && window.AD[unitId]); // 先试 window.AD
+  if (audioCache[unitId]) { loadingSet.delete(unitId); return; }
+  // 不行就 fetch
+  fetch(`audio_data/audio_${unitId}.json`)
+    .then(r => r.ok ? r.json() : null)
+    .then(data => { cacheAndDecode(unitId, data); })
+    .finally(() => loadingSet.delete(unitId));
+}
+
+// 后台按顺序逐单元预加载
 function startAudioPreload() {
   const ids = [];
   bookData.chapters.forEach(ch => ch.units.forEach(u => ids.push(u.id)));
@@ -1712,31 +1734,26 @@ function startAudioPreload() {
   function fetchNext() {
     if (idx >= ids.length) { preloadTimer = null; return; }
     const uid = ids[idx++];
-    // 已有真实数据则跳过
-    if (audioCache[uid] && Object.keys(audioCache[uid]).length > 0) {
-      // 已有数据 → 预解码 Blob URL
-      for (const k of Object.keys(audioCache[uid])) base64ToBlobUrl(audioCache[uid][k]);
-      fetchNext();
+    // 已有数据或正在被优先加载 → 跳过
+    if (audioCache[uid] || loadingSet.has(uid)) { fetchNext(); return; }
+
+    loadingSet.add(uid);
+    // 优先从 window.AD 取（内存操作，极快）
+    if (window.AD && window.AD[uid]) {
+      cacheAndDecode(uid, window.AD[uid]);
+      loadingSet.delete(uid);
+      setTimeout(fetchNext, 50);
       return;
     }
-    // 按顺序 fetch 每个单元的 JSON（~500KB/个），先加载的单元先可用
+    // 否则 fetch 单个 JSON
     fetch(`audio_data/audio_${uid}.json`)
       .then(r => { if (r.ok) return r.json(); })
-      .then(data => {
-        if (data && Object.keys(data).length > 0) {
-          audioCache[uid] = data;
-          // 预解码所有 Blob URL
-          for (const k of Object.keys(data)) base64ToBlobUrl(data[k]);
-        }
-      })
-      .catch(() => {
-        // fetch 失败则等 window.AD
-        if (window.AD && window.AD[uid]) {
-          audioCache[uid] = window.AD[uid];
-          for (const k of Object.keys(audioCache[uid])) base64ToBlobUrl(audioCache[uid][k]);
-        }
-      })
-      .finally(() => setTimeout(fetchNext, 200));
+      .then(data => { cacheAndDecode(uid, data); })
+      .catch(() => { cacheAndDecode(uid, window.AD && window.AD[uid]); })
+      .finally(() => {
+        loadingSet.delete(uid);
+        setTimeout(fetchNext, 200);
+      });
   }
   fetchNext();
 }
@@ -1971,6 +1988,9 @@ function findUnit(id) {
 
 // ====== NAVIGATION ======
 function openUnit(id) {
+  // 用户选择了该单元 → 优先加载其音频
+  preloadPriority(id);
+
   // Hide all
   document.querySelectorAll('.unit-content').forEach(el => el.classList.remove('active'));
   document.getElementById('welcomePanel').style.display = 'none';
