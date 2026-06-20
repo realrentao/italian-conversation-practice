@@ -1668,12 +1668,6 @@ function toggleSpeed() {
 
 async function loadAudio(unitId) {
   if (audioCache[unitId]) return;
-  // Priority 1: already in window.AD (preloaded via audio_all.js)
-  if (window.AD && window.AD[unitId]) {
-    audioCache[unitId] = window.AD[unitId];
-    return;
-  }
-  // Priority 2: fetch individual JSON (works on HTTPS/GitHub Pages)
   try {
     const resp = await fetch(`audio_data/audio_${unitId}.json`);
     if (resp.ok) {
@@ -1687,7 +1681,7 @@ async function loadAudio(unitId) {
   }
 }
 
-// Lazy preloader: after page load, preload units one by one in background
+// Lazy preloader: after page renders, preload units in background
 let preloadQueue = [];
 let preloading = false;
 
@@ -1703,30 +1697,24 @@ async function processPreloadQueue() {
     if (!audioCache[uid]) {
       try {
         const resp = await fetch(`audio_data/audio_${uid}.json`);
-        if (resp.ok) {
-          audioCache[uid] = await resp.json();
-        }
-      } catch(e) {
-        // silently ignore
-      }
-      // Small delay between preloads to not hog bandwidth
+        if (resp.ok) audioCache[uid] = await resp.json();
+      } catch(e) { /* ignore */ }
       await new Promise(r => setTimeout(r, 200));
     }
   }
   preloading = false;
 }
 
-// Start preloading all units on page load
-document.addEventListener('DOMContentLoaded', () => {
-  const allUnitIds = [];
-  bookData.chapters.forEach(ch => {
-    ch.units.forEach(u => allUnitIds.push(u.id));
-  });
-  // Preload first unit immediately, rest in background
-  if (allUnitIds.length > 0) {
-    loadAudio(allUnitIds[0]);
-    enqueuePreload(allUnitIds.slice(1));
-  }
+// Start preloading all units after page is fully interactive
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const ids = [];
+    bookData.chapters.forEach(ch => ch.units.forEach(u => ids.push(u.id)));
+    if (ids.length > 0) {
+      loadAudio(ids[0]);
+      enqueuePreload(ids.slice(1));
+    }
+  }, 500);
 });
 
 function resetPlayButtons() {
@@ -1962,9 +1950,6 @@ function init() {
 
 document.addEventListener('DOMContentLoaded', init);
 </script>
-
-<!-- Non-blocking audio data preload (deferred - doesn't block rendering) -->
-<script defer src="audio_data/audio_all.js"></script>
 
 </body>
 </html>
