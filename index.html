@@ -1959,12 +1959,14 @@ function init() {
   // 1. 立即渲染目录
   buildTOC();
 
-  // 2. 填充缓存（此时 window.AD 和 bookData 都已就绪）
-  if (window.AD) {
-    for (const ch of bookData.chapters)
-      for (const u of ch.units)
-        if (!audioCache[u.id] && window.AD[u.id]) audioCache[u.id] = window.AD[u.id];
-  }
+  // 2. 后台填充缓存（不阻塞目录显示）
+  setTimeout(() => {
+    if (window.AD) {
+      for (const ch of bookData.chapters)
+        for (const u of ch.units)
+          if (!audioCache[u.id] && window.AD[u.id]) audioCache[u.id] = window.AD[u.id];
+    }
+  }, 0);
 
   // 3. 下一帧构建单元内容（不阻塞目录显示）
   requestAnimationFrame(() => {
@@ -1987,7 +1989,8 @@ function init() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', init);
+// 脚本末尾直接执行，不依赖 DOMContentLoaded
+init();
 </script>
 
 </body>
