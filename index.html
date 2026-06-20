@@ -1677,8 +1677,9 @@ function toggleSpeed(unitId) {
 }
 
 async function loadAudio(unitId) {
-  if (audioCache[unitId]) return;
-  // 优先从 audio_all.js 预加载数据（file:// 协议下 fetch 不可用）
+  // 已有真实数据则跳过（空数据允许后续重试）
+  if (audioCache[unitId] && Object.keys(audioCache[unitId]).length > 0) return;
+  // 优先从 audio_all.js 取（内存操作，比 fetch 快且兼容 file://）
   if (window.AD && window.AD[unitId]) {
     audioCache[unitId] = window.AD[unitId];
     return;
@@ -1686,13 +1687,14 @@ async function loadAudio(unitId) {
   try {
     const resp = await fetch(`audio_data/audio_${unitId}.json`);
     if (resp.ok) {
-      audioCache[unitId] = await resp.json();
-    } else {
-      audioCache[unitId] = {};
+      const data = await resp.json();
+      if (data && Object.keys(data).length > 0) {
+        audioCache[unitId] = data;
+      }
     }
   } catch(e) {
     console.warn(`Audio load failed for ${unitId}:`, e);
-    audioCache[unitId] = {};
+    // 不设空缓存，允许后续从 window.AD 补
   }
 }
 
@@ -1707,12 +1709,13 @@ function startAudioPreload() {
   function fetchNext() {
     if (idx >= ids.length) { preloadTimer = null; return; }
     const uid = ids[idx++];
-    if (audioCache[uid]) { fetchNext(); return; } // 已经缓存，跳过
+    // 有真实数据才跳过
+    if (audioCache[uid] && Object.keys(audioCache[uid]).length > 0) { fetchNext(); return; }
 
-    // 优先 fetch 单个 JSON（快，~500KB/个）
+    // 优先 fetch 单个 JSON（快，~500KB/个），仅填非空数据
     fetch(`audio_data/audio_${uid}.json`)
       .then(r => { if (r.ok) return r.json(); })
-      .then(data => { if (data) audioCache[uid] = data; })
+      .then(data => { if (data && Object.keys(data).length > 0) audioCache[uid] = data; })
       .catch(() => {
         // fetch 失败（如 file:// 协议），回退到 window.AD
         if (window.AD && window.AD[uid]) audioCache[uid] = window.AD[uid];
