@@ -1839,6 +1839,9 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
   const audioUrl = base64ToBlobUrl(base64data);
   let audio = new Audio(audioUrl);
   audio.playbackRate = rate || 1.0;
+  // iOS Safari 需要 audio 元素挂载到 DOM 才能播放
+  audio.style.display = 'none';
+  document.body.appendChild(audio);
   let fallbackTried = false;
 
   function resetAudio() {
@@ -1848,6 +1851,7 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
   }
 
   function playDone() {
+    if (audio && audio.parentNode) audio.parentNode.removeChild(audio);
     currentAudio = null;
     isPlaying = false;
     if (activePlayBtn) {
@@ -1869,17 +1873,21 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
       // 第一次失败 → 用 data URI 重试
       fallbackTried = true;
       resetAudio();
+      if (audio.parentNode) audio.parentNode.removeChild(audio);
       audio = new Audio('data:audio/mpeg;base64,' + base64data);
       audio.playbackRate = rate || 1.0;
+      audio.style.display = 'none';
+      document.body.appendChild(audio);
       audio.onplay = onPlay;
       audio.onended = onEnd;
-      audio.onerror = () => { playDone(); if (callback) callback(); };
+      audio.onerror = () => { if (audio.parentNode) audio.parentNode.removeChild(audio); playDone(); if (callback) callback(); };
       currentAudio = audio;
       isPlaying = true;
       if (btnEl) setButtonPlaying(btnEl);
-      audio.play().catch(() => { playDone(); if (callback) callback(); });
+      audio.play().catch(() => { if (audio.parentNode) audio.parentNode.removeChild(audio); playDone(); if (callback) callback(); });
       return;
     }
+    if (audio.parentNode) audio.parentNode.removeChild(audio);
     playDone();
     if (callback) callback();
   }
