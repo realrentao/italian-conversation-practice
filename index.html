@@ -1657,14 +1657,21 @@ let activePlayBtn = null; // currently highlighted play button
 function toggleSpeed(unitId) {
   const btn = document.getElementById(`speedBtn-${unitId}`);
   const cur = dialogSpeechRate[unitId] || 1.0;
+  let newRate;
   if (cur === 1.0) {
+    newRate = 1.4;
     dialogSpeechRate[unitId] = 1.4;
     btn.textContent = '🚀 快速 1.4x';
     btn.classList.add('active');
   } else {
+    newRate = 1.0;
     dialogSpeechRate[unitId] = 1.0;
     btn.textContent = '🐢 常速 1.0x';
     btn.classList.remove('active');
+  }
+  // 实时切换：当前音频正在播放时，立即改变播放速度
+  if (currentAudio) {
+    currentAudio.playbackRate = newRate;
   }
 }
 
