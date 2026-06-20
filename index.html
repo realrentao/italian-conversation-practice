@@ -1678,26 +1678,8 @@ function toggleSpeed(unitId) {
 
 function loadAudio(unitId) {
   if (audioCache[unitId]) return;
-  // audio_all.js 同步加载，window.AD 立即可用
   if (window.AD && window.AD[unitId]) audioCache[unitId] = window.AD[unitId];
 }
-
-function loadAudio(unitId) {
-  if (audioCache[unitId]) return;
-  if (window.AD && window.AD[unitId]) audioCache[unitId] = window.AD[unitId];
-}
-
-// init() 渲染完所有单元后，一次性将 window.AD 全量复制到 audioCache
-function fillAudioCache() {
-  if (!window.AD) return;
-  for (const ch of bookData.chapters) {
-    for (const u of ch.units) {
-      if (!audioCache[u.id] && window.AD[u.id]) audioCache[u.id] = window.AD[u.id];
-    }
-  }
-}
-
-document.addEventListener('DOMContentLoaded', fillAudioCache);
 
 function resetPlayButtons() {
   document.querySelectorAll('.vocab-item .play-icon, .sentence-item .s-play').forEach(el => {
@@ -1977,7 +1959,14 @@ function init() {
   // 1. 立即渲染目录
   buildTOC();
 
-  // 2. 下一帧构建单元内容（不阻塞目录显示）
+  // 2. 填充缓存（此时 window.AD 和 bookData 都已就绪）
+  if (window.AD) {
+    for (const ch of bookData.chapters)
+      for (const u of ch.units)
+        if (!audioCache[u.id] && window.AD[u.id]) audioCache[u.id] = window.AD[u.id];
+  }
+
+  // 3. 下一帧构建单元内容（不阻塞目录显示）
   requestAnimationFrame(() => {
     const container = document.getElementById('unitContentContainer');
     let allHtml = '';
