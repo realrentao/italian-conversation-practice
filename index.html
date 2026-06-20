@@ -1776,7 +1776,6 @@ function playBase64Audio(base64data, callback, btnEl) {
     if (callback) callback();
     return;
   }
-  stopSpeech();
   const audio = new Audio('data:audio/mp3;base64,' + base64data);
   audio.playbackRate = speechRate;
   audio.onended = () => {
@@ -1822,6 +1821,7 @@ function playBase64Audio(base64data, callback, btnEl) {
 async function speakWord(unitId, key, btnEl) {
   await loadAudio(unitId);
   const data = audioCache[unitId]?.[key];
+  stopSpeech();
   playBase64Audio(data, null, btnEl);
 }
 
