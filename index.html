@@ -1759,13 +1759,22 @@ function setButtonPlaying(btnEl) {
   activePlayBtn = btnEl;
 }
 
-function playBase64Audio(base64data, callback, btnEl) {
+function playBase64Audio(base64data, callback, btnEl, highlightEl) {
   if (!base64data) {
     if (callback) callback();
     return;
   }
   const audio = new Audio('data:audio/mp3;base64,' + base64data);
   audio.playbackRate = speechRate;
+  
+  // Apply highlight when audio actually starts playing
+  audio.onplay = () => {
+    if (highlightEl) {
+      document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
+      highlightEl.classList.add('active-line');
+    }
+  };
+  
   audio.onended = () => {
     currentAudio = null;
     isPlaying = false;
@@ -1857,8 +1866,7 @@ async function playAll(unitId) {
       stopSpeech();
       return;
     }
-    lines.forEach(el => el.classList.remove('active-line'));
-    if (lines[i]) lines[i].classList.add('active-line');
+    // Highlight will be applied by playBase64Audio when audio actually starts
 
     const progress = ((i + 1) / unit.dialogue.length) * 100;
     progressFill.style.width = `${progress}%`;
@@ -1868,7 +1876,7 @@ async function playAll(unitId) {
     playBase64Audio(data, () => {
       i++;
       playAllQueue = setTimeout(playNext, 300);
-    });
+    }, null, lines[i]);
   }
   playNext();
 }
