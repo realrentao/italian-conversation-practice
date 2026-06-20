@@ -1810,8 +1810,8 @@ function setButtonPlaying(btnEl) {
 let blobUrlCache = {};
 
 function base64ToBlobUrl(base64data, mime) {
-  const key = base64data.substring(0, 80);
-  if (blobUrlCache[key]) return blobUrlCache[key];
+  // 用全部 base64 做 key（前80字符因相同编码头会碰撞！）
+  if (blobUrlCache[base64data]) return blobUrlCache[base64data];
   try {
     const byteStr = atob(base64data);
     const len = byteStr.length;
@@ -1821,7 +1821,7 @@ function base64ToBlobUrl(base64data, mime) {
     // audio/mpeg 是 MP3 的标准 MIME（audio/mp3 不被 Safari 识别）
     const blob = new Blob([buf], { type: 'audio/mpeg' });
     const url = URL.createObjectURL(blob);
-    blobUrlCache[key] = url;
+    blobUrlCache[base64data] = url;
     return url;
   } catch (e) {
     console.warn('base64 decode failed:', e);
