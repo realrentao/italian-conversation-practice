@@ -1682,39 +1682,22 @@ function loadAudio(unitId) {
   if (window.AD && window.AD[unitId]) audioCache[unitId] = window.AD[unitId];
 }
 
-// DOMContentLoaded 后后台按序预加载音频（不等 load 事件，不阻塞渲染）
-let preloadTimer = null;
-const loadingSet = new Set(); // 防止重复 fetch
-
-// 将 unit 音频数据填入 cache（blob URL 在播放时创建，用完即释放）
-function cacheAndDecode(uid, data) {
-  if (!data || Object.keys(data).length === 0) return;
-  audioCache[uid] = data;
+function loadAudio(unitId) {
+  if (audioCache[unitId]) return;
+  if (window.AD && window.AD[unitId]) audioCache[unitId] = window.AD[unitId];
 }
 
-// 优先加载指定单元（用户选择时触发）
-function preloadPriority(unitId) {
-  if (audioCache[unitId] || loadingSet.has(unitId)) return;
-  loadingSet.add(unitId);
-  cacheAndDecode(unitId, window.AD && window.AD[unitId]); // 先试 window.AD
-  if (audioCache[unitId]) { loadingSet.delete(unitId); return; }
-  // 不行就 fetch
-  fetch(`audio_data/audio_${unitId}.json`)
-    .then(r => r.ok ? r.json() : null)
-// 页面加载后将 window.AD 数据复制到 audioCache（内存操作，极快）
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    if (!window.AD) return;
-    bookData.chapters.forEach(ch => ch.units.forEach(u => {
+// init() 渲染完所有单元后，一次性将 window.AD 全量复制到 audioCache
+function fillAudioCache() {
+  if (!window.AD) return;
+  for (const ch of bookData.chapters) {
+    for (const u of ch.units) {
       if (!audioCache[u.id] && window.AD[u.id]) audioCache[u.id] = window.AD[u.id];
-    }));
-  }, 50);
-});
+    }
+  }
+}
 
-// DOM 解析完立刻启动，不等待图片等资源加载
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(startAudioPreload, 100);
-});
+document.addEventListener('DOMContentLoaded', fillAudioCache);
 
 function resetPlayButtons() {
   document.querySelectorAll('.vocab-item .play-icon, .sentence-item .s-play').forEach(el => {
@@ -1949,9 +1932,6 @@ function findUnit(id) {
 
 // ====== NAVIGATION ======
 function openUnit(id) {
-  // 用户选择了该单元 → 优先加载其音频
-  preloadPriority(id);
-
   // Hide all
   document.querySelectorAll('.unit-content').forEach(el => el.classList.remove('active'));
   document.getElementById('welcomePanel').style.display = 'none';
