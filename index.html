@@ -1677,24 +1677,35 @@ function toggleSpeed(unitId) {
 }
 
 async function loadAudio(unitId) {
-  // 已有真实数据则跳过（空数据允许后续重试）
+  // 已有真实数据则跳过
   if (audioCache[unitId] && Object.keys(audioCache[unitId]).length > 0) return;
-  // 优先从 audio_all.js 取（内存操作，比 fetch 快且兼容 file://）
+  // 优先从 window.AD（audio_all.js）取——所有单元数据都在里面
   if (window.AD && window.AD[unitId]) {
     audioCache[unitId] = window.AD[unitId];
     return;
   }
+  // 尝试 fetch 单个 JSON（服务器环境）
   try {
     const resp = await fetch(`audio_data/audio_${unitId}.json`);
     if (resp.ok) {
       const data = await resp.json();
       if (data && Object.keys(data).length > 0) {
         audioCache[unitId] = data;
+        return;
       }
     }
   } catch(e) {
-    console.warn(`Audio load failed for ${unitId}:`, e);
-    // 不设空缓存，允许后续从 window.AD 补
+    console.warn(`Audio fetch failed for ${unitId}:`, e);
+  }
+  // 最后兜底：等 audio_all.js（8.9MB）下载完，从 window.AD 取
+  if (!window.AD) {
+    await new Promise(r => {
+      const poll = () => { if (window.AD) r(); else setTimeout(poll, 150); };
+      poll();
+    });
+  }
+  if (window.AD && window.AD[unitId]) {
+    audioCache[unitId] = window.AD[unitId];
   }
 }
 
