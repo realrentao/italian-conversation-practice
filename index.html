@@ -1696,28 +1696,30 @@ async function loadAudio(unitId) {
   }
 }
 
-// Lazy preloader: audio_all.js 异步加载，就绪后逐个 unit 填入缓存
+// 后台逐个预加载单元音频，先加载的单元先可用（不等全部加载完）
 let preloadTimer = null;
 
 function startAudioPreload() {
-  if (!window.AD) {
-    // window.AD 还没加载完毕，继续等待
-    preloadTimer = setTimeout(startAudioPreload, 200);
-    return;
-  }
-  // 逐个 unit 填入 audioCache，每间隔 200ms 避免卡顿
   const ids = [];
   bookData.chapters.forEach(ch => ch.units.forEach(u => ids.push(u.id)));
   let idx = 0;
-  function fillNext() {
+
+  function fetchNext() {
     if (idx >= ids.length) { preloadTimer = null; return; }
     const uid = ids[idx++];
-    if (!audioCache[uid] && window.AD[uid]) {
-      audioCache[uid] = window.AD[uid];
-    }
-    preloadTimer = setTimeout(fillNext, 200);
+    if (audioCache[uid]) { fetchNext(); return; } // 已经缓存，跳过
+
+    // 优先 fetch 单个 JSON（快，~500KB/个）
+    fetch(`audio_data/audio_${uid}.json`)
+      .then(r => { if (r.ok) return r.json(); })
+      .then(data => { if (data) audioCache[uid] = data; })
+      .catch(() => {
+        // fetch 失败（如 file:// 协议），回退到 window.AD
+        if (window.AD && window.AD[uid]) audioCache[uid] = window.AD[uid];
+      })
+      .finally(() => setTimeout(fetchNext, 100)); // 100ms 间隔，进度更快
   }
-  fillNext();
+  fetchNext();
 }
 
 // 页面完全加载后启动后台预加载
