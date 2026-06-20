@@ -767,7 +767,7 @@ body {
   </div>
 </div>
 
-<script src="audio_data/audio_all.js"></script>
+<script async src="audio_data/audio_all.js"></script>
 <script>
 // ====== BOOK DATA ======
 const bookData = {
@@ -1676,9 +1676,58 @@ function toggleSpeed(unitId) {
   }
 }
 
-function loadAudio(unitId) {
-  if (audioCache[unitId]) return;
+async function loadAudio(unitId) {
+  if (audioCache[unitId] && Object.keys(audioCache[unitId]).length > 0) return;
+  // window.AD 已就绪 → 直接取（内存操作）
+  if (window.AD && window.AD[unitId]) { audioCache[unitId] = window.AD[unitId]; return; }
+  // fetch 单个 JSON（服务器环境）
+  try {
+    const resp = await fetch(`audio_data/audio_${unitId}.json`);
+    if (resp.ok) {
+      const data = await resp.json();
+      if (data && Object.keys(data).length > 0) { audioCache[unitId] = data; return; }
+    }
+  } catch(e) { /* 静默 */ }
+  // 轮询等 window.AD
+  if (!window.AD) await new Promise(r => { const p = () => { if (window.AD) r(); else setTimeout(p, 100); }; p(); });
   if (window.AD && window.AD[unitId]) audioCache[unitId] = window.AD[unitId];
+}
+
+// 后台按序预加载（先加载的单元先可用，不阻塞）
+let _preloadIdx = 0;
+const _preloadIds = [];
+
+function startPreload() {
+  if (_preloadIds.length === 0) {
+    bookData.chapters.forEach(ch => ch.units.forEach(u => _preloadIds.push(u.id)));
+  }
+  if (_preloadIdx >= _preloadIds.length) return;
+  const uid = _preloadIds[_preloadIdx++];
+  if (audioCache[uid] || (window.AD && window.AD[uid])) {
+    // 已有数据 → 预解码 blob URL
+    if (!audioCache[uid]) audioCache[uid] = window.AD[uid];
+    for (const k of Object.keys(audioCache[uid])) base64ToBlobUrl(audioCache[uid][k]);
+    setTimeout(startPreload, 50);
+    return;
+  }
+  fetch(`audio_data/audio_${uid}.json`)
+    .then(r => r.ok ? r.json() : null)
+    .then(data => {
+      if (data && Object.keys(data).length > 0) {
+        audioCache[uid] = data;
+        for (const k of Object.keys(data)) base64ToBlobUrl(data[k]);
+      } else if (window.AD && window.AD[uid]) {
+        audioCache[uid] = window.AD[uid];
+        for (const k of Object.keys(audioCache[uid])) base64ToBlobUrl(audioCache[uid][k]);
+      }
+    })
+    .catch(() => {
+      if (window.AD && window.AD[uid]) {
+        audioCache[uid] = window.AD[uid];
+        for (const k of Object.keys(audioCache[uid])) base64ToBlobUrl(audioCache[uid][k]);
+      }
+    })
+    .finally(() => setTimeout(startPreload, 150));
 }
 
 function resetPlayButtons() {
@@ -1914,6 +1963,9 @@ function findUnit(id) {
 
 // ====== NAVIGATION ======
 function openUnit(id) {
+  // 用户选中该单元 → 优先加载其音频
+  loadAudio(id);
+
   // Hide all
   document.querySelectorAll('.unit-content').forEach(el => el.classList.remove('active'));
   document.getElementById('welcomePanel').style.display = 'none';
@@ -1959,16 +2011,7 @@ function init() {
   // 1. 立即渲染目录
   buildTOC();
 
-  // 2. 后台填充缓存（不阻塞目录显示）
-  setTimeout(() => {
-    if (window.AD) {
-      for (const ch of bookData.chapters)
-        for (const u of ch.units)
-          if (!audioCache[u.id] && window.AD[u.id]) audioCache[u.id] = window.AD[u.id];
-    }
-  }, 0);
-
-  // 3. 下一帧构建单元内容（不阻塞目录显示）
+  // 2. 下一帧构建单元内容（不阻塞目录显示）
   requestAnimationFrame(() => {
     const container = document.getElementById('unitContentContainer');
     let allHtml = '';
@@ -1987,6 +2030,9 @@ function init() {
       if (firstTitle) firstTitle.classList.remove('collapsed');
     }
   });
+
+  // 3. 后台按序预加载单元音频（不阻塞渲染，首单元最快就绪）
+  setTimeout(startPreload, 100);
 }
 
 // 脚本末尾直接执行，不依赖 DOMContentLoaded
