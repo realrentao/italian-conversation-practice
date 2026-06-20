@@ -1,1 +1,1972 @@
-PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InpoLUNOIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPgo8dGl0bGU+5a6e55So5oSP5aSn5Yip6K+t5Lya6K+dIOKAlCDkuqTkupLlvI/lrabkuaDlt6Xlhbc8L3RpdGxlPgo8c3R5bGU+Ci8qID09PT09PSBDU1MgVmFyaWFibGVzICYgVGhlbWUgPT09PT09ICovCjpyb290IHsKICAtLWdyZWVuOiAjMDA5MjQ2OwogIC0td2hpdGU6ICNGRkZGRkY7CiAgLS1yZWQ6ICNDRTJCMzc7CiAgLS1jcmVhbTogI0ZGRjhGMDsKICAtLXdhcm0tYmc6ICNGRkY1RUI7CiAgLS1kYXJrOiAjMWExYTJlOwogIC0tdGV4dDogIzJkMmQ0NDsKICAtLWdyYXk6ICNmMGVjZTY7CiAgLS1zaGFkb3c6IDAgNHB4IDI0cHggcmdiYSgwLDAsMCwwLjA4KTsKICAtLXJhZGl1czogMTZweDsKICAtLXRyYW5zaXRpb246IDAuM3MgY3ViaWMtYmV6aWVyKC40LDAsLjIsMSk7CiAgLS1zaWRlYmFyLXdpZHRoOiAzMjBweDsKICAtLWFjY2VudDogI0NFMkIzNzsKICAtLWFjY2VudC1saWdodDogI2ZmZThlODsKfQoKKiB7IG1hcmdpbjogMDsgcGFkZGluZzogMDsgYm94LXNpemluZzogYm9yZGVyLWJveDsgfQoKYm9keSB7CiAgZm9udC1mYW1pbHk6IC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgJ05vdG8gU2FucyBTQycsIHNhbnMtc2VyaWY7CiAgYmFja2dyb3VuZDogdmFyKC0td2FybS1iZyk7CiAgY29sb3I6IHZhcigtLXRleHQpOwogIGxpbmUtaGVpZ2h0OiAxLjc7CiAgZGlzcGxheTogZmxleDsKICBtaW4taGVpZ2h0OiAxMDB2aDsKfQoKLyogPT09PT09IFNpZGViYXIgPT09PT09ICovCi5zaWRlYmFyIHsKICBwb3NpdGlvbjogZml4ZWQ7CiAgdG9wOiAwOyBsZWZ0OiAwOwogIHdpZHRoOiB2YXIoLS1zaWRlYmFyLXdpZHRoKTsKICBoZWlnaHQ6IDEwMHZoOwogIGJhY2tncm91bmQ6IHZhcigtLXdoaXRlKTsKICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCAjZWVlOwogIHotaW5kZXg6IDEwMDA7CiAgZGlzcGxheTogZmxleDsKICBmbGV4LWRpcmVjdGlvbjogY29sdW1uOwogIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgwKTsKICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gdmFyKC0tdHJhbnNpdGlvbik7Cn0KCi5zaWRlYmFyLWhlYWRlciB7CiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDEzNWRlZywgdmFyKC0tZ3JlZW4pLCAjMDBhODVhKTsKICBjb2xvcjogdmFyKC0td2hpdGUpOwogIHBhZGRpbmc6IDI0cHggMjBweDsKICBmbGV4LXNocmluazogMDsKfQoKLnNpZGViYXItaGVhZGVyIGgxIHsKICBmb250LXNpemU6IDE4cHg7CiAgZm9udC13ZWlnaHQ6IDcwMDsKICBsZXR0ZXItc3BhY2luZzogMXB4Owp9Cgouc2lkZWJhci1oZWFkZXIgLnN1YnRpdGxlIHsKICBmb250LXNpemU6IDEycHg7CiAgb3BhY2l0eTogMC44NTsKICBtYXJnaW4tdG9wOiA0cHg7Cn0K
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实用意大利语会话 — 交互式学习工具</title>
+<style>
+/* ====== CSS Variables & Theme ====== */
+:root {
+  --green: #009246;
+  --white: #FFFFFF;
+  --red: #CE2B37;
+  --cream: #FFF8F0;
+  --warm-bg: #FFF5EB;
+  --dark: #1a1a2e;
+  --text: #2d2d44;
+  --gray: #f0ece6;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --radius: 16px;
+  --transition: 0.3s cubic-bezier(.4,0,.2,1);
+  --sidebar-width: 320px;
+  --accent: #CE2B37;
+  --accent-light: #ffe8e8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+  background: var(--warm-bg);
+  color: var(--text);
+  line-height: 1.7;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ====== Sidebar ====== */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--white);
+  border-right: 1px solid #eee;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(0);
+  transition: transform var(--transition);
+}
+
+.sidebar-header {
+  background: linear-gradient(135deg, var(--green), #00a85a);
+  color: var(--white);
+  padding: 24px 20px;
+  flex-shrink: 0;
+}
+
+.sidebar-header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.sidebar-header .subtitle {
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+.flag-bar {
+  display: flex;
+  height: 4px;
+}
+.flag-bar span {
+  flex: 1;
+}
+.flag-bar .green { background: var(--green); }
+.flag-bar .white { background: var(--white); }
+.flag-bar .red { background: var(--red); }
+
+.sidebar-search {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+.sidebar-search input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+  transition: border var(--transition);
+}
+.sidebar-search input:focus {
+  border-color: var(--red);
+}
+
+.sidebar-toc {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.chapter-group {
+  margin-bottom: 4px;
+}
+
+.chapter-title {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+.chapter-title:hover { background: var(--gray); }
+.chapter-title .arrow {
+  transition: transform var(--transition);
+  font-size: 10px;
+}
+.chapter-title.collapsed .arrow { transform: rotate(-90deg); }
+
+.unit-list {
+  list-style: none;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.unit-list.collapsed { max-height: 0 !important; }
+
+.unit-item {
+  padding: 8px 20px 8px 32px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all var(--transition);
+  border-left: 3px solid transparent;
+}
+.unit-item:hover {
+  background: var(--accent-light);
+  color: var(--red);
+}
+.unit-item.active {
+  background: var(--accent-light);
+  border-left-color: var(--red);
+  color: var(--red);
+  font-weight: 600;
+}
+.unit-item .unit-num {
+  font-size: 14px;
+  opacity: 0.6;
+  display: block;
+}
+
+/* ====== Main Content ====== */
+.main {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.mobile-header {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: linear-gradient(135deg, var(--green), #00a85a);
+  color: white;
+  padding: 12px 16px;
+  align-items: center;
+  gap: 12px;
+}
+.mobile-header .menu-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px;
+}
+.mobile-header h2 {
+  font-size: 16px;
+  font-weight: 600;
+  flex: 1;
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--green), #00a85a, var(--red));
+  padding: 60px 40px 40px;
+  color: var(--white);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  animation: heroFloat 20s linear infinite;
+}
+@keyframes heroFloat {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-20px,-20px); }
+  100% { transform: translate(0,0); }
+}
+.hero h1 {
+  font-size: 32px;
+  font-weight: 800;
+  position: relative;
+  z-index: 1;
+}
+.hero p {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+.hero .flag-mini {
+  display: inline-flex;
+  gap: 6px;
+  margin-top: 16px;
+  position: relative;
+  z-index: 1;
+}
+.hero .flag-mini span {
+  width: 40px;
+  height: 24px;
+  border-radius: 4px;
+}
+.hero .flag-mini .green { background: var(--green); }
+.hero .flag-mini .white { background: var(--white); }
+.hero .flag-mini .red { background: var(--red); }
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+/* ====== Unit Content ====== */
+.unit-content {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+.unit-content.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.unit-title-block {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--gray);
+}
+.unit-title-block .chapter-label {
+  font-size: 12px;
+  color: var(--green);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.unit-title-block h2 {
+  font-size: 26px;
+  margin-top: 4px;
+  color: var(--dark);
+}
+.unit-title-block .unit-subtitle {
+  font-size: 15px;
+  color: #888;
+  margin-top: 4px;
+}
+
+/* ====== Scene Intro ====== */
+.scene-intro {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--green);
+}
+.scene-intro h3 {
+  font-size: 18px;
+  color: var(--green);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.scene-intro p {
+  font-size: 17px;
+  color: #555;
+}
+
+/* ====== Vocabulary ====== */
+.vocab-section {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--red);
+}
+.vocab-section h3 {
+  font-size: 15px;
+  color: var(--red);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.vocab-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--cream);
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.vocab-item:hover {
+  background: var(--accent-light);
+}
+.vocab-item .it {
+  font-weight: 600;
+  color: var(--dark);
+  font-style: italic;
+}
+.vocab-item .sep {
+  color: #ccc;
+}
+.vocab-item .zh {
+  color: #666;
+}
+.vocab-item .play-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+.vocab-item:hover .play-icon {
+  transform: scale(1.15);
+}
+
+/* ====== Dialogue ====== */
+.dialogue-section {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.dialogue-section h3 {
+  font-size: 15px;
+  color: var(--dark);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.audio-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.audio-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.audio-btn:active { transform: scale(0.96); }
+.audio-btn.play-all {
+  background: var(--green);
+  color: white;
+}
+.audio-btn.play-all:hover { background: #008040; }
+.audio-btn.play-all.playing { background: var(--red); }
+.audio-btn.speed-control {
+  background: var(--gray);
+  color: var(--dark);
+}
+.audio-btn.speed-control:hover { background: #ddd; }
+.audio-btn.speed-control.active {
+  background: var(--red);
+  color: white;
+}
+.audio-btn.stop-btn {
+  background: #eee;
+  color: #999;
+}
+.audio-btn.stop-btn:hover { background: #ddd; color: var(--red); }
+
+.dialogue-line {
+  display: flex;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.dialogue-line:hover { background: var(--cream); }
+.dialogue-line.active-line {
+  background: var(--accent-light);
+  border-left: 3px solid var(--red);
+}
+.dialogue-line .speaker {
+  font-weight: 700;
+  color: var(--red);
+  width: 130px;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.dialogue-line .speaker.speaker-b {
+  color: var(--green);
+}
+.dialogue-line .text-wrapper {
+  flex: 1;
+}
+.dialogue-line .text-wrapper .it {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+.dialogue-line .text-wrapper .zh {
+  font-size: 15px;
+  color: #888;
+  margin-top: 2px;
+}
+.dialogue-line .line-play {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gray);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  font-size: 12px;
+  flex-shrink: 0;
+  align-self: center;
+  transition: all var(--transition);
+}
+.dialogue-line .line-play:hover {
+  background: var(--green);
+  color: white;
+}
+.dialogue-line .line-play.playing {
+  background: var(--red) !important;
+  color: white !important;
+}
+
+/* ====== Grammar Notes ====== */
+.grammar-section {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid #f4a261;
+}
+.grammar-section h3 {
+  font-size: 15px;
+  color: #e76f51;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.grammar-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.grammar-item:last-child { border-bottom: none; }
+.grammar-item .rule {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 16px;
+}
+.grammar-item .explain {
+  font-size: 15px;
+  color: #666;
+  margin-top: 2px;
+}
+.grammar-item .example {
+  font-size: 15px;
+  color: var(--red);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* ====== Common Sentences ====== */
+.sentences-section {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--green);
+}
+.sentences-section h3 {
+  font-size: 15px;
+  color: var(--green);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sentence-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.sentence-item:hover { background: var(--cream); }
+.sentence-item:last-child { border-bottom: none; }
+.sentence-item .s-text {
+  flex: 1;
+}
+.sentence-item .s-text .it {
+  font-weight: 500;
+  font-size: 18px;
+}
+.sentence-item .s-text .zh {
+  font-size: 16px;
+  color: #888;
+}
+.sentence-item .s-play {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--gray);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--green);
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+.sentence-item .s-play:hover {
+  background: var(--green);
+  color: white;
+}
+
+/* ====== Progress Bar ====== */
+.progress-bar {
+  height: 4px;
+  background: var(--gray);
+  border-radius: 2px;
+  margin: 16px 0;
+  overflow: hidden;
+}
+.progress-bar .fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--red));
+  width: 0%;
+  transition: width 0.3s;
+  border-radius: 2px;
+}
+
+/* ====== Book Info Panel ====== */
+.book-info {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  max-width: 600px;
+  margin: 40px auto;
+}
+.book-info h2 { color: var(--dark); margin-bottom: 8px; }
+.book-info p { font-size: 14px; color: #666; margin-bottom: 4px; }
+.book-info .isbn { font-size: 12px; color: #aaa; margin-top: 12px; }
+.book-info .flag-row { display: flex; justify-content: center; gap: 8px; margin: 16px 0; }
+.book-info .flag-row span { width: 50px; height: 30px; border-radius: 4px; }
+
+/* ====== Overlay ====== */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+}
+.sidebar-overlay.show { display: block; }
+
+/* ====== Scrollbar ====== */
+.sidebar-toc::-webkit-scrollbar { width: 4px; }
+.sidebar-toc::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .main {
+    margin-left: 0;
+  }
+  .mobile-header {
+    display: flex;
+  }
+  .hero {
+    padding: 32px 20px 28px;
+  }
+  .hero h1 {
+    font-size: 24px;
+  }
+  .content {
+    padding: 20px 12px 60px;
+  }
+  .vocab-grid {
+    grid-template-columns: 1fr;
+  }
+  .unit-title-block h2 {
+    font-size: 20px;
+  }
+  .dialogue-line {
+    padding: 8px 10px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .dialogue-line .speaker {
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+  }
+  .dialogue-line .text-wrapper {
+    width: calc(100% - 36px);
+    flex: none;
+  }
+  .dialogue-line .text-wrapper .it {
+    font-size: 16px;
+  }
+  .dialogue-line .line-play {
+    position: absolute;
+    right: 10px;
+    bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-controls {
+    flex-direction: column;
+  }
+  .audio-btn {
+    justify-content: center;
+  }
+}
+
+/* ====== Print ====== */
+@media print {
+  .sidebar, .mobile-header, .audio-controls { display: none; }
+  .main { margin-left: 0; }
+  .unit-content { display: block !important; page-break-before: always; }
+}
+</style>
+</head>
+<body>
+
+<!-- ====== Sidebar Overlay ====== -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ====== Sidebar ====== -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h1>实用意大利语会话</h1>
+    <div class="subtitle">Conversazioni Reali in Italiano</div>
+  </div>
+  <div class="flag-bar">
+    <span class="green"></span>
+    <span class="white"></span>
+    <span class="red"></span>
+  </div>
+  <div class="sidebar-search">
+    <input type="text" id="searchInput" placeholder="搜索章节 / Cerca..." oninput="filterTOC(this.value)">
+  </div>
+  <div class="sidebar-toc" id="tocContainer">
+    <!-- TOC will be populated by JS -->
+  </div>
+</nav>
+
+<!-- ====== Main Content ====== -->
+<div class="main">
+  <div class="mobile-header">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <h2>实用意大利语会话</h2>
+  </div>
+
+  <div class="hero">
+    <h1>实用意大利语会话</h1>
+    <p>Conversazioni Reali in Italiano per Studenti Cinesi</p>
+    <div class="flag-mini">
+      <span class="green"></span>
+      <span class="white"></span>
+      <span class="red"></span>
+    </div>
+  </div>
+
+  <div class="content" id="contentArea">
+    <!-- Welcome / Info -->
+    <div id="welcomePanel" class="book-info">
+      <div class="flag-row">
+        <span class="green" style="background:var(--green)"></span>
+        <span class="white" style="background:var(--white);border:1px solid #ddd"></span>
+        <span class="red" style="background:var(--red)"></span>
+      </div>
+      <h2>📖 实用意大利语会话</h2>
+      <p style="margin-top:12px;font-size:16px;color:#888">
+        以日常生活中常见的饮食、交通、游览和社交等主题为线索，<br>
+        以实景会话的形式呈现意大利人的真实日常对话。
+      </p>
+      <p style="margin-top:12px;color:var(--green);font-weight:600;font-size:16px">
+        点击左侧目录选择单元开始学习 👈
+      </p>
+    </div>
+
+    <!-- Unit content will be injected by JS -->
+    <div id="unitContentContainer"></div>
+  </div>
+</div>
+
+<script src="audio_data/audio_all.js"></script>
+<script>
+// ====== BOOK DATA ======
+const bookData = {
+  chapters: [
+    {
+      title: "All'arrivo in Italia",
+      subtitle: "初到意大利",
+      units: [
+        {
+          id: "c1u1",
+          num: "第1单元",
+          title: "Affittare una casa",
+          subtitle: "租房",
+          scene: "Mario è appena arrivato in Italia per studiare. Deve trovare un appartamento. Oggi va a vedere una casa in affitto nel centro di Roma con l'agente immobiliare, la signora Rossi.",
+          vocab: [
+            { it: "l'affitto", zh: "租金" },
+            { it: "la casa", zh: "房子" },
+            { it: "l'appartamento", zh: "公寓" },
+            { it: "la stanza", zh: "房间" },
+            { it: "il bagno", zh: "浴室" },
+            { it: "la cucina", zh: "厨房" },
+            { it: "il soggiorno", zh: "客厅" },
+            { it: "la camera da letto", zh: "卧室" },
+            { it: "l'agente immobiliare", zh: "房产中介" },
+            { it: "il contratto", zh: "合同" },
+            { it: "la caparra", zh: "押金" },
+            { it: "le spese condominiali", zh: "物业费" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Agente", text: "Buongiorno, signor Mario. Benvenuto! Questa è la casa in via Cavour.", zh: "早上好，马里奥先生。欢迎！这就是位于卡武尔街的房子。" },
+            { speaker: "B", name: "Mario", text: "Buongiorno, signora Rossi. L'appartamento è molto luminoso!", zh: "早上好，罗西女士。这间公寓很明亮！" },
+            { speaker: "A", name: "Agente", text: "Sì, ha tre stanze: un soggiorno, una camera da letto e una cucina abitabile.", zh: "是的，有三个房间：一个客厅、一间卧室和一个可居住的厨房。" },
+            { speaker: "B", name: "Mario", text: "Quanto è l'affitto?", zh: "租金是多少？" },
+            { speaker: "A", name: "Agente", text: "L'affitto è di 800 euro al mese, più 100 euro di spese condominiali.", zh: "租金是每月800欧元，外加100欧元的物业费。" },
+            { speaker: "B", name: "Mario", text: "È inclusa l'acqua e il gas?", zh: "包含水和燃气吗？" },
+            { speaker: "A", name: "Agente", text: "Sì, tutto incluso. Deve solo pagare la luce e internet.", zh: "是的，全包。您只需要支付电费和网络费。" },
+            { speaker: "B", name: "Mario", text: "Va bene. Quanto serve di caparra?", zh: "好的。押金需要多少？" },
+            { speaker: "A", name: "Agente", text: "Due mensilità, quindi 1.600 euro. Poi firmiamo il contratto.", zh: "两个月租金，也就是1600欧元。然后我们签合同。" },
+            { speaker: "B", name: "Mario", text: "Perfetto, la prendo! Quando posso trasferirmi?", zh: "太好了，我租了！我什么时候可以搬进来？" },
+            { speaker: "A", name: "Agente", text: "Dal primo del mese prossimo. Le auguro una buona permanenza in Italia!", zh: "从下个月1号开始。祝您在意大利生活愉快！" }
+          ],
+          grammar: [
+            { rule: "冠词的使用", explain: "意大利语冠词分为定冠词(il/lo/la/i/gli/le)和不定冠词(un/uno/una/un')。如：la casa, un appartamento。", example: "La casa è bella. / Un appartamento luminoso." },
+            { rule: "动词avere（有）的变位", explain: "avere是意大利语中最常用的动词之一，表示\"有\"。Io ho, tu hai, lui/lei ha, noi abbiamo, voi avete, loro hanno。", example: "Quanto è l'affitto? (是多少)" },
+            { rule: "疑问词Quanto", explain: "Quanto意为\"多少\"，需要与名词的性和数配合。Quanto（阳性单数）, Quanta（阴性单数）, Quanti（阳性复数）, Quante（阴性复数）。", example: "Quanto è l'affitto? / Quante stanze ci sono?" }
+          ],
+          sentences: [
+            { it: "Quanto costa l'affitto?", zh: "租金是多少？" },
+            { it: "Vorrei vedere un appartamento.", zh: "我想看一间公寓。" },
+            { it: "C'è il riscaldamento centrale?", zh: "有集中供暖吗？" },
+            { it: "Devo firmare il contratto.", zh: "我需要签合同。" },
+            { it: "La caparra è di due mensilità.", zh: "押金为两个月租金。" }
+          ]
+        },
+        {
+          id: "c1u2",
+          num: "第2单元",
+          title: "I servizi telefonici",
+          subtitle: "办理手机业务",
+          scene: "Mario ha bisogno di una SIM italiana per comunicare. Va in un negozio di telefonia a Roma per attivare una carta telefonica.",
+          vocab: [
+            { it: "il telefono cellulare", zh: "手机" },
+            { it: "la SIM", zh: "SIM卡" },
+            { it: "il piano tariffario", zh: "资费套餐" },
+            { it: "i dati mobili", zh: "移动数据" },
+            { it: "le chiamate", zh: "通话" },
+            { it: "i messaggi", zh: "短信" },
+            { it: "la ricarica", zh: "充值" },
+            { it: "la copertura", zh: "信号覆盖" },
+            { it: "il numero di telefono", zh: "电话号码" },
+            { it: "l'operatore", zh: "运营商" },
+            { it: "abbonamento", zh: "月套餐" },
+            { it: "prepagato", zh: "预付费" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Commesso", text: "Buongiorno, posso aiutarla?", zh: "早上好，有什么可以帮您的？" },
+            { speaker: "B", name: "Mario", text: "Buongiorno, vorrei attivare una SIM italiana.", zh: "早上好，我想办一张意大利SIM卡。" },
+            { speaker: "A", name: "Commesso", text: "Certamente. Ha il passaporto con sé?", zh: "当然。您带护照了吗？" },
+            { speaker: "B", name: "Mario", text: "Sì, eccolo. Che piani tariffari avete?", zh: "带了，给您。你们有什么资费套餐？" },
+            { speaker: "A", name: "Commesso", text: "Abbiamo tre opzioni: 10 euro al mese con 50 GB, 15 euro con 100 GB, oppure 20 euro con 150 GB e chiamate illimitate.", zh: "我们有三个选择：每月10欧50GB，15欧100GB，或者20欧150GB加无限通话。" },
+            { speaker: "B", name: "Mario", text: "Quale mi consiglia?", zh: "您推荐哪个？" },
+            { speaker: "A", name: "Commesso", text: "Se usa molto internet, le consiglio quello da 15 euro. È il più conveniente.", zh: "如果您经常用网络，我推荐15欧的。性价比最高。" },
+            { speaker: "B", name: "Mario", text: "Va bene, prendo quello da 15 euro. È un abbonamento o prepagato?", zh: "好的，我选15欧的。是月套餐还是预付费？" },
+            { speaker: "A", name: "Commesso", text: "È prepagato, ogni mese può ricaricare. Le attivo subito la SIM.", zh: "是预付费的，每月充值就行。我马上为您激活SIM卡。" },
+            { speaker: "B", name: "Mario", text: "Perfetto. Qual è il mio numero?", zh: "太好了。我的号码是多少？" },
+            { speaker: "A", name: "Commesso", text: "Il suo numero è 345 678 9012. Ecco la SIM, buona giornata!", zh: "您的号码是345 678 9012。给您SIM卡，祝您愉快！" }
+          ],
+          grammar: [
+            { rule: "动词volere（想要）的变位", explain: "volere用在礼貌请求中：Io voglio, tu vuoi, lui/lei vuole, noi vogliamo, voi volete, loro vogliono。条件式vorrei更礼貌。", example: "Vorrei attivare una SIM. / Vuoi il mio numero?" },
+            { rule: "条件式vorrei", explain: "vorrei是volere的条件式，表示\"我想要...\"，是非常礼貌的表达方式，常用于购物、请求服务等场合。", example: "Vorrei un caffè. / Vorrei informazioni." },
+            { rule: "指示代词questo/quello", explain: "questo（这个）和quello（那个）有性数变化：questo/questa/questi/queste。", example: "Questo è il mio numero. / Quella SIM è più economica." }
+          ],
+          sentences: [
+            { it: "Vorrei attivare una SIM.", zh: "我想办一张SIM卡。" },
+            { it: "Qual è il piano tariffario migliore?", zh: "哪个套餐最好？" },
+            { it: "Quanto costa al mese?", zh: "每月多少钱？" },
+            { it: "Dove posso ricaricare?", zh: "哪里可以充值？" },
+            { it: "C'è copertura in tutta Italia?", zh: "全意大利都有信号吗？" }
+          ]
+        },
+        {
+          id: "c1u3",
+          num: "第3单元",
+          title: "I servizi bancari",
+          subtitle: "办理银行业务",
+          scene: "Mario deve aprire un conto in banca per gestire i suoi soldi mentre studia in Italia. Va in una banca a Roma.",
+          vocab: [
+            { it: "la banca", zh: "银行" },
+            { it: "il conto corrente", zh: "活期账户" },
+            { it: "aprire un conto", zh: "开户" },
+            { it: "il bancomat", zh: "借记卡" },
+            { it: "la carta di credito", zh: "信用卡" },
+            { it: "il codice fiscale", zh: "税号" },
+            { it: "il PIN", zh: "密码" },
+            { it: "il saldo", zh: "余额" },
+            { it: "il bonifico", zh: "转账" },
+            { it: "l'estratto conto", zh: "银行对账单" },
+            { it: "lo sportello", zh: "柜台/窗口" },
+            { it: "il tasso d'interesse", zh: "利率" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Impiegato", text: "Buongiorno, desidera?", zh: "早上好，您需要什么？" },
+            { speaker: "B", name: "Mario", text: "Buongiorno, vorrei aprire un conto corrente.", zh: "早上好，我想开一个活期账户。" },
+            { speaker: "A", name: "Impiegato", text: "Ha il passaporto e il codice fiscale?", zh: "您带了护照和税号吗？" },
+            { speaker: "B", name: "Mario", text: "Sì, ecco il passaporto. Il codice fiscale devo ancora richiederlo.", zh: "带了，这是护照。税号我还没申请。" },
+            { speaker: "A", name: "Impiegato", text: "Nessun problema. Può richiederlo all'Agenzia delle Entrate e portarcelo dopo.", zh: "没问题。您可以去税务局申请，之后带过来。" },
+            { speaker: "B", name: "Mario", text: "Quali sono i vantaggi del conto corrente per studenti?", zh: "学生账户有什么优惠？" },
+            { speaker: "A", name: "Impiegato", text: "Per gli studenti il conto è gratuito, senza spese di gestione. Include anche un bancomat.", zh: "对学生是免费的，没有管理费。还赠送一张借记卡。" },
+            { speaker: "B", name: "Mario", text: "Ottimo! Posso fare anche bonifici internazionali?", zh: "太好了！可以做国际转账吗？" },
+            { speaker: "A", name: "Impiegato", text: "Sì, può ricevere bonifici dalla Cina senza commissioni aggiuntive.", zh: "可以，从中国接收汇款没有额外手续费。" },
+            { speaker: "B", name: "Mario", text: "Perfetto. Quanto tempo ci vuole per l'attivazione?", zh: "太好了。激活需要多长时间？" },
+            { speaker: "A", name: "Impiegato", text: "La carta sarà pronta in 5 giorni lavorativi. La chiameremo quando è disponibile.", zh: "银行卡5个工作日内准备好。准备好后我们会打电话通知您。" }
+          ],
+          grammar: [
+            { rule: "动词aprire（打开/开设）的变位", explain: "Aprire是不规则动词：Io apro, tu apri, lui/lei apre, noi apriamo, voi aprite, loro aprono。", example: "Vorrei aprire un conto." },
+            { rule: "礼貌请求vorrei + 动词不定式", explain: "vorrei后面直接跟动词不定式，表示\"我想做某事\"，是非常礼貌的请求方式。", example: "Vorrei aprire un conto. / Vorrei ricevere un bonifico." },
+            { rule: "前置词di/a/da/in的用法", explain: "Di表示所属：il conto di Mario. A表示方向：vado alla banca. Da表示来源：vengo dalla Cina. In表示地点：in banca。", example: "Vado in banca. / Vengo dalla Cina." }
+          ],
+          sentences: [
+            { it: "Vorrei aprire un conto corrente.", zh: "我想开一个活期账户。" },
+            { it: "Quali documenti servono?", zh: "需要什么文件？" },
+            { it: "Il conto per studenti è gratuito?", zh: "学生账户是免费的吗？" },
+            { it: "Come faccio un bonifico?", zh: "怎么做转账？" },
+            { it: "Dov'è il bancomat più vicino?", zh: "最近的ATM在哪里？" }
+          ]
+        },
+        {
+          id: "c1u4",
+          num: "第4单元",
+          title: "Richiedere il permesso di soggiorno",
+          subtitle: "申请居留证",
+          scene: "Mario deve richiedere il permesso di soggiorno per studio. Si reca all'ufficio postale per ritirare il kit e poi alla questura.",
+          vocab: [
+            { it: "il permesso di soggiorno", zh: "居留许可" },
+            { it: "la questura", zh: "警察局" },
+            { it: "l'ufficio postale", zh: "邮局" },
+            { it: "il kit", zh: "申请套件" },
+            { it: "il modulo", zh: "表格" },
+            { it: "il visto", zh: "签证" },
+            { it: "lo studente", zh: "学生" },
+            { it: "la marca da bollo", zh: "印花税票" },
+            { it: "la fotocopia", zh: "复印件" },
+            { it: "la ricevuta", zh: "收据" },
+            { it: "la scadenza", zh: "有效期/截止日期" },
+            { it: "il rinnovo", zh: "续签" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Impiegato Postale", text: "Buongiorno, cosa desidera?", zh: "早上好，您需要什么？" },
+            { speaker: "B", name: "Mario", text: "Buongiorno, vorrei il kit per il permesso di soggiorno.", zh: "早上好，我想要申请居留许可的套件。" },
+            { speaker: "A", name: "Impiegato Postale", text: "Ecco a lei. Sono 2 euro. Compili il modulo e lo spedisca entro 8 giorni.", zh: "给您。2欧元。填写表格并在8天内寄出。" },
+            { speaker: "B", name: "Mario", text: "Dove devo spedirlo?", zh: "需要寄到哪里？" },
+            { speaker: "A", name: "Impiegato Postale", text: "Alla questura competente per zona. Insieme alla fotocopia del passaporto, del visto e una marca da bollo da 16 euro.", zh: "寄到管辖区域的警察局。附上护照复印件、签证复印件和16欧元的印花税票。" },
+            { speaker: "B", name: "Mario", text: "Quanto tempo ci vuole per avere il permesso?", zh: "拿到居留证需要多长时间？" },
+            { speaker: "A", name: "Impiegato Postale", text: "Di solito 2-3 mesi. Intanto riceverà una ricevuta che vale come permesso provvisorio.", zh: "通常2-3个月。在此期间您会收到一张收据，作为临时居留证明。" },
+            { speaker: "B", name: "Mario", text: "Grazie. E per il rinnovo, quando devo fare domanda?", zh: "谢谢。续签的话，什么时候需要申请？" },
+            { speaker: "A", name: "Impiegato Postale", text: "Almeno 60 giorni prima della scadenza. Non aspetti l'ultimo momento!", zh: "至少在到期前60天。不要等到最后一刻！" },
+            { speaker: "B", name: "Mario", text: "Ho capito. Grazie mille per le informazioni!", zh: "我明白了。非常感谢您提供的信息！" }
+          ],
+          grammar: [
+            { rule: "动词dovere（必须）的变位", explain: "dovere表示\"必须、应该\"：Io devo, tu devi, lui/lei deve, noi dobbiamo, voi dovete, loro devono。", example: "Devo spedire il modulo entro 8 giorni." },
+            { rule: "时间表达entro/fra/tra", explain: "Entro表示\"在...之内\"（截止时间），Fra/Tra表示\"在...之后\"（未来时间）。", example: "Entro 8 giorni. / Tra 2-3 mesi." },
+            { rule: "条件式dovrei（我应该）", explain: "Dovrei是dovere的条件式，表示\"我应该...\"，语气比dovere更委婉。", example: "Dovrei richiedere il rinnovo." }
+          ],
+          sentences: [
+            { it: "Dove si ritira il kit?", zh: "在哪里领取申请套件？" },
+            { it: "Devo rinnovare il permesso di soggiorno.", zh: "我需要续签居留许可。" },
+            { it: "Quali documenti servono?", zh: "需要哪些文件？" },
+            { it: "La ricevuta vale come permesso provvisorio.", zh: "收据可作为临时居留证明。" },
+            { it: "Il permesso scade tra sei mesi.", zh: "居留证六个月后到期。" }
+          ]
+        }
+      ]
+    },
+    {
+      title: "Mangiare in Italia",
+      subtitle: "美食篇",
+      units: [
+        {
+          id: "c2u1",
+          num: "第1单元",
+          title: "Al caffè",
+          subtitle: "在咖啡馆",
+          scene: "Mario e la sua amica Lucia si incontrano al bar per un caffè. In Italia, il caffè è un rito sociale molto importante.",
+          vocab: [
+            { it: "il bar", zh: "咖啡馆/酒吧" },
+            { it: "il caffè", zh: "咖啡" },
+            { it: "il caffè espresso", zh: "浓缩咖啡" },
+            { it: "il cappuccino", zh: "卡布奇诺" },
+            { it: "il cornetto", zh: "牛角包" },
+            { it: "la brioche", zh: "甜面包" },
+            { it: "lo zucchero", zh: "糖" },
+            { it: "il latte", zh: "牛奶" },
+            { it: "la tazza", zh: "杯子" },
+            { it: "il conto", zh: "账单" },
+            { it: "il bancone", zh: "吧台" },
+            { it: "lo scontrino", zh: "收据/小票" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Mario", text: "Ciao Lucia! Prendiamo un caffè?", zh: "你好露琪亚！我们喝杯咖啡？" },
+            { speaker: "B", name: "Lucia", text: "Ciao Mario! Volentieri. Andiamo al bar di via Roma, fanno un caffè ottimo.", zh: "你好马里奥！好啊。我们去罗马路上的咖啡馆吧，那里的咖啡很棒。" },
+            { speaker: "A", name: "Barista", text: "Buongiorno, cosa prendete?", zh: "早上好，你们要点什么？" },
+            { speaker: "B", name: "Lucia", text: "Io prendo un cappuccino e un cornetto vuoto, per favore.", zh: "我要一杯卡布奇诺和一个原味牛角包。" },
+            { speaker: "A", name: "Mario", text: "Per me un caffè espresso, macchiato con poco latte.", zh: "我要一杯浓缩咖啡，加一点奶。" },
+            { speaker: "A", name: "Barista", text: "Subito. (dopo un po') Ecco a voi. Buona colazione!", zh: "马上来。（过了一会儿）给你们。祝你们早餐愉快！" },
+            { speaker: "B", name: "Lucia", text: "Grazie! Mario, come mai prendi il caffè macchiato?", zh: "谢谢！马里奥，你怎么喝加奶咖啡？" },
+            { speaker: "A", name: "Mario", text: "In Cina siamo abituati al caffè con latte. Ma qui in Italia l'espresso è tutta un'altra cosa!", zh: "在中国我们习惯喝加奶的咖啡。不过在意大利，浓缩咖啡完全是另一种体验！" },
+            { speaker: "B", name: "Lucia", text: "Hai ragione! L'espresso italiano è il migliore del mondo. Quanto paghiamo?", zh: "你说得对！意大利浓缩咖啡是全世界最好的。我们付多少钱？" },
+            { speaker: "A", name: "Barista", text: "Fanno 4 euro e 50. Buona giornata!", zh: "一共4欧元50分。祝你们愉快！" }
+          ],
+          grammar: [
+            { rule: "动词prendere（拿/点单）的变位", explain: "prendere在餐厅点单时非常常用：Io prendo, tu prendi, lui/lei prende, noi prendiamo, voi prendete, loro prendono。", example: "Io prendo un cappuccino." },
+            { rule: "直接宾语代词（lo/la/li/le）", explain: "Lo（阳性单数）, La（阴性单数）, Li（阳性复数）, Le（阴性复数），放在动词前面。", example: "Lo prendo volentieri. / La prendo subito." },
+            { rule: "冠词的省略", explain: "在意大利语中，bar/caffè等词前面有时省略冠词。\"al bar\"去酒吧。Prendiamo un caffè → 一杯咖啡。", example: "Andiamo al bar. / Prendo caffè." }
+          ],
+          sentences: [
+            { it: "Vorrei un caffè, per favore.", zh: "请给我一杯咖啡。" },
+            { it: "Quanto costa un cappuccino?", zh: "一杯卡布奇诺多少钱？" },
+            { it: "Lo prendo al bancone.", zh: "我站在吧台喝。" },
+            { it: "Un cornetto con crema, grazie.", zh: "一个奶油牛角包，谢谢。" },
+            { it: "Il caffè è ottimo!", zh: "咖啡非常好喝！" }
+          ]
+        },
+        {
+          id: "c2u2",
+          num: "第2单元",
+          title: "In pasticceria",
+          subtitle: "在甜品店",
+          scene: "Mario e Lucia vanno in una pasticceria tradizionale per comprare dei dolci italiani.",
+          vocab: [
+            { it: "la pasticceria", zh: "甜品店/糕点店" },
+            { it: "il dolce", zh: "甜点" },
+            { it: "la torta", zh: "蛋糕" },
+            { it: "il tiramisù", zh: "提拉米苏" },
+            { it: "la panna cotta", zh: "意式奶冻" },
+            { it: "il cannolo", zh: "奶油卷" },
+            { it: "la sfoglia", zh: "千层酥" },
+            { it: "la crema", zh: "奶油/酱" },
+            { it: "il cioccolato", zh: "巧克力" },
+            { it: "la fragola", zh: "草莓" },
+            { it: "la vetrina", zh: "展示柜" },
+            { it: "la specialità", zh: "特色产品" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Mario", text: "Che bella pasticceria! Quanti dolci meravigliosi!", zh: "好漂亮的甜品店！好多精美的甜点！" },
+            { speaker: "B", name: "Lucia", text: "Questa è la pasticceria più famosa di Roma. I loro cannoli sono squisiti!", zh: "这是罗马最有名的甜品店。他们的奶油卷非常美味！" },
+            { speaker: "A", name: "Commessa", text: "Buongiorno! Desiderano qualcosa?", zh: "早上好！想要点什么？" },
+            { speaker: "B", name: "Lucia", text: "Buongiorno! Vorrei due cannoli alla crema e tre paste alla mandorla.", zh: "早上好！我想要两个奶油卷和三个杏仁酥。" },
+            { speaker: "A", name: "Mario", text: "Io prendo una fetta di tiramisù e una panna cotta ai frutti di bosco.", zh: "我要一块提拉米苏和一个浆果意式奶冻。" },
+            { speaker: "A", name: "Commessa", text: "Ottima scelta! Il tiramisù è la nostra specialità. Mangiate qui o da portare via?", zh: "好选择！提拉米苏是我们的招牌。在这里吃还是带走？" },
+            { speaker: "B", name: "Lucia", text: "Da portare via, per favore.", zh: "带走，谢谢。" },
+            { speaker: "A", name: "Commessa", text: "Allora li metto in un vassoio. Aggiungo anche un po' di zucchero a velo. Ecco fatto.", zh: "那我放在托盘里。再撒一点糖粉。好了。" },
+            { speaker: "A", name: "Mario", text: "Quanto costa in tutto?", zh: "一共多少钱？" },
+            { speaker: "A", name: "Commessa", text: "Sono 18 euro e 50. Ecco lo scontrino. Buona degustazione!", zh: "一共18欧元50分。这是收据。祝您享用愉快！" }
+          ],
+          grammar: [
+            { rule: "最高级（-issimo）", explain: "通过在形容词词根后加-issimo/a/i/e构成绝对最高级，表示\"非常...\"。", example: "La più famosa / dolci meravigliosi / ottima scelta" },
+            { rule: "动词consigliare（推荐）的变位", explain: "Consigliare是规则-are动词：Io consiglio, tu consigli, lui/lei consiglia, noi consigliamo, voi consigliate, loro consigliano。", example: "Le consiglio il tiramisù." },
+            { rule: "部分冠词（del/dello/della/dei/degli/delle）", explain: "表示\"一些\"，用于不可数名词或复数名词前。", example: "Un po' di zucchero / dei cannoli" }
+          ],
+          sentences: [
+            { it: "Quali dolci mi consiglia?", zh: "您推荐什么甜点？" },
+            { it: "Il tiramisù è la specialità della casa.", zh: "提拉米苏是本店特色。" },
+            { it: "Lo mangio qui o da portare via?", zh: "在这里吃还是带走？" },
+            { it: "Quanto costa al chilo?", zh: "每公斤多少钱？" },
+            { it: "È il dolce più buono che abbia mai assaggiato.", zh: "这是我尝过的最好吃的甜点。" }
+          ]
+        },
+        {
+          id: "c2u3",
+          num: "第3单元",
+          title: "In gelateria",
+          subtitle: "在冰激凌店",
+          scene: "È una calda giornata estiva. Mario e Lucia decidono di prendere un gelato.",
+          vocab: [
+            { it: "il gelato", zh: "冰激凌" },
+            { it: "la gelateria", zh: "冰激凌店" },
+            { it: "il gusto", zh: "口味" },
+            { it: "la crema", zh: "奶油味" },
+            { it: "il cioccolato", zh: "巧克力味" },
+            { it: "la nocciola", zh: "榛子味" },
+            { it: "il pistacchio", zh: "开心果味" },
+            { it: "la fragola", zh: "草莓味" },
+            { it: "il limone", zh: "柠檬味" },
+            { it: "il cono", zh: "蛋筒" },
+            { it: "la coppetta", zh: "小杯" },
+            { it: "la panna", zh: "奶油" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Mario", text: "Che caldo oggi! Andiamo a prendere un gelato?", zh: "今天好热！我们去吃冰激凌吧？" },
+            { speaker: "B", name: "Lucia", text: "Buona idea! Conosco una gelateria artigianale qui vicino.", zh: "好主意！我知道附近有一家手工冰激凌店。" },
+            { speaker: "A", name: "Gelataio", text: "Benvenuti! Assaggiate pure tutti i gusti che volete.", zh: "欢迎光临！所有口味都可以免费品尝。" },
+            { speaker: "B", name: "Lucia", text: "Che bontà! Che gusti avete?", zh: "太棒了！你们有什么口味？" },
+            { speaker: "A", name: "Gelataio", text: "Oggi abbiamo 20 gusti: cioccolato fondente, nocciola, pistacchio di Bronte, crema, fragola, limone, e molti altri.", zh: "今天有20种口味：黑巧克力、榛子、布朗特开心果、奶油、草莓、柠檬，还有其他的。" },
+            { speaker: "A", name: "Mario", text: "Io prendo un cono con due gusti: nocciola e pistacchio.", zh: "我要一个双球蛋筒：榛子和开心果。" },
+            { speaker: "B", name: "Lucia", text: "Per me una coppetta con cioccolato fondente e crema, con un po' di panna sopra.", zh: "我要一杯黑巧克力和奶油，上面加一点奶油。" },
+            { speaker: "A", name: "Gelataio", text: "Ecco a voi. Il cono è 3 euro e 50, la coppetta 4 euro.", zh: "给你们。蛋筒3欧50分，杯装4欧元。" },
+            { speaker: "A", name: "Mario", text: "Il gelato italiano è veramente il migliore del mondo!", zh: "意大利冰激凌真是全世界最好吃的！" },
+            { speaker: "B", name: "Lucia", text: "Soprattutto quello artigianale! Mangiamo la colazione al bar, il gelato al pomeriggio... gli italiani sanno proprio mangiare bene!", zh: "尤其是手工的！早上在吧台吃早餐，下午吃冰激凌...意大利人可真懂得吃！" }
+          ],
+          grammar: [
+            { rule: "动词assaggiare（品尝）的变位", explain: "Assaggiare是规则-are动词，注意i的保留：Io assaggio, tu assaggi, lui/lei assaggia, noi assaggiamo, voi assaggiate, loro assaggiano。", example: "Assaggiate pure tutti i gusti." },
+            { rule: "数量副词un po' di", explain: "Un po'（= un poco）表示\"一点\"，后面跟di+名词。", example: "Un cono con due gusti / un po' di panna" },
+            { rule: "比较级", explain: "Più...di/che 表示\"比...更\"。Il migliore 是 buono 的最高级不规则形式。", example: "Il gelato italiano è il migliore del mondo." }
+          ],
+          sentences: [
+            { it: "Vorrei un cono con due gusti.", zh: "我要一个双球蛋筒。" },
+            { it: "Che gusto mi consiglia?", zh: "您推荐什么口味？" },
+            { it: "Posso assaggiare il pistacchio?", zh: "我可以尝一下开心果味吗？" },
+            { it: "Quanto costa una coppetta?", zh: "一杯多少钱？" },
+            { it: "Con panna, per favore.", zh: "请加奶油。" }
+          ]
+        },
+        {
+          id: "c2u4",
+          num: "第4单元",
+          title: "In pizzeria",
+          subtitle: "在披萨店",
+          scene: "Mario e i suoi amici vanno in una pizzeria tradizionale a Napoli per cena.",
+          vocab: [
+            { it: "la pizzeria", zh: "披萨店" },
+            { it: "la pizza", zh: "披萨" },
+            { it: "la margherita", zh: "玛格丽特披萨" },
+            { it: "la marinara", zh: "玛丽娜拉披萨" },
+            { it: "la capricciosa", zh: "卡普里乔萨披萨" },
+            { it: "la mozzarella", zh: "马苏里拉奶酪" },
+            { it: "il pomodoro", zh: "番茄" },
+            { it: "il basilico", zh: "罗勒" },
+            { it: "l'olio d'oliva", zh: "橄榄油" },
+            { it: "il forno a legna", zh: "木炭烤炉" },
+            { it: "la birra", zh: "啤酒" },
+            { it: "il coperto", zh: "餐位费" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Cameriere", text: "Buonasera! Avete prenotato un tavolo?", zh: "晚上好！你们预订了桌子吗？" },
+            { speaker: "B", name: "Mario", text: "Buonasera! Sì, abbiamo prenotato per tre persone, nome Mario.", zh: "晚上好！是的，我们预订了三位，名字是马里奥。" },
+            { speaker: "A", name: "Cameriere", text: "Perfetto, il tavolo numero 5. Accomodatevi. Vi porto subito il menu.", zh: "好的，5号桌。请坐。我马上给你们拿菜单。" },
+            { speaker: "B", name: "Mario", text: "Grazie. (guardando il menu) Che pizze buone! Io prendo una margherita DOP.", zh: "谢谢。（看着菜单）披萨看起来都好吃！我要一份DOP玛格丽特。" },
+            { speaker: "A", name: "Amico", text: "Io prendo una capricciosa e una birra artigianale.", zh: "我要一份卡普里乔萨和一杯精酿啤酒。" },
+            { speaker: "A", name: "Cameriere", text: "E per la signorina?", zh: "小姐要点什么？" },
+            { speaker: "C", name: "Lucia", text: "Per me una marinara con aggiunta di mozzarella di bufala.", zh: "我要一份玛丽娜拉，外加一份水牛马苏里拉。" },
+            { speaker: "A", name: "Cameriere", text: "Ottimo. Desiderate anche un antipasto?", zh: "好的。还要前菜吗？" },
+            { speaker: "B", name: "Mario", text: "Sì, prendiamo un tagliere di salumi e formaggi misti per condividere.", zh: "好的，我们共享一份混合火腿奶酪拼盘。" },
+            { speaker: "A", name: "Cameriere", text: "Ecco fatto. Arriva subito l'antipasto, le pizze seguiranno. Buon appetito!", zh: "好的。前菜马上来，披萨随后。祝好胃口！" }
+          ],
+          grammar: [
+            { rule: "动词prenotare（预订）的变位", explain: "Prenotare是规则-are动词：Io prenoto, tu prenoti, lui/lei prenota, noi prenotiamo, voi prenotate, loro prenotano。", example: "Avete prenotato? / Vorrei prenotare un tavolo." },
+            { rule: "命令式（Lei形式）", explain: "对陌生人或长辈使用尊称Lei的命令式，动词用第三人称单数形式。", example: "Si accomodi! / Mi dica! / Prenda pure!" },
+            { rule: "反身动词accomodarsi", explain: "Ac comodarsi（请坐/请进）是反身动词：mi accomodo, ti accomodi, si accomoda...。祈使句：Si accomodi!（您请坐）。", example: "Si accomodi! / Accomodatevi!" }
+          ],
+          sentences: [
+            { it: "Vorrei prenotare un tavolo per due.", zh: "我想预订两个人的桌子。" },
+            { it: "Avete un tavolo libero?", zh: "有空桌吗？" },
+            { it: "Prendo una pizza margherita.", zh: "我要一份玛格丽特披萨。" },
+            { it: "Il conto, per favore.", zh: "请买单。" },
+            { it: "Buon appetito!", zh: "祝好胃口！" }
+          ]
+        },
+        {
+          id: "c2u5",
+          num: "第5单元",
+          title: "Preparare la pasta a casa",
+          subtitle: "在家做意大利面",
+          scene: "Lucia insegna a Mario come preparare la pasta fresca fatta in casa.",
+          vocab: [
+            { it: "la pasta", zh: "意大利面" },
+            { it: "la farina", zh: "面粉" },
+            { it: "l'uovo", zh: "鸡蛋" },
+            { it: "la pasta fresca", zh: "新鲜意大利面" },
+            { it: "la pasta secca", zh: "干意大利面" },
+            { it: "il mattarello", zh: "擀面杖" },
+            { it: "la sfoglia", zh: "面皮" },
+            { it: "il sugo", zh: "酱汁" },
+            { it: "l'aglio", zh: "大蒜" },
+            { it: "il prezzemolo", zh: "欧芹" },
+            { it: "il parmigiano", zh: "帕玛森奶酪" },
+            { it: "l'olio d'oliva", zh: "橄榄油" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Lucia", text: "Oggi ti insegno a fare la pasta fresca all'uovo!", zh: "今天我来教你做新鲜鸡蛋面！" },
+            { speaker: "B", name: "Mario", text: "Fantastico! Da dove cominciamo?", zh: "太棒了！我们从哪里开始？" },
+            { speaker: "A", name: "Lucia", text: "Prima di tutto, prendiamo 100 grammi di farina per ogni uovo. Mettiamo la farina a fontana sul tavolo.", zh: "首先，每个鸡蛋配100克面粉。把面粉在桌上堆成火山状。" },
+            { speaker: "B", name: "Mario", text: "Così? Poi rompiamo le uova al centro?", zh: "这样吗？然后把鸡蛋打在中间？" },
+            { speaker: "A", name: "Lucia", text: "Sì, esatto! Poi impasta con le mani fino ad ottenere un composto liscio.", zh: "是的，没错！然后用手揉面，直到面团光滑。" },
+            { speaker: "B", name: "Mario", text: "Perfetto. Quanto tempo deve riposare?", zh: "好的。需要醒面多久？" },
+            { speaker: "A", name: "Lucia", text: "Almeno 30 minuti coperta con pellicola trasparente. Intanto prepariamo il sugo.", zh: "至少30分钟，盖上保鲜膜。我们趁这个时候准备酱汁。" },
+            { speaker: "B", name: "Mario", text: "Che sugo prepariamo?", zh: "我们做什么酱汁？" },
+            { speaker: "A", name: "Lucia", text: "Facciamo un aglio, olio e peperoncino. Il più semplice ma anche il più buono!", zh: "我们做蒜香辣椒意面。最简单但也最好吃！" },
+            { speaker: "A", name: "Lucia", text: "Dopo 30 minuti, stendiamo la sfoglia col mattarello e tagliamo le tagliatelle.", zh: "30分钟后，用擀面杖把面皮擀开，切成宽面条。" },
+            { speaker: "B", name: "Mario", text: "Mamma mia, che soddisfazione fare la pasta in casa! È buonissima!", zh: "天哪，在家做意大利面太有成就感了！太好吃了！" }
+          ],
+          grammar: [
+            { rule: "命令式（tu形式）", explain: "对熟人使用tu的命令式。规则动词：-are → -a (parla!), -ere → -i (prendi!), -ire → -isci (finisci!)。不规则：fare → fa', dire → di', andare → va'。", example: "Prendi la farina! / Impasta con le mani!" },
+            { rule: "数量表达", explain: "Per ogni...表示\"每...\"。Bastano...表示\"足够\"。Almeno表示\"至少\"。", example: "100 grammi per ogni uovo / Almeno 30 minuti" },
+            { rule: "副动词（gerundio）", explain: "Stare + gerundio表示正在进行的动作。是一...就... -are → ando, -ere → endo, -ire → endo。", example: "Intanto prepariamo il sugo. (与此同时我们准备酱汁)" }
+          ],
+          sentences: [
+            { it: "Come si fa la pasta fresca?", zh: "新鲜意大利面怎么做？" },
+            { it: "Quanto tempo deve riposare l'impasto?", zh: "面团需要醒多久？" },
+            { it: "Il sugo all'amatriciana è il mio preferito.", zh: "阿马特里切酱汁是我的最爱。" },
+            { it: "Si mette la pasta in acqua bollente salata.", zh: "把面放入加盐的沸水中。" },
+            { it: "La pasta è al dente!", zh: "意大利面煮得恰到好处！" }
+          ]
+        }
+      ]
+    },
+    {
+      title: "Muoversi in Italia",
+      subtitle: "交通篇",
+      units: [
+        {
+          id: "c3u1",
+          num: "第1单元",
+          title: "Chiedere informazioni stradali",
+          subtitle: "问路",
+          scene: "Mario si è perso nel centro di Roma. Chiede informazioni a un passante per trovare Piazza Navona.",
+          vocab: [
+            { it: "la strada", zh: "路/街道" },
+            { it: "la piazza", zh: "广场" },
+            { it: "l'incrocio", zh: "十字路口" },
+            { it: "il semaforo", zh: "红绿灯" },
+            { it: "l'angolo", zh: "角落/拐角" },
+            { it: "dritto", zh: "直走" },
+            { it: "a destra", zh: "向右" },
+            { it: "a sinistra", zh: "向左" },
+            { it: "vicino", zh: "附近" },
+            { it: "lontano", zh: "远" },
+            { it: "la fermata", zh: "车站" },
+            { it: "la cartina", zh: "地图" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Mario", text: "Mi scusi, sto cercando Piazza Navona. Può aiutarmi?", zh: "打扰一下，我在找纳沃纳广场。您能帮我吗？" },
+            { speaker: "B", name: "Passante", text: "Certo! Non è lontana da qui. Vada sempre dritto per circa 200 metri.", zh: "当然！离这里不远。直走大约200米。" },
+            { speaker: "A", name: "Mario", text: "Sempre dritto? Poi?", zh: "一直直走？然后呢？" },
+            { speaker: "B", name: "Passante", text: "Al secondo semaforo, giri a destra. Poi vedrà una fontana, attraversi la piazza e arriva a destinazione.", zh: "在第二个红绿灯右转。然后您会看到一座喷泉，穿过广场就到了。" },
+            { speaker: "A", name: "Mario", text: "Quindi: dritto, secondo semaforo a destra, attraverso la piazza. Facile!", zh: "所以：直走，第二个红绿灯右转，穿过广场。很简单！" },
+            { speaker: "B", name: "Passante", text: "Esatto! Sono circa 10 minuti a piedi. Non può sbagliare.", zh: "没错！步行大约10分钟。您不会走错的。" },
+            { speaker: "A", name: "Mario", text: "Perfetto, grazie mille! Buona giornata!", zh: "太好了，非常感谢！祝您愉快！" },
+            { speaker: "B", name: "Passante", text: "Di niente. Buona giornata anche a lei!", zh: "不客气。也祝您愉快！" }
+          ],
+          grammar: [
+            { rule: "动词scusare（原谅）的变位", explain: "Mi scusi（对不起/打扰一下）是自反形式，scusarsi的祈使句Lei形式。Scusa是tu形式（非正式）。", example: "Mi scusi, dov'è la stazione? / Scusa, sai che ore sono?" },
+            { rule: "命令式（尊称Lei形式）", explain: "Vada（去）, giri（转弯）, attraversi（穿过）都是Lei命令式。动词词尾变化：-are → i (parli!), -ere → a (prenda!), -ire → a (parta!)。不规则：andare → vada, fare → faccia。", example: "Vada dritto! / Giri a destra! / Attraversi la piazza!" },
+            { rule: "指示方向的副词", explain: "Dritto/avanti（直走）, a destra（向右）, a sinistra（向左）, dietro（在后面）, davanti（在前面）。", example: "Sempre dritto. / Giri a destra." }
+          ],
+          sentences: [
+            { it: "Mi scusi, dov'è il Colosseo?", zh: "打扰一下，斗兽场在哪里？" },
+            { it: "Devo andare dritto o giro a sinistra?", zh: "我该直走还是左转？" },
+            { it: "Quant'è lontano da qui?", zh: "离这里有多远？" },
+            { it: "C'è un supermercato qui vicino?", zh: "附近有超市吗？" },
+            { it: "Come arrivo a Piazza di Spagna?", zh: "怎么去西班牙广场？" }
+          ]
+        },
+        {
+          id: "c3u2",
+          num: "第2单元",
+          title: "Prendere i mezzi pubblici di trasporto",
+          subtitle: "公交出行",
+          scene: "Mario impara a usare i mezzi pubblici a Roma: metro e autobus.",
+          vocab: [
+            { it: "la metropolitana", zh: "地铁" },
+            { it: "l'autobus", zh: "公交车" },
+            { it: "il biglietto", zh: "车票" },
+            { it: "l'abbonamento", zh: "月票/季票" },
+            { it: "la fermata", zh: "车站" },
+            { it: "la linea", zh: "线路" },
+            { it: "la coincidenza", zh: "换乘" },
+            { it: "il binario", zh: "站台" },
+            { it: "la direzione", zh: "方向" },
+            { it: "l'ultima corsa", zh: "末班车" },
+            { it: "la tabella oraria", zh: "时刻表" },
+            { it: "il conducente", zh: "司机" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Mario", text: "Buongiorno, un biglietto della metro per favore.", zh: "早上好，请给我一张地铁票。" },
+            { speaker: "B", name: "Bigliettaio", text: "Buongiorno. Vuole un biglietto singolo o una carta giornaliera?", zh: "早上好。您要单程票还是一日卡？" },
+            { speaker: "A", name: "Mario", text: "Un biglietto singolo, grazie. Quanto costa?", zh: "一张单程票，谢谢。多少钱？" },
+            { speaker: "B", name: "Bigliettaio", text: "1 euro e 50. Può usarlo per 100 minuti dal momento della timbratura.", zh: "1欧元50分。从打票起100分钟内有效。" },
+            { speaker: "A", name: "Mario", text: "Bene. Quale linea devo prendere per andare al Vaticano?", zh: "好的。去梵蒂冈应该坐哪条线？" },
+            { speaker: "B", name: "Bigliettaio", text: "Prenda la linea A in direzione Battistini e scenda a Ottaviano.", zh: "坐A线往Battistini方向，在Ottaviano站下车。" },
+            { speaker: "A", name: "Mario", text: "Grazie! Ah, un'altra cosa: dove si timbra il biglietto?", zh: "谢谢！啊，还有一件事：在哪里打票？" },
+            { speaker: "B", name: "Bigliettaio", text: "All'ingresso dei binari, ci sono le macchine obliteratrici gialle. Inserisca il biglietto e lo ritiri dall'altra parte.", zh: "在站台入口处，有黄色的打票机。把票插进去，从另一边拿出来。" },
+            { speaker: "A", name: "Mario", text: "Finito. Grazie per l'aiuto!", zh: "明白了。谢谢您的帮助！" }
+          ],
+          grammar: [
+            { rule: "动词prendere（乘坐）", explain: "Prendere在这里表示\"乘坐\"交通工具：Prendo la metro（我坐地铁）, Prendo l'autobus（我坐公交）。", example: "Prenda la linea A. / Prendo il treno." },
+            { rule: "动词scendere（下车/下）", explain: "Scendere是不规则动词：Io scendo, tu scendi, lui/lei scende, noi scendiamo, voi scendete, loro scendono。过去分词：sceso。", example: "Scenda a Ottaviano. / Sono sceso alla fermata sbagliata." },
+            { rule: "时间表达da...a...", explain: "Da...a...表示从...到...（时间或空间范围）。", example: "Dal momento della timbratura. / Dalla stazione all'aeroporto." }
+          ],
+          sentences: [
+            { it: "Dov'è la fermata della metro più vicina?", zh: "最近的地铁站在哪里？" },
+            { it: "Ogni quanto passa l'autobus?", zh: "公交车多久一班？" },
+            { it: "Questo autobus va al centro?", zh: "这路公交车去市中心吗？" },
+            { it: "Devo fare cambio?", zh: "我需要换乘吗？" },
+            { it: "A che ora è l'ultima corsa?", zh: "末班车是几点？" }
+          ]
+        },
+        {
+          id: "c3u3",
+          num: "第3单元",
+          title: "Alla stazione",
+          subtitle: "在火车站",
+          scene: "Mario deve prendere un treno per andare a Firenze. Va alla stazione Termini di Roma.",
+          vocab: [
+            { it: "la stazione", zh: "火车站" },
+            { it: "il treno", zh: "火车" },
+            { it: "il binario", zh: "站台" },
+            { it: "il biglietto", zh: "车票" },
+            { it: "il regionale", zh: "慢车/区间车" },
+            { it: "l'alta velocità", zh: "高铁" },
+            { it: "la prenotazione", zh: "预订/订座" },
+            { it: "la carrozza", zh: "车厢" },
+            { it: "il posto a sedere", zh: "座位" },
+            { it: "la biglietteria", zh: "售票处" },
+            { it: "il tabellone", zh: "显示牌" },
+            { it: "il ritardo", zh: "晚点" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Mario", text: "Buongiorno, vorrei un biglietto per Firenze, per favore.", zh: "早上好，我想买一张去佛罗伦萨的票。" },
+            { speaker: "B", name: "Impiegato", text: "Buongiorno. Regionale o alta velocità?", zh: "早上好。区间车还是高铁？" },
+            { speaker: "A", name: "Mario", text: "Alta velocità. Quanto costa?", zh: "高铁。多少钱？" },
+            { speaker: "B", name: "Impiegato", text: "47 euro in seconda classe. Con prenotazione obbligatoria.", zh: "二等座47欧元。必须预订座位。" },
+            { speaker: "A", name: "Mario", text: "Va bene. Prendo quello delle 10:30. C'è posto?", zh: "好的。我坐10:30的那班。还有座位吗？" },
+            { speaker: "B", name: "Impiegato", text: "Sì, ultimo posto disponibile. Carrozza 7, posto 14A, finestrino. Ecco il suo biglietto.", zh: "有的，最后一个座位。7号车厢，14A座，靠窗。这是您的票。" },
+            { speaker: "A", name: "Mario", text: "Da quale binario parte?", zh: "从哪个站台出发？" },
+            { speaker: "B", name: "Impiegato", text: "Binario 12. Controlli il tabellone, potrebbe cambiare. Il treno parte alle 10:30 e arriva alle 11:45.", zh: "12号站台。看一下显示牌，可能会有变动。火车10:30出发，11:45到达。" },
+            { speaker: "A", name: "Mario", text: "Perfetto, grazie! Un'ora e un quarto di viaggio. Comodissimo!", zh: "太好了，谢谢！一小时十五分钟的车程。非常方便！" }
+          ],
+          grammar: [
+            { rule: "指示形容词questo/quello", explain: "Questo（这个）有性数变化：questo treno, questa stazione, questi biglietti, queste carrozze。Quello（那个）在名词前有特殊形式：quel treno, quella stazione, quei biglietti, quelle carrozze。", example: "Questo treno va a Firenze. / Quel binario è il 12." },
+            { rule: "动词partire（出发）的变位", explain: "Partire是规则-ire动词（isc类）：Io parto, tu parti, lui/lei parte, noi partiamo, voi partite, loro partono。", example: "Il treno parte alle 10:30." },
+            { rule: "时刻表达", explain: "用alle表示\"在...点\"：alle 10:30。用dalle...alle...表示\"从...到...\"。", example: "Il treno parte alle 10:30 e arriva alle 11:45." }
+          ],
+          sentences: [
+            { it: "Vorrei un biglietto andata e ritorno per Milano.", zh: "我想买一张去米兰的往返票。" },
+            { it: "Da quale binario parte il treno per Venezia?", zh: "去威尼斯的火车从哪个站台出发？" },
+            { it: "Il treno ha 15 minuti di ritardo.", zh: "火车晚点15分钟。" },
+            { it: "Devo convalidare il biglietto prima di salire.", zh: "上车前需要打票。" },
+            { it: "Quanto dura il viaggio?", zh: "行程多长时间？" }
+          ]
+        },
+        {
+          id: "c3u4",
+          num: "第4单元",
+          title: "All'aeroporto",
+          subtitle: "在机场",
+          scene: "Mario va all'aeroporto di Roma Fiumicino per prendere un volo per la Cina.",
+          vocab: [
+            { it: "l'aeroporto", zh: "机场" },
+            { it: "il volo", zh: "航班" },
+            { it: "il check-in", zh: "值机" },
+            { it: "la carta d'imbarco", zh: "登机牌" },
+            { it: "il bagaglio", zh: "行李" },
+            { it: "il bagaglio a mano", zh: "手提行李" },
+            { it: "la valigia", zh: "行李箱" },
+            { it: "il controllo passaporti", zh: "护照检查" },
+            { it: "il gate", zh: "登机口" },
+            { it: "l'imbarco", zh: "登机" },
+            { it: "la partenza", zh: "出发" },
+            { it: "l'arrivo", zh: "到达" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Mario", text: "Buongiorno, devo fare il check-in per il volo AZ 792 per Shanghai.", zh: "早上好，我需要办理飞往上海的AZ792航班的登机手续。" },
+            { speaker: "B", name: "Impiegata", text: "Buongiorno. Mi dia il passaporto, per favore. Ha bagaglio da stiva?", zh: "早上好。请给我您的护照。有托运行李吗？" },
+            { speaker: "A", name: "Mario", text: "Sì, una valigia da 20 chili.", zh: "有，一个20公斤的行李箱。" },
+            { speaker: "B", name: "Impiegata", text: "Perfetto. La metta sul nastro. Quant'è il bagaglio a mano?", zh: "好的。请放在传送带上。手提行李有多重？" },
+            { speaker: "A", name: "Mario", text: "Solo uno zaino, circa 7 chili.", zh: "只有一个背包，大约7公斤。" },
+            { speaker: "B", name: "Impiegata", text: "Tutto a posto. Ecco la carta d'imbarco. Il gate è il numero 24, l'imbarco è alle 14:30. Si presenti al gate con 30 minuti di anticipo.", zh: "一切就绪。这是您的登机牌。登机口是24号，14:30开始登机。请提前30分钟到达登机口。" },
+            { speaker: "A", name: "Mario", text: "Grazie. Dove devo andare per il controllo passaporti?", zh: "谢谢。护照检查在哪里？" },
+            { speaker: "B", name: "Impiegata", text: "Dopo i controlli di sicurezza, segua le indicazioni per le partenze internazionali. Buon viaggio!", zh: "经过安检后，按照国际出发的指示牌走。祝您旅途愉快！" },
+            { speaker: "A", name: "Mario", text: "Grazie mille! Arrivederci!", zh: "非常感谢！再见！" }
+          ],
+          grammar: [
+            { rule: "动词dare（给）的变位", explain: "Dare是不规则动词：Io do, tu dai, lui/lei dà, noi diamo, voi date, loro danno。命令式Lei形式：Mi dia...（请给我...）。", example: "Mi dia il passaporto." },
+            { rule: "情态动词dovere/avere bisogno di", explain: "Dovere + 不定式表示必须做某事。Avere bisogno di + 名词/不定式表示\"需要...\"。", example: "Devo fare il check-in. / Ho bisogno di aiuto." },
+            { rule: "动词seguire（跟随/沿着）", explain: "Seguire是不规则-ire动词：Io seguo, tu segui, lui/lei segue, noi seguiamo, voi seguite, loro seguono。", example: "Segua le indicazioni." }
+          ],
+          sentences: [
+            { it: "A che ora è l'imbarco?", zh: "几点登机？" },
+            { it: "Quanto peso posso portare?", zh: "我可以带多少重量？" },
+            { it: "Dov'è il ritiro bagagli?", zh: "行李提取处在哪里？" },
+            { it: "Il volo è in orario?", zh: "航班准时吗？" },
+            { it: "Ha un oggetto da dichiarare?", zh: "您有物品需要申报吗？" }
+          ]
+        },
+        {
+          id: "c3u5",
+          num: "第5单元",
+          title: "Prendere un taxi e noleggiare una macchina",
+          subtitle: "乘出租车及租车",
+          scene: "Mario deve andare a una riunione fuori città. Decide di noleggiare un'auto.",
+          vocab: [
+            { it: "il taxi", zh: "出租车" },
+            { it: "noleggiare", zh: "租用" },
+            { it: "la macchina / l'auto", zh: "汽车" },
+            { it: "la patente di guida", zh: "驾照" },
+            { it: "l'autonoleggio", zh: "租车公司" },
+            { it: "l'assicurazione", zh: "保险" },
+            { it: "il pieno", zh: "满箱油" },
+            { it: "il carburante", zh: "燃油" },
+            { it: "il GPS / il navigatore", zh: "导航" },
+            { it: "il parcheggio", zh: "停车场" },
+            { it: "il pedaggio", zh: "过路费" },
+            { it: "la multa", zh: "罚款" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Mario", text: "Buongiorno, vorrei noleggiare una macchina per tre giorni.", zh: "早上好，我想租一辆车，租三天。" },
+            { speaker: "B", name: "Impiegato", text: "Buongiorno. Che tipo di auto desidera? Una piccola città o una più comoda?", zh: "早上好。您想要什么车型？城市小车还是更舒适一些的？" },
+            { speaker: "A", name: "Mario", text: "Una piccola va bene, anche automatica se possibile.", zh: "小车就行，如果有自动挡更好。" },
+            { speaker: "B", name: "Impiegato", text: "Abbiamo una Fiat 500 automatica. 40 euro al giorno, assicurazione inclusa.", zh: "我们有一辆自动挡菲亚特500。每天40欧元，包含保险。" },
+            { speaker: "A", name: "Mario", text: "La patente cinese va bene?", zh: "中国驾照可以用吗？" },
+            { speaker: "B", name: "Impiegato", text: "Serve la patente internazionale o una traduzione ufficiale della sua patente.", zh: "需要国际驾照或者官方翻译件。" },
+            { speaker: "A", name: "Mario", text: "Ho la traduzione giurata. Ecco qui. La macchina ha il navigatore?", zh: "我有公证翻译件。给您。车上有导航吗？" },
+            { speaker: "B", name: "Impiegato", text: "Sì, ha il GPS integrato. E la macchina è a pieno. La restituisca con il pieno, per favore.", zh: "有的，有内置GPS。车是满油的。还车时请加满油。" },
+            { speaker: "A", name: "Mario", text: "OK. Dove posso parcheggiare in centro?", zh: "好的。市中心哪里可以停车？" },
+            { speaker: "B", name: "Impiegato", text: "Consiglio i parcheggi a pagamento. Le strisce blu sono a pagamento, le bianche sono gratuite.", zh: "我建议停在付费停车场。蓝线是付费的，白线是免费的。" }
+          ],
+          grammar: [
+            { rule: "动词noleggiare（租用）", explain: "Noleggiare是规则-are动词，注意保留i：Io noleggio, tu noleggi, lui/lei noleggia, noi noleggiamo, voi noleggiate, loro noleggiano。", example: "Vorrei noleggiare una macchina." },
+            { rule: "动词restituire（归还）", explain: "Restituire是-ire动词（isc类）：Io restituisco, tu restituisci, lui/lei restituisce, noi restituiamo, voi restituite, loro restituiscono。", example: "Restituisca la macchina con il pieno." },
+            { rule: "动词consigliare（建议）", explain: "Consigliare意为\"建议\"。Io consiglio, tu consigli, lui/lei consiglia, noi consigliamo, voi consigliate, loro consigliano。", example: "Le consiglio i parcheggi a pagamento." }
+          ],
+          sentences: [
+            { it: "Quanto costa noleggiare una macchina al giorno?", zh: "租车一天多少钱？" },
+            { it: "Posso restituirla in un'altra città?", zh: "可以在其他城市还车吗？" },
+            { it: "Il carburante è incluso?", zh: "包含燃油吗？" },
+            { it: "Dov'è il parcheggio più vicino?", zh: "最近的停车场在哪里？" },
+            { it: "Chiami un taxi, per favore.", zh: "请叫一辆出租车。" }
+          ]
+        }
+      ]
+    },
+    {
+      title: "Divertirsi in Italia",
+      subtitle: "游览篇",
+      units: [
+        {
+          id: "c4u1",
+          num: "第1单元",
+          title: "In agenzia turistica",
+          subtitle: "在旅行社",
+          scene: "Mario e Lucia vogliono organizzare un viaggio al Sud Italia. Vanno in un'agenzia turistica.",
+          vocab: [
+            { it: "l'agenzia turistica", zh: "旅行社" },
+            { it: "il viaggio", zh: "旅行" },
+            { it: "la vacanza", zh: "假期" },
+            { it: "la prenotazione", zh: "预订" },
+            { it: "l'hotel", zh: "酒店" },
+            { it: "la camera", zh: "房间" },
+            { it: "la gita", zh: "一日游" },
+            { it: "la guida turistica", zh: "导游" },
+            { it: "il tour organizzato", zh: "跟团游" },
+            { it: "la meta", zh: "目的地" },
+            { it: "il pacchetto", zh: "套餐" },
+            { it: "l'itinerario", zh: "行程路线" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Impiegata", text: "Buongiorno! In cosa posso aiutarvi?", zh: "早上好！有什么可以帮两位？" },
+            { speaker: "B", name: "Mario", text: "Buongiorno! Vorremmo organizzare un viaggio in Sicilia.", zh: "早上好！我们想去西西里旅行。" },
+            { speaker: "A", name: "Impiegata", text: "Ottima scelta! La Sicilia è meravigliosa. Quanti giorni avete a disposizione?", zh: "好选择！西西里很美。你们有多少天时间？" },
+            { speaker: "C", name: "Lucia", text: "Una settimana, da sabato a sabato. Vorremmo vedere Catania e Taormina.", zh: "一周时间，从周六到下周六。我们想看卡塔尼亚和陶尔米纳。" },
+            { speaker: "A", name: "Impiegata", text: "Perfetto. Abbiamo un pacchetto speciale: volo + hotel 4 stelle a Catania con colazione inclusa. 550 euro a persona.", zh: "好的。我们有一个特惠套餐：机票+卡塔尼亚四星级酒店含早餐。每人550欧元。" },
+            { speaker: "B", name: "Mario", text: "Sembra interessante. Include anche un tour dell'Etna?", zh: "听起来不错。包含埃特纳火山的游览吗？" },
+            { speaker: "A", name: "Impiegata", text: "Possiamo aggiungere una gita di un giorno all'Etna per 80 euro a persona. Ve la consiglio vivamente!", zh: "我们可以加一天埃特纳之旅，每人80欧元。我非常推荐！" },
+            { speaker: "C", name: "Lucia", text: "Perfetto! Allora prendiamo il pacchetto con la gita all'Etna.", zh: "太好了！那我们就要包含埃特纳之旅的套餐。" },
+            { speaker: "B", name: "Mario", text: "Possiamo pagare con carta di credito?", zh: "可以用信用卡支付吗？" },
+            { speaker: "A", name: "Impiegata", text: "Certo! Lasciate i vostri dati e vi preparo i biglietti. Buon viaggio in Sicilia!", zh: "当然！请留下你们的资料，我给你们准备票。祝西西里之旅愉快！" }
+          ],
+          grammar: [
+            { rule: "条件式（condizionale）用于礼貌请求", explain: "Vorremmo是volere的条件式复数形式，比vogliamo更礼貌。条件式词尾：-ei, -esti, -ebbe, -emmo, -este, -ebbero。", example: "Vorremmo organizzare un viaggio. / Potrebbe aiutarci?" },
+            { rule: "动词sembrare（看起来）", explain: "Sembrare表示\"看起来...\"。Mi sembra bello（我觉得很好）。加形容词或动词不定式。", example: "Sembra interessante. / Mi sembra un'ottima idea." },
+            { rule: "动词consigliare（推荐）", explain: "Consigliare a qualcuno di fare qualcosa（建议某人做某事）。Ve la consiglio（我向你们推荐它）- ve = vi + la。", example: "Ve la consiglio vivamente!" }
+          ],
+          sentences: [
+            { it: "Quanto costa un viaggio a Capri?", zh: "去卡普里的旅行多少钱？" },
+            { it: "Avete voli per Palermo?", zh: "你们有去巴勒莫的航班吗？" },
+            { it: "Il pacchetto include i pasti?", zh: "套餐包含餐食吗？" },
+            { it: "Preferisco un hotel in centro.", zh: "我更喜欢市中心的酒店。" },
+            { it: "Organizzate gite di gruppo?", zh: "你们组织团体游吗？" }
+          ]
+        },
+        {
+          id: "c4u2",
+          num: "第2单元",
+          title: "In albergo",
+          subtitle: "住宾馆",
+          scene: "Mario e Lucia arrivano a Catania e fanno il check-in all'hotel.",
+          vocab: [
+            { it: "l'albergo / l'hotel", zh: "酒店" },
+            { it: "la reception", zh: "前台" },
+            { it: "il check-in", zh: "入住" },
+            { it: "il check-out", zh: "退房" },
+            { it: "la camera singola", zh: "单人间" },
+            { it: "la camera doppia", zh: "双人间" },
+            { it: "la chiave", zh: "钥匙/房卡" },
+            { it: "il piano", zh: "楼层" },
+            { it: "il servizio in camera", zh: "客房服务" },
+            { it: "la colazione", zh: "早餐" },
+            { it: "la mezza pensione", zh: "半食宿" },
+            { it: "la pensione completa", zh: "全食宿" }
+          ],
+          dialogue: [
+            { speaker: "A", name: "Mario", text: "Buonasera! Abbiamo una prenotazione a nome di Mario Bianchi.", zh: "晚上好！我们有一个以Mario Bianchi名字预订的房间。" },
+            { speaker: "B", name: "Receptionist", text: "Buonasera, signor Bianchi. Un attimo, controllo... Sì, camera doppia con vista mare per 7 notti. Conferma?", zh: "晚上好，Bianchi先生。请稍等，我查一下...是的，海景双人间，7晚。确认吗？" },
+            { speaker: "A", name: "Mario", text: "Sì, confermo. La colazione è inclusa?", zh: "是的，确认。包含早餐吗？" },
+            { speaker: "B", name: "Receptionist", text: "Sì, la colazione a buffet è inclusa. Viene servita dalle 7:00 alle 10:30 al primo piano.", zh: "是的，包含自助早餐。供应时间是7:00到10:30，在一楼。" },
+            { speaker: "C", name: "Lucia", text: "A che ora dobbiamo fare il check-out?", zh: "我们需要几点退房？" },
+            { speaker: "B", name: "Receptionist", text: "Il check-out è entro le 11:00 del mattino. Se desiderate, potete lasciare i bagagli in deposito.", zh: "退房时间是上午11:00前。如果愿意，可以把行李寄存。" },
+            { speaker: "A", name: "Mario", text: "La camera ha il Wi-Fi gratuito?", zh: "房间有免费Wi-Fi吗？" },
+            { speaker: "B", name: "Receptionist", text: "Certo, la password è sulla chiave magnetica. Ecco le vostre chiavi, camera 305, terzo piano. L'ascensore è a destra.", zh: "当然，密码在房卡上。这是你们的房卡，305房间，三楼。电梯在右边。" },
+            { speaker: "C", name: "Lucia", text: "Grazie! C'è un ristorante qui in albergo?", zh: "谢谢！酒店里有餐厅吗？" },
+            { speaker: "B", name: "Receptionist", text: "Sì, al sesto piano c'è il ristorante panoramico aperto dalle 19:30. Ottima cucina siciliana! Buon soggiorno!", zh: "有的，六楼有全景餐厅，19:30开始营业。非常棒的西西里美食！祝您入住愉快！" }
+          ],
+          grammar: [
+            { rule: "动词confermare（确认）", explain: "Confermare是规则-are动词：Io confermo, tu confermi, lui/lei conferma, noi confermiamo, voi confermate, loro confermano。", example: "Confermo la prenotazione. / Può confermare per favore?" },
+            { rule: "动词lasciare（留下/离开）", explain: "Lasciare在酒店场景中常用：lasciare i bagagli（寄存行李）。过去分词：lasciato。", example: "Potete lasciare i bagagli in deposito." },
+            { rule: "情态动词potere（能够）的用法", explain: "Potere + 不定式。Potete lasciare（你们可以留下）。条件式Potrebbe更礼貌。", example: "Potete lasciare i bagagli. / Potrebbe darmi la chiave?" }
+          ],
+          sentences: [
+            { it: "La mia camera non ha acqua calda.", zh: "我的房间没有热水。" },
+            { it: "Potrei avere un'altra coperta?", zh: "可以再给我一条毯子吗？" },
+            { it: "A che ora serve la colazione?", zh: "早餐几点供应？" },
+            { it: "Vorrei prolungare il soggiorno di un giorno.", zh: "我想延长住宿一天。" },
+            { it: "Potrebbe chiamarmi un taxi per l'aeroporto?", zh: "可以帮我叫一辆去机场的出租车吗？" }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+// ====== BUILD TOC ======
+function buildTOC() {
+  const container = document.getElementById('tocContainer');
+  let html = '';
+  bookData.chapters.forEach((ch, ci) => {
+    html += `<div class="chapter-group">`;
+    html += `<div class="chapter-title" onclick="toggleChapter(this)">
+      <span>${ch.title}<br><small style="font-weight:400;text-transform:none;letter-spacing:0;color:#666;font-size:14px">${ch.subtitle}</small></span>
+      <span class="arrow">▼</span>
+    </div>`;
+    html += `<ul class="unit-list">`;
+    ch.units.forEach((u) => {
+      html += `<li class="unit-item" data-unit="${u.id}" onclick="openUnit('${u.id}')">
+        <span class="unit-num">${u.num}</span>
+        ${u.title}
+        <br><small style="color:#999;font-size:14px">${u.subtitle}</small>
+      </li>`;
+    });
+    html += `</ul></div>`;
+  });
+  container.innerHTML = html;
+}
+
+function toggleChapter(el) {
+  el.classList.toggle('collapsed');
+  const list = el.nextElementSibling;
+  list.classList.toggle('collapsed');
+}
+
+function filterTOC(query) {
+  const items = document.querySelectorAll('.unit-item');
+  const q = query.toLowerCase().trim();
+  items.forEach(item => {
+    const text = item.textContent.toLowerCase();
+    item.style.display = (!q || text.includes(q)) ? '' : 'none';
+  });
+}
+
+// ====== BUILD UNIT CONTENT ======
+function buildUnitContent(unit) {
+  let html = `<div class="unit-content" id="uc-${unit.id}">`;
+
+  // Title
+  html += `<div class="unit-title-block">
+    <div class="chapter-label">${unit.num}</div>
+    <h2>${unit.title}</h2>
+    <div class="unit-subtitle">${unit.subtitle}</div>
+  </div>`;
+
+  // Scene Intro
+  html += `<div class="scene-intro">
+    <h3>🎬 场景介绍 / Scena</h3>
+    <p>${unit.scene}</p>
+  </div>`;
+
+  // Vocabulary
+  let vocabHtml = '';
+  unit.vocab.forEach((v, vi) => {
+    vocabHtml += `<div class="vocab-item" onclick="speakWord('${unit.id}', 'v_${vi}', this.querySelector('.play-icon'))">
+      <span class="play-icon">▶</span>
+      <span class="it">${v.it}</span>
+      <span class="sep">/</span>
+      <span class="zh">${v.zh}</span>
+    </div>`;
+  });
+  html += `<div class="vocab-section">
+    <h3>📝 关键词 / Parole Chiave</h3>
+    <div class="vocab-grid">${vocabHtml}</div>
+  </div>`;
+
+  // Dialogue
+  let diaHtml = '';
+  unit.dialogue.forEach((d, i) => {
+    const speakerClass = d.speaker === 'A' ? 'speaker' : 'speaker speaker-b';
+    diaHtml += `<div class="dialogue-line" onclick="speakLine(this, ${i})" data-unit="${unit.id}" data-idx="${i}">
+      <span class="${speakerClass}">${d.name}</span>
+      <div class="text-wrapper">
+        <div class="it">${d.text}</div>
+        <div class="zh">${d.zh}</div>
+      </div>
+      <button class="line-play">▶</button>
+    </div>`;
+  });
+  html += `<div class="dialogue-section">
+    <h3>💬 对话 / Dialogo</h3>
+    <div class="audio-controls">
+      <button class="audio-btn play-all" onclick="playAll('${unit.id}')" id="playAll-${unit.id}">🔊 播放全部</button>
+      <button class="audio-btn stop-btn" onclick="stopSpeech()">⏹ 停止</button>
+      <button class="audio-btn speed-control" onclick="toggleSpeed('${unit.id}')" id="speedBtn-${unit.id}">🐢 常速 1.0x</button>
+    </div>
+    <div class="progress-bar"><div class="fill" id="progress-${unit.id}"></div></div>
+    ${diaHtml}
+  </div>`;
+
+  // Grammar
+  let gramHtml = '';
+  unit.grammar.forEach(g => {
+    gramHtml += `<div class="grammar-item">
+      <div class="rule">📌 ${g.rule}</div>
+      <div class="explain">${g.explain}</div>
+      <div class="example"><em>${g.example}</em></div>
+    </div>`;
+  });
+  html += `<div class="grammar-section">
+    <h3>📖 语法解析 / Analisi Grammaticale</h3>
+    ${gramHtml}
+  </div>`;
+
+  // Common Sentences
+  let sentHtml = '';
+  unit.sentences.forEach((s, si) => {
+    sentHtml += `<div class="sentence-item" onclick="speakWord('${unit.id}', 's_${si}', this.querySelector('.s-play'))">
+      <div class="s-text">
+        <div class="it">${s.it}</div>
+        <div class="zh">${s.zh}</div>
+      </div>
+      <button class="s-play">▶</button>
+    </div>`;
+  });
+  html += `<div class="sentences-section">
+    <h3>⭐ 常用句 / Frasi Utili</h3>
+    ${sentHtml}
+  </div>`;
+
+  html += `</div>`;
+  return html;
+}
+
+// ====== AUDIO PLAYBACK (edge-tts base64) ======
+let audioCache = {};
+let currentAudio = null;
+let isPlaying = false;
+let dialogSpeechRate = {}; // per-unit dialog speech rate, defaults to 1.0
+let playAllQueue = null;
+let activePlayBtn = null; // currently highlighted play button
+
+function toggleSpeed(unitId) {
+  const btn = document.getElementById(`speedBtn-${unitId}`);
+  const cur = dialogSpeechRate[unitId] || 1.0;
+  if (cur === 1.0) {
+    dialogSpeechRate[unitId] = 1.4;
+    btn.textContent = '🚀 快速 1.4x';
+    btn.classList.add('active');
+  } else {
+    dialogSpeechRate[unitId] = 1.0;
+    btn.textContent = '🐢 常速 1.0x';
+    btn.classList.remove('active');
+  }
+}
+
+async function loadAudio(unitId) {
+  if (audioCache[unitId]) return;
+  // 优先从 audio_all.js 预加载数据（file:// 协议下 fetch 不可用）
+  if (window.AD && window.AD[unitId]) {
+    audioCache[unitId] = window.AD[unitId];
+    return;
+  }
+  try {
+    const resp = await fetch(`audio_data/audio_${unitId}.json`);
+    if (resp.ok) {
+      audioCache[unitId] = await resp.json();
+    } else {
+      audioCache[unitId] = {};
+    }
+  } catch(e) {
+    console.warn(`Audio load failed for ${unitId}:`, e);
+    audioCache[unitId] = {};
+  }
+}
+
+// Lazy preloader: after page renders, preload units in background
+let preloadQueue = [];
+let preloading = false;
+
+function enqueuePreload(unitIds) {
+  preloadQueue.push(...unitIds);
+  if (!preloading) processPreloadQueue();
+}
+
+async function processPreloadQueue() {
+  preloading = true;
+  while (preloadQueue.length > 0) {
+    const uid = preloadQueue.shift();
+    if (!audioCache[uid]) {
+      try {
+        const resp = await fetch(`audio_data/audio_${uid}.json`);
+        if (resp.ok) audioCache[uid] = await resp.json();
+      } catch(e) { /* ignore */ }
+      await new Promise(r => setTimeout(r, 200));
+    }
+  }
+  preloading = false;
+}
+
+// Start preloading all units after page is fully interactive
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const ids = [];
+    bookData.chapters.forEach(ch => ch.units.forEach(u => ids.push(u.id)));
+    if (ids.length > 0) {
+      loadAudio(ids[0]);
+      enqueuePreload(ids.slice(1));
+    }
+  }, 500);
+});
+
+function resetPlayButtons() {
+  document.querySelectorAll('.vocab-item .play-icon, .sentence-item .s-play').forEach(el => {
+    el.textContent = '▶';
+    el.style.background = '';
+    el.classList.remove('playing');
+  });
+  document.querySelectorAll('.dialogue-line .line-play').forEach(el => {
+    el.textContent = '▶';
+    el.style.background = '';
+    el.classList.remove('playing');
+  });
+}
+
+function stopSpeech() {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio = null;
+  }
+  if (playAllQueue) {
+    clearTimeout(playAllQueue);
+    playAllQueue = null;
+  }
+  isPlaying = false;
+  activePlayBtn = null;
+  document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
+  document.querySelectorAll('.play-all.playing').forEach(el => {
+    el.textContent = '🔊 播放全部';
+    el.classList.remove('playing');
+  });
+  resetPlayButtons();
+}
+
+function setButtonPlaying(btnEl) {
+  if (!btnEl) return;
+  btnEl.textContent = '⏸';
+  btnEl.style.background = '#CE2B37';
+  btnEl.style.color = '#fff';
+  btnEl.classList.add('playing');
+  activePlayBtn = btnEl;
+}
+
+function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
+  if (!base64data) {
+    if (callback) callback();
+    return;
+  }
+  const audio = new Audio('data:audio/mp3;base64,' + base64data);
+  audio.playbackRate = rate || 1.0;
+  
+  // Apply highlight when audio actually starts playing
+  audio.onplay = () => {
+    if (highlightEl) {
+      document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
+      highlightEl.classList.add('active-line');
+    }
+  };
+  
+  audio.onended = () => {
+    currentAudio = null;
+    isPlaying = false;
+    if (activePlayBtn) {
+      activePlayBtn.textContent = '▶';
+      activePlayBtn.style.background = '';
+      activePlayBtn.style.color = '';
+      activePlayBtn.classList.remove('playing');
+      activePlayBtn = null;
+    }
+    if (callback) callback();
+  };
+  audio.onerror = () => {
+    currentAudio = null;
+    isPlaying = false;
+    if (activePlayBtn) {
+      activePlayBtn.textContent = '▶';
+      activePlayBtn.style.background = '';
+      activePlayBtn.style.color = '';
+      activePlayBtn.classList.remove('playing');
+      activePlayBtn = null;
+    }
+    if (callback) callback();
+  };
+  currentAudio = audio;
+  isPlaying = true;
+  if (btnEl) setButtonPlaying(btnEl);
+  audio.play().catch(() => {
+    isPlaying = false;
+    if (activePlayBtn) {
+      activePlayBtn.textContent = '▶';
+      activePlayBtn.style.background = '';
+      activePlayBtn.style.color = '';
+      activePlayBtn.classList.remove('playing');
+      activePlayBtn = null;
+    }
+    if (callback) callback();
+  });
+}
+
+async function speakWord(unitId, key, btnEl) {
+  await loadAudio(unitId);
+  const data = audioCache[unitId]?.[key];
+  stopSpeech();
+  playBase64Audio(data, null, btnEl);
+}
+
+async function speakLine(el, idx) {
+  const unitId = el.dataset.unit;
+  const unit = findUnit(unitId);
+  if (!unit) return;
+  const dialog = unit.dialogue[idx];
+  if (!dialog) return;
+
+  await loadAudio(unitId);
+  const key = `d_${idx}`;
+  const data = audioCache[unitId]?.[key];
+
+  stopSpeech();
+  document.querySelectorAll('.active-line').forEach(e => e.classList.remove('active-line'));
+  el.classList.add('active-line');
+
+  const btn = el.querySelector('.line-play');
+  const rate = dialogSpeechRate[unitId] || 1.0;
+  playBase64Audio(data, () => {
+    el.classList.remove('active-line');
+  }, btn, null, rate);
+}
+
+async function playAll(unitId) {
+  const unit = findUnit(unitId);
+  if (!unit) return;
+  const btn = document.getElementById(`playAll-${unitId}`);
+  const progressFill = document.getElementById(`progress-${unitId}`);
+
+  if (isPlaying) {
+    stopSpeech();
+    return;
+  }
+
+  await loadAudio(unitId);
+  const lines = document.querySelectorAll(`#uc-${unitId} .dialogue-line`);
+  let i = 0;
+
+  btn.textContent = '⏸ 播放中...';
+  btn.classList.add('playing');
+
+  function playNext() {
+    if (i >= unit.dialogue.length) {
+      stopSpeech();
+      return;
+    }
+    // Highlight will be applied by playBase64Audio when audio actually starts
+
+    const progress = ((i + 1) / unit.dialogue.length) * 100;
+    progressFill.style.width = `${progress}%`;
+
+    const key = `d_${i}`;
+    const data = audioCache[unitId]?.[key];
+    const rate = dialogSpeechRate[unitId] || 1.0;
+    playBase64Audio(data, () => {
+      i++;
+      playAllQueue = setTimeout(playNext, 300);
+    }, null, lines[i], rate);
+  }
+  playNext();
+}
+
+function findUnit(id) {
+  for (const ch of bookData.chapters) {
+    for (const u of ch.units) {
+      if (u.id === id) return u;
+    }
+  }
+  return null;
+}
+
+// ====== NAVIGATION ======
+function openUnit(id) {
+  // Hide all
+  document.querySelectorAll('.unit-content').forEach(el => el.classList.remove('active'));
+  document.getElementById('welcomePanel').style.display = 'none';
+
+  // Show selected
+  const target = document.getElementById(`uc-${id}`);
+  if (target) {
+    target.classList.add('active');
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Update TOC
+  document.querySelectorAll('.unit-item').forEach(el => el.classList.remove('active'));
+  const tocItem = document.querySelector(`[data-unit="${id}"]`);
+  if (tocItem) {
+    tocItem.classList.add('active');
+    // Ensure parent chapter is expanded
+    const chapter = tocItem.closest('.unit-list');
+    if (chapter) chapter.classList.remove('collapsed');
+    const title = chapter?.previousElementSibling;
+    if (title) title.classList.remove('collapsed');
+  }
+
+  // Close sidebar on mobile
+  if (window.innerWidth <= 768) {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('show');
+  }
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('show');
+}
+
+// Close sidebar when clicking overlay
+document.getElementById('sidebarOverlay').onclick = toggleSidebar;
+
+// ====== INIT ======
+function init() {
+  buildTOC();
+
+  // Build all unit content
+  const container = document.getElementById('unitContentContainer');
+  let allHtml = '';
+  bookData.chapters.forEach(ch => {
+    ch.units.forEach(u => {
+      allHtml += buildUnitContent(u);
+    });
+  });
+  container.innerHTML = allHtml;
+
+  // Expand first chapter by default
+  const firstChapter = document.querySelector('.unit-list');
+  if (firstChapter) {
+    firstChapter.classList.remove('collapsed');
+    // Remove collapsed from first chapter title too
+    const firstTitle = firstChapter.previousElementSibling;
+    if (firstTitle) firstTitle.classList.remove('collapsed');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+
+</body>
+</html>
