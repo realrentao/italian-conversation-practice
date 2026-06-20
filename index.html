@@ -1705,11 +1705,10 @@ async function loadAudio(unitId) {
 let preloadTimer = null;
 const loadingSet = new Set(); // 防止重复 fetch
 
-// 将 unit 音频数据填入 cache + 预解码 Blob URL
+// 将 unit 音频数据填入 cache（blob URL 在播放时创建，用完即释放）
 function cacheAndDecode(uid, data) {
   if (!data || Object.keys(data).length === 0) return;
   audioCache[uid] = data;
-  for (const k of Object.keys(data)) base64ToBlobUrl(data[k]);
 }
 
 // 优先加载指定单元（用户选择时触发）
@@ -1806,28 +1805,24 @@ function setButtonPlaying(btnEl) {
   activePlayBtn = btnEl;
 }
 
-// base64 → Blob URL（解决 iOS Safari data URI 大小限制问题）
-let blobUrlCache = {};
-
-function base64ToBlobUrl(base64data, mime) {
-  // 用全部 base64 做 key（前80字符因相同编码头会碰撞！）
-  if (blobUrlCache[base64data]) return blobUrlCache[base64data];
+// base64 → Blob URL（不缓存，每次创建新 URL，播放完后自动释放）
+function base64ToBlobUrl(base64data) {
   try {
     const byteStr = atob(base64data);
     const len = byteStr.length;
     const buf = new ArrayBuffer(len);
     const view = new Uint8Array(buf);
     for (let i = 0; i < len; i++) view[i] = byteStr.charCodeAt(i);
-    // audio/mpeg 是 MP3 的标准 MIME（audio/mp3 不被 Safari 识别）
     const blob = new Blob([buf], { type: 'audio/mpeg' });
-    const url = URL.createObjectURL(blob);
-    blobUrlCache[base64data] = url;
-    return url;
+    return URL.createObjectURL(blob);
   } catch (e) {
     console.warn('base64 decode failed:', e);
-    // 回退到 data URI
     return 'data:audio/mpeg;base64,' + base64data;
   }
+}
+
+function revokeBlobUrl(url) {
+  if (url && url.startsWith('blob:')) URL.revokeObjectURL(url);
 }
 
 function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
@@ -1837,6 +1832,7 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
   }
   // 尝试 Blob URL 播放；失败时自动回退到 data URI
   const audioUrl = base64ToBlobUrl(base64data);
+  let blobUrl = audioUrl; // 记录以便播放后释放
   let audio = new Audio(audioUrl);
   audio.playbackRate = rate || 1.0;
   // iOS Safari 需要 audio 元素挂载到 DOM 才能播放
@@ -1852,6 +1848,7 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
 
   function playDone() {
     if (audio && audio.parentNode) audio.parentNode.removeChild(audio);
+    revokeBlobUrl(blobUrl);
     currentAudio = null;
     isPlaying = false;
     if (activePlayBtn) {
@@ -1874,6 +1871,8 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
       fallbackTried = true;
       resetAudio();
       if (audio.parentNode) audio.parentNode.removeChild(audio);
+      revokeBlobUrl(blobUrl);
+      blobUrl = null;
       audio = new Audio('data:audio/mpeg;base64,' + base64data);
       audio.playbackRate = rate || 1.0;
       audio.style.display = 'none';
