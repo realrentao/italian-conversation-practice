@@ -1741,8 +1741,10 @@ function resetPlayButtons() {
 
 function stopSpeech() {
   if (currentAudio) {
-    currentAudio.pause();
-    currentAudio.currentTime = 0;
+    // AudioContext 的 source node → stop()
+    if (currentAudio.stop) currentAudio.stop();
+    // HTMLAudioElement → pause()
+    else if (currentAudio.pause) currentAudio.pause();
     currentAudio = null;
   }
   if (playAllQueue) {
@@ -1789,89 +1791,174 @@ function revokeBlobUrl(url) {
   if (url && url.startsWith('blob:')) URL.revokeObjectURL(url);
 }
 
+// 用 AudioContext 播放（兼容所有浏览器/WebView，不依赖 blob/data URI）
+let audioCtx = null;
+
+function ensureAudioCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
+}
+
 function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
   if (!base64data) {
     if (callback) callback();
     return;
   }
-  // 尝试 Blob URL 播放；失败时自动回退到 data URI
-  const audioUrl = base64ToBlobUrl(base64data);
-  let blobUrl = audioUrl; // 记录以便播放后释放
-  let audio = new Audio(audioUrl);
-  audio.playbackRate = rate || 1.0;
-  // iOS Safari 需要 audio 元素挂载到 DOM 才能播放
-  audio.style.display = 'none';
-  document.body.appendChild(audio);
-  let fallbackTried = false;
 
-  function resetAudio() {
-    audio.pause();
-    audio.src = '';
-    audio.load();
-  }
+  // 先用 data URI 尝试（最兼容）
+  let tryCount = 0;
+  playWithDataUri();
 
-  function playDone() {
-    if (audio && audio.parentNode) audio.parentNode.removeChild(audio);
-    revokeBlobUrl(blobUrl);
-    currentAudio = null;
-    isPlaying = false;
-    if (activePlayBtn) {
-      activePlayBtn.textContent = '▶';
-      activePlayBtn.style.background = '';
-      activePlayBtn.style.color = '';
-      activePlayBtn.classList.remove('playing');
-      activePlayBtn = null;
+  function playWithDataUri() {
+    tryCount++;
+    const url = 'data:audio/mpeg;base64,' + base64data;
+    const audio = new Audio(url);
+    audio.playbackRate = rate || 1.0;
+    audio.style.display = 'none';
+    document.body.appendChild(audio);
+
+    audio.onplay = () => {
+      if (highlightEl) {
+        document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
+        highlightEl.classList.add('active-line');
+      }
+    };
+
+    function cleanup() {
+      if (audio.parentNode) audio.parentNode.removeChild(audio);
+      revokeBlobUrl(url);
+      currentAudio = null;
+      isPlaying = false;
+      if (activePlayBtn) {
+        activePlayBtn.textContent = '▶';
+        activePlayBtn.style.background = '';
+        activePlayBtn.style.color = '';
+        activePlayBtn.classList.remove('playing');
+        activePlayBtn = null;
+      }
     }
+
+    audio.onended = () => { cleanup(); if (callback) callback(); };
+    audio.onerror = () => {
+      if (audio.parentNode) audio.parentNode.removeChild(audio);
+      if (tryCount === 1) {
+        // data URI 失败 → 用 blob URL 重试（解决 iOS Safari 大小限制）
+        playWithBlobUrl();
+      } else if (tryCount === 2) {
+        // blob URL 也失败 → 用 AudioContext 解码
+        cleanup();
+        playWithAudioContext();
+      } else {
+        cleanup();
+        if (callback) callback();
+      }
+    };
+
+    currentAudio = audio;
+    isPlaying = true;
+    if (btnEl) setButtonPlaying(btnEl);
+    audio.play().catch(() => {
+      // play() 被拦截 → 交给 onerror 处理重试链
+      audio.onerror();
+    });
   }
 
-  function onEnd() {
-    playDone();
-    if (callback) callback();
-  }
+  function playWithBlobUrl() {
+    const blobUrl = base64ToBlobUrl(base64data);
+    const audio = new Audio(blobUrl);
+    audio.playbackRate = rate || 1.0;
+    audio.style.display = 'none';
+    document.body.appendChild(audio);
 
-  function onError() {
-    if (!fallbackTried) {
-      // 第一次失败 → 用 data URI 重试
-      fallbackTried = true;
-      resetAudio();
+    audio.onplay = () => {
+      if (highlightEl) {
+        document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
+        highlightEl.classList.add('active-line');
+      }
+    };
+
+    function cleanup() {
       if (audio.parentNode) audio.parentNode.removeChild(audio);
       revokeBlobUrl(blobUrl);
-      blobUrl = null;
-      audio = new Audio('data:audio/mpeg;base64,' + base64data);
-      audio.playbackRate = rate || 1.0;
-      audio.style.display = 'none';
-      document.body.appendChild(audio);
-      audio.onplay = onPlay;
-      audio.onended = onEnd;
-      audio.onerror = () => { if (audio.parentNode) audio.parentNode.removeChild(audio); playDone(); if (callback) callback(); };
-      currentAudio = audio;
-      isPlaying = true;
-      if (btnEl) setButtonPlaying(btnEl);
-      audio.play().catch(() => { if (audio.parentNode) audio.parentNode.removeChild(audio); playDone(); if (callback) callback(); });
-      return;
+      currentAudio = null;
+      isPlaying = false;
+      if (activePlayBtn) {
+        activePlayBtn.textContent = '▶';
+        activePlayBtn.style.background = '';
+        activePlayBtn.style.color = '';
+        activePlayBtn.classList.remove('playing');
+        activePlayBtn = null;
+      }
     }
-    if (audio.parentNode) audio.parentNode.removeChild(audio);
-    playDone();
-    if (callback) callback();
+
+    audio.onended = () => { cleanup(); if (callback) callback(); };
+    audio.onerror = () => {
+      if (audio.parentNode) audio.parentNode.removeChild(audio);
+      if (tryCount === 2) {
+        cleanup();
+        playWithAudioContext();
+      } else {
+        cleanup();
+        if (callback) callback();
+      }
+    };
+
+    currentAudio = audio;
+    isPlaying = true;
+    if (btnEl) setButtonPlaying(btnEl);
+    audio.play().catch(() => audio.onerror());
   }
 
-  function onPlay() {
-    if (highlightEl) {
-      document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
-      highlightEl.classList.add('active-line');
+  function playWithAudioContext() {
+    try {
+      const ctx = ensureAudioCtx();
+      const byteStr = atob(base64data);
+      const len = byteStr.length;
+      const buf = new ArrayBuffer(len);
+      const view = new Uint8Array(buf);
+      for (let i = 0; i < len; i++) view[i] = byteStr.charCodeAt(i);
+
+      ctx.decodeAudioData(buf, (audioBuf) => {
+        const source = ctx.createBufferSource();
+        source.buffer = audioBuf;
+        source.playbackRate.value = rate || 1.0;
+        source.connect(ctx.destination);
+        source.start(0);
+
+        currentAudio = source;
+        isPlaying = true;
+        if (btnEl) setButtonPlaying(btnEl);
+
+        if (highlightEl) {
+          document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
+          highlightEl.classList.add('active-line');
+        }
+
+        source.onended = () => {
+          currentAudio = null;
+          isPlaying = false;
+          if (activePlayBtn) {
+            activePlayBtn.textContent = '▶';
+            activePlayBtn.style.background = '';
+            activePlayBtn.style.color = '';
+            activePlayBtn.classList.remove('playing');
+            activePlayBtn = null;
+          }
+          if (callback) callback();
+        };
+      }, () => {
+        // 解码失败
+        currentAudio = null;
+        isPlaying = false;
+        if (callback) callback();
+      });
+    } catch(e) {
+      currentAudio = null;
+      isPlaying = false;
+      if (callback) callback();
     }
   }
-
-  audio.onplay = onPlay;
-  audio.onended = onEnd;
-  audio.onerror = onError;
-  currentAudio = audio;
-  isPlaying = true;
-  if (btnEl) setButtonPlaying(btnEl);
-  audio.play().catch(() => {
-    // play() 被浏览器拦截 → 也是 data URI 重试
-    onError();
-  });
 }
 
 async function speakWord(unitId, key, btnEl) {
