@@ -1803,13 +1803,15 @@ function base64ToBlobUrl(base64data, mime) {
     const buf = new ArrayBuffer(len);
     const view = new Uint8Array(buf);
     for (let i = 0; i < len; i++) view[i] = byteStr.charCodeAt(i);
-    const blob = new Blob([buf], { type: mime || 'audio/mp3' });
+    // audio/mpeg 是 MP3 的标准 MIME（audio/mp3 不被 Safari 识别）
+    const blob = new Blob([buf], { type: 'audio/mpeg' });
     const url = URL.createObjectURL(blob);
     blobUrlCache[key] = url;
     return url;
   } catch (e) {
     console.warn('base64 decode failed:', e);
-    return 'data:audio/mp3;base64,' + base64data;
+    // 回退到 data URI
+    return 'data:audio/mpeg;base64,' + base64data;
   }
 }
 
@@ -1818,55 +1820,71 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
     if (callback) callback();
     return;
   }
-  const audioUrl = base64ToBlobUrl(base64data, 'audio/mp3');
-  const audio = new Audio(audioUrl);
+  // 尝试 Blob URL 播放；失败时自动回退到 data URI
+  const audioUrl = base64ToBlobUrl(base64data);
+  let audio = new Audio(audioUrl);
   audio.playbackRate = rate || 1.0;
-  
-  // Apply highlight when audio actually starts playing
-  audio.onplay = () => {
+  let fallbackTried = false;
+
+  function resetAudio() {
+    audio.pause();
+    audio.src = '';
+    audio.load();
+  }
+
+  function playDone() {
+    currentAudio = null;
+    isPlaying = false;
+    if (activePlayBtn) {
+      activePlayBtn.textContent = '▶';
+      activePlayBtn.style.background = '';
+      activePlayBtn.style.color = '';
+      activePlayBtn.classList.remove('playing');
+      activePlayBtn = null;
+    }
+  }
+
+  function onEnd() {
+    playDone();
+    if (callback) callback();
+  }
+
+  function onError() {
+    if (!fallbackTried) {
+      // 第一次失败 → 用 data URI 重试
+      fallbackTried = true;
+      resetAudio();
+      audio = new Audio('data:audio/mpeg;base64,' + base64data);
+      audio.playbackRate = rate || 1.0;
+      audio.onplay = onPlay;
+      audio.onended = onEnd;
+      audio.onerror = () => { playDone(); if (callback) callback(); };
+      currentAudio = audio;
+      isPlaying = true;
+      if (btnEl) setButtonPlaying(btnEl);
+      audio.play().catch(() => { playDone(); if (callback) callback(); });
+      return;
+    }
+    playDone();
+    if (callback) callback();
+  }
+
+  function onPlay() {
     if (highlightEl) {
       document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
       highlightEl.classList.add('active-line');
     }
-  };
-  
-  audio.onended = () => {
-    currentAudio = null;
-    isPlaying = false;
-    if (activePlayBtn) {
-      activePlayBtn.textContent = '▶';
-      activePlayBtn.style.background = '';
-      activePlayBtn.style.color = '';
-      activePlayBtn.classList.remove('playing');
-      activePlayBtn = null;
-    }
-    if (callback) callback();
-  };
-  audio.onerror = () => {
-    currentAudio = null;
-    isPlaying = false;
-    if (activePlayBtn) {
-      activePlayBtn.textContent = '▶';
-      activePlayBtn.style.background = '';
-      activePlayBtn.style.color = '';
-      activePlayBtn.classList.remove('playing');
-      activePlayBtn = null;
-    }
-    if (callback) callback();
-  };
+  }
+
+  audio.onplay = onPlay;
+  audio.onended = onEnd;
+  audio.onerror = onError;
   currentAudio = audio;
   isPlaying = true;
   if (btnEl) setButtonPlaying(btnEl);
   audio.play().catch(() => {
-    isPlaying = false;
-    if (activePlayBtn) {
-      activePlayBtn.textContent = '▶';
-      activePlayBtn.style.background = '';
-      activePlayBtn.style.color = '';
-      activePlayBtn.classList.remove('playing');
-      activePlayBtn = null;
-    }
-    if (callback) callback();
+    // play() 被浏览器拦截 → 也是 data URI 重试
+    onError();
   });
 }
 
