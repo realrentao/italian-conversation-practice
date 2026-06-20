@@ -767,7 +767,7 @@ body {
   </div>
 </div>
 
-<script src="audio_data/audio_all.js"></script>
+<script async src="audio_data/audio_all.js"></script>
 <script>
 // ====== BOOK DATA ======
 const bookData = {
@@ -1676,39 +1676,74 @@ function toggleSpeed(unitId) {
   }
 }
 
-function loadAudio(unitId) {
+async function loadAudio(unitId) {
   if (audioCache[unitId]) return;
-  // audio_all.js 同步加载，window.AD 立即可用
+  // 1. window.AD 已就绪 → 直接取
   if (window.AD && window.AD[unitId]) {
     audioCache[unitId] = window.AD[unitId];
+    return;
   }
+  // 2. fetch 单个 JSON（~500KB）
+  try {
+    const resp = await fetch(`audio_data/audio_${unitId}.json`);
+    if (resp.ok) {
+      const data = await resp.json();
+      if (data && Object.keys(data).length > 0) {
+        audioCache[unitId] = data;
+        return;
+      }
+    }
+  } catch(e) { /* 静默 */ }
+  // 3. 等 window.AD（audio_all.js 异步加载完成）
+  if (!window.AD) {
+    await new Promise(r => { const poll = () => { if (window.AD) r(); else setTimeout(poll, 150); }; poll(); });
+  }
+  if (window.AD && window.AD[unitId]) audioCache[unitId] = window.AD[unitId];
 }
 
-// 页面加载后，逐个将 window.AD 数据复制到 audioCache（内存操作，极快）
+// DOMContentLoaded 后后台按序预加载音频（不等 load 事件，不阻塞渲染）
 let preloadTimer = null;
 
 function startAudioPreload() {
-  if (!window.AD) return;
   const ids = [];
   bookData.chapters.forEach(ch => ch.units.forEach(u => ids.push(u.id)));
   let idx = 0;
-  function fillNext() {
+
+  function fetchNext() {
     if (idx >= ids.length) { preloadTimer = null; return; }
     const uid = ids[idx++];
-    if (!audioCache[uid] && window.AD[uid]) {
-      audioCache[uid] = window.AD[uid];
-      // 预解码所有 blob URL
-      for (const key of Object.keys(audioCache[uid])) {
-        base64ToBlobUrl(audioCache[uid][key], 'audio/mpeg');
-      }
+    // 已有真实数据则跳过
+    if (audioCache[uid] && Object.keys(audioCache[uid]).length > 0) {
+      // 已有数据 → 预解码 Blob URL
+      for (const k of Object.keys(audioCache[uid])) base64ToBlobUrl(audioCache[uid][k]);
+      fetchNext();
+      return;
     }
-    preloadTimer = setTimeout(fillNext, 50);
+    // 按顺序 fetch 每个单元的 JSON（~500KB/个），先加载的单元先可用
+    fetch(`audio_data/audio_${uid}.json`)
+      .then(r => { if (r.ok) return r.json(); })
+      .then(data => {
+        if (data && Object.keys(data).length > 0) {
+          audioCache[uid] = data;
+          // 预解码所有 Blob URL
+          for (const k of Object.keys(data)) base64ToBlobUrl(data[k]);
+        }
+      })
+      .catch(() => {
+        // fetch 失败则等 window.AD
+        if (window.AD && window.AD[uid]) {
+          audioCache[uid] = window.AD[uid];
+          for (const k of Object.keys(audioCache[uid])) base64ToBlobUrl(audioCache[uid][k]);
+        }
+      })
+      .finally(() => setTimeout(fetchNext, 200));
   }
-  fillNext();
+  fetchNext();
 }
 
-window.addEventListener('load', () => {
-  setTimeout(startAudioPreload, 200);
+// DOM 解析完立刻启动，不等待图片等资源加载
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(startAudioPreload, 100);
 });
 
 function resetPlayButtons() {
@@ -1852,7 +1887,7 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
 }
 
 async function speakWord(unitId, key, btnEl) {
-  loadAudio(unitId);
+  await loadAudio(unitId);
   // 双保险：audioCache 取不到则直接从 window.AD 读
   const data = audioCache[unitId]?.[key] || (window.AD && window.AD[unitId] && window.AD[unitId][key]);
   stopSpeech();
@@ -1867,7 +1902,7 @@ async function speakLine(el, idx) {
   const dialog = unit.dialogue[idx];
   if (!dialog) return;
 
-  loadAudio(unitId);
+  await loadAudio(unitId);
   const key = `d_${idx}`;
   // 双保险：audioCache 取不到则直接从 window.AD 读
   const data = audioCache[unitId]?.[key] || (window.AD && window.AD[unitId] && window.AD[unitId][key]);
@@ -1895,7 +1930,7 @@ async function playAll(unitId) {
     return;
   }
 
-  loadAudio(unitId);
+  await loadAudio(unitId);
   const lines = document.querySelectorAll(`#uc-${unitId} .dialogue-line`);
   let i = 0;
 
