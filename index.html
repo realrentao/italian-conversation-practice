@@ -1701,33 +1701,29 @@ function startPreload() {
   if (_preloadIds.length === 0) {
     bookData.chapters.forEach(ch => ch.units.forEach(u => _preloadIds.push(u.id)));
   }
+  // 同时加载 3 个单元（并行），首单元最快就绪
+  for (let c = 0; c < 3; c++) loadNext();
+}
+
+function loadNext() {
   if (_preloadIdx >= _preloadIds.length) return;
   const uid = _preloadIds[_preloadIdx++];
-  if (audioCache[uid] || (window.AD && window.AD[uid])) {
-    // 已有数据 → 预解码 blob URL
-    if (!audioCache[uid]) audioCache[uid] = window.AD[uid];
-    for (const k of Object.keys(audioCache[uid])) base64ToBlobUrl(audioCache[uid][k]);
-    setTimeout(startPreload, 50);
+  if (audioCache[uid] && Object.keys(audioCache[uid]).length > 0) { loadNext(); return; }
+  // window.AD 已有该单元 → 直接缓存（内存操作）
+  if (window.AD && window.AD[uid]) {
+    audioCache[uid] = window.AD[uid];
+    setTimeout(loadNext, 30);
     return;
   }
+  // fetch 单个 JSON
   fetch(`audio_data/audio_${uid}.json`)
     .then(r => r.ok ? r.json() : null)
     .then(data => {
-      if (data && Object.keys(data).length > 0) {
-        audioCache[uid] = data;
-        for (const k of Object.keys(data)) base64ToBlobUrl(data[k]);
-      } else if (window.AD && window.AD[uid]) {
-        audioCache[uid] = window.AD[uid];
-        for (const k of Object.keys(audioCache[uid])) base64ToBlobUrl(audioCache[uid][k]);
-      }
+      if (data && Object.keys(data).length > 0) audioCache[uid] = data;
+      else if (window.AD && window.AD[uid]) audioCache[uid] = window.AD[uid];
     })
-    .catch(() => {
-      if (window.AD && window.AD[uid]) {
-        audioCache[uid] = window.AD[uid];
-        for (const k of Object.keys(audioCache[uid])) base64ToBlobUrl(audioCache[uid][k]);
-      }
-    })
-    .finally(() => setTimeout(startPreload, 150));
+    .catch(() => { if (window.AD && window.AD[uid]) audioCache[uid] = window.AD[uid]; })
+    .finally(() => setTimeout(loadNext, 30));
 }
 
 function resetPlayButtons() {
@@ -2032,7 +2028,7 @@ function init() {
   });
 
   // 3. 后台按序预加载单元音频（不阻塞渲染，首单元最快就绪）
-  setTimeout(startPreload, 100);
+  setTimeout(startPreload, 0);
 }
 
 // 脚本末尾直接执行，不依赖 DOMContentLoaded
