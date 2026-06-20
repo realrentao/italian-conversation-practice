@@ -1650,6 +1650,7 @@ function buildUnitContent(unit) {
 let audioCache = {};
 let currentAudio = null;
 let isPlaying = false;
+let isDialogAudio = false; // 当前播放的是否为对话音频（仅对话响应实时变速）
 let dialogSpeechRate = {}; // per-unit dialog speech rate, defaults to 1.0
 let playAllQueue = null;
 let activePlayBtn = null; // currently highlighted play button
@@ -1669,8 +1670,8 @@ function toggleSpeed(unitId) {
     btn.textContent = '🐢 常速 1.0x';
     btn.classList.remove('active');
   }
-  // 实时切换：当前音频正在播放时，立即改变播放速度
-  if (currentAudio) {
+  // 实时切换：仅当播放的是对话音频时，立即改变播放速度
+  if (currentAudio && isDialogAudio) {
     currentAudio.playbackRate = newRate;
   }
 }
@@ -1748,6 +1749,7 @@ function stopSpeech() {
     playAllQueue = null;
   }
   isPlaying = false;
+  isDialogAudio = false;
   activePlayBtn = null;
   document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
   document.querySelectorAll('.play-all.playing').forEach(el => {
@@ -1826,6 +1828,7 @@ async function speakWord(unitId, key, btnEl) {
   await loadAudio(unitId);
   const data = audioCache[unitId]?.[key];
   stopSpeech();
+  isDialogAudio = false; // 生词/常用语不响应对话倍速
   playBase64Audio(data, null, btnEl);
 }
 
@@ -1845,6 +1848,7 @@ async function speakLine(el, idx) {
   el.classList.add('active-line');
 
   const btn = el.querySelector('.line-play');
+  isDialogAudio = true; // 对话音频，响应实时变速
   const rate = dialogSpeechRate[unitId] || 1.0;
   playBase64Audio(data, () => {
     el.classList.remove('active-line');
@@ -1868,6 +1872,7 @@ async function playAll(unitId) {
 
   btn.textContent = '⏸ 播放中...';
   btn.classList.add('playing');
+  isDialogAudio = true; // 对话音频，响应实时变速
 
   function playNext() {
     if (i >= unit.dialogue.length) {
