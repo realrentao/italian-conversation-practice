@@ -767,7 +767,8 @@ body {
   </div>
 </div>
 
-<script async src="audio_data/audio_all.js"></script>
+<!-- audio_all.js 仅在本地 file:// 协议下加载（服务器用 fetch 逐个加载更高效） -->
+<script>if(location.protocol==='file:'){document.write('<script src="audio_data/audio_all.js"><\/script>')}</script>
 <script>
 // ====== BOOK DATA ======
 const bookData = {
@@ -1678,7 +1679,7 @@ function toggleSpeed(unitId) {
 
 async function loadAudio(unitId) {
   if (audioCache[unitId] && Object.keys(audioCache[unitId]).length > 0) return;
-  // window.AD 已就绪 → 直接取（内存操作）
+  // file:// 协议下 window.AD 可用 → 直接取
   if (window.AD && window.AD[unitId]) { audioCache[unitId] = window.AD[unitId]; return; }
   // fetch 单个 JSON（服务器环境）
   try {
@@ -1688,8 +1689,7 @@ async function loadAudio(unitId) {
       if (data && Object.keys(data).length > 0) { audioCache[unitId] = data; return; }
     }
   } catch(e) { /* 静默 */ }
-  // 轮询等 window.AD
-  if (!window.AD) await new Promise(r => { const p = () => { if (window.AD) r(); else setTimeout(p, 100); }; p(); });
+  // 最后尝试 window.AD（仅 file:// 时可用）
   if (window.AD && window.AD[unitId]) audioCache[unitId] = window.AD[unitId];
 }
 
@@ -1709,20 +1709,18 @@ function loadNext() {
   if (_preloadIdx >= _preloadIds.length) return;
   const uid = _preloadIds[_preloadIdx++];
   if (audioCache[uid] && Object.keys(audioCache[uid]).length > 0) { loadNext(); return; }
-  // window.AD 已有该单元 → 直接缓存（内存操作）
+  // file:// 下 window.AD 可用 → 直接缓存
   if (window.AD && window.AD[uid]) {
     audioCache[uid] = window.AD[uid];
     setTimeout(loadNext, 30);
     return;
   }
-  // fetch 单个 JSON
+  // 服务器：fetch 单个 JSON
   fetch(`audio_data/audio_${uid}.json`)
     .then(r => r.ok ? r.json() : null)
     .then(data => {
       if (data && Object.keys(data).length > 0) audioCache[uid] = data;
-      else if (window.AD && window.AD[uid]) audioCache[uid] = window.AD[uid];
     })
-    .catch(() => { if (window.AD && window.AD[uid]) audioCache[uid] = window.AD[uid]; })
     .finally(() => setTimeout(loadNext, 30));
 }
 
