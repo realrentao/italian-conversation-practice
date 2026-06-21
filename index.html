@@ -2033,8 +2033,16 @@ function findUnit(id) {
 
 // ====== NAVIGATION ======
 function openUnit(id) {
-  // 用户选中该单元 → 优先加载其音频
-  loadAudio(id);
+  // 用户选中该单元 → 立即优先加载其音频（不阻塞后台预加载）
+  if (!audioCache[id] || Object.keys(audioCache[id]).length === 0) {
+    if (window.AD && window.AD[id]) {
+      audioCache[id] = window.AD[id];
+    } else {
+      fetch(`audio_data/audio_${id}.json`)
+        .then(r => r.ok ? r.json() : null)
+        .then(d => { if (d && Object.keys(d).length > 0) audioCache[id] = d; });
+    }
+  }
 
   // Hide all
   document.querySelectorAll('.unit-content').forEach(el => el.classList.remove('active'));
