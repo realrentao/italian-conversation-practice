@@ -1804,12 +1804,10 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
     return;
   }
 
-  // 先用 data URI 尝试（最兼容）
-  let tryCount = 0;
+  // 三重播放引擎：data URI → blob URL → AudioContext，自动降级
   playWithDataUri();
 
   function playWithDataUri() {
-    tryCount++;
     const url = 'data:audio/mpeg;base64,' + base64data;
     const audio = new Audio(url);
     audio.playbackRate = rate || 1.0;
@@ -1840,25 +1838,18 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
     audio.onended = () => { cleanup(); if (callback) callback(); };
     audio.onerror = () => {
       if (audio.parentNode) audio.parentNode.removeChild(audio);
-      if (tryCount === 1) {
-        // data URI 失败 → 用 blob URL 重试（解决 iOS Safari 大小限制）
-        playWithBlobUrl();
-      } else if (tryCount === 2) {
-        // blob URL 也失败 → 用 AudioContext 解码
-        cleanup();
-        playWithAudioContext();
-      } else {
-        cleanup();
-        if (callback) callback();
-      }
+      cleanup();
+      // data URI 失败 → 换 blob URL
+      playWithBlobUrl();
     };
 
     currentAudio = audio;
     isPlaying = true;
     if (btnEl) setButtonPlaying(btnEl);
     audio.play().catch(() => {
-      // play() 被拦截 → 交给 onerror 处理重试链
-      audio.onerror();
+      // play() 被浏览器拦截 → 直接走 blob URL
+      if (audio.parentNode) audio.parentNode.removeChild(audio);
+      playWithBlobUrl();
     });
   }
 
@@ -1893,19 +1884,18 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
     audio.onended = () => { cleanup(); if (callback) callback(); };
     audio.onerror = () => {
       if (audio.parentNode) audio.parentNode.removeChild(audio);
-      if (tryCount === 2) {
-        cleanup();
-        playWithAudioContext();
-      } else {
-        cleanup();
-        if (callback) callback();
-      }
+      cleanup();
+      // blob URL 也失败 → 终极兜底 AudioContext
+      playWithAudioContext();
     };
 
     currentAudio = audio;
     isPlaying = true;
     if (btnEl) setButtonPlaying(btnEl);
-    audio.play().catch(() => audio.onerror());
+    audio.play().catch(() => {
+      if (audio.parentNode) audio.parentNode.removeChild(audio);
+      playWithAudioContext();
+    });
   }
 
   function playWithAudioContext() {
@@ -1960,11 +1950,11 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
 }
 
 async function speakWord(unitId, key, btnEl) {
-  loadAudio(unitId);
-  // 双保险：audioCache 取不到则直接从 window.AD 读
-  const data = audioCache[unitId]?.[key] || (window.AD && window.AD[unitId] && window.AD[unitId][key]);
+  await loadAudio(unitId);
+  const data = audioCache[unitId]?.[key];
+  if (!data) return;
   stopSpeech();
-  isDialogAudio = false; // 生词/常用语不响应对话倍速
+  isDialogAudio = false;
   playBase64Audio(data, null, btnEl);
 }
 
@@ -1975,17 +1965,17 @@ async function speakLine(el, idx) {
   const dialog = unit.dialogue[idx];
   if (!dialog) return;
 
-  loadAudio(unitId);
+  await loadAudio(unitId);
   const key = `d_${idx}`;
-  // 双保险：audioCache 取不到则直接从 window.AD 读
-  const data = audioCache[unitId]?.[key] || (window.AD && window.AD[unitId] && window.AD[unitId][key]);
+  const data = audioCache[unitId]?.[key];
+  if (!data) return;
 
   stopSpeech();
   document.querySelectorAll('.active-line').forEach(e => e.classList.remove('active-line'));
   el.classList.add('active-line');
 
   const btn = el.querySelector('.line-play');
-  isDialogAudio = true; // 对话音频，响应实时变速
+  isDialogAudio = true;
   const rate = dialogSpeechRate[unitId] || 1.0;
   playBase64Audio(data, () => {
     el.classList.remove('active-line');
@@ -2003,7 +1993,7 @@ async function playAll(unitId) {
     return;
   }
 
-  loadAudio(unitId);
+  await loadAudio(unitId);
   const lines = document.querySelectorAll(`#uc-${unitId} .dialogue-line`);
   let i = 0;
 
@@ -2022,8 +2012,7 @@ async function playAll(unitId) {
     progressFill.style.width = `${progress}%`;
 
     const key = `d_${i}`;
-    // 双保险：audioCache 取不到则直接从 window.AD 读
-    const data = audioCache[unitId]?.[key] || (window.AD && window.AD[unitId] && window.AD[unitId][key]);
+    const data = audioCache[unitId]?.[key];
     const rate = dialogSpeechRate[unitId] || 1.0;
     playBase64Audio(data, () => {
       i++;
