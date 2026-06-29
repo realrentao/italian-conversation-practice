@@ -2144,30 +2144,6 @@ async function speakLine(el, idx) {
 }
 
 async function playAll(unitId) {
-  const unitId = el.dataset.unit;
-  const unit = findUnit(unitId);
-  if (!unit) return;
-  const dialog = unit.dialogue[idx];
-  if (!dialog) return;
-
-  loadAudio(unitId);
-  const key = `d_${idx}`;
-  // 双保险：audioCache 取不到则直接从 window.AD 读
-  const data = audioCache[unitId]?.[key];
-
-  stopSpeech();
-  document.querySelectorAll('.active-line').forEach(e => e.classList.remove('active-line'));
-  el.classList.add('active-line');
-
-  const btn = el.querySelector('.line-play');
-  isDialogAudio = true; // 对话音频，响应实时变速
-  const rate = dialogSpeechRate[unitId] || 1.0;
-  playBase64Audio(data, () => {
-    el.classList.remove('active-line');
-  }, btn, null, rate);
-}
-
-async function playAll(unitId) {
   const unit = findUnit(unitId);
   if (!unit) return;
   const btn = document.getElementById(`playAll-${unitId}`);
