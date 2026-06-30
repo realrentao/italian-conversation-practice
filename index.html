@@ -3,4242 +3,2528 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>实用意大利语会话 — 交互式学习工具</title>
+<title>意大利语会话 — 交互式学习工具</title>
 <style>
-/* ====== CSS Variables & Theme ====== */
-:root {
-  --green: #009246;
-  --white: #FFFFFF;
-  --red: #CE2B37;
-  --cream: #FFF8F0;
-  --warm-bg: #FFF5EB;
-  --dark: #1a1a2e;
-  --text: #2d2d44;
-  --gray: #f0ece6;
-  --shadow: 0 4px 24px rgba(0,0,0,0.08);
-  --radius: 16px;
-  --transition: 0.3s cubic-bezier(.4,0,.2,1);
-  --sidebar-width: 320px;
-  --accent: #CE2B37;
-  --accent-light: #ffe8e8;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f5;color:#333;display:flex;min-height:100vh}
+/* ====== SIDEBAR ====== */
+#sidebar{width:320px;min-width:320px;background:#1a1a2e;color:#fff;height:100vh;overflow-y:auto;position:sticky;top:0;display:flex;flex-direction:column}
+#sidebar .header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+#sidebar .header h1{font-size:20px;font-weight:700;color:#fff}
+#sidebar .header p{font-size:13px;color:rgba(255,255,255,.5);margin-top:2px}
+#sidebar .search-wrap{padding:12px 16px}
+#sidebar .search-wrap input{width:100%;padding:8px 12px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:13px;background:rgba(255,255,255,.06);color:#fff;outline:none}
+#sidebar .search-wrap input::placeholder{color:rgba(255,255,255,.3)}
+#tocContainer{flex:1;overflow-y:auto;padding-bottom:60px}
+.chapter-title{padding:14px 20px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,.8);transition:.2s;border-bottom:1px solid rgba(255,255,255,.05)}
+.chapter-title:hover{color:#fff;background:rgba(255,255,255,.04)}
+.chapter-title .arrow{font-size:10px;transition:.2s}
+.chapter-title.collapsed .arrow{transform:rotate(-90deg)}
+.unit-list{overflow:hidden;transition:max-height .3s;max-height:800px;background:rgba(255,255,255,.03)}
+.unit-list.collapsed{max-height:0}
+.unit-item{padding:10px 20px 10px 32px;cursor:pointer;font-size:14px;line-height:1.5;border-bottom:1px solid rgba(255,255,255,.04);color:rgba(255,255,255,.65);transition:.15s}
+.unit-item:hover{color:#fff;background:rgba(255,255,255,.06)}
+.unit-item.active{color:#fff;background:rgba(255,255,255,.1);border-left:3px solid #00e5ff}
+.unit-item .unit-num{font-size:12px;opacity:.6;display:block}
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* ====== MAIN ====== */
+#main{flex:1;min-width:0;padding:40px;max-width:960px;margin:0 auto}
+.welcome{padding:60px 0;text-align:center;color:#999}
+.welcome h2{font-size:28px;color:#333;margin-bottom:12px}
+.welcome p{font-size:15px;line-height:1.8}
+.unit-content{display:none;animation:fadeIn .3s}
+.unit-content.active{display:block}
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
-  background: var(--warm-bg);
-  color: var(--text);
-  line-height: 1.7;
-  display: flex;
-  min-height: 100vh;
-}
+/* Unit header */
+.unit-header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:32px;border-radius:16px;margin-bottom:28px}
+.unit-header .label{font-size:13px;text-transform:uppercase;letter-spacing:1px;opacity:.7;margin-bottom:6px}
+.unit-header h2{font-size:24px;font-weight:700;margin-bottom:4px}
+.unit-header .sub{font-size:15px;opacity:.65}
+.unit-header .scene{font-size:14px;line-height:1.7;margin-top:16px;opacity:.8;padding:16px;background:rgba(255,255,255,.06);border-radius:10px}
+.section-title{font-size:18px;font-weight:700;margin:28px 0 16px;padding-bottom:8px;border-bottom:2px solid #e0e0e0}
+.section-title .it{font-weight:400;font-size:14px;color:#888;margin-left:8px}
 
-/* ====== Sidebar ====== */
-.sidebar {
-  position: fixed;
-  top: 0; left: 0;
-  width: var(--sidebar-width);
-  height: 100vh;
-  background: var(--white);
-  border-right: 1px solid #eee;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  transform: translateX(0);
-  transition: transform var(--transition);
-}
+/* Vocab */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px}
+.vocab-item{display:flex;align-items:center;padding:10px 14px;background:#fff;border-radius:8px;cursor:pointer;transition:.15s;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.vocab-item:hover{box-shadow:0 2px 8px rgba(0,0,0,.1);transform:translateY(-1px)}
+.vocab-item .play-icon{font-size:12px;margin-right:10px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#e8e8e8;transition:.15s}
+.vocab-item .play-icon.playing{background:#00e5ff;color:#fff}
+.vocab-item .it{font-weight:600;color:#333;font-size:15px}
+.vocab-item .zh{color:#888;font-size:14px;margin-left:auto}
 
-.sidebar-header {
-  background: linear-gradient(135deg, var(--green), #00a85a);
-  color: var(--white);
-  padding: 24px 20px;
-  flex-shrink: 0;
-}
+/* Dialogue */
+.dialogue-section{background:#fff;border-radius:14px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.audio-controls{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.audio-btn{padding:8px 16px;border:none;border-radius:8px;font-size:13px;cursor:pointer;transition:.15s;font-family:inherit}
+.audio-btn.play-all{background:#1a1a2e;color:#fff}
+.audio-btn.play-all.playing{background:#00e5ff}
+.audio-btn.stop-btn{background:#e0e0e0;color:#666}
+.audio-btn.speed-control{background:#e0e0e0;color:#666}
+.audio-btn.speed-control.active{background:#ff9800;color:#fff}
+.progress-bar{height:3px;background:#eee;border-radius:2px;margin-bottom:16px;overflow:hidden}
+.progress-bar .fill{height:100%;background:#00e5ff;width:0;transition:.2s}
+.dialogue-line{display:flex;align-items:flex-start;padding:12px;border-radius:8px;cursor:pointer;transition:.1s;gap:10px}
+.dialogue-line:hover{background:#f8f8f8}
+.dialogue-line.active-line{background:#e3f2fd}
+.dialogue-line .speaker{font-size:12px;font-weight:700;color:#1a1a2e;min-width:60px;padding:2px 8px;background:#e8e8e8;border-radius:4px;text-align:center}
+.dialogue-line .speaker.speaker-b{background:#e3f2fd;color:#1565c0}
+.dialogue-line .text-wrapper{flex:1;min-width:0}
+.dialogue-line .it{font-size:15px;font-weight:500;color:#333}
+.dialogue-line .zh{font-size:13px;color:#888;margin-top:2px}
+.dialogue-line .line-play{font-size:11px;width:28px;height:28px;border:none;border-radius:50%;background:#e8e8e8;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s}
+.dialogue-line .line-play.playing{background:#00e5ff;color:#fff}
 
-.sidebar-header h1 {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
+/* Grammar */
+.grammar-grid{display:grid;gap:12px}
+.grammar-item{padding:16px;background:#fff;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);border-left:3px solid #1a1a2e}
+.grammar-item .rule{font-weight:700;color:#1a1a2e;margin-bottom:4px}
+.grammar-item .explain{font-size:14px;color:#555;line-height:1.6}
+.grammar-item .example{font-size:13px;color:#888;margin-top:6px;font-style:italic;padding:6px 10px;background:#f5f5f5;border-radius:6px}
 
-.sidebar-header .subtitle {
-  font-size: 12px;
-  opacity: 0.85;
-  margin-top: 4px;
-}
+/* Sentences */
+.sent-grid{display:grid;gap:8px}
+.sentence-item{display:flex;align-items:center;padding:10px 14px;background:#fff;border-radius:8px;cursor:pointer;transition:.15s;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.sentence-item:hover{box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.sentence-item .s-text{flex:1;min-width:0}
+.sentence-item .it{font-weight:600;color:#333;font-size:15px}
+.sentence-item .zh{font-size:13px;color:#888;margin-top:2px}
+.sentence-item .s-play{font-size:11px;width:28px;height:28px;border:none;border-radius:50%;background:#e8e8e8;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s}
+.sentence-item .s-play.playing{background:#00e5ff;color:#fff}
 
-.flag-bar {
-  display: flex;
-  height: 4px;
-}
-.flag-bar span {
-  flex: 1;
-}
-.flag-bar .green { background: var(--green); }
-.flag-bar .white { background: var(--white); }
-.flag-bar .red { background: var(--red); }
-
-.sidebar-search {
-  padding: 12px 16px;
-  border-bottom: 1px solid #eee;
-}
-.sidebar-search input {
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 13px;
-  outline: none;
-  transition: border var(--transition);
-}
-.sidebar-search input:focus {
-  border-color: var(--red);
-}
-
-.sidebar-toc {
-  flex: 1;
-  overflow-y: auto;
-  padding: 8px 0;
-}
-
-.chapter-group {
-  margin-bottom: 4px;
-}
-
-.chapter-title {
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--green);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  user-select: none;
-}
-.chapter-title:hover { background: var(--gray); }
-.chapter-title .arrow {
-  transition: transform var(--transition);
-  font-size: 10px;
-}
-.chapter-title.collapsed .arrow { transform: rotate(-90deg); }
-
-.unit-list {
-  list-style: none;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-.unit-list.collapsed { max-height: 0 !important; }
-
-.unit-item {
-  padding: 8px 20px 8px 32px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all var(--transition);
-  border-left: 3px solid transparent;
-}
-.unit-item:hover {
-  background: var(--accent-light);
-  color: var(--red);
-}
-.unit-item.active {
-  background: var(--accent-light);
-  border-left-color: var(--red);
-  color: var(--red);
-  font-weight: 600;
-}
-.unit-item .unit-num {
-  font-size: 14px;
-  opacity: 0.6;
-  display: block;
-}
-
-/* ====== Main Content ====== */
-.main {
-  margin-left: var(--sidebar-width);
-  flex: 1;
-  min-height: 100vh;
-  padding: 0;
-}
-
-.mobile-header {
-  display: none;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  background: linear-gradient(135deg, var(--green), #00a85a);
-  color: white;
-  padding: 12px 16px;
-  align-items: center;
-  gap: 12px;
-}
-.mobile-header .menu-btn {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 4px;
-}
-.mobile-header h2 {
-  font-size: 16px;
-  font-weight: 600;
-  flex: 1;
-}
-
-.hero {
-  background: linear-gradient(135deg, var(--green), #00a85a, var(--red));
-  padding: 60px 40px 40px;
-  color: var(--white);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-  animation: heroFloat 20s linear infinite;
-}
-@keyframes heroFloat {
-  0% { transform: translate(0,0); }
-  50% { transform: translate(-20px,-20px); }
-  100% { transform: translate(0,0); }
-}
-.hero h1 {
-  font-size: 32px;
-  font-weight: 800;
-  position: relative;
-  z-index: 1;
-}
-.hero p {
-  font-size: 14px;
-  opacity: 0.9;
-  margin-top: 8px;
-  position: relative;
-  z-index: 1;
-}
-.hero .flag-mini {
-  display: inline-flex;
-  gap: 6px;
-  margin-top: 16px;
-  position: relative;
-  z-index: 1;
-}
-.hero .flag-mini span {
-  width: 40px;
-  height: 24px;
-  border-radius: 4px;
-}
-.hero .flag-mini .green { background: var(--green); }
-.hero .flag-mini .white { background: var(--white); }
-.hero .flag-mini .red { background: var(--red); }
-
-.content {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 32px 24px 80px;
-}
-
-/* ====== Unit Content ====== */
-.unit-content {
-  display: none;
-  animation: fadeIn 0.4s ease;
-}
-.unit-content.active { display: block; }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.unit-title-block {
-  margin-bottom: 28px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid var(--gray);
-}
-.unit-title-block .chapter-label {
-  font-size: 12px;
-  color: var(--green);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-.unit-title-block h2 {
-  font-size: 26px;
-  margin-top: 4px;
-  color: var(--dark);
-}
-.unit-title-block .unit-subtitle {
-  font-size: 15px;
-  color: #888;
-  margin-top: 4px;
-}
-
-/* ====== Scene Intro ====== */
-.scene-intro {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
-  border-left: 4px solid var(--green);
-}
-.scene-intro h3 {
-  font-size: 18px;
-  color: var(--green);
-  margin-bottom: 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.scene-intro p {
-  font-size: 17px;
-  color: #555;
-}
-
-/* ====== Vocabulary ====== */
-.vocab-section {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
-  border-left: 4px solid var(--red);
-}
-.vocab-section h3 {
-  font-size: 15px;
-  color: var(--red);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.vocab-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-.vocab-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  background: var(--cream);
-  border-radius: 10px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all var(--transition);
-}
-.vocab-item:hover {
-  background: var(--accent-light);
-}
-.vocab-item .it {
-  font-weight: 600;
-  color: var(--dark);
-  font-style: italic;
-}
-.vocab-item .sep {
-  color: #ccc;
-}
-.vocab-item .zh {
-  color: #666;
-}
-.vocab-item .play-icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--green);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  flex-shrink: 0;
-  transition: transform var(--transition);
-}
-.vocab-item:hover .play-icon {
-  transform: scale(1.15);
-}
-
-/* ====== Dialogue ====== */
-.dialogue-section {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 24px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
-}
-.dialogue-section h3 {
-  font-size: 15px;
-  color: var(--dark);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.audio-controls {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-}
-.audio-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all var(--transition);
-}
-.audio-btn:active { transform: scale(0.96); }
-.audio-btn.play-all {
-  background: var(--green);
-  color: white;
-}
-.audio-btn.play-all:hover { background: #008040; }
-.audio-btn.play-all.playing { background: var(--red); }
-.audio-btn.speed-control {
-  background: var(--gray);
-  color: var(--dark);
-}
-.audio-btn.speed-control:hover { background: #ddd; }
-.audio-btn.speed-control.active {
-  background: var(--red);
-  color: white;
-}
-.audio-btn.stop-btn {
-  background: #eee;
-  color: #999;
-}
-.audio-btn.stop-btn:hover { background: #ddd; color: var(--red); }
-
-.dialogue-line {
-  display: flex;
-  gap: 12px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  margin-bottom: 4px;
-  transition: all var(--transition);
-  cursor: pointer;
-}
-.dialogue-line:hover { background: var(--cream); }
-.dialogue-line.active-line {
-  background: var(--accent-light);
-  border-left: 3px solid var(--red);
-}
-.dialogue-line .speaker {
-  font-weight: 700;
-  color: var(--red);
-  width: 130px;
-  font-size: 15px;
-  flex-shrink: 0;
-}
-.dialogue-line .speaker.speaker-b {
-  color: var(--green);
-}
-.dialogue-line .text-wrapper {
-  flex: 1;
-}
-.dialogue-line .text-wrapper .it {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.6;
-}
-.dialogue-line .text-wrapper .zh {
-  font-size: 15px;
-  color: #888;
-  margin-top: 2px;
-}
-.dialogue-line .line-play {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--gray);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--green);
-  font-size: 12px;
-  flex-shrink: 0;
-  align-self: center;
-  transition: all var(--transition);
-}
-.dialogue-line .line-play:hover {
-  background: var(--green);
-  color: white;
-}
-.dialogue-line .line-play.playing {
-  background: var(--red) !important;
-  color: white !important;
-}
-
-/* ====== Grammar Notes ====== */
-.grammar-section {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
-  border-left: 4px solid #f4a261;
-}
-.grammar-section h3 {
-  font-size: 15px;
-  color: #e76f51;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.grammar-item {
-  padding: 8px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-.grammar-item:last-child { border-bottom: none; }
-.grammar-item .rule {
-  font-weight: 600;
-  color: var(--dark);
-  font-size: 16px;
-}
-.grammar-item .explain {
-  font-size: 15px;
-  color: #666;
-  margin-top: 2px;
-}
-.grammar-item .example {
-  font-size: 15px;
-  color: var(--red);
-  font-style: italic;
-  margin-top: 2px;
-}
-
-/* ====== Common Sentences ====== */
-.sentences-section {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow);
-  border-left: 4px solid var(--green);
-}
-.sentences-section h3 {
-  font-size: 15px;
-  color: var(--green);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.sentence-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid #f0f0f0;
-  cursor: pointer;
-  transition: background var(--transition);
-}
-.sentence-item:hover { background: var(--cream); }
-.sentence-item:last-child { border-bottom: none; }
-.sentence-item .s-text {
-  flex: 1;
-}
-.sentence-item .s-text .it {
-  font-weight: 500;
-  font-size: 18px;
-}
-.sentence-item .s-text .zh {
-  font-size: 16px;
-  color: #888;
-}
-.sentence-item .s-play {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--gray);
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  color: var(--green);
-  flex-shrink: 0;
-  transition: all var(--transition);
-}
-.sentence-item .s-play:hover {
-  background: var(--green);
-  color: white;
-}
-
-/* ====== Progress Bar ====== */
-.progress-bar {
-  height: 4px;
-  background: var(--gray);
-  border-radius: 2px;
-  margin: 16px 0;
-  overflow: hidden;
-}
-.progress-bar .fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--green), var(--red));
-  width: 0%;
-  transition: width 0.3s;
-  border-radius: 2px;
-}
-
-/* ====== Book Info Panel ====== */
-.book-info {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 24px;
-  box-shadow: var(--shadow);
-  text-align: center;
-  max-width: 600px;
-  margin: 40px auto;
-}
-.book-info h2 { color: var(--dark); margin-bottom: 8px; }
-.book-info p { font-size: 14px; color: #666; margin-bottom: 4px; }
-.book-info .isbn { font-size: 12px; color: #aaa; margin-top: 12px; }
-.book-info .flag-row { display: flex; justify-content: center; gap: 8px; margin: 16px 0; }
-.book-info .flag-row span { width: 50px; height: 30px; border-radius: 4px; }
-
-/* ====== Overlay ====== */
-.sidebar-overlay {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
-  z-index: 999;
-}
-.sidebar-overlay.show { display: block; }
-
-/* ====== Scrollbar ====== */
-.sidebar-toc::-webkit-scrollbar { width: 4px; }
-.sidebar-toc::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
-
-/* ====== Responsive ====== */
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-  }
-  .sidebar.open {
-    transform: translateX(0);
-  }
-  .main {
-    margin-left: 0;
-  }
-  .mobile-header {
-    display: flex;
-  }
-  .hero {
-    padding: 32px 20px 28px;
-  }
-  .hero h1 {
-    font-size: 24px;
-  }
-  .content {
-    padding: 20px 12px 60px;
-  }
-  .vocab-grid {
-    grid-template-columns: 1fr;
-  }
-  .unit-title-block h2 {
-    font-size: 20px;
-  }
-  .dialogue-line {
-    padding: 8px 10px;
-    flex-wrap: wrap;
-    position: relative;
-  }
-  .dialogue-line .speaker {
-    width: 100%;
-    font-size: 16px;
-    margin-bottom: 2px;
-    padding-bottom: 2px;
-  }
-  .dialogue-line .text-wrapper {
-    width: calc(100% - 36px);
-    flex: none;
-  }
-  .dialogue-line .text-wrapper .it {
-    font-size: 16px;
-  }
-  .dialogue-line .line-play {
-    position: absolute;
-    right: 10px;
-    bottom: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .audio-controls {
-    flex-direction: column;
-  }
-  .audio-btn {
-    justify-content: center;
-  }
-}
-
-/* ====== Print ====== */
-@media print {
-  .sidebar, .mobile-header, .audio-controls { display: none; }
-  .main { margin-left: 0; }
-  .unit-content { display: block !important; page-break-before: always; }
-}
+/* Mobile */
+#sidebarToggle{display:none;position:fixed;bottom:20px;right:20px;width:56px;height:56px;border-radius:50%;background:#1a1a2e;color:#fff;border:none;font-size:24px;cursor:pointer;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+#sidebarOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:50}
+@media(max-width:768px){#sidebar{position:fixed;left:-320px;z-index:99;transition:left .3s}#sidebar.open{left:0}#sidebarToggle{display:flex;align-items:center;justify-content:center}#sidebarOverlay.show{display:block}#main{padding:20px;width:100%}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 
-<!-- ====== Sidebar Overlay ====== -->
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-
-<!-- ====== Sidebar ====== -->
-<nav class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <h1>实用意大利语会话</h1>
-    <div class="subtitle">Conversazioni Reali in Italiano</div>
+<div id="sidebar">
+  <div class="header">
+    <h1>Italiano</h1>
+    <p>意大利语会话</p>
   </div>
-  <div class="flag-bar">
-    <span class="green"></span>
-    <span class="white"></span>
-    <span class="red"></span>
-  </div>
-  <div class="sidebar-search">
-    <input type="text" id="searchInput" placeholder="搜索章节 / Cerca..." oninput="filterTOC(this.value)">
-  </div>
-  <div class="sidebar-toc" id="tocContainer">
-    <!-- TOC will be populated by JS -->
-  </div>
-</nav>
-
-<!-- ====== Main Content ====== -->
-<div class="main">
-  <div class="mobile-header">
-    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-    <h2>实用意大利语会话</h2>
-  </div>
-
-  <div class="hero">
-    <h1>实用意大利语会话</h1>
-    <p>Conversazioni Reali in Italiano per Studenti Cinesi</p>
-    <div class="flag-mini">
-      <span class="green"></span>
-      <span class="white"></span>
-      <span class="red"></span>
-    </div>
-  </div>
-
-  <div class="content" id="contentArea">
-    <!-- Welcome / Info -->
-    <div id="welcomePanel" class="book-info">
-      <div class="flag-row">
-        <span class="green" style="background:var(--green)"></span>
-        <span class="white" style="background:var(--white);border:1px solid #ddd"></span>
-        <span class="red" style="background:var(--red)"></span>
-      </div>
-      <h2>📖 实用意大利语会话</h2>
-      <p style="margin-top:12px;font-size:16px;color:#888">
-        以日常生活中常见的饮食、交通、游览和社交等主题为线索，<br>
-        以实景会话的形式呈现意大利人的真实日常对话。
-      </p>
-      <p style="margin-top:12px;color:var(--green);font-weight:600;font-size:16px">
-        点击左侧目录选择单元开始学习 👈
-      </p>
-    </div>
-
-    <!-- Unit content will be injected by JS -->
-    <div id="unitContentContainer"></div>
-  </div>
+  <div class="search-wrap"><input type="text" id="searchInput" placeholder="搜索..." oninput="filterTOC(this.value)"></div>
+  <div id="tocContainer"></div>
 </div>
 
-<!-- JS 方式按需加载音频（独立JS文件，无需fetch） -->
-<!-- file:// 下线一次性加载所有 -->
-<script>if(location.protocol==='file:'){document.write('<script src="audio_data/audio_c1u1.js"><\/script><script src="audio_data/audio_c1u2.js"><\/script><script src="audio_data/audio_c1u3.js"><\/script><script src="audio_data/audio_c1u4.js"><\/script><script src="audio_data/audio_c2u1.js"><\/script><script src="audio_data/audio_c2u2.js"><\/script><script src="audio_data/audio_c2u3.js"><\/script><script src="audio_data/audio_c2u4.js"><\/script><script src="audio_data/audio_c2u5.js"><\/script><script src="audio_data/audio_c3u1.js"><\/script><script src="audio_data/audio_c3u2.js"><\/script><script src="audio_data/audio_c3u3.js"><\/script><script src="audio_data/audio_c3u4.js"><\/script><script src="audio_data/audio_c3u5.js"><\/script><script src="audio_data/audio_c4u1.js"><\/script><script src="audio_data/audio_c4u2.js"><\/script><script src="audio_data/audio_c4u3.js"><\/script><script src="audio_data/audio_c4u4.js"><\/script><script src="audio_data/audio_c5u1.js"><\/script><script src="audio_data/audio_c5u2.js"><\/script><script src="audio_data/audio_c5u3.js"><\/script><script src="audio_data/audio_c5u4.js"><\/script>')}</script>
+<div id="main">
+  <div class="welcome" id="welcomePanel">
+    <h2>Benvenuti! 🇮🇹</h2>
+    <p>点击左侧目录选择课程<br>每个单元包含：对话 · 词汇 · 语法 · 常用句</p>
+  </div>
+  <div id="unitContentContainer"></div>
+</div>
+
+<button id="sidebarToggle" onclick="toggleSidebar()">&#9776;</button>
+<div id="sidebarOverlay"></div>
+
+<script>if(location.protocol==='file:'){
+  let s="";
+const units=["c1u1","c1u2","c1u3","c1u4","c2u1","c2u2","c2u3","c2u4","c2u5","c3u1","c3u2","c3u3","c3u4","c3u5","c4u1","c4u2","c5u1","c5u2","c5u3","c5u4"];
+units.forEach(u=>{s+='<script src="audio_data/audio_'+u+'.js"><\/script>'});
+document.write(s);
+}</script>
+
 <script>
 // ====== BOOK DATA ======
-const bookData = {
-  "chapters": [
-    {
-      "title": "All'arrivo in Italia",
-      "subtitle": "初到意大利",
-      "units": [
-        {
-          "id": "c1u1",
-          "num": "第1单元",
-          "title": "Affittare una casa",
-          "subtitle": "租房",
-          "scene": "Mario è appena arrivato in Italia per studiare. Deve trovare un appartamento. Oggi va a vedere una casa in affitto nel centro di Roma con l'agente immobiliare. Il video mostra come cercare un appartamento, come fare un sopralluogo e quali domande fare riguardo all'affitto, alle spese e alla caparra.",
-          "vocab": [
-            {
-              "it": "affittare",
-              "zh": "出租/租用"
-            },
-            {
-              "it": "pavimento",
-              "zh": "地板"
-            },
-            {
-              "it": "mobile",
-              "zh": "家具"
-            },
-            {
-              "it": "appartamento ammobiliato",
-              "zh": "带家具的公寓"
-            },
-            {
-              "it": "divano",
-              "zh": "长沙发"
-            },
-            {
-              "it": "soggiorno",
-              "zh": "起居室"
-            },
-            {
-              "it": "poltrona",
-              "zh": "单人沙发"
-            },
-            {
-              "it": "termosifone",
-              "zh": "暖气"
-            },
-            {
-              "it": "scaldabagno",
-              "zh": "热水器"
-            },
-            {
-              "it": "fornello",
-              "zh": "炉灶"
-            },
-            {
-              "it": "frigorifero",
-              "zh": "电冰箱"
-            },
-            {
-              "it": "lavatrice",
-              "zh": "洗衣机"
-            },
-            {
-              "it": "scala",
-              "zh": "楼梯"
-            },
-            {
-              "it": "soffitto",
-              "zh": "天花板"
-            },
-            {
-              "it": "caparra",
-              "zh": "押金"
-            },
-            {
-              "it": "contratto",
-              "zh": "合同"
-            },
-            {
-              "it": "spese condominiali",
-              "zh": "物业费"
-            },
-            {
-              "it": "inquilino",
-              "zh": "房客"
-            }
-          ,
-            {"it": "salotto", "zh": "客厅"},
-            {"it": "studio", "zh": "书房"},
-            {"it": "sala da pranzo", "zh": "餐厅"},
-            {"it": "aria condizionata", "zh": "空调"},
-            {"it": "microonde", "zh": "微波炉"},
-            {"it": "dispensa", "zh": "食品柜"},
-            {"it": "doccia", "zh": "淋浴"}],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Signora",
-              "text": "Buongiorno signore! Ho visto l'annuncio e sono interessata ad affittare questa casa. Posso vederla?",
-              "zh": "您好，先生！我看到了广告，有兴趣租这个房子，能看看吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Aldo",
-              "text": "Oh, prego, s'accomodi. La troverà un po' in disordine perché l'inquilina sta per partire.",
-              "zh": "噢，请进。有点乱，因为上一个房客正要搬走。"
-            },
-            {
-              "speaker": "B",
-              "name": "Aldo",
-              "text": "Poi ci sono due camere da letto. Ha intenzione di affittarla da sola o con un'altra persona? Il prezzo varia.",
-              "zh": "然后有两间卧室。您打算一个人租还是合租？价格不同。"
-            },
-            {
-              "speaker": "A",
-              "name": "Signora",
-              "text": "Quanto è l'affitto?",
-              "zh": "租金是多少？"
-            },
-            {
-              "speaker": "B",
-              "name": "Aldo",
-              "text": "800 euro al mese, più 100 euro di spese condominiali.",
-              "zh": "每月800欧元，外加100欧元物业费。"
-            },
-            {
-              "speaker": "A",
-              "name": "Signora",
-              "text": "È inclusa l'acqua e il gas?",
-              "zh": "包含水电燃气吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Aldo",
-              "text": "Sì, tutto incluso. Deve solo pagare la luce e internet.",
-              "zh": "全包，只需付电费和网费。"
-            },
-            {
-              "speaker": "A",
-              "name": "Signora",
-              "text": "Quant'è la caparra?",
-              "zh": "押金多少？"
-            },
-            {
-              "speaker": "B",
-              "name": "Aldo",
-              "text": "Due mensilità, 1.600 euro. Poi firmiamo il contratto.",
-              "zh": "两个月，1600欧元。然后签合同。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "avere bisogno di...",
-              "explain": "需要……，接名词或不定式",
-              "example": "Ho bisogno di un appartamento."
-            },
-            {
-              "rule": "stare per...",
-              "explain": "正要做某事",
-              "example": "L'inquilina sta per partire."
-            },
-            {
-              "rule": "dipendere da...",
-              "explain": "取决于……",
-              "example": "Il prezzo dipende dall'uso."
-            },
-            {
-              "rule": "ci sono...",
-              "explain": "有……",
-              "example": "Ci sono due camere."
-            },
-            {
-              "rule": "al mese",
-              "explain": "每月",
-              "example": "800 euro al mese."
-            },
-            {
-              "rule": "in più",
-              "explain": "另外",
-              "example": "100 euro in più."
-            }
-          ,
-            {"rule": "Affittasi (Fittasi)", "explain": "有……招租，口语化说法，规范说法是Si affitta...", "example": "Affittasi appartamento ammobiliato."},
-            {"rule": "la parte più bassa", "explain": "最下面的位置，形容词比较级和最高级", "example": "Nella parte piu bassa del foglio."},
-            {"rule": "occorrere", "explain": "对……有必要，无人称动词", "example": "Tutte le informazioni che ti occorrono."},
-            {"rule": "altrimenti", "explain": "反之，否则", "example": "Altrimenti è meglio che li cerchi per strada."},
-            {"rule": "È meglio che tu veda l'appartamento.", "explain": "最好……", "example": "È meglio che tu veda l'appartamento."},
-            {"rule": "si + 动词第三人称", "explain": "被动语态/无人称形式", "example": "Si affitta / Si conia una moneta."},
-            {"rule": "condividere... con...", "explain": "与某人分享/合租", "example": "Condividere un appartamento con un'altra persona."},
-            {"rule": "da pagare", "explain": "有……的费用要付", "example": "Bollette da pagare."}],
-          "sentences": [
-            {
-              "it": "Sto cercando un appartamento ammobiliato.",
-              "zh": "我在找一间带家具的公寓。"
-            },
-            {
-              "it": "Quanto costa l'affitto al mese?",
-              "zh": "租金一个月多少钱？"
-            },
-            {
-              "it": "Mi pare che i mobili siano troppo vecchi.",
-              "zh": "我觉得家具太旧了。"
-            },
-            {
-              "it": "Mi serve la ricevuta per il rimborso.",
-              "zh": "我需要收据报销。"
-            },
-            {
-              "it": "Buona giornata!",
-              "zh": "祝您一天愉快！"
-            }]
-        },
-        {
-          "id": "c1u2",
-          "num": "第2单元",
-          "title": "I servizi telefonici",
-          "subtitle": "办理手机业务",
-          "scene": "Arrivare in Italia significa anche procurarsi una SIM italiana. In questo video si impara come attivare una SIM, scegliere un'offerta e ricaricare il credito. I principali operatori italiani sono TIM, Vodafone, Wind e Tre. Per attivare una SIM servono passaporto e codice fiscale.",
-          "vocab": [
-            {
-              "it": "telefono cellulare",
-              "zh": "手机"
-            },
-            {
-              "it": "SIM",
-              "zh": "SIM卡"
-            },
-            {
-              "it": "ricarica",
-              "zh": "充值"
-            },
-            {
-              "it": "credito",
-              "zh": "话费余额"
-            },
-            {
-              "it": "chiamata",
-              "zh": "打电话"
-            },
-            {
-              "it": "offerta",
-              "zh": "套餐"
-            },
-            {
-              "it": "tariffa",
-              "zh": "费率"
-            },
-            {
-              "it": "dati",
-              "zh": "流量"
-            },
-            {
-              "it": "operatore",
-              "zh": "运营商"
-            },
-            {
-              "it": "copertura",
-              "zh": "信号覆盖"
-            },
-            {
-              "it": "attivare",
-              "zh": "开通"
-            },
-            {
-              "it": "contratto",
-              "zh": "合同"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Buongiorno, vorrei attivare una SIM italiana.",
-              "zh": "早上好，我想开通一张意大利手机卡。"
-            },
-            {
-              "speaker": "B",
-              "name": "Impiegato",
-              "text": "Buongiorno. Ha il passaporto e il codice fiscale?",
-              "zh": "早上好。有护照和税号吗？"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Sì, eccoli. Quali offerte avete?",
-              "zh": "有，给您。有什么套餐？"
-            },
-            {
-              "speaker": "B",
-              "name": "Impiegato",
-              "text": "10 euro al mese con 50GB, chiamate e SMS illimitati.",
-              "zh": "每月10欧元含50GB流量和无限通话短信。"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "La copertura in questa zona è buona?",
-              "zh": "这个区域信号好吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Impiegato",
-              "text": "Sì, siamo il miglior operatore per copertura nazionale.",
-              "zh": "是的，我们的全国覆盖是最好的。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "attivare una SIM",
-              "explain": "开通SIM卡",
-              "example": "Vorrei attivare una SIM italiana."
-            },
-            {
-              "rule": "avere bisogno di...",
-              "explain": "需要……",
-              "example": "Ho bisogno di una ricarica."
-            },
-            {
-              "rule": "Come posso...",
-              "explain": "我怎么……？",
-              "example": "Come posso controllare il mio credito?"
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Vorrei attivare una SIM italiana.",
-              "zh": "我想开通一张意大利手机卡。"
-            },
-            {
-              "it": "Quanto costa questa offerta?",
-              "zh": "这个套餐多少钱？"
-            },
-            {
-              "it": "Ho bisogno di una ricarica.",
-              "zh": "我需要充值。"
-            },
-            {
-              "it": "Come posso controllare il mio credito?",
-              "zh": "我怎么查询余额？"
-            },
-            {
-              "it": "Vorrei cambiare operatore.",
-              "zh": "我想换运营商。"
-            }
-          ]
-        },
-        {
-          "id": "c1u3",
-          "num": "第3单元",
-          "title": "I servizi bancari",
-          "subtitle": "办理银行业务",
-          "scene": "Aprire un conto in banca in Italia è necessario per studenti e lavoratori. Questo video mostra come aprire un conto, fare un bonifico e prelevare denaro. Inoltre si imparano i nomi delle monete e banconote in euro. Le principali banche italiane includono Unicredit, Monte dei Paschi e Banca d'Italia.",
-          "vocab": [
-            {
-              "it": "banca",
-              "zh": "银行"
-            },
-            {
-              "it": "conto corrente",
-              "zh": "储蓄账户"
-            },
-            {
-              "it": "bonifico",
-              "zh": "转账"
-            },
-            {
-              "it": "prelievo",
-              "zh": "取款"
-            },
-            {
-              "it": "versamento",
-              "zh": "存款"
-            },
-            {
-              "it": "bancomat",
-              "zh": "自动取款机"
-            },
-            {
-              "it": "carta di credito",
-              "zh": "信用卡"
-            },
-            {
-              "it": "IBAN",
-              "zh": "国际银行账户号码"
-            },
-            {
-              "it": "saldo",
-              "zh": "余额"
-            },
-            {
-              "it": "cambio",
-              "zh": "汇率"
-            },
-            {
-              "it": "commissione",
-              "zh": "手续费"
-            },
-            {
-              "it": "estratto conto",
-              "zh": "账户明细"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Buongiorno, vorrei aprire un conto.",
-              "zh": "早上好，我想开一个账户。"
-            },
-            {
-              "speaker": "B",
-              "name": "Impiegato",
-              "text": "Buongiorno. Ha il passaporto e il codice fiscale?",
-              "zh": "早上好。有护照和税号吗？"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Sì. Ho bisogno anche di un bancomat.",
-              "zh": "有。我还需要一张银行卡。"
-            },
-            {
-              "speaker": "B",
-              "name": "Impiegato",
-              "text": "Le apro un conto corrente con carta di debito inclusa.",
-              "zh": "我为您开一个储蓄账户，含借记卡。"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Vorrei anche fare un bonifico in Cina.",
-              "zh": "我还想汇一笔钱到中国。"
-            },
-            {
-              "speaker": "B",
-              "name": "Impiegato",
-              "text": "Mi serve l'IBAN della banca destinataria.",
-              "zh": "我需要收款银行的IBAN。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "aprire un conto",
-              "explain": "开账户",
-              "example": "Vorrei aprire un conto."
-            },
-            {
-              "rule": "fare un bonifico",
-              "explain": "转账",
-              "example": "Dovrei fare un bonifico."
-            },
-            {
-              "rule": "nuovo di zecca",
-              "explain": "崭新的",
-              "example": "Questa moneta è nuova di zecca."
-            },
-            {
-              "rule": "venire + 过去分词",
-              "explain": "被动语态",
-              "example": "La moneta viene coniata."
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Dov'è la banca più vicina?",
-              "zh": "最近的银行在哪里？"
-            },
-            {
-              "it": "Vorrei aprire un conto.",
-              "zh": "我想开一个账户。"
-            },
-            {
-              "it": "Dovrei fare un bonifico.",
-              "zh": "我要转账。"
-            },
-            {
-              "it": "C'è un bancomat qui?",
-              "zh": "这里有自动取款机吗？"
-            },
-            {
-              "it": "Ho bisogno di prelevare dei soldi.",
-              "zh": "我需要取款。"
-            }
-          ,
-            {"it": "Vorrei cambiare dei dollari in euro.", "zh": "我想把这些美元换成欧元。"},
-            {"it": "Qual è il cambio reale tra lo Yuan cinese e l'euro?", "zh": "人民币与欧元的实时汇率是多少？"}]
-        },
-        {
-          "id": "c1u4",
-          "num": "第4单元",
-          "title": "Richiedere il permesso di soggiorno",
-          "subtitle": "申请居留证",
-          "scene": "Richiedere il permesso di soggiorno è obbligatorio per tutti i cittadini non UE che soggiornano in Italia oltre 90 giorni. Questo video mostra come compilare il kit per la richiesta: bollettino postale, modulo 209, assicurazione sanitaria e marca da bollo. La domanda va presentata entro 8 giorni lavorativi dall'arrivo.",
-          "vocab": [
-            {
-              "it": "permesso di soggiorno",
-              "zh": "居留证"
-            },
-            {
-              "it": "passaporto",
-              "zh": "护照"
-            },
-            {
-              "it": "visto",
-              "zh": "签证"
-            },
-            {
-              "it": "codice fiscale",
-              "zh": "税号"
-            },
-            {
-              "it": "polizza assicurativa",
-              "zh": "健康保险"
-            },
-            {
-              "it": "marca da bollo",
-              "zh": "印花税票"
-            },
-            {
-              "it": "fotocopia",
-              "zh": "复印件"
-            },
-            {
-              "it": "ricevuta",
-              "zh": "收据"
-            },
-            {
-              "it": "scadenza",
-              "zh": "到期"
-            },
-            {
-              "it": "rinnovo",
-              "zh": "延期"
-            },
-            {
-              "it": "questura",
-              "zh": "警察局"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "B",
-              "name": "Amico",
-              "text": "Oggi ho ritirato questo kit per il permesso di soggiorno.",
-              "zh": "今天我领回了这套居留证申请材料。"
-            },
-            {
-              "speaker": "B",
-              "name": "Amico",
-              "text": "Contiene il bollettino postale, il modulo 209 e le istruzioni.",
-              "zh": "里面有邮政汇款单、209号表格和说明。"
-            },
-            {
-              "speaker": "B",
-              "name": "Amico",
-              "text": "Il modulo 1 è per studenti, il modulo 2 per lavoro.",
-              "zh": "表格1给学生，表格2给工作等用途。"
-            },
-            {
-              "speaker": "B",
-              "name": "Amico",
-              "text": "Dobbiamo spedire tutto entro 8 giorni dall'arrivo.",
-              "zh": "我们必须在入境后8天内寄出所有材料。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "da poco",
-              "explain": "不久前",
-              "example": "Sono arrivato da poco."
-            },
-            {
-              "rule": "in base a...",
-              "explain": "根据……",
-              "example": "In base alla legge italiana."
-            },
-            {
-              "rule": "nel caso (in cui)",
-              "explain": "假如",
-              "example": "Nel caso in cui serva aiuto."
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Devo richiedere il permesso di soggiorno.",
-              "zh": "我需要申请居留证。"
-            },
-            {
-              "it": "Entro quanto tempo devo farlo?",
-              "zh": "我需要在多少天内办理？"
-            },
-            {
-              "it": "Quali documenti servono?",
-              "zh": "需要什么材料？"
-            },
-            {
-              "it": "Quando scade il mio permesso?",
-              "zh": "我的居留证什么时候到期？"
-            },
-            {
-              "it": "Vorrei rinnovare il permesso.",
-              "zh": "我想续期居留证。"
-            }
-          ,
-            {"it": "Dove posso presentare la domanda?", "zh": "我在哪里提交申请？"},
-            {"it": "Quanto costa il permesso di soggiorno?", "zh": "居留证多少钱？"}]
-        }
-      ]
-    },
-    {
-      "title": "Mangiare in Italia",
-      "subtitle": "美食篇",
-      "units": [
-        {
-          "id": "c2u1",
-          "num": "第1单元",
-          "title": "Al caffè",
-          "subtitle": "在咖啡馆",
-          "scene": "Il bar in Italia è un luogo di ritrovo sociale. In questo video si impara come ordinare al bar: caffè espresso, cappuccino, macchiato, spremuta d'arancia. Si imparano anche le espressioni per chiedere il conto e informazioni sui servizi. La colazione italiana tipica è caffè e cornetto.",
-          "vocab": [
-            {
-              "it": "caffè",
-              "zh": "咖啡"
-            },
-            {
-              "it": "caffè espresso",
-              "zh": "浓缩咖啡"
-            },
-            {
-              "it": "cappuccino",
-              "zh": "卡布奇诺"
-            },
-            {
-              "it": "tazzina da caffè",
-              "zh": "咖啡杯"
-            },
-            {
-              "it": "schiuma",
-              "zh": "泡沫"
-            },
-            {
-              "it": "zucchero",
-              "zh": "糖"
-            },
-            {
-              "it": "cornetto",
-              "zh": "牛角包"
-            },
-            {
-              "it": "macchiato",
-              "zh": "玛琪朵浓缩咖啡"
-            },
-            {
-              "it": "spremuta",
-              "zh": "果汁"
-            },
-            {
-              "it": "arancia",
-              "zh": "橙子"
-            },
-            {
-              "it": "limone",
-              "zh": "柠檬"
-            },
-            {
-              "it": "toast",
-              "zh": "吐司"
-            },
-            {
-              "it": "menù",
-              "zh": "菜单"
-            },
-            {
-              "it": "conto",
-              "zh": "账单"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Buongiorno! Avete spremute di frutta fresca?",
-              "zh": "你好！有鲜榨果汁吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Barista",
-              "text": "Sì, di arance e di limoni.",
-              "zh": "有，橙汁和柠檬汁。"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Oggi fa molto caldo. C'è anche un bagno?",
-              "zh": "今天太热了。有洗手间吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Barista",
-              "text": "Sì, dietro la parete, a destra.",
-              "zh": "有，在墙后面，右边。"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Vorrei un caffè macchiato, per favore.",
-              "zh": "请给我一杯玛琪朵浓缩咖啡。"
-            },
-            {
-              "speaker": "B",
-              "name": "Barista",
-              "text": "Subito!",
-              "zh": "马上来！"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "spremuta di frutta fresca",
-              "explain": "鲜榨果汁",
-              "example": "Una spremuta d'arancia."
-            },
-            {
-              "rule": "Oggi fa molto caldo",
-              "explain": "今天很热（fare表达天气）",
-              "example": "Oggi fa molto caldo."
-            },
-            {
-              "rule": "dietro la parete",
-              "explain": "在墙后面",
-              "example": "Dov'è il bagno? Dietro la parete."
-            },
-            {
-              "rule": "a proposito",
-              "explain": "正好，对啦",
-              "example": "A proposito, conosci Maria?"
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Mi porta il menù, per favore?",
-              "zh": "请给我菜单看看可以吗？"
-            },
-            {
-              "it": "Cosa desidera?",
-              "zh": "您需要点什么？"
-            },
-            {
-              "it": "Vorrei un espresso.",
-              "zh": "我要一杯浓缩咖啡。"
-            },
-            {
-              "it": "Il conto, prego.",
-              "zh": "请结账。"
-            },
-            {
-              "it": "Dov'è il bagno?",
-              "zh": "洗手间在哪里？"
-            }
-          ,
-            {"it": "Mi porta il menu per favore?", "zh": "请给我菜单看看可以吗？"},
-            {"it": "Vorrei un croissant e un espresso.", "zh": "我要一个牛角包和一杯浓缩咖啡。"},
-            {"it": "C'è caffè decaffeinato?", "zh": "有没有不含咖啡因的咖啡？"}]
-        },
-        {
-          "id": "c2u2",
-          "num": "第2单元",
-          "title": "In pasticceria",
-          "subtitle": "在甜品店",
-          "scene": "La pasticceria italiana offre dolci tradizionali regionali. In questo video si visita la pasticceria \"Pastiera Napoletana\" per conoscere i dolci tipici napoletani: babà, sfogliatella e pastiera. Si imparano le domande per chiedere informazioni sugli ingredienti e sui sapori dei dolci.",
-          "vocab": [
-            {
-              "it": "dolce",
-              "zh": "甜品"
-            },
-            {
-              "it": "pasticceria",
-              "zh": "甜品店"
-            },
-            {
-              "it": "cioccolato",
-              "zh": "巧克力"
-            },
-            {
-              "it": "torta",
-              "zh": "蛋糕"
-            },
-            {
-              "it": "ricotta",
-              "zh": "鲜奶酪"
-            },
-            {
-              "it": "babà",
-              "zh": "朗姆酒精蛋糕"
-            },
-            {
-              "it": "cannolo siciliano",
-              "zh": "西西里奶酪卷"
-            },
-            {
-              "it": "pastiera napoletana",
-              "zh": "那不勒斯派"
-            },
-            {
-              "it": "sfogliatella",
-              "zh": "千层酥"
-            },
-            {
-              "it": "tiramisù",
-              "zh": "提拉米苏"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Aldo",
-              "text": "Buongiorno! Che dolci avete oggi?",
-              "zh": "早上好！今天有什么甜品？"
-            },
-            {
-              "speaker": "B",
-              "name": "Proprietaria",
-              "text": "Oggi abbiamo la pastiera napoletana, il babà e la sfogliatella.",
-              "zh": "今天有不勒斯派、朗姆蛋糕和千层酥。"
-            },
-            {
-              "speaker": "A",
-              "name": "Aldo",
-              "text": "La pastiera è a base di ricotta?",
-              "zh": "那不勒斯派以鲜奶酪为主吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Proprietaria",
-              "text": "Sì, ricotta di pecora, grano e aromi naturali.",
-              "zh": "是的，羊奶鲜奶酪、麦子和天然香料。"
-            },
-            {
-              "speaker": "A",
-              "name": "Aldo",
-              "text": "Posso offrirvi un pezzetto?",
-              "zh": "我可以请你们尝一块吗？"
-            },
-            {
-              "speaker": "A",
-              "name": "Aldo",
-              "text": "È buonissima!",
-              "zh": "太美味了！"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "a base di...",
-              "explain": "以……为主要成分",
-              "example": "La torta è a base di ricotta."
-            },
-            {
-              "rule": "il più famoso",
-              "explain": "最著名的",
-              "example": "Il più famoso dolce della regione."
-            },
-            {
-              "rule": "offrire un assaggio",
-              "explain": "请品尝一下",
-              "example": "Posso offrirvi un pezzetto?"
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Quale dolce preferisce?",
-              "zh": "您喜欢哪种甜品？"
-            },
-            {
-              "it": "Che tipo di dolci avete?",
-              "zh": "你们有哪些甜品？"
-            },
-            {
-              "it": "Che ripieno ha il dolce?",
-              "zh": "这种甜品是什么馅的？"
-            },
-            {
-              "it": "La torta è a base di ricotta.",
-              "zh": "这个蛋糕以鲜奶酪为主料。"
-            },
-            {
-              "it": "È buonissima!",
-              "zh": "太美味了！"
-            }
-          ,
-            {"it": "Qual è il più famoso dolce in questa regione?", "zh": "这个大区最有名的甜品是哪种？"},
-            {"it": "Che tipo di dolce avete?", "zh": "你们有哪些甜品？"}]
-        },
-        {
-          "id": "c2u3",
-          "num": "第3单元",
-          "title": "In gelateria",
-          "subtitle": "在冰激凌店",
-          "scene": "Il gelato italiano è famoso in tutto il mondo. In questo video si impara come ordinare un gelato in una gelateria artigianale: scegliere i gusti, il cono o la coppa. I gusti tradizionali: crema, cioccolato, pistacchio, fragola e nocciola.",
-          "vocab": [
-            {
-              "it": "gelato",
-              "zh": "冰激凌"
-            },
-            {
-              "it": "gelateria",
-              "zh": "冰激凌店"
-            },
-            {
-              "it": "cono",
-              "zh": "甜筒"
-            },
-            {
-              "it": "coppa",
-              "zh": "杯装"
-            },
-            {
-              "it": "gusto",
-              "zh": "口味"
-            },
-            {
-              "it": "crema",
-              "zh": "奶油味"
-            },
-            {
-              "it": "pistacchio",
-              "zh": "开心果味"
-            },
-            {
-              "it": "nocciola",
-              "zh": "榛子味"
-            },
-            {
-              "it": "vaniglia",
-              "zh": "香草味"
-            },
-            {
-              "it": "fragola",
-              "zh": "草莓味"
-            },
-            {
-              "it": "cioccolato",
-              "zh": "巧克力味"
-            },
-            {
-              "it": "artigianale",
-              "zh": "手工制作的"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Vorrei un gelato, per favore. Che gusti avete?",
-              "zh": "我想要一份冰激凌。你们有什么口味？"
-            },
-            {
-              "speaker": "B",
-              "name": "Gelataio",
-              "text": "Abbiamo crema, cioccolato, pistacchio e fragola.",
-              "zh": "有奶油、巧克力、开心果和草莓。"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Un cono da tre gusti: pistacchio, crema e fragola.",
-              "zh": "一个三味甜筒：开心果、奶油和草莓。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "vorrei...",
-              "explain": "我想要……",
-              "example": "Vorrei un gelato."
-            },
-            {
-              "rule": "posso assaggiare...",
-              "explain": "我可以尝一下……",
-              "example": "Posso assaggiare questo gusto?"
-            },
-            {
-              "rule": "è artigianale?",
-              "explain": "是手工的吗？",
-              "example": "Questo gelato è artigianale?"
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Vorrei un gelato.",
-              "zh": "我想要一份冰激凌。"
-            },
-            {
-              "it": "Che gusti avete?",
-              "zh": "有什么口味？"
-            },
-            {
-              "it": "Un cono con tre gusti.",
-              "zh": "一个三味的甜筒。"
-            },
-            {
-              "it": "Posso assaggiare?",
-              "zh": "可以尝一下吗？"
-            },
-            {
-              "it": "È artigianale?",
-              "zh": "是手工的吗？"
-            }
-          ]
-        },
-        {
-          "id": "c2u4",
-          "num": "第4单元",
-          "title": "In pizzeria",
-          "subtitle": "在披萨店",
-          "scene": "La pizza è il piatto italiano più famoso. Questo video mostra come prenotare un tavolo, ordinare una pizza e chiedere il conto in pizzeria. La pizza margherita è la più classica: pomodoro, mozzarella e basilico, i colori della bandiera italiana.",
-          "vocab": [
-            {
-              "it": "pizza",
-              "zh": "披萨"
-            },
-            {
-              "it": "pizzeria",
-              "zh": "披萨店"
-            },
-            {
-              "it": "margherita",
-              "zh": "玛格丽特披萨"
-            },
-            {
-              "it": "napoli",
-              "zh": "那不勒斯披萨"
-            },
-            {
-              "it": "prosciutto",
-              "zh": "火腿"
-            },
-            {
-              "it": "funghi",
-              "zh": "蘑菇"
-            },
-            {
-              "it": "mozzarella",
-              "zh": "马苏里拉奶酪"
-            },
-            {
-              "it": "pomodoro",
-              "zh": "番茄"
-            },
-            {
-              "it": "olive",
-              "zh": "橄榄"
-            },
-            {
-              "it": "cameriere",
-              "zh": "服务员"
-            },
-            {
-              "it": "tavolo",
-              "zh": "桌子"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Buongiorno, vorrei prenotare un tavolo per due. Per le 20:00.",
-              "zh": "你好，我想预订一张两人的桌子，晚上8点。"
-            },
-            {
-              "speaker": "B",
-              "name": "Cameriere",
-              "text": "Va bene, tavolo per due alle 20:00.",
-              "zh": "好的，两人桌晚上8点。"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Che pizza mi consiglia?",
-              "zh": "您推荐什么披萨？"
-            },
-            {
-              "speaker": "B",
-              "name": "Cameriere",
-              "text": "La margherita è sempre un'ottima scelta.",
-              "zh": "玛格丽特总是不错的选择。"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Una margherita, per favore. Il conto!",
-              "zh": "请给我一份玛格丽特披萨。结账！"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "prenotare un tavolo",
-              "explain": "预订桌子",
-              "example": "Vorrei prenotare un tavolo."
-            },
-            {
-              "rule": "mi consiglia...",
-              "explain": "您推荐……？",
-              "example": "Che pizza mi consiglia?"
-            },
-            {
-              "rule": "per favore",
-              "explain": "请",
-              "example": "Il conto, per favore."
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Vorrei prenotare un tavolo per due.",
-              "zh": "我想预订两人的桌子。"
-            },
-            {
-              "it": "Che pizza mi consiglia?",
-              "zh": "推荐什么披萨？"
-            },
-            {
-              "it": "Una pizza margherita, per favore.",
-              "zh": "请给我一份玛格丽特披萨。"
-            },
-            {
-              "it": "È troppo piccola!",
-              "zh": "太小了！"
-            },
-            {
-              "it": "Il conto, prego.",
-              "zh": "请结账。"
-            }
-          ]
-        },
-        {
-          "id": "c2u5",
-          "num": "第5单元",
-          "title": "Preparare la pasta a casa",
-          "subtitle": "在家做意大利面",
-          "scene": "Preparare la pasta fresca in casa è una tradizione italiana. Ingredienti: farina, uova, sale e olio d'oliva. Si impasta, si lascia riposare e poi si stende. Il sugo all'amatriciana o al pomodoro fresco completano il piatto.",
-          "vocab": [
-            {
-              "it": "pasta",
-              "zh": "意大利面"
-            },
-            {
-              "it": "spaghetti",
-              "zh": "长面"
-            },
-            {
-              "it": "penne",
-              "zh": "斜管面"
-            },
-            {
-              "it": "farina",
-              "zh": "面粉"
-            },
-            {
-              "it": "uova",
-              "zh": "鸡蛋"
-            },
-            {
-              "it": "sugo",
-              "zh": "酱汁"
-            },
-            {
-              "it": "basilico",
-              "zh": "罗勒"
-            },
-            {
-              "it": "olio d'oliva",
-              "zh": "橄榄油"
-            },
-            {
-              "it": "aglio",
-              "zh": "大蒜"
-            },
-            {
-              "it": "formaggio",
-              "zh": "奶酪"
-            },
-            {
-              "it": "ricetta",
-              "zh": "食谱"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Chef",
-              "text": "Oggi prepariamo la pasta fresca in casa.",
-              "zh": "今天我们在家做新鲜意大利面。"
-            },
-            {
-              "speaker": "A",
-              "name": "Chef",
-              "text": "Ingredienti: farina, uova, sale e olio d'oliva.",
-              "zh": "材料：面粉、鸡蛋、盐和橄榄油。"
-            },
-            {
-              "speaker": "A",
-              "name": "Chef",
-              "text": "Impastiamo per 10 minuti fino a ottenere un impasto liscio. Lasciamo riposare.",
-              "zh": "揉面10分钟至光滑。醒面30分钟。"
-            },
-            {
-              "speaker": "A",
-              "name": "Chef",
-              "text": "Il sugo all'amatriciana è il mio preferito.",
-              "zh": "阿马特里切酱汁是我的最爱。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "preparare la pasta",
-              "explain": "做意大利面",
-              "example": "Prepariamo la pasta in casa."
-            },
-            {
-              "rule": "lasciare riposare",
-              "explain": "静置/醒面",
-              "example": "Lasciamo riposare l'impasto."
-            },
-            {
-              "rule": "ci vuole",
-              "explain": "需要（时间）",
-              "example": "Quanto tempo ci vuole?"
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Qual è la ricetta tradizionale?",
-              "zh": "传统食谱是什么？"
-            },
-            {
-              "it": "Quanto tempo ci vuole?",
-              "zh": "需要多长时间？"
-            },
-            {
-              "it": "Devo aggiungere le uova?",
-              "zh": "需要加鸡蛋吗？"
-            },
-            {
-              "it": "Il sugo è pronto.",
-              "zh": "酱汁准备好了。"
-            },
-            {
-              "it": "Si mette la pasta in acqua bollente.",
-              "zh": "把面放入沸水中。"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "Muoversi in Italia",
-      "subtitle": "交通篇",
-      "units": [
-        {
-          "id": "c3u1",
-          "num": "第1单元",
-          "title": "Chiedere informazioni stradali",
-          "subtitle": "问路",
-          "scene": "Chiedere informazioni stradali è fondamentale in una nuova città. Le espressioni per chiedere e dare indicazioni: proseguire dritto, girare a destra/sinistra, al semaforo. Imparare i punti di riferimento: piazza, duomo, stazione, fermata dell'autobus.",
-          "vocab": [
-            {
-              "it": "incrocio",
-              "zh": "路口"
-            },
-            {
-              "it": "girare a destra/sinistra",
-              "zh": "右转/左转"
-            },
-            {
-              "it": "proseguire dritto",
-              "zh": "直走"
-            },
-            {
-              "it": "semaforo",
-              "zh": "红绿灯"
-            },
-            {
-              "it": "piazza",
-              "zh": "广场"
-            },
-            {
-              "it": "via/viale",
-              "zh": "街道/大道"
-            },
-            {
-              "it": "fermata",
-              "zh": "公交站"
-            },
-            {
-              "it": "stazione",
-              "zh": "火车站"
-            },
-            {
-              "it": "mappa",
-              "zh": "地图"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Turista",
-              "text": "Scusi, dov'è la stazione più vicina?",
-              "zh": "请问，最近的车站在哪里？"
-            },
-            {
-              "speaker": "B",
-              "name": "Passante",
-              "text": "Vada sempre dritto, poi giri a sinistra al semaforo.",
-              "zh": "一直走，在红绿灯左转。"
-            },
-            {
-              "speaker": "A",
-              "name": "Turista",
-              "text": "È lontano?",
-              "zh": "远吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Passante",
-              "text": "10 minuti a piedi.",
-              "zh": "步行10分钟。"
-            },
-            {
-              "speaker": "A",
-              "name": "Turista",
-              "text": "Come arrivo al centro?",
-              "zh": "怎么去市中心？"
-            },
-            {
-              "speaker": "B",
-              "name": "Passante",
-              "text": "Prenda l'autobus 64.",
-              "zh": "坐64路公交车。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "proseguire dritto",
-              "explain": "直走",
-              "example": "Proseguire dritto fino al semaforo."
-            },
-            {
-              "rule": "girare a sinistra",
-              "explain": "左转",
-              "example": "Giri a sinistra."
-            },
-            {
-              "rule": "a piedi",
-              "explain": "步行",
-              "example": "10 minuti a piedi."
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Scusi, dov'è la stazione?",
-              "zh": "请问车站在哪里？"
-            },
-            {
-              "it": "Come arrivo al centro?",
-              "zh": "怎么去市中心？"
-            },
-            {
-              "it": "È lontano da qui?",
-              "zh": "离这里远吗？"
-            },
-            {
-              "it": "Giri a sinistra/destra.",
-              "zh": "左/右转。"
-            },
-            {
-              "it": "Vada sempre dritto.",
-              "zh": "一直往前走。"
-            }
-          ]
-        },
-        {
-          "id": "c3u2",
-          "num": "第2单元",
-          "title": "Prendere i mezzi pubblici",
-          "subtitle": "公交出行",
-          "scene": "Autobus, tram e metropolitana sono i principali mezzi pubblici in Italia. Il biglietto va comprato prima di salire e convalidato all'inizio del viaggio. I biglietti sono validi per un tempo limitato (60-100 minuti) e permettono i cambi tra diversi mezzi.",
-          "vocab": [
-            {
-              "it": "biglietto",
-              "zh": "车票"
-            },
-            {
-              "it": "abbonamento",
-              "zh": "月票"
-            },
-            {
-              "it": "fermata",
-              "zh": "站点"
-            },
-            {
-              "it": "autobus",
-              "zh": "公交车"
-            },
-            {
-              "it": "tram",
-              "zh": "有轨电车"
-            },
-            {
-              "it": "metropolitana",
-              "zh": "地铁"
-            },
-            {
-              "it": "orario",
-              "zh": "时刻表"
-            },
-            {
-              "it": "ritardo",
-              "zh": "晚点"
-            },
-            {
-              "it": "convalida",
-              "zh": "验票"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Passeggero",
-              "text": "Da dove parte l'autobus per Firenze?",
-              "zh": "去佛罗伦萨的公交车从哪出发？"
-            },
-            {
-              "speaker": "B",
-              "name": "Info",
-              "text": "Dalla stazione autobus, binario 3.",
-              "zh": "公交车站3号站台。"
-            },
-            {
-              "speaker": "A",
-              "name": "Passeggero",
-              "text": "A che ora passa il prossimo? Ricordi di convalidare!",
-              "zh": "下一班几点？记得验票！"
-            },
-            {
-              "speaker": "A",
-              "name": "Passeggero",
-              "text": "Il biglietto è valido per due ore?",
-              "zh": "票两小时内有效吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Info",
-              "text": "Sì, dalla convalida.",
-              "zh": "是的，从验票起。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "convalidare il biglietto",
-              "explain": "验票（必须在上车前）",
-              "example": "Ricordi di convalidare!"
-            },
-            {
-              "rule": "valido per...",
-              "explain": "有效",
-              "example": "Valido per due ore."
-            },
-            {
-              "rule": "a che ora...",
-              "explain": "几点？",
-              "example": "A che ora passa il prossimo?"
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Da dove parte l'autobus?",
-              "zh": "公交车从哪出发？"
-            },
-            {
-              "it": "A che ora passa il prossimo?",
-              "zh": "下一班几点？"
-            },
-            {
-              "it": "Devo cambiare linea?",
-              "zh": "需要换乘吗？"
-            },
-            {
-              "it": "Dov'è la fermata della metro?",
-              "zh": "地铁站在哪里？"
-            },
-            {
-              "it": "A che ora è l'ultima corsa?",
-              "zh": "末班车几点？"
-            }
-          ]
-        },
-        {
-          "id": "c3u3",
-          "num": "第3单元",
-          "title": "Alla stazione",
-          "subtitle": "在火车站",
-          "scene": "La stazione ferroviaria italiana offre treni Regionali, Intercity e Frecciarossa. In questo video si impara come acquistare un biglietto, chiedere informazioni su orari e binari. I biglietti vanno convalidati prima di salire sul treno, nelle apposite macchinette gialle.",
-          "vocab": [
-            {
-              "it": "biglietteria",
-              "zh": "售票处"
-            },
-            {
-              "it": "binario",
-              "zh": "站台"
-            },
-            {
-              "it": "treno",
-              "zh": "火车"
-            },
-            {
-              "it": "Regionale",
-              "zh": "区域火车"
-            },
-            {
-              "it": "Frecciarossa",
-              "zh": "红色高铁"
-            },
-            {
-              "it": "andata e ritorno",
-              "zh": "往返票"
-            },
-            {
-              "it": "prenotazione",
-              "zh": "预订"
-            },
-            {
-              "it": "ritardo",
-              "zh": "晚点"
-            },
-            {
-              "it": "bagagli",
-              "zh": "行李"
-            },
-            {
-              "it": "orario",
-              "zh": "时刻表"
-            },
-            {
-              "it": "tabellone",
-              "zh": "信息板"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Passeggero",
-              "text": "Vorrei un biglietto per Roma, andata e ritorno.",
-              "zh": "要一张去罗马的往返票。"
-            },
-            {
-              "speaker": "B",
-              "name": "Bigliettaio",
-              "text": "Per quale data?",
-              "zh": "几号的？"
-            },
-            {
-              "speaker": "A",
-              "name": "Passeggero",
-              "text": "Il 15 settembre, ritorno il 20.",
-              "zh": "9月15日出发，20日返回。"
-            },
-            {
-              "speaker": "B",
-              "name": "Bigliettaio",
-              "text": "8:30 o 14:00. Quale preferisce?",
-              "zh": "8:30或14:00的，选哪趟？"
-            },
-            {
-              "speaker": "A",
-              "name": "Passeggero",
-              "text": "14:00. Un posto vicino al finestrino.",
-              "zh": "14:00的，靠窗的位子。"
-            },
-            {
-              "speaker": "B",
-              "name": "Bigliettaio",
-              "text": "85 euro totali.",
-              "zh": "一共85欧元。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "andata e ritorno",
-              "explain": "往返票",
-              "example": "Un biglietto di andata e ritorno."
-            },
-            {
-              "rule": "vicino al finestrino",
-              "explain": "靠窗",
-              "example": "Un posto vicino al finestrino."
-            },
-            {
-              "rule": "in orario/ritardo",
-              "explain": "准时/晚点",
-              "example": "Il treno ha 10 minuti di ritardo."
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Un biglietto per Roma, per favore.",
-              "zh": "请给我一张去罗马的票。"
-            },
-            {
-              "it": "A che ora parte il treno?",
-              "zh": "火车几点出发？"
-            },
-            {
-              "it": "Su quale binario?",
-              "zh": "在哪个站台？"
-            },
-            {
-              "it": "Il treno è in ritardo?",
-              "zh": "火车晚点了吗？"
-            },
-            {
-              "it": "Vorrei cambiare il biglietto.",
-              "zh": "我想改签。"
-            }
-          ]
-        },
-        {
-          "id": "c3u4",
-          "num": "第4单元",
-          "title": "All'aeroporto",
-          "subtitle": "在机场",
-          "scene": "In aeroporto le frasi utili riguardano check-in, gate, imbarco e bagagli. Questo video mostra come chiedere informazioni sui voli, trovare il gate e orientarsi in aeroporto. I principali aeroporti italiani: Fiumicino (Roma), Malpensa (Milano), Marco Polo (Venezia).",
-          "vocab": [
-            {
-              "it": "gate",
-              "zh": "登机口"
-            },
-            {
-              "it": "imbarco",
-              "zh": "登机"
-            },
-            {
-              "it": "check-in",
-              "zh": "值机"
-            },
-            {
-              "it": "bagaglio a mano",
-              "zh": "手提行李"
-            },
-            {
-              "it": "bagaglio da stiva",
-              "zh": "托运行李"
-            },
-            {
-              "it": "passaporto",
-              "zh": "护照"
-            },
-            {
-              "it": "dogana",
-              "zh": "海关"
-            },
-            {
-              "it": "volo",
-              "zh": "航班"
-            },
-            {
-              "it": "ritardo",
-              "zh": "延误"
-            },
-            {
-              "it": "arrivo",
-              "zh": "到达"
-            },
-            {
-              "it": "partenza",
-              "zh": "出发"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Passeggero",
-              "text": "Scusi, dov'è il gate 12?",
-              "zh": "请问12号登机口在哪？"
-            },
-            {
-              "speaker": "B",
-              "name": "Personale",
-              "text": "Vada dritto, a sinistra al primo corridoio. In fondo.",
-              "zh": "直走，第一个走廊左转，走到头。"
-            },
-            {
-              "speaker": "A",
-              "name": "Passeggero",
-              "text": "Il mio volo parte alle 16:00, ho tempo?",
-              "zh": "我的航班16:00，还来得及吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Personale",
-              "text": "Ha un'ora. Passi dal duty free se vuole.",
-              "zh": "还有一小时。可以去免税店逛逛。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "a che ora...",
-              "explain": "几点？",
-              "example": "A che ora parte il volo?"
-            },
-            {
-              "rule": "dovere + inf.",
-              "explain": "必须做……",
-              "example": "Devo compilare qualcosa?"
-            },
-            {
-              "rule": "andare al gate",
-              "explain": "去登机口",
-              "example": "Devo andare al gate 12."
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Dov'è il check-in?",
-              "zh": "值机柜台在哪？"
-            },
-            {
-              "it": "Il mio volo è in ritardo?",
-              "zh": "我的航班晚点了吗？"
-            },
-            {
-              "it": "A che gate devo andare?",
-              "zh": "去哪个登机口？"
-            },
-            {
-              "it": "Dov'è il ritiro bagagli?",
-              "zh": "行李提取处在哪？"
-            },
-            {
-              "it": "Posso imbarcare questa valigia?",
-              "zh": "可以托运这个箱子吗？"
-            }
-          ]
-        },
-        {
-          "id": "c3u5",
-          "num": "第5单元",
-          "title": "Prendere un taxi e noleggiare",
-          "subtitle": "乘出租车及租车",
-          "scene": "Prendere un taxi o noleggiare un'auto sono opzioni comuni per chi visita l'Italia. I taxi si trovano nelle apposite fermate o si chiamano per telefono. Per noleggiare un'auto servono patente, passaporto e carta di credito. L'assicurazione è obbligatoria.",
-          "vocab": [
-            {
-              "it": "tassista",
-              "zh": "出租车司机"
-            },
-            {
-              "it": "tariffa",
-              "zh": "费率"
-            },
-            {
-              "it": "noleggiare",
-              "zh": "租"
-            },
-            {
-              "it": "assicurazione",
-              "zh": "保险"
-            },
-            {
-              "it": "parcheggio",
-              "zh": "停车"
-            },
-            {
-              "it": "benzina",
-              "zh": "汽油"
-            },
-            {
-              "it": "patente",
-              "zh": "驾照"
-            },
-            {
-              "it": "prezzo fisso",
-              "zh": "固定价格"
-            },
-            {
-              "it": "bagagliaio",
-              "zh": "后备箱"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Passeggero",
-              "text": "Taxi! All'aeroporto di Fiumicino, per favore.",
-              "zh": "出租车！去菲乌米奇诺机场。"
-            },
-            {
-              "speaker": "B",
-              "name": "Tassista",
-              "text": "Il prezzo è fisso, 48 euro. Arriviamo in 40 minuti.",
-              "zh": "固定价格48欧元，约40分钟。"
-            },
-            {
-              "speaker": "A",
-              "name": "Passeggero",
-              "text": "Vorrei noleggiare un'auto per tre giorni.",
-              "zh": "我想租一辆车，三天。"
-            },
-            {
-              "speaker": "B",
-              "name": "Noleggio",
-              "text": "Patente di guida e carta di credito, per favore.",
-              "zh": "请出示驾照和信用卡。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "prezzo fisso",
-              "explain": "固定价格",
-              "example": "48 euro, prezzo fisso."
-            },
-            {
-              "rule": "a seconda di...",
-              "explain": "依据",
-              "example": "A seconda del traffico."
-            },
-            {
-              "rule": "noleggiare un'auto",
-              "explain": "租车",
-              "example": "Vorrei noleggiare un'auto."
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Mi porti a questo indirizzo.",
-              "zh": "请送我去这个地址。"
-            },
-            {
-              "it": "Quanto costa per andare in centro?",
-              "zh": "去市中心多少钱？"
-            },
-            {
-              "it": "Vorrei noleggiare un'auto.",
-              "zh": "我想租车。"
-            },
-            {
-              "it": "Che assicurazione include?",
-              "zh": "包含什么保险？"
-            },
-            {
-              "it": "Dov'è il parcheggio?",
-              "zh": "停车场在哪？"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "Divertirsi in Italia",
-      "subtitle": "游览篇",
-      "units": [
-        {
-          "id": "c4u1",
-          "num": "第1单元",
-          "title": "In agenzia turistica",
-          "subtitle": "在旅行社",
-          "scene": "In agenzia turistica si possono prenotare tour, escursioni e pacchetti vacanza. In questo video si impara come chiedere informazioni su un viaggio, prenotare un tour e chiedere sconti. Si imparano i termini come pacchetto turistico, mezza pensione e escursione.",
-          "vocab": [
-            {
-              "it": "pacchetto turistico",
-              "zh": "旅游套餐"
-            },
-            {
-              "it": "escursione",
-              "zh": "短途旅行"
-            },
-            {
-              "it": "guida turistica",
-              "zh": "导游"
-            },
-            {
-              "it": "itinerario",
-              "zh": "行程"
-            },
-            {
-              "it": "biglietto d'ingresso",
-              "zh": "入场券"
-            },
-            {
-              "it": "sconto",
-              "zh": "优惠"
-            },
-            {
-              "it": "prenotare",
-              "zh": "预订"
-            },
-            {
-              "it": "camera doppia",
-              "zh": "双人房"
-            },
-            {
-              "it": "mezza pensione",
-              "zh": "半餐"
-            },
-            {
-              "it": "colazione inclusa",
-              "zh": "含早餐"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Vorrei prenotare un tour per la Toscana.",
-              "zh": "我想预订一个托斯卡纳的行程。"
-            },
-            {
-              "speaker": "B",
-              "name": "Impiegato",
-              "text": "5 giorni con Firenze, Siena e San Gimignano.",
-              "zh": "5天游览佛罗伦萨、锡耶纳和圣吉米尼亚诺。"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Include alloggio e pasti?",
-              "zh": "包含住宿和餐食吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Impiegato",
-              "text": "Hotel 4 stelle con colazione. Pranzo libero.",
-              "zh": "四星含早餐，午餐自理。"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Quanto costa?",
-              "zh": "多少钱？"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "vorrei prenotare",
-              "explain": "我想预订",
-              "example": "Vorrei prenotare un tour."
-            },
-            {
-              "rule": "incluso/libero",
-              "explain": "包含/自理",
-              "example": "Colazione inclusa, pranzo libero."
-            },
-            {
-              "rule": "sconto per gruppi",
-              "explain": "团体优惠",
-              "example": "Sconto del 10% per gruppi."
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Vorrei prenotare un tour.",
-              "zh": "我想预订行程。"
-            },
-            {
-              "it": "Include il pranzo?",
-              "zh": "含午餐吗？"
-            },
-            {
-              "it": "C'è uno sconto per gruppi?",
-              "zh": "团体优惠吗？"
-            },
-            {
-              "it": "Guida in cinese?",
-              "zh": "有中文导游吗？"
-            },
-            {
-              "it": "Qual è il periodo migliore?",
-              "zh": "最佳游览时间？"
-            }
-          ]
-        },
-        {
-          "id": "c4u2",
-          "num": "第2单元",
-          "title": "In albergo",
-          "subtitle": "住宾馆",
-          "scene": "Chi viaggia ha bisogno di un alloggio. Questo video mostra come fare il check-in, chiedere informazioni sulla camera, la colazione e i servizi. Le espressioni per prenotare una camera singola o doppia, chiedere il Wi-Fi e l'orario del check-out.",
-          "vocab": [
-            {
-              "it": "hotel/albergo",
-              "zh": "酒店"
-            },
-            {
-              "it": "camera singola",
-              "zh": "单人房"
-            },
-            {
-              "it": "camera doppia",
-              "zh": "双人房"
-            },
-            {
-              "it": "suite",
-              "zh": "套房"
-            },
-            {
-              "it": "receptionist",
-              "zh": "前台"
-            },
-            {
-              "it": "check-in",
-              "zh": "入住"
-            },
-            {
-              "it": "check-out",
-              "zh": "退房"
-            },
-            {
-              "it": "Wi-Fi",
-              "zh": "无线网络"
-            },
-            {
-              "it": "aria condizionata",
-              "zh": "空调"
-            },
-            {
-              "it": "colazione",
-              "zh": "早餐"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Ospite",
-              "text": "Ho una prenotazione a nome di Li.",
-              "zh": "我以Li的名字预订了房间。"
-            },
-            {
-              "speaker": "B",
-              "name": "Receptionist",
-              "text": "Camera 305, doppia, 3 notti.",
-              "zh": "305房，双人房3晚。"
-            },
-            {
-              "speaker": "A",
-              "name": "Ospite",
-              "text": "A che ora è la colazione?",
-              "zh": "早餐几点？"
-            },
-            {
-              "speaker": "B",
-              "name": "Receptionist",
-              "text": "7-10, ristorante al primo piano.",
-              "zh": "7-10点，餐厅在一楼。"
-            },
-            {
-              "speaker": "A",
-              "name": "Ospite",
-              "text": "Il check-out?",
-              "zh": "退房时间？"
-            },
-            {
-              "speaker": "B",
-              "name": "Receptionist",
-              "text": "Entro le 11.",
-              "zh": "11点前。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "a nome di...",
-              "explain": "以……的名字",
-              "example": "Prenotazione a nome di Li."
-            },
-            {
-              "rule": "entro le...",
-              "explain": "在……前",
-              "example": "Check-out entro le 11."
-            },
-            {
-              "rule": "in anticipo",
-              "explain": "提前",
-              "example": "Contattateci in anticipo."
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Vorrei prenotare una camera.",
-              "zh": "我想预订房间。"
-            },
-            {
-              "it": "Avete camere disponibili?",
-              "zh": "有空房吗？"
-            },
-            {
-              "it": "A che ora è il check-out?",
-              "zh": "几点退房？"
-            },
-            {
-              "it": "Posso avere il Wi-Fi?",
-              "zh": "Wi-Fi密码？"
-            },
-            {
-              "it": "Dov'è l'ascensore?",
-              "zh": "电梯在哪？"
-            }
-          ]
-        },
-        {
-          "id": "c4u3",
-          "num": "第3单元",
-          "title": "Al museo",
-          "subtitle": "在博物馆",
-          "scene": "I musei italiani sono tra i più famosi al mondo: Uffizi, Vaticani, Brera. In questo video si impara come acquistare il biglietto, chiedere l'audioguida in cinese e informarsi sugli orari. Sconti disponibili per under 18 e over 65.",
-          "vocab": [
-            {
-              "it": "museo",
-              "zh": "博物馆"
-            },
-            {
-              "it": "galleria",
-              "zh": "美术馆"
-            },
-            {
-              "it": "biglietto d'ingresso",
-              "zh": "入场券"
-            },
-            {
-              "it": "ridotto",
-              "zh": "优惠票"
-            },
-            {
-              "it": "gratuito",
-              "zh": "免费"
-            },
-            {
-              "it": "audioguida",
-              "zh": "语音导览"
-            },
-            {
-              "it": "mostra",
-              "zh": "展览"
-            },
-            {
-              "it": "collezione",
-              "zh": "收藏"
-            },
-            {
-              "it": "capolavoro",
-              "zh": "杰作"
-            },
-            {
-              "it": "affresco",
-              "zh": "壁画"
-            },
-            {
-              "it": "scultura",
-              "zh": "雕塑"
-            },
-            {
-              "it": "dipinto",
-              "zh": "绘画"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Turista",
-              "text": "Quanto costa il biglietto?",
-              "zh": "入场券多少钱？"
-            },
-            {
-              "speaker": "B",
-              "name": "Cassiere",
-              "text": "Intero 20 euro, ridotto 2 euro per under 18.",
-              "zh": "全票20欧，18岁以下2欧。"
-            },
-            {
-              "speaker": "A",
-              "name": "Turista",
-              "text": "C'è audioguida in cinese?",
-              "zh": "有中文语音导览吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Cassiere",
-              "text": "6 euro, in cinese. La raccomando!",
-              "zh": "6欧元，有中文。推荐使用！"
-            },
-            {
-              "speaker": "A",
-              "name": "Turista",
-              "text": "A che ora chiude?",
-              "zh": "几点关门？"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "biglietto intero/ridotto",
-              "explain": "全票/优惠票",
-              "example": "Intero 20€, ridotto 2€."
-            },
-            {
-              "rule": "audioguida in cinese",
-              "explain": "中文语音导览",
-              "example": "C'è audioguida in cinese?"
-            },
-            {
-              "rule": "orario di apertura",
-              "explain": "开放时间",
-              "example": "A che ora chiude il museo?"
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Quanto costa il biglietto?",
-              "zh": "入场券多少钱？"
-            },
-            {
-              "it": "C'è audioguida in cinese?",
-              "zh": "有中文语音导览吗？"
-            },
-            {
-              "it": "A che ora chiude il museo?",
-              "zh": "博物馆几点关门？"
-            },
-            {
-              "it": "Posso fare fotografie?",
-              "zh": "可以拍照吗？"
-            },
-            {
-              "it": "Qual è il capolavoro più famoso?",
-              "zh": "最著名的杰作是什么？"
-            }
-          ]
-        },
-        {
-          "id": "c4u4",
-          "num": "第4单元",
-          "title": "Comprare prodotti tipici",
-          "subtitle": "购买特产",
-          "scene": "L'Italia è famosa per i suoi prodotti tipici: cuoio, vino, olio d'oliva, formaggio. In questo video si impara come fare acquisti in un negozio di prodotti tipici, chiedere sconti e spedire all'estero. Ogni regione ha le sue specialità.",
-          "vocab": [
-            {
-              "it": "prodotto tipico",
-              "zh": "特产"
-            },
-            {
-              "it": "artigianato",
-              "zh": "手工艺品"
-            },
-            {
-              "it": "cuoio",
-              "zh": "皮革"
-            },
-            {
-              "it": "vino",
-              "zh": "葡萄酒"
-            },
-            {
-              "it": "olio d'oliva",
-              "zh": "橄榄油"
-            },
-            {
-              "it": "formaggio",
-              "zh": "奶酪"
-            },
-            {
-              "it": "prosciutto",
-              "zh": "火腿"
-            },
-            {
-              "it": "tartufo",
-              "zh": "松露"
-            },
-            {
-              "it": "sconto",
-              "zh": "折扣"
-            },
-            {
-              "it": "spedire",
-              "zh": "寄送"
-            },
-            {
-              "it": "contanti",
-              "zh": "现金"
-            },
-            {
-              "it": "scontrino",
-              "zh": "收据"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Turista",
-              "text": "Cerco un regalo tipico toscano.",
-              "zh": "我在找一件托斯卡纳特产做礼物。"
-            },
-            {
-              "speaker": "B",
-              "name": "Negoziante",
-              "text": "Cuoio genuino, artigianale.",
-              "zh": "纯正手工皮革制品。"
-            },
-            {
-              "speaker": "A",
-              "name": "Turista",
-              "text": "Quanto costa questa borsa?",
-              "zh": "这个包多少钱？"
-            },
-            {
-              "speaker": "B",
-              "name": "Negoziante",
-              "text": "350 euro, ma 300 se paga in contanti.",
-              "zh": "350欧元，现金支付300欧。"
-            },
-            {
-              "speaker": "A",
-              "name": "Turista",
-              "text": "Potete spedirlo in Cina?",
-              "zh": "能寄到中国吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Negoziante",
-              "text": "Certo, spedizione 50 euro.",
-              "zh": "可以，运费50欧元。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "prodotto tipico",
-              "explain": "特产",
-              "example": "È un prodotto tipico toscano."
-            },
-            {
-              "rule": "fatto a mano",
-              "explain": "手工制作",
-              "example": "È fatto a mano?"
-            },
-            {
-              "rule": "spedire all'estero",
-              "explain": "寄到国外",
-              "example": "Spedite all'estero?"
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Cerco un souvenir tipico.",
-              "zh": "我在找特色纪念品。"
-            },
-            {
-              "it": "È fatto a mano?",
-              "zh": "是手工的吗？"
-            },
-            {
-              "it": "Quanto costa?",
-              "zh": "多少钱？"
-            },
-            {
-              "it": "Potete spedire in Cina?",
-              "zh": "能寄到中国吗？"
-            },
-            {
-              "it": "Posso pagare in contanti?",
-              "zh": "能用现金吗？"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "Vita Quotidiana",
-      "subtitle": "日常篇",
-      "units": [
-        {
-          "id": "c5u1",
-          "num": "第1单元",
-          "title": "Salutare e invitare",
-          "subtitle": "问候及邀请",
-          "scene": "Salutare e invitare sono azioni quotidiane fondamentali. In italiano il saluto cambia a seconda del momento della giornata e del grado di formalità. \"Tu\" si usa con amici e familiari, \"Lei\" con estranei e in contesti formali. Questo video mostra come presentarsi, salutare e fare inviti.",
-          "vocab": [
-            {
-              "it": "ciao",
-              "zh": "你好/再见（非正式）"
-            },
-            {
-              "it": "buongiorno",
-              "zh": "早上好"
-            },
-            {
-              "it": "buonasera",
-              "zh": "晚上好"
-            },
-            {
-              "it": "arrivederci",
-              "zh": "再见"
-            },
-            {
-              "it": "come sta?",
-              "zh": "您好吗？（正式）"
-            },
-            {
-              "it": "piacere",
-              "zh": "很高兴认识你"
-            },
-            {
-              "it": "presentare",
-              "zh": "介绍"
-            },
-            {
-              "it": "invitare",
-              "zh": "邀请"
-            },
-            {
-              "it": "complimenti",
-              "zh": "祝贺/赞美"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Marco",
-              "text": "Buongiorno! Lei è il nuovo collega cinese? Piacere, sono Marco.",
-              "zh": "你好！您是新的中国同事吗？很高兴认识您，我是Marco。"
-            },
-            {
-              "speaker": "B",
-              "name": "Li",
-              "text": "Piacere mio! Mi chiamo Li Jingjing, vengo da Pechino.",
-              "zh": "很高兴认识您！我叫李晶晶，来自北京。"
-            },
-            {
-              "speaker": "A",
-              "name": "Marco",
-              "text": "Benvenuta in Italia! Come si trova?",
-              "zh": "欢迎来意大利！您觉得怎么样？"
-            },
-            {
-              "speaker": "B",
-              "name": "Li",
-              "text": "Molto bene, grazie! Gli italiani sono molto gentili.",
-              "zh": "很好，谢谢！意大利人非常友好。"
-            },
-            {
-              "speaker": "A",
-              "name": "Marco",
-              "text": "Stasera usciamo con colleghi. Vuole unirsi?",
-              "zh": "今晚和同事一起出去，您想加入吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Li",
-              "text": "Volentieri! A che ora?",
-              "zh": "非常乐意！几点？"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "TU vs LEI",
-              "explain": "非正式/正式称呼",
-              "example": "Tu per amici, Lei per estranei."
-            },
-            {
-              "rule": "piacere di conoscerla",
-              "explain": "很高兴认识您",
-              "example": "Piacere di conoscerla!"
-            },
-            {
-              "rule": "che ne dici di...?",
-              "explain": "……怎么样？",
-              "example": "Che ne dici di un caffè?"
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Piacere di conoscerla!",
-              "zh": "很高兴认识您！"
-            },
-            {
-              "it": "Come va?",
-              "zh": "您好吗？"
-            },
-            {
-              "it": "Che ne dici di un caffè?",
-              "zh": "喝杯咖啡怎么样？"
-            },
-            {
-              "it": "Ti invito a cena.",
-              "zh": "我请你吃晚饭。"
-            },
-            {
-              "it": "A che ora ci vediamo?",
-              "zh": "我们几点见？"
-            }
-          ]
-        },
-        {
-          "id": "c5u2",
-          "num": "第2单元",
-          "title": "In farmacia",
-          "subtitle": "在药店",
-          "scene": "Le farmacie italiane hanno una croce verde luminosa. I farmacisti possono dare consigli per problemi di salute comuni. Per i farmaci più forti serve la ricetta medica. In questo video si impara come descrivere i sintomi e chiedere farmaci da banco.",
-          "vocab": [
-            {
-              "it": "farmacia",
-              "zh": "药店"
-            },
-            {
-              "it": "farmacista",
-              "zh": "药剂师"
-            },
-            {
-              "it": "ricetta",
-              "zh": "处方"
-            },
-            {
-              "it": "medicinale",
-              "zh": "药品"
-            },
-            {
-              "it": "antidolorifico",
-              "zh": "止痛药"
-            },
-            {
-              "it": "antibiotico",
-              "zh": "抗生素"
-            },
-            {
-              "it": "febbre",
-              "zh": "发烧"
-            },
-            {
-              "it": "raffreddore",
-              "zh": "感冒"
-            },
-            {
-              "it": "tosse",
-              "zh": "咳嗽"
-            },
-            {
-              "it": "mal di testa",
-              "zh": "头痛"
-            },
-            {
-              "it": "cerotto",
-              "zh": "创可贴"
-            },
-            {
-              "it": "sciroppo",
-              "zh": "糖浆"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Buongiorno, ho il raffreddore. Ha qualcosa?",
-              "zh": "早上好，我感冒了。有什么药吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Farmacista",
-              "text": "Da quanto tempo?",
-              "zh": "多久了？"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Da due giorni, e ho anche mal di gola.",
-              "zh": "两天了，喉咙也疼。"
-            },
-            {
-              "speaker": "B",
-              "name": "Farmacista",
-              "text": "Questo sciroppo per la tosse e queste compresse.",
-              "zh": "这个止咳糖浆和这些药片。"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Devo andare dal dottore?",
-              "zh": "需要去看医生吗？"
-            },
-            {
-              "speaker": "B",
-              "name": "Farmacista",
-              "text": "Se non migliora in una settimana, sì.",
-              "zh": "如果一周没好转的话就去。"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "ho mal di...",
-              "explain": "我……疼",
-              "example": "Ho mal di testa/gola/stomaco."
-            },
-            {
-              "rule": "avere la febbre",
-              "explain": "发烧",
-              "example": "Ha la febbre?"
-            },
-            {
-              "rule": "da banco",
-              "explain": "非处方药",
-              "example": "Questo è da banco."
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Ho mal di testa.",
-              "zh": "我头疼。"
-            },
-            {
-              "it": "Ha qualcosa per il raffreddore?",
-              "zh": "有感冒药吗？"
-            },
-            {
-              "it": "Devo mostrare la ricetta?",
-              "zh": "需要处方吗？"
-            },
-            {
-              "it": "Quante volte al giorno?",
-              "zh": "一天几次？"
-            },
-            {
-              "it": "Ho la febbre.",
-              "zh": "我发烧了。"
-            }
-          ]
-        },
-        {
-          "id": "c5u3",
-          "num": "第3单元",
-          "title": "Francobolli e marche da bollo",
-          "subtitle": "购买邮票与税票",
-          "scene": "In Italia i francobolli si comprano negli uffici postali e nei tabacchi. Le marche da bollo sono necessarie per documenti ufficiali e si acquistano nei tabacchi. In questo video si impara come chiedere francobolli e marche da bollo, e spedire lettere all'estero.",
-          "vocab": [
-            {
-              "it": "francobollo",
-              "zh": "邮票"
-            },
-            {
-              "it": "marca da bollo",
-              "zh": "印花税票"
-            },
-            {
-              "it": "tabaccaio",
-              "zh": "烟草店"
-            },
-            {
-              "it": "busta",
-              "zh": "信封"
-            },
-            {
-              "it": "cartolina",
-              "zh": "明信片"
-            },
-            {
-              "it": "posta",
-              "zh": "邮政"
-            },
-            {
-              "it": "raccomandata",
-              "zh": "挂号信"
-            },
-            {
-              "it": "pacco",
-              "zh": "包裹"
-            },
-            {
-              "it": "mittente",
-              "zh": "寄件人"
-            },
-            {
-              "it": "destinatario",
-              "zh": "收件人"
-            },
-            {
-              "it": "indirizzo",
-              "zh": "地址"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Vorrei dei francobolli per la Cina.",
-              "zh": "我想要寄往中国的邮票。"
-            },
-            {
-              "speaker": "B",
-              "name": "Impiegato",
-              "text": "Per lettera o cartolina? Prioritario o ordinario?",
-              "zh": "寄信还是明信片？优先还是普通？"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Lettera prioritaria. E mi serve una marca da bollo da 16 euro.",
-              "zh": "优先邮件。还要一张16欧元的印花税票。"
-            },
-            {
-              "speaker": "B",
-              "name": "Impiegato",
-              "text": "18,50 euro in tutto. Buona giornata!",
-              "zh": "一共18.5欧元。祝您愉快！"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "vorrei...",
-              "explain": "我想要……",
-              "example": "Vorrei dei francobolli."
-            },
-            {
-              "rule": "mi serve...",
-              "explain": "我需要……",
-              "example": "Mi serve una marca da bollo."
-            },
-            {
-              "rule": "per via aerea",
-              "explain": "航空邮寄",
-              "example": "Per via aerea o superficie?"
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Vorrei dei francobolli per la Cina.",
-              "zh": "我要寄往中国的邮票。"
-            },
-            {
-              "it": "Quanto costa spedire una lettera?",
-              "zh": "寄信多少钱？"
-            },
-            {
-              "it": "Mi serve una marca da bollo.",
-              "zh": "我需要一张印花税票。"
-            },
-            {
-              "it": "Dove compro i francobolli?",
-              "zh": "在哪买邮票？"
-            },
-            {
-              "it": "Devo mandare un pacco.",
-              "zh": "我要寄包裹。"
-            }
-          ]
-        },
-        {
-          "id": "c5u4",
-          "num": "第4单元",
-          "title": "I servizi postali",
-          "subtitle": "办理邮局业务",
-          "scene": "L'ufficio postale italiano offre molti servizi: spedizioni, pagamento bollette, vaglia. In questo video si impara come spedire un pacco all'estero, scegliere tra posta ordinaria e corriere espresso, e ottenere il numero di tracciamento.",
-          "vocab": [
-            {
-              "it": "ufficio postale",
-              "zh": "邮局"
-            },
-            {
-              "it": "sportello",
-              "zh": "窗口"
-            },
-            {
-              "it": "numero",
-              "zh": "号码"
-            },
-            {
-              "it": "turno",
-              "zh": "轮次"
-            },
-            {
-              "it": "bolletta",
-              "zh": "账单"
-            },
-            {
-              "it": "raccomandata",
-              "zh": "挂号信"
-            },
-            {
-              "it": "vaglia",
-              "zh": "汇款单"
-            },
-            {
-              "it": "ricevuta",
-              "zh": "收据"
-            },
-            {
-              "it": "modulo",
-              "zh": "表格"
-            },
-            {
-              "it": "coda",
-              "zh": "队伍"
-            },
-            {
-              "it": "tracciamento",
-              "zh": "追踪"
-            }
-          ],
-          "dialogue": [
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Devo spedire questo pacco a Shanghai.",
-              "zh": "我要寄这个包裹到上海。"
-            },
-            {
-              "speaker": "B",
-              "name": "Impiegato",
-              "text": "Cosa c'è dentro?",
-              "zh": "里面有什么？"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Vestiti e libri. Nessun valore commerciale.",
-              "zh": "衣服和书，无商业价值。"
-            },
-            {
-              "speaker": "B",
-              "name": "Impiegato",
-              "text": "Ordinario 45€, 15-20 giorni. Espresso 120€, 5-7 giorni.",
-              "zh": "普通45欧15-20天，快件120欧5-7天。"
-            },
-            {
-              "speaker": "A",
-              "name": "Cliente",
-              "text": "Prendo l'espresso. Posso pagare con carta?",
-              "zh": "选快件。能刷卡吗？"
-            }
-          ],
-          "grammar": [
-            {
-              "rule": "spedire un pacco",
-              "explain": "寄包裹",
-              "example": "Devo spedire un pacco in Cina."
-            },
-            {
-              "rule": "tracciamento online",
-              "explain": "在线追踪",
-              "example": "Il numero di tracciamento."
-            },
-            {
-              "rule": "corriere espresso",
-              "explain": "快递",
-              "example": "Corriere espresso, 5-7 giorni."
-            }
-          ],
-          "sentences": [
-            {
-              "it": "Devo spedire un pacco all'estero.",
-              "zh": "我要寄包裹到国外。"
-            },
-            {
-              "it": "Quanto costa la spedizione?",
-              "zh": "邮费多少？"
-            },
-            {
-              "it": "Posso tracciare online?",
-              "zh": "能在线追踪吗？"
-            },
-            {
-              "it": "Fino a che ora è aperto?",
-              "zh": "营业到几点？"
-            },
-            {
-              "it": "Ho perso la ricevuta.",
-              "zh": "我丢了收据。"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-};
-
-// ====== BUILD TOC ======
-function buildTOC() {
-  const container = document.getElementById('tocContainer');
-  let html = '';
-  bookData.chapters.forEach((ch, ci) => {
-    html += `<div class="chapter-group">`;
-    html += `<div class="chapter-title" onclick="toggleChapter(this)">
-      <span>${ch.title}<br><small style="font-weight:400;text-transform:none;letter-spacing:0;color:#666;font-size:14px">${ch.subtitle}</small></span>
-      <span class="arrow">▼</span>
-    </div>`;
-    html += `<ul class="unit-list">`;
-    ch.units.forEach((u) => {
-      html += `<li class="unit-item" data-unit="${u.id}" onclick="openUnit('${u.id}')">
-        <span class="unit-num">${u.num}</span>
-        ${u.title}
-        <br><small style="color:#999;font-size:14px">${u.subtitle}</small>
-      </li>`;
-    });
-    html += `</ul></div>`;
-  });
-  container.innerHTML = html;
-}
-
-function toggleChapter(el) {
-  el.classList.toggle('collapsed');
-  const list = el.nextElementSibling;
-  list.classList.toggle('collapsed');
-}
-
-function filterTOC(query) {
-  const items = document.querySelectorAll('.unit-item');
-  const q = query.toLowerCase().trim();
-  items.forEach(item => {
-    const text = item.textContent.toLowerCase();
-    item.style.display = (!q || text.includes(q)) ? '' : 'none';
-  });
-}
-
-// ====== BUILD UNIT CONTENT ======
-function buildUnitContent(unit) {
-  let html = `<div class="unit-content" id="uc-${unit.id}">`;
-
-  // Title
-  html += `<div class="unit-title-block">
-    <div class="chapter-label">${unit.num}</div>
-    <h2>${unit.title}</h2>
-    <div class="unit-subtitle">${unit.subtitle}</div>
-  </div>`;
-
-  // Scene Intro
-  html += `<div class="scene-intro">
-    <h3>🎬 场景介绍 / Scena</h3>
-    <p>${unit.scene}</p>
-  </div>`;
-
-  // Vocabulary
-  let vocabHtml = '';
-  unit.vocab.forEach((v, vi) => {
-    vocabHtml += `<div class="vocab-item" onclick="speakWord('${unit.id}', 'v_${vi}', this.querySelector('.play-icon'))">
-      <span class="play-icon">▶</span>
-      <span class="it">${v.it}</span>
-      <span class="sep">/</span>
-      <span class="zh">${v.zh}</span>
-    </div>`;
-  });
-  html += `<div class="vocab-section">
-    <h3>📝 关键词 / Parole Chiave</h3>
-    <div class="vocab-grid">${vocabHtml}</div>
-  </div>`;
-
-  // Dialogue
-  let diaHtml = '';
-  unit.dialogue.forEach((d, i) => {
-    const speakerClass = d.speaker === 'A' ? 'speaker' : 'speaker speaker-b';
-    diaHtml += `<div class="dialogue-line" onclick="speakLine(this, ${i})" data-unit="${unit.id}" data-idx="${i}">
-      <span class="${speakerClass}">${d.name}</span>
-      <div class="text-wrapper">
-        <div class="it">${d.text}</div>
-        <div class="zh">${d.zh}</div>
-      </div>
-      <button class="line-play">▶</button>
-    </div>`;
-  });
-  html += `<div class="dialogue-section">
-    <h3>💬 对话 / Dialogo</h3>
-    <div class="audio-controls">
-      <button class="audio-btn play-all" onclick="playAll('${unit.id}')" id="playAll-${unit.id}">🔊 播放全部</button>
-      <button class="audio-btn stop-btn" onclick="stopSpeech()">⏹ 停止</button>
-      <button class="audio-btn speed-control" onclick="toggleSpeed('${unit.id}')" id="speedBtn-${unit.id}">🐢 常速 1.0x</button>
-    </div>
-    <div class="progress-bar"><div class="fill" id="progress-${unit.id}"></div></div>
-    ${diaHtml}
-  </div>`;
-
-  // Grammar
-  let gramHtml = '';
-  unit.grammar.forEach(g => {
-    gramHtml += `<div class="grammar-item">
-      <div class="rule">📌 ${g.rule}</div>
-      <div class="explain">${g.explain}</div>
-      <div class="example"><em>${g.example}</em></div>
-    </div>`;
-  });
-  html += `<div class="grammar-section">
-    <h3>📖 语法解析 / Analisi Grammaticale</h3>
-    ${gramHtml}
-  </div>`;
-
-  // Common Sentences
-  let sentHtml = '';
-  unit.sentences.forEach((s, si) => {
-    sentHtml += `<div class="sentence-item" onclick="speakWord('${unit.id}', 's_${si}', this.querySelector('.s-play'))">
-      <div class="s-text">
-        <div class="it">${s.it}</div>
-        <div class="zh">${s.zh}</div>
-      </div>
-      <button class="s-play">▶</button>
-    </div>`;
-  });
-  html += `<div class="sentences-section">
-    <h3>⭐ 常用句 / Frasi Utili</h3>
-    ${sentHtml}
-  </div>`;
-
-  html += `</div>`;
-  return html;
-}
-
-// ====== AUDIO PLAYBACK (edge-tts base64) ======
-let audioCache = {};
-let currentAudio = null;
-let isPlaying = false;
-let isDialogAudio = false; // 当前播放的是否为对话音频（仅对话响应实时变速）
-let dialogSpeechRate = {}; // per-unit dialog speech rate, defaults to 1.0
-let playAllQueue = null;
-let activePlayBtn = null; // currently highlighted play button
-
-function toggleSpeed(unitId) {
-  const btn = document.getElementById(`speedBtn-${unitId}`);
-  const cur = dialogSpeechRate[unitId] || 1.0;
-  let newRate;
-  if (cur === 1.0) {
-    newRate = 1.4;
-    dialogSpeechRate[unitId] = 1.4;
-    btn.textContent = '🚀 快速 1.4x';
-    btn.classList.add('active');
-  } else {
-    newRate = 1.0;
-    dialogSpeechRate[unitId] = 1.0;
-    btn.textContent = '🐢 常速 1.0x';
-    btn.classList.remove('active');
+const bookData = [
+  {
+    "title": "All'arrivo in Italia",
+    "subtitle": "初到意大利",
+    "units": [
+      {
+        "id": "c1u1",
+        "num": "Unità 1",
+        "title": "Affittare una casa",
+        "subtitle": "租房",
+        "scene": "Mario è appena arrivato in Italia. Deve trovare un appartamento. Aldo Sparice mostra la casa. Il video mostra come cercare un appartamento, fare un sopralluogo e quali domande fare su affitto, spese e caparra.",
+        "vocab": [
+          {
+            "it": "affittare",
+            "zh": "出租/租用"
+          },
+          {
+            "it": "pavimento",
+            "zh": "地板"
+          },
+          {
+            "it": "mobile",
+            "zh": "家具"
+          },
+          {
+            "it": "appartamento ammobiliato",
+            "zh": "带家具的公寓"
+          },
+          {
+            "it": "divano",
+            "zh": "长沙发"
+          },
+          {
+            "it": "soggiorno",
+            "zh": "起居室"
+          },
+          {
+            "it": "poltrona",
+            "zh": "单人沙发"
+          },
+          {
+            "it": "termosifone",
+            "zh": "暖气"
+          },
+          {
+            "it": "scaldabagno",
+            "zh": "热水器"
+          },
+          {
+            "it": "fornello",
+            "zh": "炉灶"
+          },
+          {
+            "it": "frigorifero",
+            "zh": "电冰箱"
+          },
+          {
+            "it": "lavatrice",
+            "zh": "洗衣机"
+          },
+          {
+            "it": "scala",
+            "zh": "楼梯"
+          },
+          {
+            "it": "soffitto",
+            "zh": "天花板"
+          },
+          {
+            "it": "caparra",
+            "zh": "押金"
+          },
+          {
+            "it": "contratto",
+            "zh": "合同"
+          },
+          {
+            "it": "spese condominiali",
+            "zh": "物业费"
+          },
+          {
+            "it": "inquilino",
+            "zh": "房客"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Signora",
+            "text": "Buongiorno signore! Ho visto l'annuncio e sono interessata ad affittare questa casa. Posso vederla?",
+            "zh": "您好先生！我看到了广告，想租这个房子，能看看吗？"
+          },
+          {
+            "speaker": "B",
+            "name": "Aldo",
+            "text": "Prego, s'accomodi. La troverà un po' in disordine perché l'inquilina sta per partire.",
+            "zh": "请进。有点乱，因为上一个房客正要搬走。"
+          },
+          {
+            "speaker": "A",
+            "name": "Signora",
+            "text": "Quanto è l'affitto?",
+            "zh": "租金多少？"
+          },
+          {
+            "speaker": "B",
+            "name": "Aldo",
+            "text": "800 euro al mese, più 100 di spese condominiali.",
+            "zh": "每月800欧，外加100物业费。"
+          },
+          {
+            "speaker": "A",
+            "name": "Signora",
+            "text": "È inclusa l'acqua e il gas?",
+            "zh": "含水电气吗？"
+          },
+          {
+            "speaker": "B",
+            "name": "Aldo",
+            "text": "Sì, tutto incluso. Deve solo pagare luce e internet.",
+            "zh": "全包，只需付电费和网费。"
+          },
+          {
+            "speaker": "A",
+            "name": "Signora",
+            "text": "Quant'è la caparra?",
+            "zh": "押金多少？"
+          },
+          {
+            "speaker": "B",
+            "name": "Aldo",
+            "text": "Due mensilità, 1.600 euro. Poi firmiamo il contratto.",
+            "zh": "两个月，1600欧。然后签合同。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "avere bisogno di...",
+            "explain": "需要……，接名词或不定式",
+            "example": "Ho bisogno di un appartamento."
+          },
+          {
+            "rule": "stare per...",
+            "explain": "正要做某事",
+            "example": "L'inquilina sta per partire."
+          },
+          {
+            "rule": "dipendere da...",
+            "explain": "取决于……",
+            "example": "Il prezzo dipende dall'uso."
+          },
+          {
+            "rule": "ci sono...",
+            "explain": "有……",
+            "example": "Ci sono due camere."
+          },
+          {
+            "rule": "al mese",
+            "explain": "每月",
+            "example": "800 euro al mese."
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Sto cercando un appartamento ammobiliato.",
+            "zh": "我在找带家具的公寓。"
+          },
+          {
+            "it": "Quanto costa l'affitto al mese?",
+            "zh": "月租金多少？"
+          },
+          {
+            "it": "Mi pare che i mobili siano troppo vecchi.",
+            "zh": "家具太旧了。"
+          },
+          {
+            "it": "Mi serve la ricevuta per il rimborso.",
+            "zh": "我需要收据报销。"
+          },
+          {
+            "it": "Buona giornata!",
+            "zh": "祝您一天愉快！"
+          }
+        ]
+      },
+      {
+        "id": "c1u2",
+        "num": "Unità 2",
+        "title": "I servizi telefonici",
+        "subtitle": "手机业务",
+        "scene": "Arrivare in Italia significa procurarsi una SIM. TIM, Vodafone, Wind e Tre sono i principali operatori. Per attivare una SIM serve passaporto e codice fiscale.",
+        "vocab": [
+          {
+            "it": "telefono cellulare",
+            "zh": "手机"
+          },
+          {
+            "it": "SIM",
+            "zh": "SIM卡"
+          },
+          {
+            "it": "ricarica",
+            "zh": "充值"
+          },
+          {
+            "it": "credito",
+            "zh": "余额"
+          },
+          {
+            "it": "chiamata",
+            "zh": "打电话"
+          },
+          {
+            "it": "offerta",
+            "zh": "套餐"
+          },
+          {
+            "it": "tariffa",
+            "zh": "费率"
+          },
+          {
+            "it": "dati",
+            "zh": "流量"
+          },
+          {
+            "it": "operatore",
+            "zh": "运营商"
+          },
+          {
+            "it": "copertura",
+            "zh": "覆盖"
+          },
+          {
+            "it": "attivare",
+            "zh": "开通"
+          },
+          {
+            "it": "contratto",
+            "zh": "合同"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Vorrei attivare una SIM italiana.",
+            "zh": "我想开通意大利手机卡。"
+          },
+          {
+            "speaker": "B",
+            "name": "Impiegato",
+            "text": "Ha il passaporto e il codice fiscale?",
+            "zh": "有护照和税号吗？"
+          },
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Sì, eccoli. Quali offerte avete?",
+            "zh": "有。有什么套餐？"
+          },
+          {
+            "speaker": "B",
+            "name": "Impiegato",
+            "text": "10 euro al mese, 50GB, chiamate e SMS illimitati.",
+            "zh": "10欧\\/月，50GB流量，无限通话短信。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "attivare una SIM",
+            "explain": "开通SIM卡",
+            "example": "Vorrei attivare una SIM."
+          },
+          {
+            "rule": "avere bisogno di...",
+            "explain": "需要……",
+            "example": "Ho bisogno di una ricarica."
+          },
+          {
+            "rule": "Come posso...",
+            "explain": "我怎么……？",
+            "example": "Come posso controllare il credito?"
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Vorrei attivare una SIM.",
+            "zh": "我想开通手机卡。"
+          },
+          {
+            "it": "Quanto costa questa offerta?",
+            "zh": "这个套餐多少钱？"
+          },
+          {
+            "it": "Ho bisogno di una ricarica.",
+            "zh": "我需要充值。"
+          },
+          {
+            "it": "Come posso controllare il credito?",
+            "zh": "怎么查余额？"
+          },
+          {
+            "it": "Vorrei cambiare operatore.",
+            "zh": "我想换运营商。"
+          }
+        ]
+      },
+      {
+        "id": "c1u3",
+        "num": "Unità 3",
+        "title": "I servizi bancari",
+        "subtitle": "银行业务",
+        "scene": "Aprire un conto in Italia è necessario per studenti e lavoratori. Le principali banche: Unicredit, Monte dei Paschi, Intesa Sanpaolo.",
+        "vocab": [
+          {
+            "it": "banca",
+            "zh": "银行"
+          },
+          {
+            "it": "conto corrente",
+            "zh": "账户"
+          },
+          {
+            "it": "bonifico",
+            "zh": "转账"
+          },
+          {
+            "it": "prelievo",
+            "zh": "取款"
+          },
+          {
+            "it": "versamento",
+            "zh": "存款"
+          },
+          {
+            "it": "bancomat",
+            "zh": "ATM"
+          },
+          {
+            "it": "carta di credito",
+            "zh": "信用卡"
+          },
+          {
+            "it": "IBAN",
+            "zh": "IBAN"
+          },
+          {
+            "it": "saldo",
+            "zh": "余额"
+          },
+          {
+            "it": "cambio",
+            "zh": "汇率"
+          },
+          {
+            "it": "commissione",
+            "zh": "手续费"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Vorrei aprire un conto.",
+            "zh": "我想开账户。"
+          },
+          {
+            "speaker": "B",
+            "name": "Impiegato",
+            "text": "Ha il passaporto e il codice fiscale?",
+            "zh": "有护照和税号吗？"
+          },
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Sì. Ho bisogno anche di un bancomat.",
+            "zh": "有。还要一张银行卡。"
+          },
+          {
+            "speaker": "B",
+            "name": "Impiegato",
+            "text": "Le apro un conto con carta di debito inclusa.",
+            "zh": "开账户含借记卡。"
+          },
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Vorrei fare un bonifico in Cina.",
+            "zh": "我想汇款到中国。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "aprire un conto",
+            "explain": "开账户",
+            "example": "Vorrei aprire un conto."
+          },
+          {
+            "rule": "fare un bonifico",
+            "explain": "转账",
+            "example": "Dovrei fare un bonifico."
+          },
+          {
+            "rule": "nuovo di zecca",
+            "explain": "崭新的",
+            "example": "Questa moneta è nuova di zecca."
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Dov'è la banca più vicina?",
+            "zh": "最近的银行在哪？"
+          },
+          {
+            "it": "Vorrei aprire un conto.",
+            "zh": "我想开账户。"
+          },
+          {
+            "it": "Dovrei fare un bonifico.",
+            "zh": "我要转账。"
+          },
+          {
+            "it": "C'è un bancomat qui?",
+            "zh": "有ATM吗？"
+          },
+          {
+            "it": "Ho bisogno di prelevare.",
+            "zh": "我需要取款。"
+          }
+        ]
+      },
+      {
+        "id": "c1u4",
+        "num": "Unità 4",
+        "title": "Il permesso di soggiorno",
+        "subtitle": "居留证",
+        "scene": "Richiedere il permesso è obbligatorio per cittadini non UE che soggiornano oltre 90 giorni. Kit con bollettino postale, modulo 209, assicurazione e marca da bollo. Va presentato entro 8 giorni lavorativi.",
+        "vocab": [
+          {
+            "it": "permesso di soggiorno",
+            "zh": "居留证"
+          },
+          {
+            "it": "passaporto",
+            "zh": "护照"
+          },
+          {
+            "it": "visto",
+            "zh": "签证"
+          },
+          {
+            "it": "codice fiscale",
+            "zh": "税号"
+          },
+          {
+            "it": "polizza assicurativa",
+            "zh": "健康保险"
+          },
+          {
+            "it": "marca da bollo",
+            "zh": "印花税票"
+          },
+          {
+            "it": "fotocopia",
+            "zh": "复印件"
+          },
+          {
+            "it": "ricevuta",
+            "zh": "收据"
+          },
+          {
+            "it": "scadenza",
+            "zh": "到期"
+          },
+          {
+            "it": "rinnovo",
+            "zh": "延期"
+          },
+          {
+            "it": "questura",
+            "zh": "警察局"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Amico",
+            "text": "Oggi ho ritirato il kit per il permesso di soggiorno.",
+            "zh": "今天我领了居留证申请材料。"
+          },
+          {
+            "speaker": "A",
+            "name": "Amico",
+            "text": "Contiene il bollettino, il modulo 209 e le istruzioni.",
+            "zh": "有汇款单、209表格和说明。"
+          },
+          {
+            "speaker": "A",
+            "name": "Amico",
+            "text": "Il modulo 1 è per studenti, il 2 per lavoro.",
+            "zh": "表1给学生，表2给工作。"
+          },
+          {
+            "speaker": "A",
+            "name": "Amico",
+            "text": "Spediamo tutto entro 8 giorni dall'arrivo.",
+            "zh": "入境后8天内寄出。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "da poco",
+            "explain": "不久前",
+            "example": "Sono arrivato da poco."
+          },
+          {
+            "rule": "in base a...",
+            "explain": "根据……",
+            "example": "In base alla legge."
+          },
+          {
+            "rule": "nel caso (in cui)",
+            "explain": "假如",
+            "example": "Nel caso serva aiuto."
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Devo richiedere il permesso di soggiorno.",
+            "zh": "我需要申请居留证。"
+          },
+          {
+            "it": "Entro quanto tempo?",
+            "zh": "多少天内办理？"
+          },
+          {
+            "it": "Quali documenti servono?",
+            "zh": "要什么材料？"
+          },
+          {
+            "it": "Quando scade il mio permesso?",
+            "zh": "什么时候到期？"
+          },
+          {
+            "it": "Vorrei rinnovare il permesso.",
+            "zh": "我想续期。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Mangiare in Italia",
+    "subtitle": "美食篇",
+    "units": [
+      {
+        "id": "c2u1",
+        "num": "Unità 1",
+        "title": "Al caffè",
+        "subtitle": "咖啡馆",
+        "scene": "Il bar è un luogo di ritrovo sociale. Si ordina caffè, cappuccino, macchiato, spremuta. La colazione italiana è caffè e cornetto.",
+        "vocab": [
+          {
+            "it": "caffè",
+            "zh": "咖啡"
+          },
+          {
+            "it": "caffè espresso",
+            "zh": "浓缩咖啡"
+          },
+          {
+            "it": "cappuccino",
+            "zh": "卡布奇诺"
+          },
+          {
+            "it": "tazzina",
+            "zh": "咖啡杯"
+          },
+          {
+            "it": "schiuma",
+            "zh": "泡沫"
+          },
+          {
+            "it": "zucchero",
+            "zh": "糖"
+          },
+          {
+            "it": "cornetto",
+            "zh": "牛角包"
+          },
+          {
+            "it": "macchiato",
+            "zh": "玛琪朵"
+          },
+          {
+            "it": "spremuta",
+            "zh": "果汁"
+          },
+          {
+            "it": "arancia",
+            "zh": "橙子"
+          },
+          {
+            "it": "limone",
+            "zh": "柠檬"
+          },
+          {
+            "it": "conto",
+            "zh": "账单"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Buongiorno! Avete spremute di frutta fresca?",
+            "zh": "有鲜榨果汁吗？"
+          },
+          {
+            "speaker": "B",
+            "name": "Barista",
+            "text": "Sì, di arance e di limoni.",
+            "zh": "有橙汁和柠檬汁。"
+          },
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Oggi fa molto caldo! Vorrei un caffè macchiato.",
+            "zh": "今天太热了！我要一杯玛琪朵。"
+          },
+          {
+            "speaker": "B",
+            "name": "Barista",
+            "text": "Subito!",
+            "zh": "马上来！"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "spremuta di frutta fresca",
+            "explain": "鲜榨果汁",
+            "example": "Una spremuta d'arancia."
+          },
+          {
+            "rule": "Oggi fa molto caldo",
+            "explain": "今天很热",
+            "example": "Oggi fa caldo."
+          },
+          {
+            "rule": "a proposito",
+            "explain": "对啦",
+            "example": "A proposito, conosci Maria?"
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Vorrei un espresso.",
+            "zh": "我要浓缩咖啡。"
+          },
+          {
+            "it": "Il conto, prego.",
+            "zh": "请结账。"
+          },
+          {
+            "it": "Dov'è il bagno?",
+            "zh": "洗手间在哪？"
+          },
+          {
+            "it": "Cosa desidera?",
+            "zh": "您要点什么？"
+          },
+          {
+            "it": "C'è caffè decaffeinato?",
+            "zh": "有无因咖啡吗？"
+          }
+        ]
+      },
+      {
+        "id": "c2u2",
+        "num": "Unità 2",
+        "title": "In pasticceria",
+        "subtitle": "甜品店",
+        "scene": "La pasticceria italiana offre dolci tradizionali. Babà, sfogliatella e pastiera napoletana sono i classici di Napoli.",
+        "vocab": [
+          {
+            "it": "dolce",
+            "zh": "甜品"
+          },
+          {
+            "it": "pasticceria",
+            "zh": "甜品店"
+          },
+          {
+            "it": "cioccolato",
+            "zh": "巧克力"
+          },
+          {
+            "it": "torta",
+            "zh": "蛋糕"
+          },
+          {
+            "it": "ricotta",
+            "zh": "鲜奶酪"
+          },
+          {
+            "it": "babà",
+            "zh": "朗姆蛋糕"
+          },
+          {
+            "it": "cannolo",
+            "zh": "奶酪卷"
+          },
+          {
+            "it": "pastiera",
+            "zh": "那不勒斯派"
+          },
+          {
+            "it": "sfogliatella",
+            "zh": "千层酥"
+          },
+          {
+            "it": "tiramisù",
+            "zh": "提拉米苏"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Aldo",
+            "text": "Che dolci avete oggi?",
+            "zh": "今天有什么甜品？"
+          },
+          {
+            "speaker": "B",
+            "name": "Proprietaria",
+            "text": "Babà, sfogliatella e pastiera napoletana.",
+            "zh": "朗姆蛋糕、千层酥和那不勒斯派。"
+          },
+          {
+            "speaker": "A",
+            "name": "Aldo",
+            "text": "È buonissima!",
+            "zh": "太美味了！"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "a base di...",
+            "explain": "以……为主料",
+            "example": "La torta è a base di ricotta."
+          },
+          {
+            "rule": "il più famoso",
+            "explain": "最著名的",
+            "example": "Il più famoso dolce della regione."
+          },
+          {
+            "rule": "offrire un assaggio",
+            "explain": "请品尝",
+            "example": "Posso offrirvi un pezzetto?"
+          }
+        ],
+        "sentences": [
+          {
+            "it": "È buonissima!",
+            "zh": "太美味了！"
+          },
+          {
+            "it": "Quale dolce preferisce?",
+            "zh": "喜欢哪种甜品？"
+          },
+          {
+            "it": "Che ripieno ha?",
+            "zh": "什么馅？"
+          },
+          {
+            "it": "È a base di ricotta.",
+            "zh": "以鲜奶酪为主料。"
+          },
+          {
+            "it": "Qual è il più famoso?",
+            "zh": "哪种最有名？"
+          }
+        ]
+      },
+      {
+        "id": "c2u3",
+        "num": "Unità 3",
+        "title": "In gelateria",
+        "subtitle": "冰激凌店",
+        "scene": "Il gelato italiano è famoso nel mondo. Gusti: crema, cioccolato, pistacchio, fragola. Cono o coppa.",
+        "vocab": [
+          {
+            "it": "gelato",
+            "zh": "冰激凌"
+          },
+          {
+            "it": "gelateria",
+            "zh": "冰激凌店"
+          },
+          {
+            "it": "cono",
+            "zh": "甜筒"
+          },
+          {
+            "it": "coppa",
+            "zh": "杯装"
+          },
+          {
+            "it": "gusto",
+            "zh": "口味"
+          },
+          {
+            "it": "crema",
+            "zh": "奶油"
+          },
+          {
+            "it": "pistacchio",
+            "zh": "开心果"
+          },
+          {
+            "it": "nocciola",
+            "zh": "榛子"
+          },
+          {
+            "it": "fragola",
+            "zh": "草莓"
+          },
+          {
+            "it": "cioccolato",
+            "zh": "巧克力"
+          },
+          {
+            "it": "artigianale",
+            "zh": "手工的"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Vorrei un gelato. Che gusti avete?",
+            "zh": "要冰激凌。有什么口味？"
+          },
+          {
+            "speaker": "B",
+            "name": "Gelataio",
+            "text": "Crema, cioccolato, pistacchio e fragola.",
+            "zh": "奶油、巧克力、开心果和草莓。"
+          },
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Un cono da tre gusti: pistacchio, crema e fragola.",
+            "zh": "一个三味甜筒。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "vorrei...",
+            "explain": "我想要……",
+            "example": "Vorrei un gelato."
+          },
+          {
+            "rule": "posso assaggiare...",
+            "explain": "可以尝……吗",
+            "example": "Posso assaggiare?"
+          },
+          {
+            "rule": "è artigianale?",
+            "explain": "手工的吗？",
+            "example": "È artigianale?"
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Vorrei un gelato.",
+            "zh": "我要冰激凌。"
+          },
+          {
+            "it": "Che gusti avete?",
+            "zh": "有什么口味？"
+          },
+          {
+            "it": "Un cono da tre.",
+            "zh": "三味甜筒。"
+          },
+          {
+            "it": "Posso assaggiare?",
+            "zh": "可以尝吗？"
+          },
+          {
+            "it": "È artigianale?",
+            "zh": "手工的吗？"
+          }
+        ]
+      },
+      {
+        "id": "c2u4",
+        "num": "Unità 4",
+        "title": "In pizzeria",
+        "subtitle": "披萨店",
+        "scene": "La pizza è il piatto italiano più famoso. Margherita: pomodoro, mozzarella e basilico.",
+        "vocab": [
+          {
+            "it": "pizza",
+            "zh": "披萨"
+          },
+          {
+            "it": "pizzeria",
+            "zh": "披萨店"
+          },
+          {
+            "it": "margherita",
+            "zh": "玛格丽特"
+          },
+          {
+            "it": "prosciutto",
+            "zh": "火腿"
+          },
+          {
+            "it": "funghi",
+            "zh": "蘑菇"
+          },
+          {
+            "it": "mozzarella",
+            "zh": "马苏里拉"
+          },
+          {
+            "it": "pomodoro",
+            "zh": "番茄"
+          },
+          {
+            "it": "olive",
+            "zh": "橄榄"
+          },
+          {
+            "it": "cameriere",
+            "zh": "服务员"
+          },
+          {
+            "it": "tavolo",
+            "zh": "桌子"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Vorrei prenotare un tavolo per due.",
+            "zh": "预订两人桌。"
+          },
+          {
+            "speaker": "B",
+            "name": "Cameriere",
+            "text": "Per le 20:00?",
+            "zh": "晚上8点？"
+          },
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Sì. Che pizza mi consiglia?",
+            "zh": "对。推荐什么披萨？"
+          },
+          {
+            "speaker": "B",
+            "name": "Cameriere",
+            "text": "La margherita è sempre un'ottima scelta.",
+            "zh": "玛格丽特总是不错。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "prenotare un tavolo",
+            "explain": "预订桌子",
+            "example": "Vorrei prenotare un tavolo."
+          },
+          {
+            "rule": "mi consiglia...",
+            "explain": "您推荐……",
+            "example": "Che pizza mi consiglia?"
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Vorrei prenotare un tavolo.",
+            "zh": "我想预订桌子。"
+          },
+          {
+            "it": "Che pizza mi consiglia?",
+            "zh": "推荐什么披萨？"
+          },
+          {
+            "it": "Una margherita, per favore.",
+            "zh": "一份玛格丽特。"
+          },
+          {
+            "it": "È troppo piccola!",
+            "zh": "太小了！"
+          },
+          {
+            "it": "Il conto, prego.",
+            "zh": "请结账。"
+          }
+        ]
+      },
+      {
+        "id": "c2u5",
+        "num": "Unità 5",
+        "title": "Preparare la pasta",
+        "subtitle": "做意大利面",
+        "scene": "Preparare la pasta fresca in casa è tradizione. Farina, uova, sale e olio d'oliva.",
+        "vocab": [
+          {
+            "it": "pasta",
+            "zh": "意大利面"
+          },
+          {
+            "it": "spaghetti",
+            "zh": "长面"
+          },
+          {
+            "it": "farina",
+            "zh": "面粉"
+          },
+          {
+            "it": "uova",
+            "zh": "鸡蛋"
+          },
+          {
+            "it": "sugo",
+            "zh": "酱汁"
+          },
+          {
+            "it": "basilico",
+            "zh": "罗勒"
+          },
+          {
+            "it": "olio d'oliva",
+            "zh": "橄榄油"
+          },
+          {
+            "it": "aglio",
+            "zh": "大蒜"
+          },
+          {
+            "it": "formaggio",
+            "zh": "奶酪"
+          },
+          {
+            "it": "ricetta",
+            "zh": "食谱"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Chef",
+            "text": "Prepariamo la pasta fresca in casa.",
+            "zh": "在家做新鲜意面。"
+          },
+          {
+            "speaker": "A",
+            "name": "Chef",
+            "text": "Farina, uova, sale e olio.",
+            "zh": "面粉、鸡蛋、盐和橄榄油。"
+          },
+          {
+            "speaker": "A",
+            "name": "Chef",
+            "text": "Impastiamo 10 minuti, lasciamo riposare.",
+            "zh": "揉10分钟，醒面。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "preparare la pasta",
+            "explain": "做意面",
+            "example": "Prepariamo la pasta."
+          },
+          {
+            "rule": "lasciare riposare",
+            "explain": "醒面",
+            "example": "Lasciamo riposare l'impasto."
+          },
+          {
+            "rule": "ci vuole",
+            "explain": "需要",
+            "example": "Quanto tempo ci vuole?"
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Qual è la ricetta?",
+            "zh": "食谱是什么？"
+          },
+          {
+            "it": "Quanto tempo ci vuole?",
+            "zh": "需要多久？"
+          },
+          {
+            "it": "Devo aggiungere le uova?",
+            "zh": "要加鸡蛋吗？"
+          },
+          {
+            "it": "Il sugo è pronto.",
+            "zh": "酱好了。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Muoversi in Italia",
+    "subtitle": "交通篇",
+    "units": [
+      {
+        "id": "c3u1",
+        "num": "Unità 1",
+        "title": "Chiedere informazioni",
+        "subtitle": "问路",
+        "scene": "Espressioni per chiedere indicazioni stradali: proseguire dritto, girare a destra, al semaforo.",
+        "vocab": [
+          {
+            "it": "incrocio",
+            "zh": "路口"
+          },
+          {
+            "it": "girare a destra",
+            "zh": "右转"
+          },
+          {
+            "it": "proseguire dritto",
+            "zh": "直走"
+          },
+          {
+            "it": "semaforo",
+            "zh": "红绿灯"
+          },
+          {
+            "it": "piazza",
+            "zh": "广场"
+          },
+          {
+            "it": "via",
+            "zh": "街道"
+          },
+          {
+            "it": "fermata",
+            "zh": "车站"
+          },
+          {
+            "it": "stazione",
+            "zh": "火车站"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Turista",
+            "text": "Dov'è la stazione?",
+            "zh": "车站在哪？"
+          },
+          {
+            "speaker": "B",
+            "name": "Passante",
+            "text": "Vada dritto, giri a sinistra al semaforo.",
+            "zh": "直走，红绿灯左转。"
+          },
+          {
+            "speaker": "A",
+            "name": "Turista",
+            "text": "È lontano?",
+            "zh": "远吗？"
+          },
+          {
+            "speaker": "B",
+            "name": "Passante",
+            "text": "10 minuti a piedi.",
+            "zh": "步行10分钟。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "proseguire dritto",
+            "explain": "直走",
+            "example": "Proseguire dritto."
+          },
+          {
+            "rule": "girare a sinistra",
+            "explain": "左转",
+            "example": "Giri a sinistra."
+          },
+          {
+            "rule": "a piedi",
+            "explain": "步行",
+            "example": "10 minuti a piedi."
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Dov'è la stazione?",
+            "zh": "车站在哪？"
+          },
+          {
+            "it": "Come arrivo al centro?",
+            "zh": "怎么去市中心？"
+          },
+          {
+            "it": "È lontano?",
+            "zh": "远吗？"
+          },
+          {
+            "it": "Giri a sinistra.",
+            "zh": "左转。"
+          },
+          {
+            "it": "Vada dritto.",
+            "zh": "直走。"
+          }
+        ]
+      },
+      {
+        "id": "c3u2",
+        "num": "Unità 2",
+        "title": "Mezzi pubblici",
+        "subtitle": "公交出行",
+        "scene": "Autobus, tram e metropolitana. Il biglietto va convalidato all'inizio.",
+        "vocab": [
+          {
+            "it": "biglietto",
+            "zh": "车票"
+          },
+          {
+            "it": "abbonamento",
+            "zh": "月票"
+          },
+          {
+            "it": "fermata",
+            "zh": "站点"
+          },
+          {
+            "it": "autobus",
+            "zh": "公交"
+          },
+          {
+            "it": "tram",
+            "zh": "电车"
+          },
+          {
+            "it": "metropolitana",
+            "zh": "地铁"
+          },
+          {
+            "it": "orario",
+            "zh": "时刻表"
+          },
+          {
+            "it": "convalida",
+            "zh": "验票"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Passeggero",
+            "text": "Da dove parte l'autobus per Firenze?",
+            "zh": "去佛罗伦萨的车从哪出发？"
+          },
+          {
+            "speaker": "B",
+            "name": "Info",
+            "text": "Dalla stazione autobus, binario 3.",
+            "zh": "3号站台。"
+          },
+          {
+            "speaker": "A",
+            "name": "Passeggero",
+            "text": "A che ora passa il prossimo?",
+            "zh": "下一班几点？"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "convalidare il biglietto",
+            "explain": "验票",
+            "example": "Ricordi di convalidare!"
+          },
+          {
+            "rule": "valido per...",
+            "explain": "有效",
+            "example": "Valido per due ore."
+          },
+          {
+            "rule": "a che ora...",
+            "explain": "几点？",
+            "example": "A che ora passa?"
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Da dove parte l'autobus?",
+            "zh": "车从哪出发？"
+          },
+          {
+            "it": "A che ora passa?",
+            "zh": "几点发车？"
+          },
+          {
+            "it": "Devo cambiare linea?",
+            "zh": "要换乘吗？"
+          },
+          {
+            "it": "Dov'è la fermata?",
+            "zh": "车站哪？"
+          }
+        ]
+      },
+      {
+        "id": "c3u3",
+        "num": "Unità 3",
+        "title": "Alla stazione",
+        "subtitle": "火车站",
+        "scene": "I treni italiani: Regionali, Intercity, Frecciarossa. Il biglietto va convalidato prima di salire.",
+        "vocab": [
+          {
+            "it": "biglietteria",
+            "zh": "售票处"
+          },
+          {
+            "it": "binario",
+            "zh": "站台"
+          },
+          {
+            "it": "treno",
+            "zh": "火车"
+          },
+          {
+            "it": "Regionale",
+            "zh": "区域火车"
+          },
+          {
+            "it": "Frecciarossa",
+            "zh": "高铁"
+          },
+          {
+            "it": "andata e ritorno",
+            "zh": "往返票"
+          },
+          {
+            "it": "prenotazione",
+            "zh": "预订"
+          },
+          {
+            "it": "bagagli",
+            "zh": "行李"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Passeggero",
+            "text": "Un biglietto per Roma, andata e ritorno.",
+            "zh": "去罗马的往返票。"
+          },
+          {
+            "speaker": "B",
+            "name": "Bigliettaio",
+            "text": "Per quale data?",
+            "zh": "几号的？"
+          },
+          {
+            "speaker": "A",
+            "name": "Passeggero",
+            "text": "15 settembre, ritorno il 20. Un posto vicino al finestrino.",
+            "zh": "15号走20号回，靠窗。"
+          },
+          {
+            "speaker": "B",
+            "name": "Bigliettaio",
+            "text": "85 euro totali.",
+            "zh": "一共85欧。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "andata e ritorno",
+            "explain": "往返票",
+            "example": "Andata e ritorno per Roma."
+          },
+          {
+            "rule": "vicino al finestrino",
+            "explain": "靠窗",
+            "example": "Posto vicino al finestrino."
+          },
+          {
+            "rule": "in orario\\/ritardo",
+            "explain": "准时\\/晚点",
+            "example": "Il treno è in ritardo."
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Un biglietto per Roma.",
+            "zh": "一张去罗马的票。"
+          },
+          {
+            "it": "A che ora parte?",
+            "zh": "几点出发？"
+          },
+          {
+            "it": "Su quale binario?",
+            "zh": "几号站台？"
+          },
+          {
+            "it": "Il treno è in ritardo?",
+            "zh": "晚点了吗？"
+          }
+        ]
+      },
+      {
+        "id": "c3u4",
+        "num": "Unità 4",
+        "title": "All'aeroporto",
+        "subtitle": "机场",
+        "scene": "Check-in, gate, imbarco. Frasi utili per orientarsi in aeroporto.",
+        "vocab": [
+          {
+            "it": "gate",
+            "zh": "登机口"
+          },
+          {
+            "it": "imbarco",
+            "zh": "登机"
+          },
+          {
+            "it": "check-in",
+            "zh": "值机"
+          },
+          {
+            "it": "bagaglio a mano",
+            "zh": "手提行李"
+          },
+          {
+            "it": "bagaglio da stiva",
+            "zh": "托运"
+          },
+          {
+            "it": "volo",
+            "zh": "航班"
+          },
+          {
+            "it": "dogana",
+            "zh": "海关"
+          },
+          {
+            "it": "arrivo",
+            "zh": "到达"
+          },
+          {
+            "it": "partenza",
+            "zh": "出发"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Passeggero",
+            "text": "Dov'è il gate 12?",
+            "zh": "12号登机口在哪？"
+          },
+          {
+            "speaker": "B",
+            "name": "Personale",
+            "text": "Vada dritto, a sinistra al corridoio, in fondo.",
+            "zh": "直走，走廊左转到底。"
+          },
+          {
+            "speaker": "A",
+            "name": "Passeggero",
+            "text": "Il volo parte alle 16:00, ho tempo?",
+            "zh": "16:00的航班，来得及吗？"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "a che ora...",
+            "explain": "几点？",
+            "example": "A che ora parte il volo?"
+          },
+          {
+            "rule": "andare al gate",
+            "explain": "去登机口",
+            "example": "Devo andare al gate 12."
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Dov'è il check-in?",
+            "zh": "值机在哪？"
+          },
+          {
+            "it": "Il volo è in ritardo?",
+            "zh": "航班晚点了吗？"
+          },
+          {
+            "it": "A che gate?",
+            "zh": "哪个登机口？"
+          },
+          {
+            "it": "Dov'è il ritiro bagagli?",
+            "zh": "行李提取在哪？"
+          }
+        ]
+      },
+      {
+        "id": "c3u5",
+        "num": "Unità 5",
+        "title": "Taxi e noleggio",
+        "subtitle": "出租车与租车",
+        "scene": "Taxi a prezzo fisso per l'aeroporto. Noleggio auto con patente e carta di credito.",
+        "vocab": [
+          {
+            "it": "tassista",
+            "zh": "出租车司机"
+          },
+          {
+            "it": "tariffa",
+            "zh": "费率"
+          },
+          {
+            "it": "noleggiare",
+            "zh": "租"
+          },
+          {
+            "it": "assicurazione",
+            "zh": "保险"
+          },
+          {
+            "it": "benzina",
+            "zh": "汽油"
+          },
+          {
+            "it": "patente",
+            "zh": "驾照"
+          },
+          {
+            "it": "prezzo fisso",
+            "zh": "固定价格"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Passeggero",
+            "text": "Taxi! All'aeroporto di Fiumicino.",
+            "zh": "出租车！去菲乌米奇诺机场。"
+          },
+          {
+            "speaker": "B",
+            "name": "Tassista",
+            "text": "Prezzo fisso 48 euro, 40 minuti.",
+            "zh": "固定价48欧，40分钟。"
+          },
+          {
+            "speaker": "A",
+            "name": "Passeggero",
+            "text": "Vorrei noleggiare un'auto per tre giorni.",
+            "zh": "租辆车三天。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "prezzo fisso",
+            "explain": "固定价格",
+            "example": "Prezzo fisso 48 euro."
+          },
+          {
+            "rule": "noleggiare un'auto",
+            "explain": "租车",
+            "example": "Vorrei noleggiare un'auto."
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Mi porti a questo indirizzo.",
+            "zh": "送我去这个地址。"
+          },
+          {
+            "it": "Quanto costa in centro?",
+            "zh": "去市中心多少钱？"
+          },
+          {
+            "it": "Vorrei noleggiare un'auto.",
+            "zh": "我要租车。"
+          },
+          {
+            "it": "Dov'è il parcheggio?",
+            "zh": "停车场在哪？"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Divertirsi in Italia",
+    "subtitle": "游览篇",
+    "units": [
+      {
+        "id": "c4u1",
+        "num": "Unità 1",
+        "title": "In agenzia turistica",
+        "subtitle": "旅行社",
+        "scene": "Si possono prenotare tour, escursioni e pacchetti vacanza.",
+        "vocab": [
+          {
+            "it": "pacchetto turistico",
+            "zh": "旅游套餐"
+          },
+          {
+            "it": "escursione",
+            "zh": "短途旅行"
+          },
+          {
+            "it": "guida turistica",
+            "zh": "导游"
+          },
+          {
+            "it": "itinerario",
+            "zh": "行程"
+          },
+          {
+            "it": "biglietto d'ingresso",
+            "zh": "入场券"
+          },
+          {
+            "it": "sconto",
+            "zh": "优惠"
+          },
+          {
+            "it": "prenotare",
+            "zh": "预订"
+          },
+          {
+            "it": "camera doppia",
+            "zh": "双人房"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Vorrei prenotare un tour per la Toscana.",
+            "zh": "预订托斯卡纳行程。"
+          },
+          {
+            "speaker": "B",
+            "name": "Impiegato",
+            "text": "5 giorni con Firenze, Siena e San Gimignano.",
+            "zh": "5天游佛罗伦萨、锡耶纳、圣吉米尼亚诺。"
+          },
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Include alloggio e pasti?",
+            "zh": "含住宿和餐吗？"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "vorrei prenotare",
+            "explain": "我想预订",
+            "example": "Vorrei prenotare un tour."
+          },
+          {
+            "rule": "incluso\\/libero",
+            "explain": "包含\\/自理",
+            "example": "Colazione inclusa, pranzo libero."
+          },
+          {
+            "rule": "sconto per gruppi",
+            "explain": "团体优惠",
+            "example": "Sconto 10% per gruppi."
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Vorrei prenotare un tour.",
+            "zh": "我想预订行程。"
+          },
+          {
+            "it": "Include il pranzo?",
+            "zh": "含午餐吗？"
+          },
+          {
+            "it": "C'è sconto per gruppi?",
+            "zh": "团体优惠吗？"
+          }
+        ]
+      },
+      {
+        "id": "c4u2",
+        "num": "Unità 2",
+        "title": "In albergo",
+        "subtitle": "宾馆",
+        "scene": "Check-in, colazione e servizi. Espressioni per prenotare e chiedere informazioni.",
+        "vocab": [
+          {
+            "it": "hotel",
+            "zh": "酒店"
+          },
+          {
+            "it": "camera singola",
+            "zh": "单人间"
+          },
+          {
+            "it": "camera doppia",
+            "zh": "双人间"
+          },
+          {
+            "it": "receptionist",
+            "zh": "前台"
+          },
+          {
+            "it": "check-in",
+            "zh": "入住"
+          },
+          {
+            "it": "check-out",
+            "zh": "退房"
+          },
+          {
+            "it": "Wi-Fi",
+            "zh": "无线网络"
+          },
+          {
+            "it": "colazione",
+            "zh": "早餐"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Ospite",
+            "text": "Ho una prenotazione a nome di Li.",
+            "zh": "以Li的名字预订了。"
+          },
+          {
+            "speaker": "B",
+            "name": "Receptionist",
+            "text": "Camera 305, doppia, 3 notti.",
+            "zh": "305房，双人，3晚。"
+          },
+          {
+            "speaker": "A",
+            "name": "Ospite",
+            "text": "A che ora è la colazione?",
+            "zh": "早餐几点？"
+          },
+          {
+            "speaker": "B",
+            "name": "Receptionist",
+            "text": "7-10, ristorante al primo piano.",
+            "zh": "7-10点，餐厅在一楼。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "a nome di...",
+            "explain": "以……名字",
+            "example": "Prenotazione a nome di Li."
+          },
+          {
+            "rule": "entro le...",
+            "explain": "在……前",
+            "example": "Check-out entro le 11."
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Vorrei prenotare una camera.",
+            "zh": "我想订房。"
+          },
+          {
+            "it": "A che ora è il check-out?",
+            "zh": "几点退房？"
+          },
+          {
+            "it": "Posso avere il Wi-Fi?",
+            "zh": "Wi-Fi密码？"
+          },
+          {
+            "it": "Avete camere?",
+            "zh": "有空房吗？"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Vita Quotidiana",
+    "subtitle": "日常篇",
+    "units": [
+      {
+        "id": "c5u1",
+        "num": "Unità 1",
+        "title": "Salutare e invitare",
+        "subtitle": "问候与邀请",
+        "scene": "Saluti formali e informali. \"Tu\" con amici, \"Lei\" con estranei.",
+        "vocab": [
+          {
+            "it": "ciao",
+            "zh": "你好\\/再见"
+          },
+          {
+            "it": "buongiorno",
+            "zh": "早上好"
+          },
+          {
+            "it": "buonasera",
+            "zh": "晚上好"
+          },
+          {
+            "it": "arrivederci",
+            "zh": "再见"
+          },
+          {
+            "it": "come sta?",
+            "zh": "您好吗？"
+          },
+          {
+            "it": "piacere",
+            "zh": "很高兴"
+          },
+          {
+            "it": "invitare",
+            "zh": "邀请"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Marco",
+            "text": "Buongiorno! Piacere, sono Marco.",
+            "zh": "你好！很高兴，我是Marco。"
+          },
+          {
+            "speaker": "B",
+            "name": "Li",
+            "text": "Piacere mio! Vengo da Pechino.",
+            "zh": "很高兴！我来自北京。"
+          },
+          {
+            "speaker": "A",
+            "name": "Marco",
+            "text": "Benvenuta in Italia!",
+            "zh": "欢迎来意大利！"
+          },
+          {
+            "speaker": "B",
+            "name": "Li",
+            "text": "È un piacere essere qui.",
+            "zh": "很高兴来到这里。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "TU vs LEI",
+            "explain": "非正式\\/正式称呼",
+            "example": "Tu per amici, Lei per estranei."
+          },
+          {
+            "rule": "piacere di conoscerti",
+            "explain": "很高兴认识你",
+            "example": "Piacere di conoscerti!"
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Piacere di conoscerla!",
+            "zh": "很高兴认识您！"
+          },
+          {
+            "it": "Come va?",
+            "zh": "您好吗？"
+          },
+          {
+            "it": "Che ne dici di un caffè?",
+            "zh": "喝杯咖啡？"
+          },
+          {
+            "it": "Ti invito a cena.",
+            "zh": "请你吃晚饭。"
+          },
+          {
+            "it": "A che ora ci vediamo?",
+            "zh": "几点见？"
+          }
+        ]
+      },
+      {
+        "id": "c5u2",
+        "num": "Unità 2",
+        "title": "In farmacia",
+        "subtitle": "药店",
+        "scene": "Farmacie con croce verde. Consigli per salute. Per farmaci forti serve ricetta.",
+        "vocab": [
+          {
+            "it": "farmacia",
+            "zh": "药店"
+          },
+          {
+            "it": "farmacista",
+            "zh": "药剂师"
+          },
+          {
+            "it": "ricetta",
+            "zh": "处方"
+          },
+          {
+            "it": "medicinale",
+            "zh": "药品"
+          },
+          {
+            "it": "antidolorifico",
+            "zh": "止痛药"
+          },
+          {
+            "it": "febbre",
+            "zh": "发烧"
+          },
+          {
+            "it": "raffreddore",
+            "zh": "感冒"
+          },
+          {
+            "it": "tosse",
+            "zh": "咳嗽"
+          },
+          {
+            "it": "mal di testa",
+            "zh": "头痛"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Ho il raffreddore. Ha qualcosa?",
+            "zh": "我感冒了。有药吗？"
+          },
+          {
+            "speaker": "B",
+            "name": "Farmacista",
+            "text": "Da quanto tempo?",
+            "zh": "多久了？"
+          },
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Da due giorni, e ho mal di gola.",
+            "zh": "两天了，嗓子也疼。"
+          },
+          {
+            "speaker": "B",
+            "name": "Farmacista",
+            "text": "Questo sciroppo per la tosse.",
+            "zh": "这个止咳糖浆。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "ho mal di...",
+            "explain": "我……疼",
+            "example": "Ho mal di testa."
+          },
+          {
+            "rule": "avere la febbre",
+            "explain": "发烧",
+            "example": "Ha la febbre?"
+          },
+          {
+            "rule": "da banco",
+            "explain": "非处方",
+            "example": "È da banco."
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Ho mal di testa.",
+            "zh": "我头疼。"
+          },
+          {
+            "it": "Ha qualcosa per il raffreddore?",
+            "zh": "有感冒药吗？"
+          },
+          {
+            "it": "Devo mostrare la ricetta?",
+            "zh": "要处方吗？"
+          },
+          {
+            "it": "Quante volte al giorno?",
+            "zh": "一天几次？"
+          }
+        ]
+      },
+      {
+        "id": "c5u3",
+        "num": "Unità 3",
+        "title": "Francobolli e marche da bollo",
+        "subtitle": "邮票与税票",
+        "scene": "I francobolli si comprano in posta o tabacchi. Le marche da bollo per documenti ufficiali.",
+        "vocab": [
+          {
+            "it": "francobollo",
+            "zh": "邮票"
+          },
+          {
+            "it": "marca da bollo",
+            "zh": "印花税票"
+          },
+          {
+            "it": "tabaccaio",
+            "zh": "烟草店"
+          },
+          {
+            "it": "busta",
+            "zh": "信封"
+          },
+          {
+            "it": "cartolina",
+            "zh": "明信片"
+          },
+          {
+            "it": "raccomandata",
+            "zh": "挂号信"
+          },
+          {
+            "it": "pacco",
+            "zh": "包裹"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Vorrei francobolli per la Cina.",
+            "zh": "我要寄中国的邮票。"
+          },
+          {
+            "speaker": "B",
+            "name": "Impiegato",
+            "text": "Prioritario o ordinario?",
+            "zh": "优先还是普通？"
+          },
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Prioritario. E una marca da bollo da 16 euro.",
+            "zh": "优先。还要16欧印花税票。"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "vorrei...",
+            "explain": "我想要……",
+            "example": "Vorrei francobolli."
+          },
+          {
+            "rule": "mi serve...",
+            "explain": "我需要……",
+            "example": "Mi serve una marca da bollo."
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Vorrei francobolli per la Cina.",
+            "zh": "我要寄中国的邮票。"
+          },
+          {
+            "it": "Quanto costa spedire?",
+            "zh": "邮费多少？"
+          },
+          {
+            "it": "Mi serve una marca da bollo.",
+            "zh": "我要印花税票。"
+          },
+          {
+            "it": "Dove compro francobolli?",
+            "zh": "在哪买邮票？"
+          }
+        ]
+      },
+      {
+        "id": "c5u4",
+        "num": "Unità 4",
+        "title": "I servizi postali",
+        "subtitle": "邮局业务",
+        "scene": "L'ufficio postale offre: spedizioni, bollette, vaglia. Prendere il numero e aspettare il turno.",
+        "vocab": [
+          {
+            "it": "ufficio postale",
+            "zh": "邮局"
+          },
+          {
+            "it": "sportello",
+            "zh": "窗口"
+          },
+          {
+            "it": "numero",
+            "zh": "号码"
+          },
+          {
+            "it": "bolletta",
+            "zh": "账单"
+          },
+          {
+            "it": "raccomandata",
+            "zh": "挂号"
+          },
+          {
+            "it": "ricevuta",
+            "zh": "收据"
+          },
+          {
+            "it": "modulo",
+            "zh": "表格"
+          },
+          {
+            "it": "coda",
+            "zh": "队伍"
+          }
+        ],
+        "dialogue": [
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Devo spedire questo pacco a Shanghai.",
+            "zh": "寄这个包裹到上海。"
+          },
+          {
+            "speaker": "B",
+            "name": "Impiegato",
+            "text": "Ordinario 45€ in 15-20 gg, espresso 120€ in 5-7 gg.",
+            "zh": "普通45欧15-20天，快件120欧5-7天。"
+          },
+          {
+            "speaker": "A",
+            "name": "Cliente",
+            "text": "Prendo l'espresso. Posso pagare con carta?",
+            "zh": "快件。能刷卡吗？"
+          }
+        ],
+        "grammar": [
+          {
+            "rule": "spedire un pacco",
+            "explain": "寄包裹",
+            "example": "Devo spedire un pacco."
+          },
+          {
+            "rule": "tracciamento online",
+            "explain": "在线追踪",
+            "example": "Numero di tracciamento."
+          }
+        ],
+        "sentences": [
+          {
+            "it": "Devo spedire un pacco all'estero.",
+            "zh": "我要寄包裹到国外。"
+          },
+          {
+            "it": "Quanto costa la spedizione?",
+            "zh": "邮费多少？"
+          },
+          {
+            "it": "Fino a che ora è aperto?",
+            "zh": "营业到几点？"
+          },
+          {
+            "it": "Ho perso la ricevuta.",
+            "zh": "我丢了收据。"
+          }
+        ]
+      }
+    ]
   }
-  // 实时切换：仅当播放的是对话音频时，立即改变播放速度
-  if (currentAudio && isDialogAudio) {
-    currentAudio.playbackRate = newRate;
-  }
+];
+
+// ====== TOC ======
+function buildTOC(){
+  const c=document.getElementById('tocContainer');
+  let h='';
+  bookData.chapters.forEach(ch=>{
+    h+='<div class="chapter-group"><div class="chapter-title" onclick="toggleChapter(this)"><span>'+ch.title+'<br><small style="font-weight:400;opacity:.6;font-size:13px">'+ch.subtitle+'</small></span><span class="arrow">&#9660;</span></div><ul class="unit-list">';
+    ch.units.forEach(u=>{h+='<li class="unit-item" data-unit="'+u.id+'" onclick="openUnit(\''+u.id+'\')"><span class="unit-num">'+u.num+'</span>'+u.title+'<br><small style="opacity:.5;font-size:13px">'+u.subtitle+'</small></li>'});
+    h+='</ul></div>';
+  });
+  c.innerHTML=h;
 }
 
-function loadAudio(unitId, callback) {
-  if (audioCache[unitId] && Object.keys(audioCache[unitId]).length > 0) {
-    if (callback) callback();
-    return;
-  }
-  if (window.AD && window.AD[unitId] && Object.keys(window.AD[unitId]).length > 0) {
-    audioCache[unitId] = window.AD[unitId];
-    if (callback) callback();
-    return;
-  }
-  // 动态创建 script 标签加载（替代 fetch，浏览器自动缓存）
-  const s = document.createElement('script');
-  s.src = `audio_data/audio_${unitId}.js`;
-  s.onload = function() {
-    if (window.AD && window.AD[unitId] && Object.keys(window.AD[unitId]).length > 0) {
-      audioCache[unitId] = window.AD[unitId];
-    }
-    if (callback) callback();
-  };
-  s.onerror = function() {
-    if (window.AD && window.AD[unitId]) audioCache[unitId] = window.AD[unitId];
-    if (callback) callback();
-  };
+function toggleChapter(el){el.classList.toggle('collapsed');el.nextElementSibling.classList.toggle('collapsed')}
+function filterTOC(q){q=q.toLowerCase().trim();document.querySelectorAll('.unit-item').forEach(el=>{el.style.display=(!q||el.textContent.toLowerCase().includes(q))?'':'none'})}
+
+// ====== RENDER UNIT ======
+function buildUnit(u){
+  let h='<div class="unit-content" id="uc-'+u.id+'">';
+  h+='<div class="unit-header"><div class="label">'+u.num+'</div><h2>'+u.title+'</h2><div class="sub">'+u.subtitle+'</div><div class="scene">'+u.scene+'</div></div>';
+  h+='<div class="section-title">VOCABOLARIO <span class="it">/'+unitNameMap[u.id]+'词汇/</span></div><div class="vocab-grid">';
+  u.vocab.forEach((v,i)=>{h+='<div class="vocab-item" onclick="speakWord(\''+u.id+'\',\'v_'+i+'\',this.querySelector(\'.play-icon\'))"><span class="play-icon">&#9654;</span><span class="it">'+v.it+'</span><span class="zh">'+v.zh+'</span></div>'});
+  h+='</div>';
+  h+='<div class="section-title">DIALOGO <span class="it">/'+unitNameMap[u.id]+'对话/</span></div><div class="dialogue-section"><div class="audio-controls"><button class="audio-btn play-all" onclick="playAll(\''+u.id+'\')" id="playAll-'+u.id+'">&#x1F50A; 播放全部</button><button class="audio-btn stop-btn" onclick="stopSpeech()">&#x23F9; 停止</button><button class="audio-btn speed-control" onclick="toggleSpeed(\''+u.id+'\')" id="speedBtn-'+u.id+'">&#x1F422; 常速 1.0x</button></div><div class="progress-bar"><div class="fill" id="progress-'+u.id+'"></div></div>';
+  u.dialogue.forEach((d,i)=>{
+    const sc=d.speaker==='A'?'speaker':'speaker speaker-b';
+    h+='<div class="dialogue-line" onclick="speakLine(this,'+i+')" data-unit="'+u.id+'" data-idx="'+i+'"><span class="'+sc+'">'+d.name+'</span><div class="text-wrapper"><div class="it">'+d.text+'</div><div class="zh">'+d.zh+'</div></div><button class="line-play">&#9654;</button></div>';
+  });
+  h+='</div>';
+  h+='<div class="section-title">GRAMMATICA <span class="it">/'+unitNameMap[u.id]+'语法/</span></div><div class="grammar-grid">';
+  u.grammar.forEach(g=>{h+='<div class="grammar-item"><div class="rule">'+g.rule+'</div><div class="explain">'+g.explain+'</div><div class="example">'+g.example+'</div></div>'});
+  h+='</div>';
+  h+='<div class="section-title">FRASI UTILI <span class="it">/'+unitNameMap[u.id]+'常用句/</span></div><div class="sent-grid">';
+  u.sentences.forEach((s,i)=>{h+='<div class="sentence-item" onclick="speakWord(\''+u.id+'\',\'s_'+i+'\',this.querySelector(\'.s-play\'))"><div class="s-text"><div class="it">'+s.it+'</div><div class="zh">'+s.zh+'</div></div><button class="s-play">&#9654;</button></div>'});
+  h+='</div></div>';
+  return h;
+}
+unitNameMap={};
+bookData.chapters.forEach(ch=>ch.units.forEach(u=>{unitNameMap[u.id]=u.num}));
+
+// ====== AUDIO ======
+let audioCache={},currentAudio=null,isPlaying=false,isDialogAudio=false;
+let dialogSpeechRate={},playAllQueue=null,activePlayBtn=null;
+
+function toggleSpeed(u){
+  const btn=document.getElementById('speedBtn-'+u);
+  const cur=dialogSpeechRate[u]||1.0;
+  if(cur===1.0){dialogSpeechRate[u]=1.4;btn.textContent='&#x1F680; 快速 1.4x';btn.classList.add('active')}
+  else{dialogSpeechRate[u]=1.0;btn.textContent='&#x1F422; 常速 1.0x';btn.classList.remove('active')}
+  if(currentAudio&&isDialogAudio)currentAudio.playbackRate=dialogSpeechRate[u];
+}
+
+function loadAudio(u,cb){
+  if(audioCache[u]&&Object.keys(audioCache[u]).length>0){if(cb)cb();return}
+  if(window.AD&&window.AD[u]&&Object.keys(window.AD[u]).length>0){audioCache[u]=window.AD[u];if(cb)cb();return}
+  const s=document.createElement('script');
+  s.src='audio_data/audio_'+u+'.js';
+  s.onload=function(){if(window.AD&&window.AD[u]&&Object.keys(window.AD[u]).length>0)audioCache[u]=window.AD[u];if(cb)cb()};
+  s.onerror=function(){if(window.AD&&window.AD[u])audioCache[u]=window.AD[u];if(cb)cb()};
   document.body.appendChild(s);
 }
 
-let _preloadIdx = 0;
-const _preloadIds = [];
-
-function startPreload() {
-  if (_preloadIds.length === 0) {
-    bookData.chapters.forEach(ch => ch.units.forEach(u => _preloadIds.push(u.id)));
-  }
-  // 并发注入 6 路 script（浏览器调度实际下载，不会阻塞主线程）
-  for (let c = 0; c < 6; c++) loadNext();
-}
-
-function loadNext() {
-  if (_preloadIdx >= _preloadIds.length) return;
-  const uid = _preloadIds[_preloadIdx++];
-  if (audioCache[uid] && Object.keys(audioCache[uid]).length > 0) { loadNext(); return; }
-  if (window.AD && window.AD[uid]) { audioCache[uid] = window.AD[uid]; loadNext(); return; }
-  const s = document.createElement('script');
-  s.src = `audio_data/audio_${uid}.js`;
-  s.onload = function() {
-    if (window.AD && window.AD[uid] && Object.keys(window.AD[uid]).length > 0) {
-      audioCache[uid] = window.AD[uid];
-    }
-    loadNext();
-  };
-  s.onerror = function() {
-    if (window.AD && window.AD[uid]) audioCache[uid] = window.AD[uid];
-    loadNext();
-  };
-  document.body.appendChild(s);
-}
-
-// 页面渲染后立即填充所有单元音频缓存
-function resetPlayButtons() {
-  document.querySelectorAll('.vocab-item .play-icon, .sentence-item .s-play').forEach(el => {
-    el.textContent = '▶';
-    el.style.background = '';
-    el.classList.remove('playing');
-  });
-  document.querySelectorAll('.dialogue-line .line-play').forEach(el => {
-    el.textContent = '▶';
-    el.style.background = '';
-    el.classList.remove('playing');
-  });
-}
-
-function stopSpeech() {
-  if (currentAudio) {
-    if (currentAudio.stop) currentAudio.stop();
-    else if (currentAudio.pause) currentAudio.pause();
-    currentAudio = null;
-  }
-  if (playAllQueue) {
-    clearTimeout(playAllQueue);
-    playAllQueue = null;
-  }
-  isPlaying = false;
-  isDialogAudio = false;
-  activePlayBtn = null;
-  document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
-  document.querySelectorAll('.play-all.playing').forEach(el => {
-    el.textContent = '🔊 播放全部';
-    el.classList.remove('playing');
-  });
+function stopSpeech(){
+  if(currentAudio){try{currentAudio.pause()}catch(e){}currentAudio=null;isPlaying=false}
+  if(playAllQueue){clearTimeout(playAllQueue);playAllQueue=null}
   resetPlayButtons();
 }
 
-function setButtonPlaying(btnEl) {
-  if (!btnEl) return;
-  btnEl.textContent = '⏸';
-  btnEl.style.background = '#CE2B37';
-  btnEl.style.color = '#fff';
-  btnEl.classList.add('playing');
-  activePlayBtn = btnEl;
+function resetPlayButtons(){
+  document.querySelectorAll('.play-icon,.s-play,.line-play').forEach(el=>{el.textContent='▶';el.style.background='';el.classList.remove('playing')});
+  document.querySelectorAll('.play-all').forEach(el=>{el.textContent='🔊 播放全部';el.classList.remove('playing')});
+  if(activePlayBtn){activePlayBtn.textContent='▶';activePlayBtn.style.background='';activePlayBtn.classList.remove('playing');activePlayBtn=null}
 }
 
-// base64 → Blob URL（不缓存，每次创建新 URL，播放完后自动释放）
-function base64ToBlobUrl(base64data) {
-  try {
-    const byteStr = atob(base64data);
-    const len = byteStr.length;
-    const buf = new ArrayBuffer(len);
-    const view = new Uint8Array(buf);
-    for (let i = 0; i < len; i++) view[i] = byteStr.charCodeAt(i);
-    const blob = new Blob([buf], { type: 'audio/mpeg' });
-    return URL.createObjectURL(blob);
-  } catch (e) {
-    console.warn('base64 decode failed:', e);
-    return 'data:audio/mpeg;base64,' + base64data;
-  }
+function setButtonPlaying(btn){if(!btn)return;btn.textContent='⏸';btn.style.background='#00e5ff';btn.style.color='#fff';btn.classList.add('playing');activePlayBtn=btn}
+
+function base64ToBlobUrl(b64){
+  try{const bs=atob(b64);const b=new ArrayBuffer(bs.length);const v=new Uint8Array(b);for(let i=0;i<bs.length;i++)v[i]=bs.charCodeAt(i);return URL.createObjectURL(new Blob([b],{type:'audio/mpeg'}))}catch(e){return null}
 }
 
-function revokeBlobUrl(url) {
-  if (url && url.startsWith('blob:')) URL.revokeObjectURL(url);
+function ensureAudioCtx(){
+  if(window.audioCtx&&window.audioCtx.state!=='closed')return window.audioCtx;
+  window.audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  return window.audioCtx;
 }
 
-// 用 AudioContext 播放（兼容所有浏览器/WebView，不依赖 blob/data URI）
-let audioCtx = null;
+let blobCache={};
 
-function ensureAudioCtx() {
-  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  if (audioCtx.state === 'suspended') audioCtx.resume();
-  return audioCtx;
+function playBase64Audio(data,callback,btnEl,highlightEl,rate){
+  if(currentAudio){stopSpeech()}
+  if(!data)return;
+  const ctx=ensureAudioCtx();
+  try{
+    const bs=atob(data);const ab=new ArrayBuffer(bs.length);const v=new Uint8Array(ab);
+    for(let i=0;i<bs.length;i++)v[i]=bs.charCodeAt(i);
+    ctx.decodeAudioData(ab,function(buf){
+      const source=ctx.createBufferSource();source.buffer=buf;
+      if(rate)source.playbackRate.value=rate;
+      const gain=ctx.createGain();gain.gain.value=1;
+      source.connect(gain);gain.connect(ctx.destination);
+      source.start(0);currentAudio=source;isPlaying=true;
+      if(btnEl)setButtonPlaying(btnEl);
+      if(highlightEl){document.querySelectorAll('.active-line').forEach(e=>e.classList.remove('active-line'));highlightEl.classList.add('active-line')}
+      source.onended=function(){
+        currentAudio=null;isPlaying=false;resetPlayButtons();
+        if(callback)callback();
+      };
+    },function(){if(callback)callback()});
+  }catch(e){if(callback)callback()}
 }
 
-function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
-  if (!base64data) {
-    if (callback) callback();
-    return;
-  }
-
-  // 三重播放引擎：data URI → blob URL → AudioContext，自动降级
-  playWithDataUri();
-
-  function playWithDataUri() {
-    const url = 'data:audio/mpeg;base64,' + base64data;
-    const audio = new Audio(url);
-    audio.playbackRate = rate || 1.0;
-    audio.style.display = 'none';
-    document.body.appendChild(audio);
-
-    audio.onplay = () => {
-      if (highlightEl) {
-        document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
-        highlightEl.classList.add('active-line');
-      }
-    };
-
-    function cleanup() {
-      if (audio.parentNode) audio.parentNode.removeChild(audio);
-      revokeBlobUrl(url);
-      currentAudio = null;
-      isPlaying = false;
-      if (activePlayBtn) {
-        activePlayBtn.textContent = '▶';
-        activePlayBtn.style.background = '';
-        activePlayBtn.style.color = '';
-        activePlayBtn.classList.remove('playing');
-        activePlayBtn = null;
-      }
-    }
-
-    audio.onended = () => { cleanup(); if (callback) callback(); };
-    audio.onerror = () => {
-      if (audio.parentNode) audio.parentNode.removeChild(audio);
-      cleanup();
-      playWithBlobUrl();
-    };
-
-    currentAudio = audio;
-    isPlaying = true;
-    if (btnEl) setButtonPlaying(btnEl);
-    audio.play().catch(() => {
-      if (audio.parentNode) audio.parentNode.removeChild(audio);
-      playWithBlobUrl();
-    });
-  }
-
-  function playWithBlobUrl() {
-    const blobUrl = base64ToBlobUrl(base64data);
-    const audio = new Audio(blobUrl);
-    audio.playbackRate = rate || 1.0;
-    audio.style.display = 'none';
-    document.body.appendChild(audio);
-
-    audio.onplay = () => {
-      if (highlightEl) {
-        document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
-        highlightEl.classList.add('active-line');
-      }
-    };
-
-    function cleanup() {
-      if (audio.parentNode) audio.parentNode.removeChild(audio);
-      revokeBlobUrl(blobUrl);
-      currentAudio = null;
-      isPlaying = false;
-      if (activePlayBtn) {
-        activePlayBtn.textContent = '▶';
-        activePlayBtn.style.background = '';
-        activePlayBtn.style.color = '';
-        activePlayBtn.classList.remove('playing');
-        activePlayBtn = null;
-      }
-    }
-
-    audio.onended = () => { cleanup(); if (callback) callback(); };
-    audio.onerror = () => {
-      if (audio.parentNode) audio.parentNode.removeChild(audio);
-      cleanup();
-      playWithAudioContext();
-    };
-
-    currentAudio = audio;
-    isPlaying = true;
-    if (btnEl) setButtonPlaying(btnEl);
-    audio.play().catch(() => {
-      if (audio.parentNode) audio.parentNode.removeChild(audio);
-      playWithAudioContext();
-    });
-  }
-
-  function playWithAudioContext() {
-    try {
-      const ctx = ensureAudioCtx();
-      const byteStr = atob(base64data);
-      const len = byteStr.length;
-      const buf = new ArrayBuffer(len);
-      const view = new Uint8Array(buf);
-      for (let i = 0; i < len; i++) view[i] = byteStr.charCodeAt(i);
-
-      ctx.decodeAudioData(buf, (audioBuf) => {
-        const source = ctx.createBufferSource();
-        source.buffer = audioBuf;
-        source.playbackRate.value = rate || 1.0;
-        source.connect(ctx.destination);
-        source.start(0);
-
-        currentAudio = source;
-        isPlaying = true;
-        if (btnEl) setButtonPlaying(btnEl);
-        if (highlightEl) {
-          document.querySelectorAll('.active-line').forEach(el => el.classList.remove('active-line'));
-          highlightEl.classList.add('active-line');
-        }
-
-        source.onended = () => {
-          currentAudio = null;
-          isPlaying = false;
-          if (activePlayBtn) {
-            activePlayBtn.textContent = '▶';
-            activePlayBtn.style.background = '';
-            activePlayBtn.style.color = '';
-            activePlayBtn.classList.remove('playing');
-            activePlayBtn = null;
-          }
-          if (callback) callback();
-        };
-      }, () => { currentAudio = null; isPlaying = false; if (callback) callback(); });
-    } catch(e) { currentAudio = null; isPlaying = false; if (callback) callback(); }
-  }
-}
-
-function speakWord(unitId, key, btnEl) {
-  stopSpeech();
-  isDialogAudio = false;
-  loadAudio(unitId, function() {
-    const data = audioCache[unitId]?.[key];
-    if (data) playBase64Audio(data, null, btnEl);
+function speakWord(u,key,btn){
+  stopSpeech();isDialogAudio=false;
+  loadAudio(u,function(){
+    const d=audioCache[u]?.[key];
+    if(d)playBase64Audio(d,null,btn);
   });
 }
 
-function speakLine(el, idx) {
-  const unitId = el.dataset.unit;
-  const unit = findUnit(unitId);
-  if (!unit) return;
-  const dialog = unit.dialogue[idx];
-  if (!dialog) return;
-
+function speakLine(el,i){
+  const u=el.dataset.unit,unit=findUnit(u);
+  if(!unit)return;
+  const d=unit.dialogue[i];if(!d)return;
   stopSpeech();
-  document.querySelectorAll('.active-line').forEach(e => e.classList.remove('active-line'));
+  document.querySelectorAll('.active-line').forEach(e=>e.classList.remove('active-line'));
   el.classList.add('active-line');
-
-  loadAudio(unitId, function() {
-    const key = `d_${idx}`;
-    const data = audioCache[unitId]?.[key];
-    if (!data) return;
-    const btn = el.querySelector('.line-play');
-    isDialogAudio = true;
-    const rate = dialogSpeechRate[unitId] || 1.0;
-    playBase64Audio(data, function() {
-      el.classList.remove('active-line');
-    }, btn, null, rate);
+  loadAudio(u,function(){
+    const key='d_'+i,data=audioCache[u]?.[key];
+    if(!data)return;
+    const btn=el.querySelector('.line-play');isDialogAudio=true;
+    const rate=dialogSpeechRate[u]||1.0;
+    playBase64Audio(data,function(){el.classList.remove('active-line')},btn,null,rate);
   });
 }
 
-function playAll(unitId) {
-  const unit = findUnit(unitId);
-  if (!unit) return;
-  const btn = document.getElementById(`playAll-${unitId}`);
-  const progressFill = document.getElementById(`progress-${unitId}`);
-
-  if (isPlaying) {
-    stopSpeech();
-    return;
-  }
-
-  var _pLines, _pI = 0;
-  loadAudio(unitId, function() {
-    _pLines = document.querySelectorAll(`#uc-${unitId} .dialogue-line`);
-    _pI = 0;
-    btn.textContent = '⏸ 播放中...';
-    btn.classList.add('playing');
-    isDialogAudio = true;
-    playAllQueue = setTimeout(playNext, 100);
+function playAll(u){
+  const unit=findUnit(u);if(!unit)return;
+  const btn=document.getElementById('playAll-'+u);
+  const pb=document.getElementById('progress-'+u);
+  if(isPlaying){stopSpeech();return}
+  var _lines,_i=0;
+  loadAudio(u,function(){
+    _lines=document.querySelectorAll('#uc-'+u+' .dialogue-line');_i=0;
+    btn.textContent='⏸ 播放中...';btn.classList.add('playing');
+    isDialogAudio=true;playAllQueue=setTimeout(playNext,100);
   });
-
-  function playNext() {
-    if (_pI >= unit.dialogue.length) {
-      stopSpeech();
-      return;
-    }
-    const progress = ((_pI + 1) / unit.dialogue.length) * 100;
-    progressFill.style.width = `${progress}%`;
-    const key = `d_${_pI}`;
-    const data = audioCache[unitId]?.[key];
-    const rate = dialogSpeechRate[unitId] || 1.0;
-    if (!data) { _pI++; playAllQueue = setTimeout(playNext, 100); return; }
-    playBase64Audio(data, function() {
-      _pI++;
-      playAllQueue = setTimeout(playNext, 300);
-    }, null, _pLines[_pI], rate);
+  function playNext(){
+    if(_i>=unit.dialogue.length){stopSpeech();return}
+    pb.style.width=((_i+1)/unit.dialogue.length*100)+'%';
+    const key='d_'+_i,data=audioCache[u]?.[key],rate=dialogSpeechRate[u]||1.0;
+    if(!data){_i++;playAllQueue=setTimeout(playNext,100);return}
+    playBase64Audio(data,function(){_i++;playAllQueue=setTimeout(playNext,300)},null,_lines[_i],rate);
   }
 }
 
-function findUnit(id) {
-  for (const ch of bookData.chapters) {
-    for (const u of ch.units) {
-      if (u.id === id) return u;
-    }
-  }
+function findUnit(id){
+  for(const ch of bookData.chapters)for(const u of ch.units)if(u.id===id)return u;
   return null;
 }
 
 // ====== NAVIGATION ======
-function openUnit(id) {
-  // 用户选中该单元 → 立即优先加载其音频
-  if (!audioCache[id] || Object.keys(audioCache[id]).length === 0) {
-    if (window.AD && window.AD[id]) {
-      audioCache[id] = window.AD[id];
-    } else {
-      const s = document.createElement('script');
-      s.src = `audio_data/audio_${id}.js`;
-      s.onload = function() {
-        if (window.AD && window.AD[id] && Object.keys(window.AD[id]).length > 0) {
-          audioCache[id] = window.AD[id];
-        }
-      };
-      document.body.appendChild(s);
-    }
+function openUnit(id){
+  if(!audioCache[id]||Object.keys(audioCache[id]).length===0){
+    if(window.AD&&window.AD[id])audioCache[id]=window.AD[id];
+    else{const s=document.createElement('script');s.src='audio_data/audio_'+id+'.js';s.onload=function(){if(window.AD&&window.AD[id]&&Object.keys(window.AD[id]).length>0)audioCache[id]=window.AD[id]};document.body.appendChild(s)}
   }
-
-  // Hide all
-  document.querySelectorAll('.unit-content').forEach(el => el.classList.remove('active'));
-  document.getElementById('welcomePanel').style.display = 'none';
-
-  // 懒加载：如果该单元还没渲染，从 bookData 查找并构建
-  const container = document.getElementById('unitContentContainer');
-  let target = document.getElementById(`uc-${id}`);
-  if (!target) {
-    const unit = findUnit(id);
-    if (unit) {
-      const div = document.createElement('div');
-      div.innerHTML = buildUnitContent(unit);
-      while (div.firstChild) container.appendChild(div.firstChild);
-      target = document.getElementById(`uc-${id}`);
-    }
-  }
-
-  // Show selected
-  if (target) {
-    target.classList.add('active');
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  // Update TOC
-  document.querySelectorAll('.unit-item').forEach(el => el.classList.remove('active'));
-  const tocItem = document.querySelector(`[data-unit="${id}"]`);
-  if (tocItem) {
-    tocItem.classList.add('active');
-    const chapter = tocItem.closest('.unit-list');
-    if (chapter) chapter.classList.remove('collapsed');
-    const title = chapter?.previousElementSibling;
-    if (title) title.classList.remove('collapsed');
-  }
-
-  // Close sidebar on mobile
-  if (window.innerWidth <= 768) {
-    document.getElementById('sidebar').classList.remove('open');
-    document.getElementById('sidebarOverlay').classList.remove('show');
-  }
+  document.querySelectorAll('.unit-content').forEach(e=>e.classList.remove('active'));
+  document.getElementById('welcomePanel').style.display='none';
+  const container=document.getElementById('unitContentContainer');
+  let target=document.getElementById('uc-'+id);
+  if(!target){const u=findUnit(id);if(u){const d=document.createElement('div');d.innerHTML=buildUnit(u);while(d.firstChild)container.appendChild(d.firstChild);target=document.getElementById('uc-'+id)}}
+  if(target){target.classList.add('active');target.scrollIntoView({behavior:'smooth',block:'start'})}
+  document.querySelectorAll('.unit-item').forEach(e=>e.classList.remove('active'));
+  const ti=document.querySelector('[data-unit="'+id+'"]');
+  if(ti){ti.classList.add('active');const ch=ti.closest('.unit-list');if(ch)ch.classList.remove('collapsed');const t=ch?.previousElementSibling;if(t)t.classList.remove('collapsed')}
+  if(window.innerWidth<=768){document.getElementById('sidebar').classList.remove('open');document.getElementById('sidebarOverlay').classList.remove('show')}
 }
 
-function toggleSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('sidebarOverlay');
-  sidebar.classList.toggle('open');
-  overlay.classList.toggle('show');
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebarOverlay').classList.toggle('show');
 }
+document.getElementById('sidebarOverlay').onclick=toggleSidebar;
 
-// Close sidebar when clicking overlay
-document.getElementById('sidebarOverlay').onclick = toggleSidebar;
+// ====== PRELOAD ======
+let _preloadIdx=0,_preloadIds=[];
+function startPreload(){
+  if(_preloadIds.length===0)bookData.chapters.forEach(ch=>ch.units.forEach(u=>_preloadIds.push(u.id)));
+  for(let c=0;c<6;c++)loadNext();
+}
+function loadNext(){
+  if(_preloadIdx>=_preloadIds.length)return;
+  const u=_preloadIds[_preloadIdx++];
+  if(audioCache[u]&&Object.keys(audioCache[u]).length>0){loadNext();return}
+  if(window.AD&&window.AD[u]){audioCache[u]=window.AD[u];loadNext();return}
+  const s=document.createElement('script');s.src='audio_data/audio_'+u+'.js';
+  s.onload=function(){if(window.AD&&window.AD[u]&&Object.keys(window.AD[u]).length>0)audioCache[u]=window.AD[u];loadNext()};
+  s.onerror=function(){if(window.AD&&window.AD[u])audioCache[u]=window.AD[u];loadNext()};
+  document.body.appendChild(s);
+}
 
 // ====== INIT ======
-function init() {
-  // 1. 立即渲染目录（轻量）
+function init(){
   buildTOC();
-
-  // 2. 懒加载：首次选中第一个单元时才渲染内容
-  // 先打开第一个单元
-  if (bookData.chapters.length > 0 && bookData.chapters[0].units.length > 0) {
-    openUnit(bookData.chapters[0].units[0].id);
-  }
-
-  // 3. 预加载音频
-  setTimeout(startPreload, 0);
+  if(bookData.chapters.length>0&&bookData.chapters[0].units.length>0)openUnit(bookData.chapters[0].units[0].id);
+  setTimeout(startPreload,0);
 }
-
-// 脚本末尾直接执行，不依赖 DOMContentLoaded
 init();
 </script>
-
 </body>
 </html>
