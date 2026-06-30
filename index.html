@@ -767,8 +767,9 @@ body {
   </div>
 </div>
 
-<!-- audio_all.js 仅在本地 file:// 协议下加载 -->
-<script>if(location.protocol==='file:'){document.write('<script src="audio_data/audio_all.js"><\/script>')}</script>
+<!-- JS 方式按需加载音频（独立JS文件，无需fetch） -->
+<!-- file:// 下线一次性加载所有 -->
+<script>if(location.protocol==='file:'){document.write('<script src="audio_data/audio_c1u1.js"><\/script><script src="audio_data/audio_c1u2.js"><\/script><script src="audio_data/audio_c1u3.js"><\/script><script src="audio_data/audio_c1u4.js"><\/script><script src="audio_data/audio_c2u1.js"><\/script><script src="audio_data/audio_c2u2.js"><\/script><script src="audio_data/audio_c2u3.js"><\/script><script src="audio_data/audio_c2u4.js"><\/script><script src="audio_data/audio_c2u5.js"><\/script><script src="audio_data/audio_c3u1.js"><\/script><script src="audio_data/audio_c3u2.js"><\/script><script src="audio_data/audio_c3u3.js"><\/script><script src="audio_data/audio_c3u4.js"><\/script><script src="audio_data/audio_c3u5.js"><\/script><script src="audio_data/audio_c4u1.js"><\/script><script src="audio_data/audio_c4u2.js"><\/script><script src="audio_data/audio_c4u3.js"><\/script><script src="audio_data/audio_c4u4.js"><\/script><script src="audio_data/audio_c5u1.js"><\/script><script src="audio_data/audio_c5u2.js"><\/script><script src="audio_data/audio_c5u3.js"><\/script><script src="audio_data/audio_c5u4.js"><\/script>')}</script>
 <script>
 // ====== BOOK DATA ======
 const bookData = {
@@ -3811,17 +3812,30 @@ function toggleSpeed(unitId) {
   }
 }
 
-async function loadAudio(unitId) {
-  if (audioCache[unitId] && Object.keys(audioCache[unitId]).length > 0) return;
-  if (window.AD && window.AD[unitId]) { audioCache[unitId] = window.AD[unitId]; return; }
-  try {
-    const resp = await fetch(`audio_data/audio_${unitId}.json`);
-    if (resp.ok) {
-      const data = await resp.json();
-      if (data && Object.keys(data).length > 0) { audioCache[unitId] = data; return; }
+function loadAudio(unitId, callback) {
+  if (audioCache[unitId] && Object.keys(audioCache[unitId]).length > 0) {
+    if (callback) callback();
+    return;
+  }
+  if (window.AD && window.AD[unitId] && Object.keys(window.AD[unitId]).length > 0) {
+    audioCache[unitId] = window.AD[unitId];
+    if (callback) callback();
+    return;
+  }
+  // 动态创建 script 标签加载（替代 fetch，浏览器自动缓存）
+  const s = document.createElement('script');
+  s.src = `audio_data/audio_${unitId}.js`;
+  s.onload = function() {
+    if (window.AD && window.AD[unitId] && Object.keys(window.AD[unitId]).length > 0) {
+      audioCache[unitId] = window.AD[unitId];
     }
-  } catch(e) {}
-  if (window.AD && window.AD[unitId]) audioCache[unitId] = window.AD[unitId];
+    if (callback) callback();
+  };
+  s.onerror = function() {
+    if (window.AD && window.AD[unitId]) audioCache[unitId] = window.AD[unitId];
+    if (callback) callback();
+  };
+  document.body.appendChild(s);
 }
 
 let _preloadIdx = 0;
@@ -3839,14 +3853,19 @@ function loadNext() {
   const uid = _preloadIds[_preloadIdx++];
   if (audioCache[uid] && Object.keys(audioCache[uid]).length > 0) { loadNext(); return; }
   if (window.AD && window.AD[uid]) { audioCache[uid] = window.AD[uid]; setTimeout(loadNext, 30); return; }
-  fetch(`audio_data/audio_${uid}.json`)
-    .then(r => r.ok ? r.json() : null)
-    .then(data => {
-      if (data && Object.keys(data).length > 0) audioCache[uid] = data;
-      else if (window.AD && window.AD[uid]) audioCache[uid] = window.AD[uid];
-    })
-    .catch(() => { if (window.AD && window.AD[uid]) audioCache[uid] = window.AD[uid]; })
-    .finally(() => setTimeout(loadNext, 30));
+  const s = document.createElement('script');
+  s.src = `audio_data/audio_${uid}.js`;
+  s.onload = function() {
+    if (window.AD && window.AD[uid] && Object.keys(window.AD[uid]).length > 0) {
+      audioCache[uid] = window.AD[uid];
+    }
+    setTimeout(loadNext, 30);
+  };
+  s.onerror = function() {
+    if (window.AD && window.AD[uid]) audioCache[uid] = window.AD[uid];
+    setTimeout(loadNext, 30);
+  };
+  document.body.appendChild(s);
 }
 
 // 页面渲染后立即填充所有单元音频缓存
@@ -4060,40 +4079,40 @@ function playBase64Audio(base64data, callback, btnEl, highlightEl, rate) {
   }
 }
 
-async function speakWord(unitId, key, btnEl) {
-  await loadAudio(unitId);
-  const data = audioCache[unitId]?.[key];
-  if (!data) return;
+function speakWord(unitId, key, btnEl) {
   stopSpeech();
   isDialogAudio = false;
-  playBase64Audio(data, null, btnEl);
+  loadAudio(unitId, function() {
+    const data = audioCache[unitId]?.[key];
+    if (data) playBase64Audio(data, null, btnEl);
+  });
 }
 
-async function speakLine(el, idx) {
+function speakLine(el, idx) {
   const unitId = el.dataset.unit;
   const unit = findUnit(unitId);
   if (!unit) return;
   const dialog = unit.dialogue[idx];
   if (!dialog) return;
 
-  await loadAudio(unitId);
-  const key = `d_${idx}`;
-  const data = audioCache[unitId]?.[key];
-  if (!data) return;
-
   stopSpeech();
   document.querySelectorAll('.active-line').forEach(e => e.classList.remove('active-line'));
   el.classList.add('active-line');
 
-  const btn = el.querySelector('.line-play');
-  isDialogAudio = true;
-  const rate = dialogSpeechRate[unitId] || 1.0;
-  playBase64Audio(data, () => {
-    el.classList.remove('active-line');
-  }, btn, null, rate);
+  loadAudio(unitId, function() {
+    const key = `d_${idx}`;
+    const data = audioCache[unitId]?.[key];
+    if (!data) return;
+    const btn = el.querySelector('.line-play');
+    isDialogAudio = true;
+    const rate = dialogSpeechRate[unitId] || 1.0;
+    playBase64Audio(data, function() {
+      el.classList.remove('active-line');
+    }, btn, null, rate);
+  });
 }
 
-async function playAll(unitId) {
+function playAll(unitId) {
   const unit = findUnit(unitId);
   if (!unit) return;
   const btn = document.getElementById(`playAll-${unitId}`);
@@ -4104,34 +4123,32 @@ async function playAll(unitId) {
     return;
   }
 
-  loadAudio(unitId);
-  const lines = document.querySelectorAll(`#uc-${unitId} .dialogue-line`);
-  let i = 0;
-
-  btn.textContent = '⏸ 播放中...';
-  btn.classList.add('playing');
-  isDialogAudio = true; // 对话音频，响应实时变速
+  var _pLines, _pI = 0;
+  loadAudio(unitId, function() {
+    _pLines = document.querySelectorAll(`#uc-${unitId} .dialogue-line`);
+    _pI = 0;
+    btn.textContent = '⏸ 播放中...';
+    btn.classList.add('playing');
+    isDialogAudio = true;
+    playAllQueue = setTimeout(playNext, 100);
+  });
 
   function playNext() {
-    if (i >= unit.dialogue.length) {
+    if (_pI >= unit.dialogue.length) {
       stopSpeech();
       return;
     }
-    // Highlight will be applied by playBase64Audio when audio actually starts
-
-    const progress = ((i + 1) / unit.dialogue.length) * 100;
+    const progress = ((_pI + 1) / unit.dialogue.length) * 100;
     progressFill.style.width = `${progress}%`;
-
-    const key = `d_${i}`;
-    // 双保险：audioCache 取不到则直接从 window.AD 读
+    const key = `d_${_pI}`;
     const data = audioCache[unitId]?.[key];
     const rate = dialogSpeechRate[unitId] || 1.0;
-    playBase64Audio(data, () => {
-      i++;
+    if (!data) { _pI++; playAllQueue = setTimeout(playNext, 100); return; }
+    playBase64Audio(data, function() {
+      _pI++;
       playAllQueue = setTimeout(playNext, 300);
-    }, null, lines[i], rate);
+    }, null, _pLines[_pI], rate);
   }
-  playNext();
 }
 
 function findUnit(id) {
@@ -4150,9 +4167,14 @@ function openUnit(id) {
     if (window.AD && window.AD[id]) {
       audioCache[id] = window.AD[id];
     } else {
-      fetch(`audio_data/audio_${id}.json`)
-        .then(r => r.ok ? r.json() : null)
-        .then(d => { if (d && Object.keys(d).length > 0) audioCache[id] = d; });
+      const s = document.createElement('script');
+      s.src = `audio_data/audio_${id}.js`;
+      s.onload = function() {
+        if (window.AD && window.AD[id] && Object.keys(window.AD[id]).length > 0) {
+          audioCache[id] = window.AD[id];
+        }
+      };
+      document.body.appendChild(s);
     }
   }
 
