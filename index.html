@@ -3845,25 +3845,26 @@ function startPreload() {
   if (_preloadIds.length === 0) {
     bookData.chapters.forEach(ch => ch.units.forEach(u => _preloadIds.push(u.id)));
   }
-  for (let c = 0; c < 3; c++) loadNext();
+  // 并发注入 6 路 script（浏览器调度实际下载，不会阻塞主线程）
+  for (let c = 0; c < 6; c++) loadNext();
 }
 
 function loadNext() {
   if (_preloadIdx >= _preloadIds.length) return;
   const uid = _preloadIds[_preloadIdx++];
   if (audioCache[uid] && Object.keys(audioCache[uid]).length > 0) { loadNext(); return; }
-  if (window.AD && window.AD[uid]) { audioCache[uid] = window.AD[uid]; setTimeout(loadNext, 30); return; }
+  if (window.AD && window.AD[uid]) { audioCache[uid] = window.AD[uid]; loadNext(); return; }
   const s = document.createElement('script');
   s.src = `audio_data/audio_${uid}.js`;
   s.onload = function() {
     if (window.AD && window.AD[uid] && Object.keys(window.AD[uid]).length > 0) {
       audioCache[uid] = window.AD[uid];
     }
-    setTimeout(loadNext, 30);
+    loadNext();
   };
   s.onerror = function() {
     if (window.AD && window.AD[uid]) audioCache[uid] = window.AD[uid];
-    setTimeout(loadNext, 30);
+    loadNext();
   };
   document.body.appendChild(s);
 }
@@ -4162,7 +4163,7 @@ function findUnit(id) {
 
 // ====== NAVIGATION ======
 function openUnit(id) {
-  // 用户选中该单元 → 立即优先加载其音频（不阻塞后台预加载）
+  // 用户选中该单元 → 立即优先加载其音频
   if (!audioCache[id] || Object.keys(audioCache[id]).length === 0) {
     if (window.AD && window.AD[id]) {
       audioCache[id] = window.AD[id];
@@ -4182,8 +4183,20 @@ function openUnit(id) {
   document.querySelectorAll('.unit-content').forEach(el => el.classList.remove('active'));
   document.getElementById('welcomePanel').style.display = 'none';
 
+  // 懒加载：如果该单元还没渲染，从 bookData 查找并构建
+  const container = document.getElementById('unitContentContainer');
+  let target = document.getElementById(`uc-${id}`);
+  if (!target) {
+    const unit = findUnit(id);
+    if (unit) {
+      const div = document.createElement('div');
+      div.innerHTML = buildUnitContent(unit);
+      while (div.firstChild) container.appendChild(div.firstChild);
+      target = document.getElementById(`uc-${id}`);
+    }
+  }
+
   // Show selected
-  const target = document.getElementById(`uc-${id}`);
   if (target) {
     target.classList.add('active');
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -4194,7 +4207,6 @@ function openUnit(id) {
   const tocItem = document.querySelector(`[data-unit="${id}"]`);
   if (tocItem) {
     tocItem.classList.add('active');
-    // Ensure parent chapter is expanded
     const chapter = tocItem.closest('.unit-list');
     if (chapter) chapter.classList.remove('collapsed');
     const title = chapter?.previousElementSibling;
@@ -4220,30 +4232,16 @@ document.getElementById('sidebarOverlay').onclick = toggleSidebar;
 
 // ====== INIT ======
 function init() {
-  // 1. 立即渲染目录
+  // 1. 立即渲染目录（轻量）
   buildTOC();
 
-  // 2. 下一帧构建单元内容（不阻塞目录显示）
-  requestAnimationFrame(() => {
-    const container = document.getElementById('unitContentContainer');
-    let allHtml = '';
-    bookData.chapters.forEach(ch => {
-      ch.units.forEach(u => {
-        allHtml += buildUnitContent(u);
-      });
-    });
-    container.innerHTML = allHtml;
+  // 2. 懒加载：首次选中第一个单元时才渲染内容
+  // 先打开第一个单元
+  if (bookData.chapters.length > 0 && bookData.chapters[0].units.length > 0) {
+    openUnit(bookData.chapters[0].units[0].id);
+  }
 
-    // Expand first chapter by default
-    const firstChapter = document.querySelector('.unit-list');
-    if (firstChapter) {
-      firstChapter.classList.remove('collapsed');
-      const firstTitle = firstChapter.previousElementSibling;
-      if (firstTitle) firstTitle.classList.remove('collapsed');
-    }
-  });
-
-  // 3. 后台按序预加载单元音频
+  // 3. 预加载音频
   setTimeout(startPreload, 0);
 }
 
