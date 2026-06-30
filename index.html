@@ -858,13 +858,13 @@ const bookData = {
               "zh": "房客"
             }
           ,
-            ["salotto", "客厅"]
-            ["studio", "书房"]
-            ["sala da pranzo", "餐厅"]
-            ["aria condizionata", "空调"]
-            ["microonde", "微波炉"]
-            ["dispensa", "食品柜"]
-            ["doccia", "淋浴"]],
+            {"it": "salotto", "zh": "客厅"},
+            {"it": "studio", "zh": "书房"},
+            {"it": "sala da pranzo", "zh": "餐厅"},
+            {"it": "aria condizionata", "zh": "空调"},
+            {"it": "microonde", "zh": "微波炉"},
+            {"it": "dispensa", "zh": "食品柜"},
+            {"it": "doccia", "zh": "淋浴"}],
           "dialogue": [
             {
               "speaker": "A",
@@ -953,14 +953,14 @@ const bookData = {
               "example": "100 euro in più."
             }
           ,
-            ["Affittasi (Fittasi)", "有……招租，口语化说法，规范说法是Si affitta...", "Affittasi appartamento ammobiliato."]
-            ["la parte più bassa", "最下面的位置，形容词比较级和最高级", "Nella parte piu bassa del foglio."]
-            ["occorrere", "对……有必要，无人称动词", "Tutte le informazioni che ti occorrono."]
-            ["altrimenti", "反之，否则", "Altrimenti è meglio che li cerchi per strada."]
-            ["È meglio che tu veda l'appartamento.", "最好……", "È meglio che tu veda l'appartamento."]
-            ["si + 动词第三人称", "被动语态/无人称形式", "Si affitta / Si conia una moneta."]
-            ["condividere... con...", "与某人分享/合租", "Condividere un appartamento con un'altra persona."]
-            ["da pagare", "有……的费用要付", "Bollette da pagare."]],
+            {"rule": "Affittasi (Fittasi)", "explain": "有……招租，口语化说法，规范说法是Si affitta...", "example": "Affittasi appartamento ammobiliato."},
+            {"rule": "la parte più bassa", "explain": "最下面的位置，形容词比较级和最高级", "example": "Nella parte piu bassa del foglio."},
+            {"rule": "occorrere", "explain": "对……有必要，无人称动词", "example": "Tutte le informazioni che ti occorrono."},
+            {"rule": "altrimenti", "explain": "反之，否则", "example": "Altrimenti è meglio che li cerchi per strada."},
+            {"rule": "È meglio che tu veda l'appartamento.", "explain": "最好……", "example": "È meglio che tu veda l'appartamento."},
+            {"rule": "si + 动词第三人称", "explain": "被动语态/无人称形式", "example": "Si affitta / Si conia una moneta."},
+            {"rule": "condividere... con...", "explain": "与某人分享/合租", "example": "Condividere un appartamento con un'altra persona."},
+            {"rule": "da pagare", "explain": "有……的费用要付", "example": "Bollette da pagare."}],
           "sentences": [
             {
               "it": "Sto cercando un appartamento ammobiliato.",
@@ -983,14 +983,14 @@ const bookData = {
               "zh": "祝您一天愉快！"
             }
           ,
-            ["Affittasi (Fittasi)", "有……招租，口语化说法，规范说法是Si affitta...", "Affittasi appartamento ammobiliato."]
-            ["la parte piu bassa", "最下面的位置，形容词比较级和最高级", "Nella parte piu bassa del foglio."]
-            ["occorrere", "对……有必要，无人称动词", "Tutte le informazioni che ti occorrono."]
-            ["altrimenti", "反之，否则", "Altrimenti e meglio che li cerchi per strada."]
-            ["e meglio...", "最好……", "E meglio che tu veda l'appartamento."]
-            ["si + 动词第三人称", "被动语态/无人称形式", "Si affitta / Si conia una moneta."]
-            ["condividere... con...", "与某人分享/合租", "Condividere un appartamento con un'altra persona."]
-            ["da pagare", "有……的费用要付", "Bollette da pagare."]]
+            {"rule": "Affittasi (Fittasi)", "explain": "有……招租，口语化说法，规范说法是Si affitta...", "example": "Affittasi appartamento ammobiliato."},
+            {"rule": "la parte piu bassa", "explain": "最下面的位置，形容词比较级和最高级", "example": "Nella parte piu bassa del foglio."},
+            {"rule": "occorrere", "explain": "对……有必要，无人称动词", "example": "Tutte le informazioni che ti occorrono."},
+            {"rule": "altrimenti", "explain": "反之，否则", "example": "Altrimenti e meglio che li cerchi per strada."},
+            {"rule": "e meglio...", "explain": "最好……", "example": "E meglio che tu veda l'appartamento."},
+            {"rule": "si + 动词第三人称", "explain": "被动语态/无人称形式", "example": "Si affitta / Si conia una moneta."},
+            {"rule": "condividere... con...", "explain": "与某人分享/合租", "example": "Condividere un appartamento con un'altra persona."},
+            {"rule": "da pagare", "explain": "有……的费用要付", "example": "Bollette da pagare."}]
         },
         {
           "id": "c1u2",
@@ -1264,8 +1264,8 @@ const bookData = {
               "zh": "我需要取款。"
             }
           ,
-            ["Vorrei cambiare dei dollari in euro.", "我想把这些美元换成欧元。"]
-            ["Qual è il cambio reale tra lo Yuan cinese e l'euro?", "人民币与欧元的实时汇率是多少？"]]
+            {"it": "Vorrei cambiare dei dollari in euro.", "zh": "我想把这些美元换成欧元。"},
+            {"it": "Qual è il cambio reale tra lo Yuan cinese e l'euro?", "zh": "人民币与欧元的实时汇率是多少？"}]
         },
         {
           "id": "c1u4",
@@ -1384,8 +1384,8 @@ const bookData = {
               "zh": "我想续期居留证。"
             }
           ,
-            ["Dove posso presentare la domanda?", "我在哪里提交申请？"]
-            ["Quanto costa il permesso di soggiorno?", "居留证多少钱？"]]
+            {"it": "Dove posso presentare la domanda?", "zh": "我在哪里提交申请？"},
+            {"it": "Quanto costa il permesso di soggiorno?", "zh": "居留证多少钱？"}]
         }
       ]
     },
@@ -1539,9 +1539,9 @@ const bookData = {
               "zh": "洗手间在哪里？"
             }
           ,
-            ["Mi porta il menu per favore?", "请给我菜单看看可以吗？"]
-            ["Vorrei un croissant e un espresso.", "我要一个牛角包和一杯浓缩咖啡。"]
-            ["C'è caffè decaffeinato?", "有没有不含咖啡因的咖啡？"]]
+            {"it": "Mi porta il menu per favore?", "zh": "请给我菜单看看可以吗？"},
+            {"it": "Vorrei un croissant e un espresso.", "zh": "我要一个牛角包和一杯浓缩咖啡。"},
+            {"it": "C'è caffè decaffeinato?", "zh": "有没有不含咖啡因的咖啡？"}]
         },
         {
           "id": "c2u2",
@@ -1668,8 +1668,8 @@ const bookData = {
               "zh": "太美味了！"
             }
           ,
-            ["Qual è il più famoso dolce in questa regione?", "这个大区最有名的甜品是哪种？"]
-            ["Che tipo di dolce avete?", "你们有哪些甜品？"]]
+            {"it": "Qual è il più famoso dolce in questa regione?", "zh": "这个大区最有名的甜品是哪种？"},
+            {"it": "Che tipo di dolce avete?", "zh": "你们有哪些甜品？"}]
         },
         {
           "id": "c2u3",
