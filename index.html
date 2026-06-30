@@ -772,954 +772,2485 @@ body {
 <script>
 // ====== BOOK DATA ======
 const bookData = {
-  chapters: [
+  "chapters": [
     {
-      title: "All'arrivo in Italia",
-      subtitle: "初到意大利",
-      units: [
+      "title": "Xue Er Pian",
+      "subtitle": "学而篇第一 ~ 里仁篇第四",
+      "units": [
         {
-          id: "c1u1",
-          num: "第1单元",
-          title: "Affittare una casa",
-          subtitle: "租房",
-          scene: "Mario è appena arrivato in Italia per studiare. Deve trovare un appartamento. Oggi va a vedere una casa in affitto nel centro di Roma con l'agente immobiliare, la signora Rossi.",
-          vocab: [
-            { it: "l'affitto", zh: "租金" },
-            { it: "la casa", zh: "房子" },
-            { it: "l'appartamento", zh: "公寓" },
-            { it: "la stanza", zh: "房间" },
-            { it: "il bagno", zh: "浴室" },
-            { it: "la cucina", zh: "厨房" },
-            { it: "il soggiorno", zh: "客厅" },
-            { it: "la camera da letto", zh: "卧室" },
-            { it: "l'agente immobiliare", zh: "房产中介" },
-            { it: "il contratto", zh: "合同" },
-            { it: "la caparra", zh: "押金" },
-            { it: "pavimento", zh: "地板" },
-            { it: "mobile", zh: "家具" },
-            { it: "divano", zh: "长沙发" },
-            { it: "poltrona", zh: "单人沙发" },
-            { it: "termosifone", zh: "暖气" },
-            { it: "scaldabagno", zh: "热水器" },
-            { it: "fornello", zh: "炉灶" },
-            { it: "frigorifero", zh: "电冰箱" },
-            { it: "balcone", zh: "阳台" },
-            { it: "lavatrice", zh: "洗衣机" },
-            { it: "scala", zh: "楼梯" },
-            { it: "soffitto", zh: "天花板" },
-            { it: "le spese condominiali", zh: "物业费" }
+          "id": "c1u1",
+          "num": "学而第一",
+          "title": "学而时习之",
+          "subtitle": "学习的快乐",
+          "scene": "《学而》是《论语》第一篇，共16章，孔子开篇即提出\"学而时习之，不亦说乎\"的著名命题。本篇涵盖学习、修身、孝悌、仁爱等多个方面，\"吾日三省吾身\"的修身精神,\"巧言令色，鲜矣仁\"的察人之道，是理解儒家思想的入门篇章。",
+          "vocab": [
+            {
+              "it": "学",
+              "zh": "学习，学问"
+            },
+            {
+              "it": "习",
+              "zh": "温习，实践"
+            },
+            {
+              "it": "说",
+              "zh": "通\"悦\"，愉快"
+            },
+            {
+              "it": "君子",
+              "zh": "品德高尚的人"
+            },
+            {
+              "it": "孝",
+              "zh": "孝顺父母"
+            },
+            {
+              "it": "悌",
+              "zh": "尊敬兄长"
+            },
+            {
+              "it": "仁",
+              "zh": "仁爱，仁德"
+            },
+            {
+              "it": "信",
+              "zh": "诚信，信用"
+            },
+            {
+              "it": "礼",
+              "zh": "礼仪，礼制"
+            },
+            {
+              "it": "道",
+              "zh": "道理，方法"
+            },
+            {
+              "it": "三省",
+              "zh": "多次反省"
+            },
+            {
+              "it": "忠",
+              "zh": "忠诚，尽心竭力"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Agente", text: "Buongiorno, signor Mario. Benvenuto! Questa è la casa in via Cavour.", zh: "早上好，马里奥先生。欢迎！这就是位于卡武尔街的房子。" },
-            { speaker: "B", name: "Mario", text: "Buongiorno, signora Rossi. L'appartamento è molto luminoso!", zh: "早上好，罗西女士。这间公寓很明亮！" },
-            { speaker: "A", name: "Agente", text: "Sì, ha tre stanze: un soggiorno, una camera da letto e una cucina abitabile.", zh: "是的，有三个房间：一个客厅、一间卧室和一个可居住的厨房。" },
-            { speaker: "B", name: "Mario", text: "Quanto è l'affitto?", zh: "租金是多少？" },
-            { speaker: "A", name: "Agente", text: "L'affitto è di 800 euro al mese, più 100 euro di spese condominiali.", zh: "租金是每月800欧元，外加100欧元的物业费。" },
-            { speaker: "B", name: "Mario", text: "È inclusa l'acqua e il gas?", zh: "包含水和燃气吗？" },
-            { speaker: "A", name: "Agente", text: "Sì, tutto incluso. Deve solo pagare la luce e internet.", zh: "是的，全包。您只需要支付电费和网络费。" },
-            { speaker: "B", name: "Mario", text: "Va bene. Quanto serve di caparra?", zh: "好的。押金需要多少？" },
-            { speaker: "A", name: "Agente", text: "Due mensilità, quindi 1.600 euro. Poi firmiamo il contratto.", zh: "两个月租金，也就是1600欧元。然后我们签合同。" },
-            { speaker: "B", name: "Mario", text: "Perfetto, la prendo! Quando posso trasferirmi?", zh: "太好了，我租了！我什么时候可以搬进来？" },
-            { speaker: "A", name: "Agente", text: "Dal primo del mese prossimo. Le auguro una buona permanenza in Italia!", zh: "从下个月1号开始。祝您在意大利生活愉快！" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？",
+              "zh": "学习了又时常温习实践，不是很愉快吗？有朋友从远方来，不是很高兴吗？别人不了解自己却不恼怒，不正是君子的风范吗？"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "巧言令色，鲜矣仁！",
+              "zh": "花言巧语、装出和善的样子，这样的人仁德是很少的！"
+            },
+            {
+              "speaker": "B",
+              "name": "曾子",
+              "text": "吾日三省吾身：为人谋而不忠乎？与朋友交而不信乎？传不习乎？",
+              "zh": "我每天多次反省自己：替别人办事是否尽心竭力？与朋友交往是否诚信？老师传授的学业是否温习了？"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "道千乘之国，敬事而信，节用而爱人，使民以时。",
+              "zh": "治理国家，要谨慎处事并讲求信用，节约用度并爱护百姓，役使百姓要顺应农时。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "弟子入则孝，出则悌，谨而信，泛爱众而亲仁。行有余力，则以学文。",
+              "zh": "年轻人在家要孝顺父母，在外要尊敬兄长，谨慎守信，关爱众人并亲近仁德之人。做到这些还有余力，就去学习文化知识。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "不患人之不己知，患不知人也。",
+              "zh": "不担心别人不了解自己，担心的是自己不了解别人。"
+            }
           ],
-          grammar: [
-            { rule: "冠词的使用", explain: "意大利语冠词分为定冠词(il/lo/la/i/gli/le)和不定冠词(un/uno/una/un')。如：la casa, un appartamento。", example: "La casa è bella. / Un appartamento luminoso." },
-            { rule: "动词avere（有）的变位", explain: "avere是意大利语中最常用的动词之一，表示\"有\"。Io ho, tu hai, lui/lei ha, noi abbiamo, voi avete, loro hanno。", example: "Quanto è l'affitto? (是多少)" },
-            { rule: "疑问词Quanto", explain: "Quanto意为\"多少\"，需要与名词的性和数配合。Quanto（阳性单数）, Quanta（阴性单数）, Quanti（阳性复数）, Quante（阴性复数）。", example: "Quanto è l'affitto? / Quante stanze ci sono?" }
+          "grammar": [
+            {
+              "rule": "不亦……乎？",
+              "explain": "反问句式，表示\"难道不是……吗？\"。不亦说乎（难道不是愉快的吗？），语气委婉而肯定。",
+              "example": "学而时习之，不亦说乎？"
+            },
+            {
+              "rule": "通假字：说=悦",
+              "explain": "\"说\"在文言文中常通\"悦\"，表示喜悦。这是先秦文献中常见的用字现象。",
+              "example": "学而时习之，不亦说乎？"
+            },
+            {
+              "rule": "……&nbsp;者，……也",
+              "explain": "判断句式，前者提示主语停顿，后者加强判断语气，相当于\"……是……\"。",
+              "example": "君子者，成人之美者也。"
+            }
           ],
-          sentences: [
-            { it: "Quanto costa l'affitto?", zh: "租金是多少？" },
-            { it: "Vorrei vedere un appartamento.", zh: "我想看一间公寓。" },
-            { it: "C'è il riscaldamento centrale?", zh: "有集中供暖吗？" },
-            { it: "Devo firmare il contratto.", zh: "我需要签合同。" },
-            { it: "La caparra è di due mensilità.", zh: "押金为两个月租金。" }
+          "sentences": [
+            {
+              "it": "学而时习之，不亦说乎？",
+              "zh": "学习并时常温习，不是很愉快吗？"
+            },
+            {
+              "it": "有朋自远方来，不亦乐乎？",
+              "zh": "有朋友从远方来，不是很快乐吗？"
+            },
+            {
+              "it": "吾日三省吾身",
+              "zh": "我每天多次反省自己"
+            },
+            {
+              "it": "巧言令色，鲜矣仁",
+              "zh": "花言巧语者很少有仁德"
+            },
+            {
+              "it": "不患人之不己知，患不知人也",
+              "zh": "不怕别人不了解自己，就怕自己不了解别人"
+            }
           ]
         },
         {
-          id: "c1u2",
-          num: "第2单元",
-          title: "I servizi telefonici",
-          subtitle: "办理手机业务",
-          scene: "Mario ha bisogno di una SIM italiana per comunicare. Va in un negozio di telefonia a Roma per attivare una carta telefonica.",
-          vocab: [
-            { it: "il telefono cellulare", zh: "手机" },
-            { it: "la SIM", zh: "SIM卡" },
-            { it: "il piano tariffario", zh: "资费套餐" },
-            { it: "i dati mobili", zh: "移动数据" },
-            { it: "le chiamate", zh: "通话" },
-            { it: "i messaggi", zh: "短信" },
-            { it: "la ricarica", zh: "充值" },
-            { it: "la copertura", zh: "信号覆盖" },
-            { it: "il numero di telefono", zh: "电话号码" },
-            { it: "l'operatore", zh: "运营商" },
-            { it: "abbonamento", zh: "月套餐" },
-            { it: "prepagato", zh: "预付费" }
+          "id": "c1u2",
+          "num": "为政第二",
+          "title": "为政以德",
+          "subtitle": "以德治国",
+          "scene": "《为政》是《论语》第二篇，共24章。孔子提出\"为政以德，譬如北辰\"的著名观点，强调道德在治国中的核心作用。本篇还收录了\"诗三百，一言以蔽之，曰：思无邪\"的经典评价、\"三十而立\"的人生阶段论、\"温故而知新\"的学习方法以及\"学而不思则罔，思而不学则殆\"的深刻警示。",
+          "vocab": [
+            {
+              "it": "政",
+              "zh": "政治，政事"
+            },
+            {
+              "it": "德",
+              "zh": "德行，道德"
+            },
+            {
+              "it": "北辰",
+              "zh": "北极星"
+            },
+            {
+              "it": "共",
+              "zh": "通\"拱\"，环绕"
+            },
+            {
+              "it": "思无邪",
+              "zh": "思想纯正无邪"
+            },
+            {
+              "it": "立",
+              "zh": "立足，有所成就"
+            },
+            {
+              "it": "惑",
+              "zh": "迷惑，困惑"
+            },
+            {
+              "it": "天命",
+              "zh": "上天的意旨"
+            },
+            {
+              "it": "耳顺",
+              "zh": "听得进不同意见"
+            },
+            {
+              "it": "逾矩",
+              "zh": "超越规矩"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Commesso", text: "Buongiorno, posso aiutarla?", zh: "早上好，有什么可以帮您的？" },
-            { speaker: "B", name: "Mario", text: "Buongiorno, vorrei attivare una SIM italiana.", zh: "早上好，我想办一张意大利SIM卡。" },
-            { speaker: "A", name: "Commesso", text: "Certamente. Ha il passaporto con sé?", zh: "当然。您带护照了吗？" },
-            { speaker: "B", name: "Mario", text: "Sì, eccolo. Che piani tariffari avete?", zh: "带了，给您。你们有什么资费套餐？" },
-            { speaker: "A", name: "Commesso", text: "Abbiamo tre opzioni: 10 euro al mese con 50 GB, 15 euro con 100 GB, oppure 20 euro con 150 GB e chiamate illimitate.", zh: "我们有三个选择：每月10欧50GB，15欧100GB，或者20欧150GB加无限通话。" },
-            { speaker: "B", name: "Mario", text: "Quale mi consiglia?", zh: "您推荐哪个？" },
-            { speaker: "A", name: "Commesso", text: "Se usa molto internet, le consiglio quello da 15 euro. È il più conveniente.", zh: "如果您经常用网络，我推荐15欧的。性价比最高。" },
-            { speaker: "B", name: "Mario", text: "Va bene, prendo quello da 15 euro. È un abbonamento o prepagato?", zh: "好的，我选15欧的。是月套餐还是预付费？" },
-            { speaker: "A", name: "Commesso", text: "È prepagato, ogni mese può ricaricare. Le attivo subito la SIM.", zh: "是预付费的，每月充值就行。我马上为您激活SIM卡。" },
-            { speaker: "B", name: "Mario", text: "Perfetto. Qual è il mio numero?", zh: "太好了。我的号码是多少？" },
-            { speaker: "A", name: "Commesso", text: "Il suo numero è 345 678 9012. Ecco la SIM, buona giornata!", zh: "您的号码是345 678 9012。给您SIM卡，祝您愉快！" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "为政以德，譬如北辰，居其所而众星共之。",
+              "zh": "用道德来治理政事，就像北极星一样，安居其位而众星环绕着它。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "诗三百，一言以蔽之，曰：思无邪。",
+              "zh": "《诗经》三百篇，用一句话来概括，就是：思想纯正无邪。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "吾十有五而志于学，三十而立，四十而不惑，五十而知天命，六十而耳顺，七十而从心所欲，不逾矩。",
+              "zh": "我十五岁立志于学习，三十岁有所成就，四十岁不再困惑，五十岁了解天命，六十岁能听进不同意见，七十岁随心所欲而不超越规矩。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "温故而知新，可以为师矣。",
+              "zh": "温习旧知识而有新体会，就可以做老师了。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "学而不思则罔，思而不学则殆。",
+              "zh": "只学习而不思考就会迷惑，只思考而不学习就会危险。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "知之为知之，不知为不知，是知也。",
+              "zh": "知道就是知道，不知道就是不知道，这就是智慧啊。"
+            }
           ],
-          grammar: [
-            { rule: "动词volere（想要）的变位", explain: "volere用在礼貌请求中：Io voglio, tu vuoi, lui/lei vuole, noi vogliamo, voi volete, loro vogliono。条件式vorrei更礼貌。", example: "Vorrei attivare una SIM. / Vuoi il mio numero?" },
-            { rule: "条件式vorrei", explain: "vorrei是volere的条件式，表示\"我想要...\"，是非常礼貌的表达方式，常用于购物、请求服务等场合。", example: "Vorrei un caffè. / Vorrei informazioni." },
-            { rule: "指示代词questo/quello", explain: "questo（这个）和quello（那个）有性数变化：questo/questa/questi/queste。", example: "Questo è il mio numero. / Quella SIM è più economica." }
+          "grammar": [
+            {
+              "rule": "……而……",
+              "explain": "连词\"而\"表并列、转折或承接关系。\"学而不思\"的\"而\"表转折（却），\"三十而立\"的\"而\"表承接（就）。",
+              "example": "学而不思则罔，思而不学则殆。"
+            },
+            {
+              "rule": "一言以蔽之",
+              "explain": "\"以一言蔽之\"的倒装，意为\"用一句话概括它\"。\"蔽\"为概括、涵盖。",
+              "example": "诗三百，一言以蔽之，曰：思无邪。"
+            },
+            {
+              "rule": "通假字：共=拱",
+              "explain": "\"共\"通\"拱\"，意为环绕。这是上古文献中常见的通假现象。",
+              "example": "居其所而众星共之。"
+            }
           ],
-          sentences: [
-            { it: "Vorrei attivare una SIM.", zh: "我想办一张SIM卡。" },
-            { it: "Qual è il piano tariffario migliore?", zh: "哪个套餐最好？" },
-            { it: "Quanto costa al mese?", zh: "每月多少钱？" },
-            { it: "Dove posso ricaricare?", zh: "哪里可以充值？" },
-            { it: "C'è copertura in tutta Italia?", zh: "全意大利都有信号吗？" }
+          "sentences": [
+            {
+              "it": "为政以德，譬如北辰",
+              "zh": "以道德治国，就像北极星受众星环绕"
+            },
+            {
+              "it": "三十而立",
+              "zh": "三十岁能够自立"
+            },
+            {
+              "it": "温故而知新",
+              "zh": "温习旧知识而获得新领悟"
+            },
+            {
+              "it": "学而不思则罔，思而不学则殆",
+              "zh": "光学不思则迷惘，光思不学则危险"
+            },
+            {
+              "it": "知之为知之，不知为不知，是知也",
+              "zh": "知道就是知道，不知道就是不知道，这才是智慧"
+            }
           ]
         },
         {
-          id: "c1u3",
-          num: "第3单元",
-          title: "I servizi bancari",
-          subtitle: "办理银行业务",
-          scene: "Mario deve aprire un conto in banca per gestire i suoi soldi mentre studia in Italia. Va in una banca a Roma.",
-          vocab: [
-            { it: "la banca", zh: "银行" },
-            { it: "il bonifico", zh: "转账" },
-            { it: "il versamento", zh: "存款" },
-            { it: "la carta di credito", zh: "信用卡" },
-            { it: "l'IBAN", zh: "国际银行账户号码" },
-            { it: "il saldo", zh: "余额" },
-            { it: "il cambio", zh: "汇率" },
-            { it: "il conto corrente", zh: "活期账户" },
-            { it: "aprire un conto", zh: "开户" },
-            { it: "il bancomat", zh: "借记卡" },
-            { it: "la carta di credito", zh: "信用卡" },
-            { it: "il codice fiscale", zh: "税号" },
-            { it: "il PIN", zh: "密码" },
-            { it: "il saldo", zh: "余额" },
-            { it: "il bonifico", zh: "转账" },
-            { it: "l'estratto conto", zh: "银行对账单" },
-            { it: "lo sportello", zh: "柜台/窗口" },
-            { it: "il tasso d'interesse", zh: "利率" }
+          "id": "c1u3",
+          "num": "八佾第三",
+          "title": "礼乐文明",
+          "subtitle": "礼仪与音乐",
+          "scene": "《八佾》是《论语》第三篇，共26章，集中讨论礼乐制度。孔子对当时礼崩乐坏的现实深感忧虑，强调礼乐的内在精神重于外在形式。\"八佾舞于庭，是可忍也，孰不可忍也\"表达了对僭越礼制的愤慨。\"人而不仁，如礼何？人而不仁，如乐何？\"揭示了仁是礼乐的根本。",
+          "vocab": [
+            {
+              "it": "佾",
+              "zh": "古代乐舞的行列"
+            },
+            {
+              "it": "忍",
+              "zh": "容忍，忍心"
+            },
+            {
+              "it": "礼",
+              "zh": "礼仪，礼制"
+            },
+            {
+              "it": "乐",
+              "zh": "音乐，乐曲"
+            },
+            {
+              "it": "射",
+              "zh": "射箭，射礼"
+            },
+            {
+              "it": "祭",
+              "zh": "祭祀"
+            },
+            {
+              "it": "如",
+              "zh": "如同，好像"
+            },
+            {
+              "it": "禘",
+              "zh": "古代大祭之名"
+            },
+            {
+              "it": "往",
+              "zh": "过去的事情"
+            },
+            {
+              "it": "谏",
+              "zh": "规劝，进谏"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Impiegato", text: "Buongiorno, desidera?", zh: "早上好，您需要什么？" },
-            { speaker: "B", name: "Mario", text: "Buongiorno, vorrei aprire un conto corrente.", zh: "早上好，我想开一个活期账户。" },
-            { speaker: "A", name: "Impiegato", text: "Ha il passaporto e il codice fiscale?", zh: "您带了护照和税号吗？" },
-            { speaker: "B", name: "Mario", text: "Sì, ecco il passaporto. Il codice fiscale devo ancora richiederlo.", zh: "带了，这是护照。税号我还没申请。" },
-            { speaker: "A", name: "Impiegato", text: "Nessun problema. Può richiederlo all'Agenzia delle Entrate e portarcelo dopo.", zh: "没问题。您可以去税务局申请，之后带过来。" },
-            { speaker: "B", name: "Mario", text: "Quali sono i vantaggi del conto corrente per studenti?", zh: "学生账户有什么优惠？" },
-            { speaker: "A", name: "Impiegato", text: "Per gli studenti il conto è gratuito, senza spese di gestione. Include anche un bancomat.", zh: "对学生是免费的，没有管理费。还赠送一张借记卡。" },
-            { speaker: "B", name: "Mario", text: "Ottimo! Posso fare anche bonifici internazionali?", zh: "太好了！可以做国际转账吗？" },
-            { speaker: "A", name: "Impiegato", text: "Sì, può ricevere bonifici dalla Cina senza commissioni aggiuntive.", zh: "可以，从中国接收汇款没有额外手续费。" },
-            { speaker: "B", name: "Mario", text: "Perfetto. Quanto tempo ci vuole per l'attivazione?", zh: "太好了。激活需要多长时间？" },
-            { speaker: "A", name: "Impiegato", text: "La carta sarà pronta in 5 giorni lavorativi. La chiameremo quando è disponibile.", zh: "银行卡5个工作日内准备好。准备好后我们会打电话通知您。" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "八佾舞于庭，是可忍也，孰不可忍也？",
+              "zh": "用八佾的规格在庭院中舞蹈，这种事都能容忍，还有什么不能容忍呢？"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "人而不仁，如礼何？人而不仁，如乐何？",
+              "zh": "一个人没有仁德，要礼有什么用？一个人没有仁德，要乐有什么用？"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "礼，与其奢也，宁俭；丧，与其易也，宁戚。",
+              "zh": "礼仪，与其奢侈铺张，不如节俭朴素；丧事，与其仪文周到，不如内心悲伤。"
+            },
+            {
+              "speaker": "B",
+              "name": "子夏",
+              "text": "巧笑倩兮，美目盼兮，素以为绚兮。何谓也？",
+              "zh": "美丽的笑容真动人，漂亮的眼睛真传神，白底上画着绚丽的图案。这是什么意思？"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "绘事后素。",
+              "zh": "先有白底然后绘画——礼仪在仁德之后。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "成事不说，遂事不谏，既往不咎。",
+              "zh": "已经做了的事不再解释，已经完成了的事不再劝谏，已经过去的事不再追究。"
+            }
           ],
-          grammar: [
-            { rule: "动词aprire（打开/开设）的变位", explain: "Aprire是不规则动词：Io apro, tu apri, lui/lei apre, noi apriamo, voi aprite, loro aprono。", example: "Vorrei aprire un conto." },
-            { rule: "礼貌请求vorrei + 动词不定式", explain: "vorrei后面直接跟动词不定式，表示\"我想做某事\"，是非常礼貌的请求方式。", example: "Vorrei aprire un conto. / Vorrei ricevere un bonifico." },
-            { rule: "前置词di/a/da/in的用法", explain: "Di表示所属：il conto di Mario. A表示方向：vado alla banca. Da表示来源：vengo dalla Cina. In表示地点：in banca。", example: "Vado in banca. / Vengo dalla Cina." }
+          "grammar": [
+            {
+              "rule": "是可忍也，孰不可忍也",
+              "explain": "反问句式。\"是\"指代上文的僭越之事，\"孰\"意为\"什么\"。通过极端假设表达强烈愤慨。",
+              "example": "八佾舞于庭，是可忍也，孰不可忍也？"
+            },
+            {
+              "rule": "如……何？",
+              "explain": "表示\"对……怎么办\"或\"要……有什么用\"。\"如礼何\"（要礼有什么用）。",
+              "example": "人而不仁，如礼何？"
+            },
+            {
+              "rule": "与其……宁……",
+              "explain": "表示取舍关系，\"与其……宁可……\"，与今义基本相同。",
+              "example": "礼，与其奢也，宁俭。"
+            }
           ],
-          sentences: [
-            { it: "Vorrei aprire un conto corrente.", zh: "我想开一个活期账户。" },
-            { it: "Quali documenti servono?", zh: "需要什么文件？" },
-            { it: "Il conto per studenti è gratuito?", zh: "学生账户是免费的吗？" },
-            { it: "Come faccio un bonifico?", zh: "怎么做转账？" },
-            { it: "Dov'è il bancomat più vicino?", zh: "最近的ATM在哪里？" }
+          "sentences": [
+            {
+              "it": "是可忍也，孰不可忍也",
+              "zh": "这都能容忍，还有什么不能容忍"
+            },
+            {
+              "it": "人而不仁，如礼何",
+              "zh": "人若无仁德，礼仪有何用"
+            },
+            {
+              "it": "绘事后素",
+              "zh": "先有白底然后绘画——先有仁德后有礼仪"
+            },
+            {
+              "it": "成事不说，遂事不谏，既往不咎",
+              "zh": "过去的事不再追究"
+            },
+            {
+              "it": "君使臣以礼，臣事君以忠",
+              "zh": "君以礼待臣，臣以忠事君"
+            }
           ]
         },
         {
-          id: "c1u4",
-          num: "第4单元",
-          title: "Richiedere il permesso di soggiorno",
-          subtitle: "申请居留证",
-          scene: "Mario deve richiedere il permesso di soggiorno per studio. Si reca all'ufficio postale per ritirare il kit e poi alla questura.",
-          vocab: [
-            { it: "il permesso di soggiorno", zh: "居留许可" },
-            { it: "la questura", zh: "警察局" },
-            { it: "l'ufficio postale", zh: "邮局" },
-            { it: "il kit", zh: "申请套件" },
-            { it: "il modulo", zh: "表格" },
-            { it: "il visto", zh: "签证" },
-            { it: "lo studente", zh: "学生" },
-            { it: "la marca da bollo", zh: "印花税票" },
-            { it: "la fotocopia", zh: "复印件" },
-            { it: "la ricevuta", zh: "收据" },
-            { it: "la scadenza", zh: "有效期/截止日期" },
-            { it: "il rinnovo", zh: "续签" }
+          "id": "c1u4",
+          "num": "里仁第四",
+          "title": "仁者爱人",
+          "subtitle": "仁德的修养",
+          "scene": "《里仁》是《论语》第四篇，共26章，集中阐述\"仁\"的思想。\"里仁为美\"强调居住环境要有仁德之风。\"朝闻道，夕死可矣\"表达了求道的执着。\"君子喻于义，小人喻于利\"的义利之辨,\"见贤思齐焉，见不贤而内自省也\"的修身之道，均为千古传诵的名言。",
+          "vocab": [
+            {
+              "it": "仁",
+              "zh": "仁爱，最高的道德准则"
+            },
+            {
+              "it": "义",
+              "zh": "道义，正义"
+            },
+            {
+              "it": "利",
+              "zh": "利益，私利"
+            },
+            {
+              "it": "恶",
+              "zh": "厌恶，憎恶"
+            },
+            {
+              "it": "好",
+              "zh": "喜好，爱好"
+            },
+            {
+              "it": "贤",
+              "zh": "贤德，贤能"
+            },
+            {
+              "it": "齐",
+              "zh": "看齐，等同"
+            },
+            {
+              "it": "省",
+              "zh": "反省，省察"
+            },
+            {
+              "it": "志",
+              "zh": "志向，立志"
+            },
+            {
+              "it": "耻",
+              "zh": "羞耻，耻辱"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Impiegato Postale", text: "Buongiorno, cosa desidera?", zh: "早上好，您需要什么？" },
-            { speaker: "B", name: "Mario", text: "Buongiorno, vorrei il kit per il permesso di soggiorno.", zh: "早上好，我想要申请居留许可的套件。" },
-            { speaker: "A", name: "Impiegato Postale", text: "Ecco a lei. Sono 2 euro. Compili il modulo e lo spedisca entro 8 giorni.", zh: "给您。2欧元。填写表格并在8天内寄出。" },
-            { speaker: "B", name: "Mario", text: "Dove devo spedirlo?", zh: "需要寄到哪里？" },
-            { speaker: "A", name: "Impiegato Postale", text: "Alla questura competente per zona. Insieme alla fotocopia del passaporto, del visto e una marca da bollo da 16 euro.", zh: "寄到管辖区域的警察局。附上护照复印件、签证复印件和16欧元的印花税票。" },
-            { speaker: "B", name: "Mario", text: "Quanto tempo ci vuole per avere il permesso?", zh: "拿到居留证需要多长时间？" },
-            { speaker: "A", name: "Impiegato Postale", text: "Di solito 2-3 mesi. Intanto riceverà una ricevuta che vale come permesso provvisorio.", zh: "通常2-3个月。在此期间您会收到一张收据，作为临时居留证明。" },
-            { speaker: "B", name: "Mario", text: "Grazie. E per il rinnovo, quando devo fare domanda?", zh: "谢谢。续签的话，什么时候需要申请？" },
-            { speaker: "A", name: "Impiegato Postale", text: "Almeno 60 giorni prima della scadenza. Non aspetti l'ultimo momento!", zh: "至少在到期前60天。不要等到最后一刻！" },
-            { speaker: "B", name: "Mario", text: "Ho capito. Grazie mille per le informazioni!", zh: "我明白了。非常感谢您提供的信息！" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "里仁为美。择不处仁，焉得知？",
+              "zh": "居住的地方有仁德之风才好。选择住处而不居有仁德之地，怎么能算明智呢？"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "不仁者不可以久处约，不可以长处乐。仁者安仁，知者利仁。",
+              "zh": "不仁的人不能长久处于贫困中，也不能长久处于安乐中。仁者安于仁道，智者利用仁道。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "富与贵，是人之所欲也；不以其道得之，不处也。贫与贱，是人之所恶也；不以其道得之，不去也。",
+              "zh": "富贵是人人想要的，但不用正当的方式得到，就不接受。贫贱是人人厌恶的，但不用正当的方式摆脱，就不摆脱。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "朝闻道，夕死可矣。",
+              "zh": "早上听到了真理，晚上死了也可以。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "君子喻于义，小人喻于利。",
+              "zh": "君子明白道义，小人懂得私利。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "见贤思齐焉，见不贤而内自省也。",
+              "zh": "见到贤德的人就想向他看齐，见到不贤的人就在内心反省自己。"
+            }
           ],
-          grammar: [
-            { rule: "动词dovere（必须）的变位", explain: "dovere表示\"必须、应该\"：Io devo, tu devi, lui/lei deve, noi dobbiamo, voi dovete, loro devono。", example: "Devo spedire il modulo entro 8 giorni." },
-            { rule: "时间表达entro/fra/tra", explain: "Entro表示\"在...之内\"（截止时间），Fra/Tra表示\"在...之后\"（未来时间）。", example: "Entro 8 giorni. / Tra 2-3 mesi." },
-            { rule: "条件式dovrei（我应该）", explain: "Dovrei是dovere的条件式，表示\"我应该...\"，语气比dovere更委婉。", example: "Dovrei richiedere il rinnovo." }
+          "grammar": [
+            {
+              "rule": "宾语前置：不以其道",
+              "explain": "文言文中介词宾语可前置。\"其道\"为\"以\"的宾语。\"不以其道得之\"意为不用正当方式得到它。",
+              "example": "不以其道得之，不处也。"
+            },
+            {
+              "rule": "焉得……",
+              "explain": "\"焉\"用作疑问代词，相当于\"怎么\"。\"焉得知\"即\"怎么能算有智慧呢？\"",
+              "example": "择不处仁，焉得知？"
+            },
+            {
+              "rule": "久处约",
+              "explain": "\"约\"为贫困、困窘之意。\"久处约\"意为长久处于贫困中，与\"长处乐\"相对。",
+              "example": "不仁者不可以久处约，不可以长处乐。"
+            }
           ],
-          sentences: [
-            { it: "Dove si ritira il kit?", zh: "在哪里领取申请套件？" },
-            { it: "Devo rinnovare il permesso di soggiorno.", zh: "我需要续签居留许可。" },
-            { it: "Quali documenti servono?", zh: "需要哪些文件？" },
-            { it: "La ricevuta vale come permesso provvisorio.", zh: "收据可作为临时居留证明。" },
-            { it: "Il permesso scade tra sei mesi.", zh: "居留证六个月后到期。" }
+          "sentences": [
+            {
+              "it": "朝闻道，夕死可矣",
+              "zh": "早晨得知真理，当晚死去都可以"
+            },
+            {
+              "it": "君子喻于义，小人喻于利",
+              "zh": "君子懂道义，小人懂私利"
+            },
+            {
+              "it": "见贤思齐焉，见不贤而内自省也",
+              "zh": "见贤思齐，见不贤而自省"
+            },
+            {
+              "it": "父母在，不远游，游必有方",
+              "zh": "父母在世不出远门，出门必告知去处"
+            },
+            {
+              "it": "德不孤，必有邻",
+              "zh": "有德行的人不会孤单，定会有同道"
+            }
           ]
         }
       ]
     },
     {
-      title: "Mangiare in Italia",
-      subtitle: "美食篇",
-      units: [
+      "title": "Di Zi Pian",
+      "subtitle": "公冶长篇第五 ~ 泰伯篇第八",
+      "units": [
         {
-          id: "c2u1",
-          num: "第1单元",
-          title: "Al caffè",
-          subtitle: "在咖啡馆",
-          scene: "Mario e la sua amica Lucia si incontrano al bar per un caffè. In Italia, il caffè è un rito sociale molto importante.",
-          vocab: [
-            { it: "il bar", zh: "咖啡馆/酒吧" },
-            { it: "il caffè", zh: "咖啡" },
-            { it: "il caffè espresso", zh: "浓缩咖啡" },
-            { it: "il cappuccino", zh: "卡布奇诺" },
-            { it: "il cornetto", zh: "牛角包" },
-            { it: "la brioche", zh: "甜面包" },
-            { it: "lo zucchero", zh: "糖" },
-            { it: "il latte", zh: "牛奶" },
-            { it: "la tazza", zh: "杯子" },
-            { it: "il conto", zh: "账单" },
-            { it: "tazzina da caffè", zh: "咖啡杯" },
-            { it: "schiuma", zh: "泡沫" },
-            { it: "zucchero", zh: "糖" },
-            { it: "macchiato", zh: "玛琪朵浓缩咖啡" },
-            { it: "spremuta", zh: "果汁" },
-            { it: "limone", zh: "柠檬" },
-            { it: "il bancone", zh: "吧台" },
-            { it: "lo scontrino", zh: "收据/小票" }
+          "id": "c2u1",
+          "num": "公冶长第五",
+          "title": "弟子风采",
+          "subtitle": "孔子评点弟子",
+          "scene": "《公冶长》是《论语》第五篇，共28章，主要内容是孔子对弟子及历史人物的评价。\"听其言而观其行\"的识人方法论对后世影响深远。\"敏而好学，不耻下问\"成为华夏文明对学者品格的经典描述。\"三思而后行\"的处事态度至今被人们广为引用。",
+          "vocab": [
+            {
+              "it": "器",
+              "zh": "器皿，才能"
+            },
+            {
+              "it": "瑚琏",
+              "zh": "古代宗庙礼器，比喻栋梁之才"
+            },
+            {
+              "it": "佞",
+              "zh": "能言善辩，花言巧语"
+            },
+            {
+              "it": "令尹",
+              "zh": "楚国官名，相当于宰相"
+            },
+            {
+              "it": "三仕",
+              "zh": "三次出任官职"
+            },
+            {
+              "it": "再",
+              "zh": "两次"
+            },
+            {
+              "it": "斯",
+              "zh": "就，则"
+            },
+            {
+              "it": "敏",
+              "zh": "勤敏，敏捷"
+            },
+            {
+              "it": "好学",
+              "zh": "爱好学习"
+            },
+            {
+              "it": "耻",
+              "zh": "以……为耻"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Mario", text: "Ciao Lucia! Prendiamo un caffè?", zh: "你好露琪亚！我们喝杯咖啡？" },
-            { speaker: "B", name: "Lucia", text: "Ciao Mario! Volentieri. Andiamo al bar di via Roma, fanno un caffè ottimo.", zh: "你好马里奥！好啊。我们去罗马路上的咖啡馆吧，那里的咖啡很棒。" },
-            { speaker: "A", name: "Barista", text: "Buongiorno, cosa prendete?", zh: "早上好，你们要点什么？" },
-            { speaker: "B", name: "Lucia", text: "Io prendo un cappuccino e un cornetto vuoto, per favore.", zh: "我要一杯卡布奇诺和一个原味牛角包。" },
-            { speaker: "A", name: "Mario", text: "Per me un caffè espresso, macchiato con poco latte.", zh: "我要一杯浓缩咖啡，加一点奶。" },
-            { speaker: "A", name: "Barista", text: "Subito. (dopo un po') Ecco a voi. Buona colazione!", zh: "马上来。（过了一会儿）给你们。祝你们早餐愉快！" },
-            { speaker: "B", name: "Lucia", text: "Grazie! Mario, come mai prendi il caffè macchiato?", zh: "谢谢！马里奥，你怎么喝加奶咖啡？" },
-            { speaker: "A", name: "Mario", text: "In Cina siamo abituati al caffè con latte. Ma qui in Italia l'espresso è tutta un'altra cosa!", zh: "在中国我们习惯喝加奶的咖啡。不过在意大利，浓缩咖啡完全是另一种体验！" },
-            { speaker: "B", name: "Lucia", text: "Hai ragione! L'espresso italiano è il migliore del mondo. Quanto paghiamo?", zh: "你说得对！意大利浓缩咖啡是全世界最好的。我们付多少钱？" },
-            { speaker: "A", name: "Barista", text: "Fanno 4 euro e 50. Buona giornata!", zh: "一共4欧元50分。祝你们愉快！" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "始吾于人也，听其言而信其行；今吾于人也，听其言而观其行。",
+              "zh": "以前我对待人，听了他的话就相信他的行为；现在我对人，听了他的话还要观察他的行为。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "敏而好学，不耻下问，是以谓之文也。",
+              "zh": "勤敏好学，不以向地位低的人请教为羞耻，所以谥号称他为\"文\"。"
+            },
+            {
+              "speaker": "B",
+              "name": "子贡",
+              "text": "夫子之文章，可得而闻也；夫子之言性与天道，不可得而闻也。",
+              "zh": "老师关于文献方面的学问，我们可以听得到；老师关于人性和天道的论述，我们听不到。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "三思而后行。",
+              "zh": "多次思考后再行动。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "老者安之，朋友信之，少者怀之。",
+              "zh": "使老人安逸，使朋友信任，使年轻人怀念。"
+            }
           ],
-          grammar: [
-            { rule: "动词prendere（拿/点单）的变位", explain: "prendere在餐厅点单时非常常用：Io prendo, tu prendi, lui/lei prende, noi prendiamo, voi prendete, loro prendono。", example: "Io prendo un cappuccino." },
-            { rule: "直接宾语代词（lo/la/li/le）", explain: "Lo（阳性单数）, La（阴性单数）, Li（阳性复数）, Le（阴性复数），放在动词前面。", example: "Lo prendo volentieri. / La prendo subito." },
-            { rule: "冠词的省略", explain: "在意大利语中，bar/caffè等词前面有时省略冠词。\"al bar\"去酒吧。Prendiamo un caffè → 一杯咖啡。", example: "Andiamo al bar. / Prendo caffè." }
+          "grammar": [
+            {
+              "rule": "听其言而观其行",
+              "explain": "\"其\"为第三人称代词（他的）。\"而\"表顺承。此为孔子识人方法论的核心：言与行并重。",
+              "example": "今吾于人也，听其言而观其行。"
+            },
+            {
+              "rule": "不耻下问",
+              "explain": "\"耻\"是意动用法，\"以……为耻\"。\"下\"指地位低。整句意为\"不以向下请教为耻\"。",
+              "example": "敏而好学，不耻下问。"
+            },
+            {
+              "rule": "再，斯可矣",
+              "explain": "\"再\"意为两次，区别于今义的\"再次\"。\"斯\"为连词（就）。\"三思而后行\"中的\"三\"是多次而非确数。",
+              "example": "三思而后行。"
+            }
           ],
-          sentences: [
-            { it: "Vorrei un caffè, per favore.", zh: "请给我一杯咖啡。" },
-            { it: "Quanto costa un cappuccino?", zh: "一杯卡布奇诺多少钱？" },
-            { it: "Lo prendo al bancone.", zh: "我站在吧台喝。" },
-            { it: "Un cornetto con crema, grazie.", zh: "一个奶油牛角包，谢谢。" },
-            { it: "Il caffè è ottimo!", zh: "咖啡非常好喝！" }
+          "sentences": [
+            {
+              "it": "听其言而观其行",
+              "zh": "不仅要听他说什么，还要看他做什么"
+            },
+            {
+              "it": "敏而好学，不耻下问",
+              "zh": "勤勉好学，不以向不如自己的人请教为耻"
+            },
+            {
+              "it": "三思而后行",
+              "zh": "多次思考后再行动"
+            },
+            {
+              "it": "老者安之，朋友信之，少者怀之",
+              "zh": "使老人安逸，使朋友信任，使年轻人怀念"
+            },
+            {
+              "it": "己欲立而立人，己欲达而达人",
+              "zh": "立己也要立人，达己也要达人"
+            }
           ]
         },
         {
-          id: "c2u2",
-          num: "第2单元",
-          title: "In pasticceria",
-          subtitle: "在甜品店",
-          scene: "Mario e Lucia vanno in una pasticceria tradizionale per comprare dei dolci italiani.",
-          vocab: [
-            { it: "la pasticceria", zh: "甜品店/糕点店" },
-            { it: "il dolce", zh: "甜点" },
-            { it: "la torta", zh: "蛋糕" },
-            { it: "il tiramisù", zh: "提拉米苏" },
-            { it: "la panna cotta", zh: "意式奶冻" },
-            { it: "il cannolo", zh: "奶油卷" },
-            { it: "la sfoglia", zh: "千层酥" },
-            { it: "la crema", zh: "奶油/酱" },
-            { it: "il cioccolato", zh: "巧克力" },
-            { it: "la fragola", zh: "草莓" },
-            { it: "la vetrina", zh: "展示柜" },
-            { it: "la specialità", zh: "特色产品" }
+          "id": "c2u2",
+          "num": "雍也第六",
+          "title": "中庸之道",
+          "subtitle": "不偏不倚的中道",
+          "scene": "《雍也》是《论语》第六篇，共30章。\"中庸之为德也，其至矣乎\"首次将中庸提升为至高的道德境界。\"知之者不如好之者，好之者不如乐之者\"概括了学习的三种境界。\"文质彬彬，然后君子\"的君子论和\"己欲立而立人，己欲达而达人\"的仁者精神均出本篇。",
+          "vocab": [
+            {
+              "it": "中庸",
+              "zh": "不偏不倚，中和之道"
+            },
+            {
+              "it": "至",
+              "zh": "极至，最高"
+            },
+            {
+              "it": "好",
+              "zh": "喜好（读第四声）"
+            },
+            {
+              "it": "乐",
+              "zh": "以此为乐"
+            },
+            {
+              "it": "博",
+              "zh": "广博，广泛"
+            },
+            {
+              "it": "约",
+              "zh": "约束，简约"
+            },
+            {
+              "it": "觚",
+              "zh": "古代酒器"
+            },
+            {
+              "it": "质",
+              "zh": "本质，朴实"
+            },
+            {
+              "it": "文",
+              "zh": "文采，修养"
+            },
+            {
+              "it": "彬彬",
+              "zh": "文质兼备的样子"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Mario", text: "Che bella pasticceria! Quanti dolci meravigliosi!", zh: "好漂亮的甜品店！好多精美的甜点！" },
-            { speaker: "B", name: "Lucia", text: "Questa è la pasticceria più famosa di Roma. I loro cannoli sono squisiti!", zh: "这是罗马最有名的甜品店。他们的奶油卷非常美味！" },
-            { speaker: "A", name: "Commessa", text: "Buongiorno! Desiderano qualcosa?", zh: "早上好！想要点什么？" },
-            { speaker: "B", name: "Lucia", text: "Buongiorno! Vorrei due cannoli alla crema e tre paste alla mandorla.", zh: "早上好！我想要两个奶油卷和三个杏仁酥。" },
-            { speaker: "A", name: "Mario", text: "Io prendo una fetta di tiramisù e una panna cotta ai frutti di bosco.", zh: "我要一块提拉米苏和一个浆果意式奶冻。" },
-            { speaker: "A", name: "Commessa", text: "Ottima scelta! Il tiramisù è la nostra specialità. Mangiate qui o da portare via?", zh: "好选择！提拉米苏是我们的招牌。在这里吃还是带走？" },
-            { speaker: "B", name: "Lucia", text: "Da portare via, per favore.", zh: "带走，谢谢。" },
-            { speaker: "A", name: "Commessa", text: "Allora li metto in un vassoio. Aggiungo anche un po' di zucchero a velo. Ecco fatto.", zh: "那我放在托盘里。再撒一点糖粉。好了。" },
-            { speaker: "A", name: "Mario", text: "Quanto costa in tutto?", zh: "一共多少钱？" },
-            { speaker: "A", name: "Commessa", text: "Sono 18 euro e 50. Ecco lo scontrino. Buona degustazione!", zh: "一共18欧元50分。这是收据。祝您享用愉快！" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "中庸之为德也，其至矣乎！民鲜久矣。",
+              "zh": "中庸作为一种道德，大概是最高的了！百姓缺少它已经很久了。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "知之者不如好之者，好之者不如乐之者。",
+              "zh": "知道它的人不如喜爱它的人，喜爱它的人不如以它为乐的人。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "质胜文则野，文胜质则史。文质彬彬，然后君子。",
+              "zh": "质朴多于文采就粗野，文采多于质朴就浮夸。文采和质朴兼备，这才是君子。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "夫仁者，己欲立而立人，己欲达而达人。能近取譬，可谓仁之方也已。",
+              "zh": "仁德的人，自己想要立身也要让别人立身，自己想要通达也要让别人通达。能就近取譬、推己及人，这就是实践仁的方法了。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "知者乐水，仁者乐山。知者动，仁者静。知者乐，仁者寿。",
+              "zh": "智者喜爱水，仁者喜爱山。智者活跃，仁者沉静。智者快乐，仁者长寿。"
+            }
           ],
-          grammar: [
-            { rule: "最高级（-issimo）", explain: "通过在形容词词根后加-issimo/a/i/e构成绝对最高级，表示\"非常...\"。", example: "La più famosa / dolci meravigliosi / ottima scelta" },
-            { rule: "动词consigliare（推荐）的变位", explain: "Consigliare是规则-are动词：Io consiglio, tu consigli, lui/lei consiglia, noi consigliamo, voi consigliate, loro consigliano。", example: "Le consiglio il tiramisù." },
-            { rule: "部分冠词（del/dello/della/dei/degli/delle）", explain: "表示\"一些\"，用于不可数名词或复数名词前。", example: "Un po' di zucchero / dei cannoli" }
+          "grammar": [
+            {
+              "rule": "知之者不如好之者",
+              "explain": "\"者\"字结构将动词短语名词化。\"不如\"表比较。孔子将学习分为知、好、乐三层次递进。",
+              "example": "知之者不如好之者，好之者不如乐之者。"
+            },
+            {
+              "rule": "文质彬彬，然后君子",
+              "explain": "\"质\"（质朴）与\"文\"（文采）对举。\"彬彬\"为配合适中的样子。\"然后\"为连词（这样以后才）。",
+              "example": "文质彬彬，然后君子。"
+            },
+            {
+              "rule": "能近取譬",
+              "explain": "\"近\"指身边的事，\"譬\"为比喻、类推。意为能就身边事物进行推己及人式的类推。",
+              "example": "能近取譬，可谓仁之方也已。"
+            }
           ],
-          sentences: [
-            { it: "Quali dolci mi consiglia?", zh: "您推荐什么甜点？" },
-            { it: "Il tiramisù è la specialità della casa.", zh: "提拉米苏是本店特色。" },
-            { it: "Lo mangio qui o da portare via?", zh: "在这里吃还是带走？" },
-            { it: "Quanto costa al chilo?", zh: "每公斤多少钱？" },
-            { it: "È il dolce più buono che abbia mai assaggiato.", zh: "这是我尝过的最好吃的甜点。" }
+          "sentences": [
+            {
+              "it": "知之者不如好之者，好之者不如乐之者",
+              "zh": "知道不如喜欢，喜欢不如以此为乐"
+            },
+            {
+              "it": "文质彬彬，然后君子",
+              "zh": "文采与质朴兼备，才是君子"
+            },
+            {
+              "it": "己欲立而立人，己欲达而达人",
+              "zh": "立己也要立人，达己也要达人"
+            },
+            {
+              "it": "敬鬼神而远之",
+              "zh": "尊敬鬼神但保持距离"
+            },
+            {
+              "it": "知者乐水，仁者乐山",
+              "zh": "智者喜爱水，仁者喜爱山"
+            }
           ]
         },
         {
-          id: "c2u3",
-          num: "第3单元",
-          title: "In gelateria",
-          subtitle: "在冰激凌店",
-          scene: "È una calda giornata estiva. Mario e Lucia decidono di prendere un gelato.",
-          vocab: [
-            { it: "il gelato", zh: "冰激凌" },
-            { it: "la gelateria", zh: "冰激凌店" },
-            { it: "il gusto", zh: "口味" },
-            { it: "la crema", zh: "奶油味" },
-            { it: "il cioccolato", zh: "巧克力味" },
-            { it: "la nocciola", zh: "榛子味" },
-            { it: "il pistacchio", zh: "开心果味" },
-            { it: "la fragola", zh: "草莓味" },
-            { it: "il limone", zh: "柠檬味" },
-            { it: "il cono", zh: "蛋筒" },
-            { it: "la coppetta", zh: "小杯" },
-            { it: "la panna", zh: "奶油" }
+          "id": "c2u3",
+          "num": "述而第七",
+          "title": "述而不作",
+          "subtitle": "传承与创新",
+          "scene": "《述而》是《论语》第七篇，共38章，主要记述孔子的教育态度和个人修养。\"述而不作\"体现了对传统文化的尊重。\"不愤不启，不悱不发\"的启发式教学法影响深远。\"发愤忘食，乐以忘忧\"的人生态度令人感佩。\"三人行必有我师\"更是传颂千古的谦逊名言。",
+          "vocab": [
+            {
+              "it": "述",
+              "zh": "传述，阐述"
+            },
+            {
+              "it": "作",
+              "zh": "创作，创制"
+            },
+            {
+              "it": "愤",
+              "zh": "苦思不得的急切心理"
+            },
+            {
+              "it": "悱",
+              "zh": "想说说不出的状态"
+            },
+            {
+              "it": "举",
+              "zh": "列举，提出"
+            },
+            {
+              "it": "隅",
+              "zh": "角落，方面"
+            },
+            {
+              "it": "师",
+              "zh": "老师，学习"
+            },
+            {
+              "it": "善",
+              "zh": "好的，优点"
+            },
+            {
+              "it": "改",
+              "zh": "改正"
+            },
+            {
+              "it": "从",
+              "zh": "跟从，顺从"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Mario", text: "Che caldo oggi! Andiamo a prendere un gelato?", zh: "今天好热！我们去吃冰激凌吧？" },
-            { speaker: "B", name: "Lucia", text: "Buona idea! Conosco una gelateria artigianale qui vicino.", zh: "好主意！我知道附近有一家手工冰激凌店。" },
-            { speaker: "A", name: "Gelataio", text: "Benvenuti! Assaggiate pure tutti i gusti che volete.", zh: "欢迎光临！所有口味都可以免费品尝。" },
-            { speaker: "B", name: "Lucia", text: "Che bontà! Che gusti avete?", zh: "太棒了！你们有什么口味？" },
-            { speaker: "A", name: "Gelataio", text: "Oggi abbiamo 20 gusti: cioccolato fondente, nocciola, pistacchio di Bronte, crema, fragola, limone, e molti altri.", zh: "今天有20种口味：黑巧克力、榛子、布朗特开心果、奶油、草莓、柠檬，还有其他的。" },
-            { speaker: "A", name: "Mario", text: "Io prendo un cono con due gusti: nocciola e pistacchio.", zh: "我要一个双球蛋筒：榛子和开心果。" },
-            { speaker: "B", name: "Lucia", text: "Per me una coppetta con cioccolato fondente e crema, con un po' di panna sopra.", zh: "我要一杯黑巧克力和奶油，上面加一点奶油。" },
-            { speaker: "A", name: "Gelataio", text: "Ecco a voi. Il cono è 3 euro e 50, la coppetta 4 euro.", zh: "给你们。蛋筒3欧50分，杯装4欧元。" },
-            { speaker: "A", name: "Mario", text: "Il gelato italiano è veramente il migliore del mondo!", zh: "意大利冰激凌真是全世界最好吃的！" },
-            { speaker: "B", name: "Lucia", text: "Soprattutto quello artigianale! Mangiamo la colazione al bar, il gelato al pomeriggio... gli italiani sanno proprio mangiare bene!", zh: "尤其是手工的！早上在吧台吃早餐，下午吃冰激凌...意大利人可真懂得吃！" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "述而不作，信而好古，窃比于我老彭。",
+              "zh": "传述而不创作，相信并喜爱古代文化，我私下把自己比作老彭。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "不愤不启，不悱不发。举一隅不以三隅反，则不复也。",
+              "zh": "不到苦思不得时不启发，不到想说却说不出时不引导。举一个角而不能类推出其他三个角，就不再重复教了。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "发愤忘食，乐以忘忧，不知老之将至云尔。",
+              "zh": "发愤用功忘记了吃饭，快乐得忘记了忧愁，不知道衰老即将到来。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "三人行，必有我师焉。择其善者而从之，其不善者而改之。",
+              "zh": "几个人一起走路，其中一定有可以做我老师的。选择他们的优点学习，看到他们的缺点就改正自己。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "君子坦荡荡，小人长戚戚。",
+              "zh": "君子心胸开阔坦荡，小人总是忧愁不安。"
+            }
           ],
-          grammar: [
-            { rule: "动词assaggiare（品尝）的变位", explain: "Assaggiare是规则-are动词，注意i的保留：Io assaggio, tu assaggi, lui/lei assaggia, noi assaggiamo, voi assaggiate, loro assaggiano。", example: "Assaggiate pure tutti i gusti." },
-            { rule: "数量副词un po' di", explain: "Un po'（= un poco）表示\"一点\"，后面跟di+名词。", example: "Un cono con due gusti / un po' di panna" },
-            { rule: "比较级", explain: "Più...di/che 表示\"比...更\"。Il migliore 是 buono 的最高级不规则形式。", example: "Il gelato italiano è il migliore del mondo." }
+          "grammar": [
+            {
+              "rule": "不愤不启，不悱不发",
+              "explain": "双重否定表示条件关系。\"愤\"指苦思不得，\"悱\"指想说难言。这是孔子启发式教学的精髓。",
+              "example": "不愤不启，不悱不发。"
+            },
+            {
+              "rule": "举一隅不以三隅反",
+              "explain": "\"隅\"为角，引申为方面。\"反\"通\"返\"，类推。成语\"举一反三\"即源于此。",
+              "example": "举一隅不以三隅反，则不复也。"
+            },
+            {
+              "rule": "三人行，必有我师焉",
+              "explain": "\"三\"泛指多。\"焉\"为兼词\"于之\"（在其中）。体现了孔子谦逊好学的精神。",
+              "example": "三人行，必有我师焉。"
+            }
           ],
-          sentences: [
-            { it: "Vorrei un cono con due gusti.", zh: "我要一个双球蛋筒。" },
-            { it: "Che gusto mi consiglia?", zh: "您推荐什么口味？" },
-            { it: "Posso assaggiare il pistacchio?", zh: "我可以尝一下开心果味吗？" },
-            { it: "Quanto costa una coppetta?", zh: "一杯多少钱？" },
-            { it: "Con panna, per favore.", zh: "请加奶油。" }
+          "sentences": [
+            {
+              "it": "述而不作，信而好古",
+              "zh": "传述而不创作，相信且喜爱古代文化"
+            },
+            {
+              "it": "不愤不启，不悱不发",
+              "zh": "不到苦思不解时不启发"
+            },
+            {
+              "it": "发愤忘食，乐以忘忧",
+              "zh": "发愤用功忘记吃饭，快乐忘记忧愁"
+            },
+            {
+              "it": "三人行，必有我师焉",
+              "zh": "多人同行，其中必有可为师者"
+            },
+            {
+              "it": "君子坦荡荡，小人长戚戚",
+              "zh": "君子心胸坦荡，小人常怀忧虑"
+            }
           ]
         },
         {
-          id: "c2u4",
-          num: "第4单元",
-          title: "In pizzeria",
-          subtitle: "在披萨店",
-          scene: "Mario e i suoi amici vanno in una pizzeria tradizionale a Napoli per cena.",
-          vocab: [
-            { it: "la pizzeria", zh: "披萨店" },
-            { it: "la pizza", zh: "披萨" },
-            { it: "la margherita", zh: "玛格丽特披萨" },
-            { it: "la marinara", zh: "玛丽娜拉披萨" },
-            { it: "la capricciosa", zh: "卡普里乔萨披萨" },
-            { it: "la mozzarella", zh: "马苏里拉奶酪" },
-            { it: "il pomodoro", zh: "番茄" },
-            { it: "il basilico", zh: "罗勒" },
-            { it: "l'olio d'oliva", zh: "橄榄油" },
-            { it: "il forno a legna", zh: "木炭烤炉" },
-            { it: "la birra", zh: "啤酒" },
-            { it: "il coperto", zh: "餐位费" }
+          "id": "c2u4",
+          "num": "泰伯第八",
+          "title": "泰伯至德",
+          "subtitle": "谦让与气节",
+          "scene": "《泰伯》是《论语》第八篇，共21章，以泰伯的让国美德开篇。\"士不可以不弘毅，任重而道远\"激励了无数仁人志士。\"兴于诗，立于礼，成于乐\"概括了教育的完整过程。\"不在其位，不谋其政\"的为政原则至今被奉为圭臬。\"天下有道则见，无道则隐\"体现了儒家出处进退的大智慧。",
+          "vocab": [
+            {
+              "it": "泰伯",
+              "zh": "周朝祖先，三让天下"
+            },
+            {
+              "it": "至德",
+              "zh": "最高的德行"
+            },
+            {
+              "it": "让",
+              "zh": "谦让，推让"
+            },
+            {
+              "it": "弘毅",
+              "zh": "心胸宽广而意志坚毅"
+            },
+            {
+              "it": "任",
+              "zh": "责任，使命"
+            },
+            {
+              "it": "重",
+              "zh": "沉重，重大"
+            },
+            {
+              "it": "道",
+              "zh": "道路，使命"
+            },
+            {
+              "it": "远",
+              "zh": "遥远，长远"
+            },
+            {
+              "it": "笃",
+              "zh": "忠实，坚定"
+            },
+            {
+              "it": "信",
+              "zh": "诚信，信实"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Cameriere", text: "Buonasera! Avete prenotato un tavolo?", zh: "晚上好！你们预订了桌子吗？" },
-            { speaker: "B", name: "Mario", text: "Buonasera! Sì, abbiamo prenotato per tre persone, nome Mario.", zh: "晚上好！是的，我们预订了三位，名字是马里奥。" },
-            { speaker: "A", name: "Cameriere", text: "Perfetto, il tavolo numero 5. Accomodatevi. Vi porto subito il menu.", zh: "好的，5号桌。请坐。我马上给你们拿菜单。" },
-            { speaker: "B", name: "Mario", text: "Grazie. (guardando il menu) Che pizze buone! Io prendo una margherita DOP.", zh: "谢谢。（看着菜单）披萨看起来都好吃！我要一份DOP玛格丽特。" },
-            { speaker: "A", name: "Amico", text: "Io prendo una capricciosa e una birra artigianale.", zh: "我要一份卡普里乔萨和一杯精酿啤酒。" },
-            { speaker: "A", name: "Cameriere", text: "E per la signorina?", zh: "小姐要点什么？" },
-            { speaker: "C", name: "Lucia", text: "Per me una marinara con aggiunta di mozzarella di bufala.", zh: "我要一份玛丽娜拉，外加一份水牛马苏里拉。" },
-            { speaker: "A", name: "Cameriere", text: "Ottimo. Desiderate anche un antipasto?", zh: "好的。还要前菜吗？" },
-            { speaker: "B", name: "Mario", text: "Sì, prendiamo un tagliere di salumi e formaggi misti per condividere.", zh: "好的，我们共享一份混合火腿奶酪拼盘。" },
-            { speaker: "A", name: "Cameriere", text: "Ecco fatto. Arriva subito l'antipasto, le pizze seguiranno. Buon appetito!", zh: "好的。前菜马上来，披萨随后。祝好胃口！" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "泰伯，其可谓至德也已矣！三以天下让，民无得而称焉。",
+              "zh": "泰伯可以说具有最高的道德了！多次把天下让给别人，百姓简直找不到合适的词来称赞他。"
+            },
+            {
+              "speaker": "B",
+              "name": "曾子",
+              "text": "士不可以不弘毅，任重而道远。仁以为己任，不亦重乎？死而后已，不亦远乎？",
+              "zh": "读书人不可以不心胸开阔意志坚毅，因为责任重大而道路遥远。以仁为己任，不是很重吗？到死才停止，不是很远吗？"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "兴于诗，立于礼，成于乐。",
+              "zh": "从诗歌中兴起，在礼仪中立足，于音乐中完成。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "不在其位，不谋其政。",
+              "zh": "不在那个职位上，就不考虑那个职位上的政事。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "学如不及，犹恐失之。",
+              "zh": "学习就像追赶什么生怕赶不上，学到了又怕忘掉。"
+            }
           ],
-          grammar: [
-            { rule: "动词prenotare（预订）的变位", explain: "Prenotare是规则-are动词：Io prenoto, tu prenoti, lui/lei prenota, noi prenotiamo, voi prenotate, loro prenotano。", example: "Avete prenotato? / Vorrei prenotare un tavolo." },
-            { rule: "命令式（Lei形式）", explain: "对陌生人或长辈使用尊称Lei的命令式，动词用第三人称单数形式。", example: "Si accomodi! / Mi dica! / Prenda pure!" },
-            { rule: "反身动词accomodarsi", explain: "Ac comodarsi（请坐/请进）是反身动词：mi accomodo, ti accomodi, si accomoda...。祈使句：Si accomodi!（您请坐）。", example: "Si accomodi! / Accomodatevi!" }
+          "grammar": [
+            {
+              "rule": "……也已矣",
+              "explain": "三个语气词连用，加强肯定和感叹语气。\"也\"表判断，\"已\"表限止，\"矣\"表感叹。",
+              "example": "泰伯，其可谓至德也已矣！"
+            },
+            {
+              "rule": "死而后已",
+              "explain": "\"而\"表顺承，\"后\"为之后，\"已\"为停止。意为\"直到死才停止\"，表达至死不渝的精神。",
+              "example": "死而后已，不亦远乎？"
+            },
+            {
+              "rule": "天下有道则见，无道则隐",
+              "explain": "\"见\"通\"现\"，出现、出仕。\"隐\"为隐退。体现了儒家\"用之则行，舍之则藏\"的处世哲学。",
+              "example": "天下有道则见，无道则隐。"
+            }
           ],
-          sentences: [
-            { it: "Vorrei prenotare un tavolo per due.", zh: "我想预订两个人的桌子。" },
-            { it: "Avete un tavolo libero?", zh: "有空桌吗？" },
-            { it: "Prendo una pizza margherita.", zh: "我要一份玛格丽特披萨。" },
-            { it: "Il conto, per favore.", zh: "请买单。" },
-            { it: "Buon appetito!", zh: "祝好胃口！" }
+          "sentences": [
+            {
+              "it": "士不可以不弘毅，任重而道远",
+              "zh": "读书人不可不心胸开阔意志坚毅"
+            },
+            {
+              "it": "仁以为己任，不亦重乎？死而后已，不亦远乎？",
+              "zh": "以仁为己任，很重；到死才停，很远"
+            },
+            {
+              "it": "兴于诗，立于礼，成于乐",
+              "zh": "从诗兴起，以礼立身，靠乐完成"
+            },
+            {
+              "it": "不在其位，不谋其政",
+              "zh": "不处那个职位，就不考虑其政事"
+            },
+            {
+              "it": "学如不及，犹恐失之",
+              "zh": "学习生怕赶不上，学到了又怕忘掉"
+            }
           ]
         },
         {
-          id: "c2u5",
-          num: "第5单元",
-          title: "Preparare la pasta a casa",
-          subtitle: "在家做意大利面",
-          scene: "Lucia insegna a Mario come preparare la pasta fresca fatta in casa.",
-          vocab: [
-            { it: "la pasta", zh: "意大利面" },
-            { it: "la farina", zh: "面粉" },
-            { it: "l'uovo", zh: "鸡蛋" },
-            { it: "la pasta fresca", zh: "新鲜意大利面" },
-            { it: "la pasta secca", zh: "干意大利面" },
-            { it: "il mattarello", zh: "擀面杖" },
-            { it: "la sfoglia", zh: "面皮" },
-            { it: "il sugo", zh: "酱汁" },
-            { it: "l'aglio", zh: "大蒜" },
-            { it: "il prezzemolo", zh: "欧芹" },
-            { it: "il parmigiano", zh: "帕玛森奶酪" },
-            { it: "l'olio d'oliva", zh: "橄榄油" }
+          "id": "c2u5",
+          "num": "子罕第九",
+          "title": "子罕言利",
+          "subtitle": "利、命与仁",
+          "scene": "《子罕》是《论语》第九篇，共31章。\"子绝四：毋意，毋必，毋固，毋我\"概括了孔子杜绝的四种弊病。\"譬如为山\"的积学比喻,\"后生可畏\"的殷切期望,\"岁寒然后知松柏之后凋也\"的坚贞象征,\"知者不惑，仁者不忧，勇者不惧\"的君子三达德，均为千古名言。",
+          "vocab": [
+            {
+              "it": "罕",
+              "zh": "少，稀少"
+            },
+            {
+              "it": "命",
+              "zh": "命运，天命"
+            },
+            {
+              "it": "意",
+              "zh": "主观臆测"
+            },
+            {
+              "it": "固",
+              "zh": "固执，拘泥"
+            },
+            {
+              "it": "必",
+              "zh": "绝对肯定"
+            },
+            {
+              "it": "我",
+              "zh": "自以为是"
+            },
+            {
+              "it": "绝",
+              "zh": "断绝，杜绝"
+            },
+            {
+              "it": "畏",
+              "zh": "敬畏，畏惧"
+            },
+            {
+              "it": "松柏",
+              "zh": "松树和柏树，象征坚贞"
+            },
+            {
+              "it": "后凋",
+              "zh": "最后凋零"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Lucia", text: "Oggi ti insegno a fare la pasta fresca all'uovo!", zh: "今天我来教你做新鲜鸡蛋面！" },
-            { speaker: "B", name: "Mario", text: "Fantastico! Da dove cominciamo?", zh: "太棒了！我们从哪里开始？" },
-            { speaker: "A", name: "Lucia", text: "Prima di tutto, prendiamo 100 grammi di farina per ogni uovo. Mettiamo la farina a fontana sul tavolo.", zh: "首先，每个鸡蛋配100克面粉。把面粉在桌上堆成火山状。" },
-            { speaker: "B", name: "Mario", text: "Così? Poi rompiamo le uova al centro?", zh: "这样吗？然后把鸡蛋打在中间？" },
-            { speaker: "A", name: "Lucia", text: "Sì, esatto! Poi impasta con le mani fino ad ottenere un composto liscio.", zh: "是的，没错！然后用手揉面，直到面团光滑。" },
-            { speaker: "B", name: "Mario", text: "Perfetto. Quanto tempo deve riposare?", zh: "好的。需要醒面多久？" },
-            { speaker: "A", name: "Lucia", text: "Almeno 30 minuti coperta con pellicola trasparente. Intanto prepariamo il sugo.", zh: "至少30分钟，盖上保鲜膜。我们趁这个时候准备酱汁。" },
-            { speaker: "B", name: "Mario", text: "Che sugo prepariamo?", zh: "我们做什么酱汁？" },
-            { speaker: "A", name: "Lucia", text: "Facciamo un aglio, olio e peperoncino. Il più semplice ma anche il più buono!", zh: "我们做蒜香辣椒意面。最简单但也最好吃！" },
-            { speaker: "A", name: "Lucia", text: "Dopo 30 minuti, stendiamo la sfoglia col mattarello e tagliamo le tagliatelle.", zh: "30分钟后，用擀面杖把面皮擀开，切成宽面条。" },
-            { speaker: "B", name: "Mario", text: "Mamma mia, che soddisfazione fare la pasta in casa! È buonissima!", zh: "天哪，在家做意大利面太有成就感了！太好吃了！" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "子绝四：毋意，毋必，毋固，毋我。",
+              "zh": "孔子杜绝四种毛病：不凭空臆测，不绝对肯定，不固执拘泥，不自以为是。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "譬如为山，未成一篑，止，吾止也。譬如平地，虽覆一篑，进，吾往也。",
+              "zh": "好比堆土成山，只差一筐土就完成了却停下来，这是我自己停止的。好比在平地上堆土，虽然只倒了一筐土，但继续前进，这是我自己坚持的。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "后生可畏，焉知来者之不如今也？",
+              "zh": "年轻人是可敬畏的，怎知他们将来不如现在呢？"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "三军可夺帅也，匹夫不可夺志也。",
+              "zh": "军队可以被夺去主帅，但一个普通人却不能强迫他改变志向。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "岁寒，然后知松柏之后凋也。",
+              "zh": "到了寒冷的季节，才知道松柏是最后凋零的。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "知者不惑，仁者不忧，勇者不惧。",
+              "zh": "智者不迷惑，仁者不忧虑，勇者不畏惧。"
+            }
           ],
-          grammar: [
-            { rule: "命令式（tu形式）", explain: "对熟人使用tu的命令式。规则动词：-are → -a (parla!), -ere → -i (prendi!), -ire → -isci (finisci!)。不规则：fare → fa', dire → di', andare → va'。", example: "Prendi la farina! / Impasta con le mani!" },
-            { rule: "数量表达", explain: "Per ogni...表示\"每...\"。Bastano...表示\"足够\"。Almeno表示\"至少\"。", example: "100 grammi per ogni uovo / Almeno 30 minuti" },
-            { rule: "副动词（gerundio）", explain: "Stare + gerundio表示正在进行的动作。是一...就... -are → ando, -ere → endo, -ire → endo。", example: "Intanto prepariamo il sugo. (与此同时我们准备酱汁)" }
+          "grammar": [
+            {
+              "rule": "毋意，毋必，毋固，毋我",
+              "explain": "四个\"毋\"字句排比。\"毋\"为否定副词（不要）。\"意必固我\"是孔子认为的四种弊病。",
+              "example": "子绝四：毋意，毋必，毋固，毋我。"
+            },
+            {
+              "rule": "譬如为山，未成一篑",
+              "explain": "\"篑\"为盛土的筐。\"未成一篑\"即差一筐土没完成，比喻功亏一篑，与\"功亏一篑\"典出同源。",
+              "example": "譬如为山，未成一篑，止，吾止也。"
+            },
+            {
+              "rule": "焉知……",
+              "explain": "\"焉\"用作疑问副词（怎么、哪里）。\"焉知\"即怎么知道。用于反问表达积极信念。",
+              "example": "后生可畏，焉知来者之不如今也？"
+            }
           ],
-          sentences: [
-            { it: "Come si fa la pasta fresca?", zh: "新鲜意大利面怎么做？" },
-            { it: "Quanto tempo deve riposare l'impasto?", zh: "面团需要醒多久？" },
-            { it: "Il sugo all'amatriciana è il mio preferito.", zh: "阿马特里切酱汁是我的最爱。" },
-            { it: "Si mette la pasta in acqua bollente salata.", zh: "把面放入加盐的沸水中。" },
-            { it: "La pasta è al dente!", zh: "意大利面煮得恰到好处！" }
+          "sentences": [
+            {
+              "it": "后生可畏",
+              "zh": "年轻人值得敬畏"
+            },
+            {
+              "it": "三军可夺帅也，匹夫不可夺志也",
+              "zh": "军队可失主帅，人不可失志向"
+            },
+            {
+              "it": "岁寒然后知松柏之后凋也",
+              "zh": "天冷了才知松柏最后凋零"
+            },
+            {
+              "it": "知者不惑，仁者不忧，勇者不惧",
+              "zh": "智者不惑，仁者不忧，勇者不惧"
+            },
+            {
+              "it": "逝者如斯夫，不舍昼夜",
+              "zh": "消逝的时光如水，昼夜不停"
+            }
           ]
         }
       ]
     },
     {
-      title: "Muoversi in Italia",
-      subtitle: "交通篇",
-      units: [
+      "title": "Xiang Dang Pian",
+      "subtitle": "乡党篇第十 ~ 颜渊篇第十二",
+      "units": [
         {
-          id: "c3u1",
-          num: "第1单元",
-          title: "Chiedere informazioni stradali",
-          subtitle: "问路",
-          scene: "Mario si è perso nel centro di Roma. Chiede informazioni a un passante per trovare Piazza Navona.",
-          vocab: [
-            { it: "la strada", zh: "路/街道" },
-            { it: "la piazza", zh: "广场" },
-            { it: "l'incrocio", zh: "十字路口" },
-            { it: "il semaforo", zh: "红绿灯" },
-            { it: "l'angolo", zh: "角落/拐角" },
-            { it: "dritto", zh: "直走" },
-            { it: "a destra", zh: "向右" },
-            { it: "a sinistra", zh: "向左" },
-            { it: "vicino", zh: "附近" },
-            { it: "lontano", zh: "远" },
-            { it: "la fermata", zh: "车站" },
-            { it: "la cartina", zh: "地图" }
+          "id": "c3u1",
+          "num": "乡党第十",
+          "title": "孔子日常",
+          "subtitle": "圣人的言行举止",
+          "scene": "《乡党》是《论语》第十篇，共27章，纯用白描手法刻画孔子的日常生活细节：在乡里恭敬温和，在朝廷庄重严肃，穿衣饮食皆有讲究。\"食不厌精，脍不厌细\"体现了对生活的认真态度。\"伤人乎？不问马\"的人道主义精神令人感动。\"食不语，寝不言\"成为中国人基本的生活礼仪。",
+          "vocab": [
+            {
+              "it": "乡党",
+              "zh": "同乡，乡里"
+            },
+            {
+              "it": "侃侃",
+              "zh": "温和快乐的样子"
+            },
+            {
+              "it": "恂恂",
+              "zh": "恭顺谨慎的样子"
+            },
+            {
+              "it": "踧踖",
+              "zh": "恭敬不安的样子"
+            },
+            {
+              "it": "色",
+              "zh": "脸色，表情"
+            },
+            {
+              "it": "腥",
+              "zh": "生肉"
+            },
+            {
+              "it": "馁",
+              "zh": "鱼腐烂"
+            },
+            {
+              "it": "败",
+              "zh": "肉腐坏"
+            },
+            {
+              "it": "饪",
+              "zh": "煮熟"
+            },
+            {
+              "it": "不时",
+              "zh": "不合时令"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Mario", text: "Mi scusi, sto cercando Piazza Navona. Può aiutarmi?", zh: "打扰一下，我在找纳沃纳广场。您能帮我吗？" },
-            { speaker: "B", name: "Passante", text: "Certo! Non è lontana da qui. Vada sempre dritto per circa 200 metri.", zh: "当然！离这里不远。直走大约200米。" },
-            { speaker: "A", name: "Mario", text: "Sempre dritto? Poi?", zh: "一直直走？然后呢？" },
-            { speaker: "B", name: "Passante", text: "Al secondo semaforo, giri a destra. Poi vedrà una fontana, attraversi la piazza e arriva a destinazione.", zh: "在第二个红绿灯右转。然后您会看到一座喷泉，穿过广场就到了。" },
-            { speaker: "A", name: "Mario", text: "Quindi: dritto, secondo semaforo a destra, attraverso la piazza. Facile!", zh: "所以：直走，第二个红绿灯右转，穿过广场。很简单！" },
-            { speaker: "B", name: "Passante", text: "Esatto! Sono circa 10 minuti a piedi. Non può sbagliare.", zh: "没错！步行大约10分钟。您不会走错的。" },
-            { speaker: "A", name: "Mario", text: "Perfetto, grazie mille! Buona giornata!", zh: "太好了，非常感谢！祝您愉快！" },
-            { speaker: "B", name: "Passante", text: "Di niente. Buona giornata anche a lei!", zh: "不客气。也祝您愉快！" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "食不厌精，脍不厌细。食饐而餲，鱼馁而肉败，不食。色恶，不食。臭恶，不食。失饪，不食。不时，不食。割不正，不食。不得其酱，不食。",
+              "zh": "粮食不嫌精，肉不嫌细。食物变质发臭不吃，鱼烂肉腐不吃。颜色难看不吃。气味难闻不吃。烹调不当不吃。不合时令不吃。切割不正规不吃。没有合适的酱料不吃。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "厩焚。子退朝，曰：伤人乎？不问马。",
+              "zh": "马厩着火了。孔子退朝回来，问：\"伤人了吗？\"不问马的情况。"
+            },
+            {
+              "speaker": "B",
+              "name": "记载",
+              "text": "食不语，寝不言。",
+              "zh": "吃饭时不交谈，睡觉时不说话。"
+            }
           ],
-          grammar: [
-            { rule: "动词scusare（原谅）的变位", explain: "Mi scusi（对不起/打扰一下）是自反形式，scusarsi的祈使句Lei形式。Scusa是tu形式（非正式）。", example: "Mi scusi, dov'è la stazione? / Scusa, sai che ore sono?" },
-            { rule: "命令式（尊称Lei形式）", explain: "Vada（去）, giri（转弯）, attraversi（穿过）都是Lei命令式。动词词尾变化：-are → i (parli!), -ere → a (prenda!), -ire → a (parta!)。不规则：andare → vada, fare → faccia。", example: "Vada dritto! / Giri a destra! / Attraversi la piazza!" },
-            { rule: "指示方向的副词", explain: "Dritto/avanti（直走）, a destra（向右）, a sinistra（向左）, dietro（在后面）, davanti（在前面）。", example: "Sempre dritto. / Giri a destra." }
+          "grammar": [
+            {
+              "rule": "食不厌精，脍不厌细",
+              "explain": "\"厌\"为满足、嫌弃。并非极端追求精细，而是表达对生活品质的合理讲究。",
+              "example": "食不厌精，脍不厌细。"
+            },
+            {
+              "rule": "不食",
+              "explain": "多个\"不食\"并列排比，逐一列举孔子不吃的八种情况。形成简洁有力的节奏感。",
+              "example": "失饪，不食。不时，不食。割不正，不食。"
+            },
+            {
+              "rule": "伤人乎？不问马",
+              "explain": "\"问\"为询问、过问。此句体现了孔子以人为本的思想，是儒家仁爱精神的生动写照。",
+              "example": "厩焚。子退朝，曰：伤人乎？不问马。"
+            }
           ],
-          sentences: [
-            { it: "Mi scusi, dov'è il Colosseo?", zh: "打扰一下，斗兽场在哪里？" },
-            { it: "Devo andare dritto o giro a sinistra?", zh: "我该直走还是左转？" },
-            { it: "Quant'è lontano da qui?", zh: "离这里有多远？" },
-            { it: "C'è un supermercato qui vicino?", zh: "附近有超市吗？" },
-            { it: "Come arrivo a Piazza di Spagna?", zh: "怎么去西班牙广场？" }
+          "sentences": [
+            {
+              "it": "食不厌精，脍不厌细",
+              "zh": "饮食不嫌精致"
+            },
+            {
+              "it": "伤人乎？不问马",
+              "zh": "关心人胜过关心物"
+            },
+            {
+              "it": "食不语，寝不言",
+              "zh": "食不言寝不语"
+            },
+            {
+              "it": "寝不尸，居不客",
+              "zh": "睡觉不挺尸，居家不摆架子"
+            },
+            {
+              "it": "乡人饮酒，杖者出，斯出矣",
+              "zh": "饮酒礼毕让年长者先走"
+            }
           ]
         },
         {
-          id: "c3u2",
-          num: "第2单元",
-          title: "Prendere i mezzi pubblici di trasporto",
-          subtitle: "公交出行",
-          scene: "Mario impara a usare i mezzi pubblici a Roma: metro e autobus.",
-          vocab: [
-            { it: "la metropolitana", zh: "地铁" },
-            { it: "l'autobus", zh: "公交车" },
-            { it: "il biglietto", zh: "车票" },
-            { it: "l'abbonamento", zh: "月票/季票" },
-            { it: "la fermata", zh: "车站" },
-            { it: "la linea", zh: "线路" },
-            { it: "la coincidenza", zh: "换乘" },
-            { it: "il binario", zh: "站台" },
-            { it: "la direzione", zh: "方向" },
-            { it: "l'ultima corsa", zh: "末班车" },
-            { it: "la tabella oraria", zh: "时刻表" },
-            { it: "il conducente", zh: "司机" }
+          "id": "c3u2",
+          "num": "先进第十一",
+          "title": "先进于礼乐",
+          "subtitle": "孔门四科十哲",
+          "scene": "《先进》是《论语》第十一篇，共26章，主要记录孔子对各位弟子的评价和因材施教的对话。\"德行：颜渊、闵子骞、冉伯牛、仲弓；言语：宰我、子贡；政事：冉有、季路；文学：子游、子夏\"是著名的孔门四科十哲。\"过犹不及\"的哲学智慧、\"闻斯行诸\"的因材施教均出本篇。",
+          "vocab": [
+            {
+              "it": "先进",
+              "zh": "先学习礼乐后做官"
+            },
+            {
+              "it": "后进",
+              "zh": "先做官后学习礼乐"
+            },
+            {
+              "it": "过",
+              "zh": "超过"
+            },
+            {
+              "it": "不及",
+              "zh": "达不到"
+            },
+            {
+              "it": "兼人",
+              "zh": "胜人，超过别人"
+            },
+            {
+              "it": "退",
+              "zh": "退缩"
+            },
+            {
+              "it": "愚",
+              "zh": "愚笨"
+            },
+            {
+              "it": "鲁",
+              "zh": "迟钝"
+            },
+            {
+              "it": "辟",
+              "zh": "偏激"
+            },
+            {
+              "it": "喟然",
+              "zh": "感叹的样子"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Mario", text: "Buongiorno, un biglietto della metro per favore.", zh: "早上好，请给我一张地铁票。" },
-            { speaker: "B", name: "Bigliettaio", text: "Buongiorno. Vuole un biglietto singolo o una carta giornaliera?", zh: "早上好。您要单程票还是一日卡？" },
-            { speaker: "A", name: "Mario", text: "Un biglietto singolo, grazie. Quanto costa?", zh: "一张单程票，谢谢。多少钱？" },
-            { speaker: "B", name: "Bigliettaio", text: "1 euro e 50. Può usarlo per 100 minuti dal momento della timbratura.", zh: "1欧元50分。从打票起100分钟内有效。" },
-            { speaker: "A", name: "Mario", text: "Bene. Quale linea devo prendere per andare al Vaticano?", zh: "好的。去梵蒂冈应该坐哪条线？" },
-            { speaker: "B", name: "Bigliettaio", text: "Prenda la linea A in direzione Battistini e scenda a Ottaviano.", zh: "坐A线往Battistini方向，在Ottaviano站下车。" },
-            { speaker: "A", name: "Mario", text: "Grazie! Ah, un'altra cosa: dove si timbra il biglietto?", zh: "谢谢！啊，还有一件事：在哪里打票？" },
-            { speaker: "B", name: "Bigliettaio", text: "All'ingresso dei binari, ci sono le macchine obliteratrici gialle. Inserisca il biglietto e lo ritiri dall'altra parte.", zh: "在站台入口处，有黄色的打票机。把票插进去，从另一边拿出来。" },
-            { speaker: "A", name: "Mario", text: "Finito. Grazie per l'aiuto!", zh: "明白了。谢谢您的帮助！" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "先进于礼乐，野人也；后进于礼乐，君子也。如用之，则吾从先进。",
+              "zh": "先学习礼乐而后做官的，是普通百姓；先做官而后学习礼乐的，是贵族子弟。如果要我用人才，我主张用先学习礼乐的。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "过犹不及。",
+              "zh": "过头和达不到是一样的。"
+            },
+            {
+              "speaker": "B",
+              "name": "子路",
+              "text": "闻斯行诸？",
+              "zh": "听到道理就去做吗？"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "有父兄在，如之何其闻斯行之？",
+              "zh": "有父兄在世，怎么能听到了就去做呢？"
+            },
+            {
+              "speaker": "C",
+              "name": "冉有",
+              "text": "闻斯行诸？",
+              "zh": "听到道理就去做吗？"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "闻斯行之。",
+              "zh": "听到了就去做。"
+            },
+            {
+              "speaker": "D",
+              "name": "公西华",
+              "text": "赤也惑，敢问。",
+              "zh": "我迷惑了，敢问为何回答不同？"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "求也退，故进之；由也兼人，故退之。",
+              "zh": "冉有退缩，所以鼓励他；子路好胜，所以抑制他。"
+            }
           ],
-          grammar: [
-            { rule: "动词prendere（乘坐）", explain: "Prendere在这里表示\"乘坐\"交通工具：Prendo la metro（我坐地铁）, Prendo l'autobus（我坐公交）。", example: "Prenda la linea A. / Prendo il treno." },
-            { rule: "动词scendere（下车/下）", explain: "Scendere是不规则动词：Io scendo, tu scendi, lui/lei scende, noi scendiamo, voi scendete, loro scendono。过去分词：sceso。", example: "Scenda a Ottaviano. / Sono sceso alla fermata sbagliata." },
-            { rule: "时间表达da...a...", explain: "Da...a...表示从...到...（时间或空间范围）。", example: "Dal momento della timbratura. / Dalla stazione all'aeroporto." }
+          "grammar": [
+            {
+              "rule": "闻斯行诸",
+              "explain": "\"斯\"为承接连词（就）。\"诸\"为兼词\"之乎\"的合音。\"闻斯行诸\"即\"听到了就去做吗？\"",
+              "example": "闻斯行诸？"
+            },
+            {
+              "rule": "进之/退之",
+              "explain": "\"之\"为代词宾语。\"进之\"（使他前进/鼓励他），\"退之\"（使他后退/抑制他），都是使动用法。",
+              "example": "求也退，故进之；由也兼人，故退之。"
+            },
+            {
+              "rule": "过犹不及",
+              "explain": "\"过\"（超过）与\"不及\"（达不到）对举，\"犹\"为如同。意为\"过头和不足一样不好\"，是中庸思想的核心表达。",
+              "example": "过犹不及。"
+            }
           ],
-          sentences: [
-            { it: "Dov'è la fermata della metro più vicina?", zh: "最近的地铁站在哪里？" },
-            { it: "Ogni quanto passa l'autobus?", zh: "公交车多久一班？" },
-            { it: "Questo autobus va al centro?", zh: "这路公交车去市中心吗？" },
-            { it: "Devo fare cambio?", zh: "我需要换乘吗？" },
-            { it: "A che ora è l'ultima corsa?", zh: "末班车是几点？" }
+          "sentences": [
+            {
+              "it": "过犹不及",
+              "zh": "过头和达不到一样不好"
+            },
+            {
+              "it": "闻斯行诸",
+              "zh": "听到了就去做吗"
+            },
+            {
+              "it": "不践迹，亦不入于室",
+              "zh": "不踩着先贤足迹，则不能登堂入室"
+            },
+            {
+              "it": "夫人不言，言必有中",
+              "zh": "此人要么不说，说就说到点上"
+            },
+            {
+              "it": "四海之内，皆兄弟也",
+              "zh": "天下人都是兄弟"
+            }
           ]
         },
         {
-          id: "c3u3",
-          num: "第3单元",
-          title: "Alla stazione",
-          subtitle: "在火车站",
-          scene: "Mario deve prendere un treno per andare a Firenze. Va alla stazione Termini di Roma.",
-          vocab: [
-            { it: "la stazione", zh: "火车站" },
-            { it: "il treno", zh: "火车" },
-            { it: "il binario", zh: "站台" },
-            { it: "il biglietto", zh: "车票" },
-            { it: "il regionale", zh: "慢车/区间车" },
-            { it: "l'alta velocità", zh: "高铁" },
-            { it: "la prenotazione", zh: "预订/订座" },
-            { it: "la carrozza", zh: "车厢" },
-            { it: "il posto a sedere", zh: "座位" },
-            { it: "la biglietteria", zh: "售票处" },
-            { it: "il tabellone", zh: "显示牌" },
-            { it: "il ritardo", zh: "晚点" }
+          "id": "c3u3",
+          "num": "颜渊第十二",
+          "title": "克己复礼",
+          "subtitle": "仁的问答与实践",
+          "scene": "《颜渊》是《论语》第十二篇，共24章，核心主题是\"仁\"。孔子回答颜渊\"克己复礼为仁\"，并指出\"为仁由己\"的主动性。\"非礼勿视，非礼勿听，非礼勿言，非礼勿动\"是克己复礼的具体纲目。\"君子成人之美\"的博大胸怀和\"民无信不立\"的治国理念也出本篇。",
+          "vocab": [
+            {
+              "it": "克己",
+              "zh": "克制自己"
+            },
+            {
+              "it": "复礼",
+              "zh": "回归礼制"
+            },
+            {
+              "it": "归仁",
+              "zh": "称赞为仁德"
+            },
+            {
+              "it": "目",
+              "zh": "条目，具体要点"
+            },
+            {
+              "it": "敬",
+              "zh": "恭敬，敬重"
+            },
+            {
+              "it": "恕",
+              "zh": "推己及人"
+            },
+            {
+              "it": "忠告",
+              "zh": "诚恳劝告"
+            },
+            {
+              "it": "成",
+              "zh": "成全"
+            },
+            {
+              "it": "美",
+              "zh": "好事，美德"
+            },
+            {
+              "it": "惑",
+              "zh": "迷惑，困惑"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Mario", text: "Buongiorno, vorrei un biglietto per Firenze, per favore.", zh: "早上好，我想买一张去佛罗伦萨的票。" },
-            { speaker: "B", name: "Impiegato", text: "Buongiorno. Regionale o alta velocità?", zh: "早上好。区间车还是高铁？" },
-            { speaker: "A", name: "Mario", text: "Alta velocità. Quanto costa?", zh: "高铁。多少钱？" },
-            { speaker: "B", name: "Impiegato", text: "47 euro in seconda classe. Con prenotazione obbligatoria.", zh: "二等座47欧元。必须预订座位。" },
-            { speaker: "A", name: "Mario", text: "Va bene. Prendo quello delle 10:30. C'è posto?", zh: "好的。我坐10:30的那班。还有座位吗？" },
-            { speaker: "B", name: "Impiegato", text: "Sì, ultimo posto disponibile. Carrozza 7, posto 14A, finestrino. Ecco il suo biglietto.", zh: "有的，最后一个座位。7号车厢，14A座，靠窗。这是您的票。" },
-            { speaker: "A", name: "Mario", text: "Da quale binario parte?", zh: "从哪个站台出发？" },
-            { speaker: "B", name: "Impiegato", text: "Binario 12. Controlli il tabellone, potrebbe cambiare. Il treno parte alle 10:30 e arriva alle 11:45.", zh: "12号站台。看一下显示牌，可能会有变动。火车10:30出发，11:45到达。" },
-            { speaker: "A", name: "Mario", text: "Perfetto, grazie! Un'ora e un quarto di viaggio. Comodissimo!", zh: "太好了，谢谢！一小时十五分钟的车程。非常方便！" }
+          "dialogue": [
+            {
+              "speaker": "B",
+              "name": "颜渊",
+              "text": "颜渊问仁。",
+              "zh": "颜渊问什么是仁。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "克己复礼为仁。一日克己复礼，天下归仁焉。为仁由己，而由人乎哉？",
+              "zh": "克制自己使言行符合礼就是仁。一旦做到克己复礼，天下人都称赞你为仁。实践仁靠的是自己，难道靠别人吗？"
+            },
+            {
+              "speaker": "B",
+              "name": "颜渊",
+              "text": "请问其目。",
+              "zh": "请问具体的条目。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "非礼勿视，非礼勿听，非礼勿言，非礼勿动。",
+              "zh": "不合礼的不看，不合礼的不听，不合礼的不说，不合礼的不做。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "君子成人之美，不成人之恶。小人反是。",
+              "zh": "君子成全别人的好事，不促成别人的坏事。小人则相反。"
+            },
+            {
+              "speaker": "B",
+              "name": "子贡",
+              "text": "子贡问政。",
+              "zh": "子贡问如何治理政事。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "足食，足兵，民信之矣。",
+              "zh": "粮食充足，军备充足，百姓信任政府。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "去兵。去食。自古皆有死，民无信不立。",
+              "zh": "去掉军备。去掉粮食。自古以来人都有一死，但百姓不信任政府国家就站不住。"
+            }
           ],
-          grammar: [
-            { rule: "指示形容词questo/quello", explain: "Questo（这个）有性数变化：questo treno, questa stazione, questi biglietti, queste carrozze。Quello（那个）在名词前有特殊形式：quel treno, quella stazione, quei biglietti, quelle carrozze。", example: "Questo treno va a Firenze. / Quel binario è il 12." },
-            { rule: "动词partire（出发）的变位", explain: "Partire是规则-ire动词（isc类）：Io parto, tu parti, lui/lei parte, noi partiamo, voi partite, loro partono。", example: "Il treno parte alle 10:30." },
-            { rule: "时刻表达", explain: "用alle表示\"在...点\"：alle 10:30。用dalle...alle...表示\"从...到...\"。", example: "Il treno parte alle 10:30 e arriva alle 11:45." }
+          "grammar": [
+            {
+              "rule": "克己复礼为仁",
+              "explain": "\"为\"表判断（就是）。这是孔子对仁的最经典定义：克制自己，使言行符合礼制。",
+              "example": "克己复礼为仁。"
+            },
+            {
+              "rule": "非礼勿视",
+              "explain": "四个\"勿\"字句排比。\"非礼\"即不合礼的。从视、听、言、动全面约束，是克己复礼的具体实践纲目。",
+              "example": "非礼勿视，非礼勿听，非礼勿言，非礼勿动。"
+            },
+            {
+              "rule": "民无信不立",
+              "explain": "\"信\"指信任。\"立\"为站立、存在。没有信任，国家就无法存在。此句强调了政治信任的重要性。",
+              "example": "自古皆有死，民无信不立。"
+            }
           ],
-          sentences: [
-            { it: "Vorrei un biglietto andata e ritorno per Milano.", zh: "我想买一张去米兰的往返票。" },
-            { it: "Da quale binario parte il treno per Venezia?", zh: "去威尼斯的火车从哪个站台出发？" },
-            { it: "Il treno ha 15 minuti di ritardo.", zh: "火车晚点15分钟。" },
-            { it: "Devo convalidare il biglietto prima di salire.", zh: "上车前需要打票。" },
-            { it: "Quanto dura il viaggio?", zh: "行程多长时间？" }
-          ]
-        },
-        {
-          id: "c3u4",
-          num: "第4单元",
-          title: "All'aeroporto",
-          subtitle: "在机场",
-          scene: "Mario va all'aeroporto di Roma Fiumicino per prendere un volo per la Cina.",
-          vocab: [
-            { it: "l'aeroporto", zh: "机场" },
-            { it: "il volo", zh: "航班" },
-            { it: "il check-in", zh: "值机" },
-            { it: "la carta d'imbarco", zh: "登机牌" },
-            { it: "il bagaglio", zh: "行李" },
-            { it: "il bagaglio a mano", zh: "手提行李" },
-            { it: "la valigia", zh: "行李箱" },
-            { it: "il controllo passaporti", zh: "护照检查" },
-            { it: "il gate", zh: "登机口" },
-            { it: "l'imbarco", zh: "登机" },
-            { it: "la partenza", zh: "出发" },
-            { it: "l'arrivo", zh: "到达" }
-          ],
-          dialogue: [
-            { speaker: "A", name: "Mario", text: "Buongiorno, devo fare il check-in per il volo AZ 792 per Shanghai.", zh: "早上好，我需要办理飞往上海的AZ792航班的登机手续。" },
-            { speaker: "B", name: "Impiegata", text: "Buongiorno. Mi dia il passaporto, per favore. Ha bagaglio da stiva?", zh: "早上好。请给我您的护照。有托运行李吗？" },
-            { speaker: "A", name: "Mario", text: "Sì, una valigia da 20 chili.", zh: "有，一个20公斤的行李箱。" },
-            { speaker: "B", name: "Impiegata", text: "Perfetto. La metta sul nastro. Quant'è il bagaglio a mano?", zh: "好的。请放在传送带上。手提行李有多重？" },
-            { speaker: "A", name: "Mario", text: "Solo uno zaino, circa 7 chili.", zh: "只有一个背包，大约7公斤。" },
-            { speaker: "B", name: "Impiegata", text: "Tutto a posto. Ecco la carta d'imbarco. Il gate è il numero 24, l'imbarco è alle 14:30. Si presenti al gate con 30 minuti di anticipo.", zh: "一切就绪。这是您的登机牌。登机口是24号，14:30开始登机。请提前30分钟到达登机口。" },
-            { speaker: "A", name: "Mario", text: "Grazie. Dove devo andare per il controllo passaporti?", zh: "谢谢。护照检查在哪里？" },
-            { speaker: "B", name: "Impiegata", text: "Dopo i controlli di sicurezza, segua le indicazioni per le partenze internazionali. Buon viaggio!", zh: "经过安检后，按照国际出发的指示牌走。祝您旅途愉快！" },
-            { speaker: "A", name: "Mario", text: "Grazie mille! Arrivederci!", zh: "非常感谢！再见！" }
-          ],
-          grammar: [
-            { rule: "动词dare（给）的变位", explain: "Dare是不规则动词：Io do, tu dai, lui/lei dà, noi diamo, voi date, loro danno。命令式Lei形式：Mi dia...（请给我...）。", example: "Mi dia il passaporto." },
-            { rule: "情态动词dovere/avere bisogno di", explain: "Dovere + 不定式表示必须做某事。Avere bisogno di + 名词/不定式表示\"需要...\"。", example: "Devo fare il check-in. / Ho bisogno di aiuto." },
-            { rule: "动词seguire（跟随/沿着）", explain: "Seguire是不规则-ire动词：Io seguo, tu segui, lui/lei segue, noi seguiamo, voi seguite, loro seguono。", example: "Segua le indicazioni." }
-          ],
-          sentences: [
-            { it: "A che ora è l'imbarco?", zh: "几点登机？" },
-            { it: "Quanto peso posso portare?", zh: "我可以带多少重量？" },
-            { it: "Dov'è il ritiro bagagli?", zh: "行李提取处在哪里？" },
-            { it: "Il volo è in orario?", zh: "航班准时吗？" },
-            { it: "Ha un oggetto da dichiarare?", zh: "您有物品需要申报吗？" }
-          ]
-        },
-        {
-          id: "c3u5",
-          num: "第5单元",
-          title: "Prendere un taxi e noleggiare una macchina",
-          subtitle: "乘出租车及租车",
-          scene: "Mario deve andare a una riunione fuori città. Decide di noleggiare un'auto.",
-          vocab: [
-            { it: "il taxi", zh: "出租车" },
-            { it: "noleggiare", zh: "租用" },
-            { it: "la macchina / l'auto", zh: "汽车" },
-            { it: "la patente di guida", zh: "驾照" },
-            { it: "l'autonoleggio", zh: "租车公司" },
-            { it: "l'assicurazione", zh: "保险" },
-            { it: "il pieno", zh: "满箱油" },
-            { it: "il carburante", zh: "燃油" },
-            { it: "il GPS / il navigatore", zh: "导航" },
-            { it: "il parcheggio", zh: "停车场" },
-            { it: "il pedaggio", zh: "过路费" },
-            { it: "la multa", zh: "罚款" }
-          ],
-          dialogue: [
-            { speaker: "A", name: "Mario", text: "Buongiorno, vorrei noleggiare una macchina per tre giorni.", zh: "早上好，我想租一辆车，租三天。" },
-            { speaker: "B", name: "Impiegato", text: "Buongiorno. Che tipo di auto desidera? Una piccola città o una più comoda?", zh: "早上好。您想要什么车型？城市小车还是更舒适一些的？" },
-            { speaker: "A", name: "Mario", text: "Una piccola va bene, anche automatica se possibile.", zh: "小车就行，如果有自动挡更好。" },
-            { speaker: "B", name: "Impiegato", text: "Abbiamo una Fiat 500 automatica. 40 euro al giorno, assicurazione inclusa.", zh: "我们有一辆自动挡菲亚特500。每天40欧元，包含保险。" },
-            { speaker: "A", name: "Mario", text: "La patente cinese va bene?", zh: "中国驾照可以用吗？" },
-            { speaker: "B", name: "Impiegato", text: "Serve la patente internazionale o una traduzione ufficiale della sua patente.", zh: "需要国际驾照或者官方翻译件。" },
-            { speaker: "A", name: "Mario", text: "Ho la traduzione giurata. Ecco qui. La macchina ha il navigatore?", zh: "我有公证翻译件。给您。车上有导航吗？" },
-            { speaker: "B", name: "Impiegato", text: "Sì, ha il GPS integrato. E la macchina è a pieno. La restituisca con il pieno, per favore.", zh: "有的，有内置GPS。车是满油的。还车时请加满油。" },
-            { speaker: "A", name: "Mario", text: "OK. Dove posso parcheggiare in centro?", zh: "好的。市中心哪里可以停车？" },
-            { speaker: "B", name: "Impiegato", text: "Consiglio i parcheggi a pagamento. Le strisce blu sono a pagamento, le bianche sono gratuite.", zh: "我建议停在付费停车场。蓝线是付费的，白线是免费的。" }
-          ],
-          grammar: [
-            { rule: "动词noleggiare（租用）", explain: "Noleggiare是规则-are动词，注意保留i：Io noleggio, tu noleggi, lui/lei noleggia, noi noleggiamo, voi noleggiate, loro noleggiano。", example: "Vorrei noleggiare una macchina." },
-            { rule: "动词restituire（归还）", explain: "Restituire是-ire动词（isc类）：Io restituisco, tu restituisci, lui/lei restituisce, noi restituiamo, voi restituite, loro restituiscono。", example: "Restituisca la macchina con il pieno." },
-            { rule: "动词consigliare（建议）", explain: "Consigliare意为\"建议\"。Io consiglio, tu consigli, lui/lei consiglia, noi consigliamo, voi consigliate, loro consigliano。", example: "Le consiglio i parcheggi a pagamento." }
-          ],
-          sentences: [
-            { it: "Quanto costa noleggiare una macchina al giorno?", zh: "租车一天多少钱？" },
-            { it: "Posso restituirla in un'altra città?", zh: "可以在其他城市还车吗？" },
-            { it: "Il carburante è incluso?", zh: "包含燃油吗？" },
-            { it: "Dov'è il parcheggio più vicino?", zh: "最近的停车场在哪里？" },
-            { it: "Chiami un taxi, per favore.", zh: "请叫一辆出租车。" }
+          "sentences": [
+            {
+              "it": "克己复礼为仁",
+              "zh": "克制自己使言行合礼就是仁"
+            },
+            {
+              "it": "非礼勿视，非礼勿听，非礼勿言，非礼勿动",
+              "zh": "视听说动皆合礼"
+            },
+            {
+              "it": "君子成人之美",
+              "zh": "君子成全别人的好事"
+            },
+            {
+              "it": "民无信不立",
+              "zh": "百姓不信任，国将不国"
+            },
+            {
+              "it": "四海之内皆兄弟",
+              "zh": "天下人皆如兄弟"
+            }
           ]
         }
       ]
     },
     {
-      title: "Divertirsi in Italia",
-      subtitle: "游览篇",
-      units: [
+      "title": "Zi Lu Pian",
+      "subtitle": "子路篇第十三 ~ 季氏篇第十六",
+      "units": [
         {
-          id: "c4u1",
-          num: "第1单元",
-          title: "In agenzia turistica",
-          subtitle: "在旅行社",
-          scene: "Mario e Lucia vogliono organizzare un viaggio al Sud Italia. Vanno in un'agenzia turistica.",
-          vocab: [
-            { it: "l'agenzia turistica", zh: "旅行社" },
-            { it: "il viaggio", zh: "旅行" },
-            { it: "la vacanza", zh: "假期" },
-            { it: "la prenotazione", zh: "预订" },
-            { it: "l'hotel", zh: "酒店" },
-            { it: "la camera", zh: "房间" },
-            { it: "la gita", zh: "一日游" },
-            { it: "la guida turistica", zh: "导游" },
-            { it: "il tour organizzato", zh: "跟团游" },
-            { it: "la meta", zh: "目的地" },
-            { it: "il pacchetto", zh: "套餐" },
-            { it: "l'itinerario", zh: "行程路线" }
+          "id": "c3u4",
+          "num": "子路第十三",
+          "title": "正名治国",
+          "subtitle": "为政以正名",
+          "scene": "《子路》是《论语》第十三篇，共30章。\"必也正名乎\"的论述体现了孔子\"名不正则言不顺\"的政治哲学。\"其身正，不令而行；其身不正，虽令不从\"的领导力原则,\"欲速则不达\"的做事哲理,\"近者悦，远者来\"的理想治理,\"君子和而不同\"的处世智慧均出本篇。",
+          "vocab": [
+            {
+              "it": "正名",
+              "zh": "纠正名分"
+            },
+            {
+              "it": "名",
+              "zh": "名称，名分"
+            },
+            {
+              "it": "言",
+              "zh": "言语，言论"
+            },
+            {
+              "it": "事",
+              "zh": "事情，政事"
+            },
+            {
+              "it": "礼乐",
+              "zh": "礼仪和音乐"
+            },
+            {
+              "it": "刑罚",
+              "zh": "刑法和惩罚"
+            },
+            {
+              "it": "令",
+              "zh": "命令，政令"
+            },
+            {
+              "it": "苟",
+              "zh": "如果，假若"
+            },
+            {
+              "it": "悦",
+              "zh": "高兴，心悦诚服"
+            },
+            {
+              "it": "庶",
+              "zh": "众多，人口众多"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Impiegata", text: "Buongiorno! In cosa posso aiutarvi?", zh: "早上好！有什么可以帮两位？" },
-            { speaker: "B", name: "Mario", text: "Buongiorno! Vorremmo organizzare un viaggio in Sicilia.", zh: "早上好！我们想去西西里旅行。" },
-            { speaker: "A", name: "Impiegata", text: "Ottima scelta! La Sicilia è meravigliosa. Quanti giorni avete a disposizione?", zh: "好选择！西西里很美。你们有多少天时间？" },
-            { speaker: "C", name: "Lucia", text: "Una settimana, da sabato a sabato. Vorremmo vedere Catania e Taormina.", zh: "一周时间，从周六到下周六。我们想看卡塔尼亚和陶尔米纳。" },
-            { speaker: "A", name: "Impiegata", text: "Perfetto. Abbiamo un pacchetto speciale: volo + hotel 4 stelle a Catania con colazione inclusa. 550 euro a persona.", zh: "好的。我们有一个特惠套餐：机票+卡塔尼亚四星级酒店含早餐。每人550欧元。" },
-            { speaker: "B", name: "Mario", text: "Sembra interessante. Include anche un tour dell'Etna?", zh: "听起来不错。包含埃特纳火山的游览吗？" },
-            { speaker: "A", name: "Impiegata", text: "Possiamo aggiungere una gita di un giorno all'Etna per 80 euro a persona. Ve la consiglio vivamente!", zh: "我们可以加一天埃特纳之旅，每人80欧元。我非常推荐！" },
-            { speaker: "C", name: "Lucia", text: "Perfetto! Allora prendiamo il pacchetto con la gita all'Etna.", zh: "太好了！那我们就要包含埃特纳之旅的套餐。" },
-            { speaker: "B", name: "Mario", text: "Possiamo pagare con carta di credito?", zh: "可以用信用卡支付吗？" },
-            { speaker: "A", name: "Impiegata", text: "Certo! Lasciate i vostri dati e vi preparo i biglietti. Buon viaggio in Sicilia!", zh: "当然！请留下你们的资料，我给你们准备票。祝西西里之旅愉快！" }
+          "dialogue": [
+            {
+              "speaker": "B",
+              "name": "子路",
+              "text": "卫君待子而为政，子将奚先？",
+              "zh": "卫国国君等着您去治理政事，您先做什么？"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "必也正名乎！",
+              "zh": "那一定是纠正名分！"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "名不正，则言不顺；言不顺，则事不成；事不成，则礼乐不兴；礼乐不兴，则刑罚不中；刑罚不中，则民无所措手足。",
+              "zh": "名分不正，说话就不顺当；说话不顺当，事就办不成；事办不成，礼乐就兴不起来；礼乐不兴，刑罚就不得当；刑罚不当，百姓就手足无措了。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "其身正，不令而行；其身不正，虽令不从。",
+              "zh": "本身行为端正，不下命令人们也会遵行；本身行为不端正，即使下命令人们也不听从。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "无欲速，无见小利。欲速则不达，见小利则大事不成。",
+              "zh": "不要求快，不要贪图小利。求快反而达不到目的，贪图小利就做不成大事。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "君子和而不同，小人同而不和。",
+              "zh": "君子和谐而不苟同，小人苟同而不和谐。"
+            }
           ],
-          grammar: [
-            { rule: "条件式（condizionale）用于礼貌请求", explain: "Vorremmo是volere的条件式复数形式，比vogliamo更礼貌。条件式词尾：-ei, -esti, -ebbe, -emmo, -este, -ebbero。", example: "Vorremmo organizzare un viaggio. / Potrebbe aiutarci?" },
-            { rule: "动词sembrare（看起来）", explain: "Sembrare表示\"看起来...\"。Mi sembra bello（我觉得很好）。加形容词或动词不定式。", example: "Sembra interessante. / Mi sembra un'ottima idea." },
-            { rule: "动词consigliare（推荐）", explain: "Consigliare a qualcuno di fare qualcosa（建议某人做某事）。Ve la consiglio（我向你们推荐它）- ve = vi + la。", example: "Ve la consiglio vivamente!" }
+          "grammar": [
+            {
+              "rule": "必也正名乎",
+              "explain": "\"必\"（一定），\"也\"为语气助词，\"乎\"表感叹。\"必也……乎\"句式表达坚定不移的信念。",
+              "example": "必也正名乎！"
+            },
+            {
+              "rule": "名不正则言不顺",
+              "explain": "五个\"不……则不……\"顶针递进，从名分层层推导到百姓手足无措，论证严密有力。",
+              "example": "名不正，则言不顺；言不顺，则事不成。"
+            },
+            {
+              "rule": "欲速则不达",
+              "explain": "\"欲\"（想要），\"速\"（快速），\"则\"（就）。是\"欲速不达\"成语的出处，体现了孔子反对急功近利的思想。",
+              "example": "无欲速，无见小利。欲速则不达。"
+            }
           ],
-          sentences: [
-            { it: "Quanto costa un viaggio a Capri?", zh: "去卡普里的旅行多少钱？" },
-            { it: "Avete voli per Palermo?", zh: "你们有去巴勒莫的航班吗？" },
-            { it: "Il pacchetto include i pasti?", zh: "套餐包含餐食吗？" },
-            { it: "Preferisco un hotel in centro.", zh: "我更喜欢市中心的酒店。" },
-            { it: "Organizzate gite di gruppo?", zh: "你们组织团体游吗？" }
+          "sentences": [
+            {
+              "it": "名不正则言不顺",
+              "zh": "名分不正说话就不顺"
+            },
+            {
+              "it": "其身正，不令而行；其身不正，虽令不从",
+              "zh": "身正无需令，身不正令亦不从"
+            },
+            {
+              "it": "欲速则不达",
+              "zh": "欲求快速反而达不到"
+            },
+            {
+              "it": "近者悦，远者来",
+              "zh": "近处的人高兴，远处的人来归附"
+            },
+            {
+              "it": "君子和而不同，小人同而不和",
+              "zh": "君子和谐而不苟同，小人苟同而不和谐"
+            }
           ]
         },
         {
-          id: "c4u2",
-          num: "第2单元",
-          title: "In albergo",
-          subtitle: "住宾馆",
-          scene: "Mario e Lucia arrivano a Catania e fanno il check-in all'hotel.",
-          vocab: [
-            { it: "l'albergo / l'hotel", zh: "酒店" },
-            { it: "la reception", zh: "前台" },
-            { it: "il check-in", zh: "入住" },
-            { it: "il check-out", zh: "退房" },
-            { it: "la camera singola", zh: "单人间" },
-            { it: "la camera doppia", zh: "双人间" },
-            { it: "la chiave", zh: "钥匙/房卡" },
-            { it: "il piano", zh: "楼层" },
-            { it: "il servizio in camera", zh: "客房服务" },
-            { it: "la colazione", zh: "早餐" },
-            { it: "la mezza pensione", zh: "半食宿" },
-            { it: "la pensione completa", zh: "全食宿" }
+          "id": "c3u5",
+          "num": "宪问第十四",
+          "title": "宪问耻",
+          "subtitle": "士君子之道",
+          "scene": "《宪问》是《论语》第十四篇，共44章，内容涉及士人的修养和君子小人之辨。原宪问耻，孔子以\"邦有道，谷；邦无道，谷，耻也\"作答，体现了知识分子当以国家兴衰为己任的精神。\"不怨天，不尤人\"的独立人格,\"以直报怨，以德报德\"的处世原则均为千古不易之理。",
+          "vocab": [
+            {
+              "it": "耻",
+              "zh": "羞耻，可耻"
+            },
+            {
+              "it": "谷",
+              "zh": "俸禄，做官领薪"
+            },
+            {
+              "it": "士",
+              "zh": "读书人，士人"
+            },
+            {
+              "it": "怀",
+              "zh": "怀揣，贪恋"
+            },
+            {
+              "it": "居",
+              "zh": "处于，居心"
+            },
+            {
+              "it": "怨",
+              "zh": "怨恨"
+            },
+            {
+              "it": "勿",
+              "zh": "不要"
+            },
+            {
+              "it": "言",
+              "zh": "言语，言论"
+            },
+            {
+              "it": "德",
+              "zh": "德行，恩德"
+            },
+            {
+              "it": "以直",
+              "zh": "以正直的方式"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Mario", text: "Buonasera! Abbiamo una prenotazione a nome di Mario Bianchi.", zh: "晚上好！我们有一个以Mario Bianchi名字预订的房间。" },
-            { speaker: "B", name: "Receptionist", text: "Buonasera, signor Bianchi. Un attimo, controllo... Sì, camera doppia con vista mare per 7 notti. Conferma?", zh: "晚上好，Bianchi先生。请稍等，我查一下...是的，海景双人间，7晚。确认吗？" },
-            { speaker: "A", name: "Mario", text: "Sì, confermo. La colazione è inclusa?", zh: "是的，确认。包含早餐吗？" },
-            { speaker: "B", name: "Receptionist", text: "Sì, la colazione a buffet è inclusa. Viene servita dalle 7:00 alle 10:30 al primo piano.", zh: "是的，包含自助早餐。供应时间是7:00到10:30，在一楼。" },
-            { speaker: "C", name: "Lucia", text: "A che ora dobbiamo fare il check-out?", zh: "我们需要几点退房？" },
-            { speaker: "B", name: "Receptionist", text: "Il check-out è entro le 11:00 del mattino. Se desiderate, potete lasciare i bagagli in deposito.", zh: "退房时间是上午11:00前。如果愿意，可以把行李寄存。" },
-            { speaker: "A", name: "Mario", text: "La camera ha il Wi-Fi gratuito?", zh: "房间有免费Wi-Fi吗？" },
-            { speaker: "B", name: "Receptionist", text: "Certo, la password è sulla chiave magnetica. Ecco le vostre chiavi, camera 305, terzo piano. L'ascensore è a destra.", zh: "当然，密码在房卡上。这是你们的房卡，305房间，三楼。电梯在右边。" },
-            { speaker: "C", name: "Lucia", text: "Grazie! C'è un ristorante qui in albergo?", zh: "谢谢！酒店里有餐厅吗？" },
-            { speaker: "B", name: "Receptionist", text: "Sì, al sesto piano c'è il ristorante panoramico aperto dalle 19:30. Ottima cucina siciliana! Buon soggiorno!", zh: "有的，六楼有全景餐厅，19:30开始营业。非常棒的西西里美食！祝您入住愉快！" }
+          "dialogue": [
+            {
+              "speaker": "B",
+              "name": "原宪",
+              "text": "宪问耻。",
+              "zh": "原宪问什么是耻辱。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "邦有道，谷；邦无道，谷，耻也。",
+              "zh": "国家政治清明，做官领薪；国家政治黑暗，仍然做官领薪，这就是耻辱。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "君子上达，小人下达。",
+              "zh": "君子向上通达仁义，小人向下追求名利。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "不怨天，不尤人，下学而上达。知我者其天乎！",
+              "zh": "不埋怨天，不责怪人，从浅近处学习而通达高深的道理。了解我的大概只有天吧！"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "以直报怨，以德报德。",
+              "zh": "用正直回应怨恨，用恩德回应恩德。"
+            }
           ],
-          grammar: [
-            { rule: "动词confermare（确认）", explain: "Confermare是规则-are动词：Io confermo, tu confermi, lui/lei conferma, noi confermiamo, voi confermate, loro confermano。", example: "Confermo la prenotazione. / Può confermare per favore?" },
-            { rule: "动词lasciare（留下/离开）", explain: "Lasciare在酒店场景中常用：lasciare i bagagli（寄存行李）。过去分词：lasciato。", example: "Potete lasciare i bagagli in deposito." },
-            { rule: "情态动词potere（能够）的用法", explain: "Potere + 不定式。Potete lasciare（你们可以留下）。条件式Potrebbe更礼貌。", example: "Potete lasciare i bagagli. / Potrebbe darmi la chiave?" }
+          "grammar": [
+            {
+              "rule": "邦有道，谷；邦无道，谷，耻也",
+              "explain": "\"谷\"本义为粮食，引申为俸禄，在此用作动词（领俸禄做官）。\"耻也\"为判断句作结。",
+              "example": "邦有道，谷；邦无道，谷，耻也。"
+            },
+            {
+              "rule": "不怨天，不尤人",
+              "explain": "\"怨\"为抱怨，\"尤\"为责怪。两个否定句并列，表达反求诸己的独立人格精神。",
+              "example": "不怨天，不尤人。"
+            },
+            {
+              "rule": "下学而上达",
+              "explain": "\"下学\"指学习日常知识，\"上达\"指通达高深道理。从具体到抽象的递进，体现了孔子的治学方法。",
+              "example": "不怨天，不尤人，下学而上达。"
+            }
           ],
-          sentences: [
-            { it: "La mia camera non ha acqua calda.", zh: "我的房间没有热水。" },
-            { it: "Potrei avere un'altra coperta?", zh: "可以再给我一条毯子吗？" },
-            { it: "A che ora serve la colazione?", zh: "早餐几点供应？" },
-            { it: "Vorrei prolungare il soggiorno di un giorno.", zh: "我想延长住宿一天。" },
-            { it: "Potrebbe chiamarmi un taxi per l'aeroporto?", zh: "可以帮我叫一辆去机场的出租车吗？" }
+          "sentences": [
+            {
+              "it": "不怨天，不尤人",
+              "zh": "不怨天不怪人"
+            },
+            {
+              "it": "下学而上达",
+              "zh": "学习浅近的道理而通达高深的道理"
+            },
+            {
+              "it": "邦有道，谷；邦无道，谷，耻也",
+              "zh": "政治清明时做官；黑暗时仍做官领薪可耻"
+            },
+            {
+              "it": "以直报怨，以德报德",
+              "zh": "用正直回应怨恨，用恩德回应恩德"
+            },
+            {
+              "it": "老而不死是为贼",
+              "zh": "年老无德等于害人虫"
+            }
+          ]
+        },
+        {
+          "id": "c4u1",
+          "num": "卫灵公第十五",
+          "title": "卫灵公问阵",
+          "subtitle": "君子之道与处世智慧",
+          "scene": "《卫灵公》是《论语》第十五篇，共42章。\"在陈绝粮\"的困境中孔子依然弦歌不衰，展现了圣人的定力。\"志士仁人，无求生以害仁，有杀身以成仁\"是儒家最高道德情操的宣言。\"道不同不相为谋\"、\"有教无类\"、\"小不忍则乱大谋\"、\"当仁不让于师\"等众多格言均出本篇。",
+          "vocab": [
+            {
+              "it": "阵",
+              "zh": "军队布阵"
+            },
+            {
+              "it": "俎豆",
+              "zh": "祭祀用的礼器"
+            },
+            {
+              "it": "军旅",
+              "zh": "军队，军事"
+            },
+            {
+              "it": "陈",
+              "zh": "陈列，摆出"
+            },
+            {
+              "it": "绝粮",
+              "zh": "断了粮食"
+            },
+            {
+              "it": "穷",
+              "zh": "困厄，走投无路"
+            },
+            {
+              "it": "济",
+              "zh": "帮助，接济"
+            },
+            {
+              "it": "谋",
+              "zh": "谋划，计划"
+            },
+            {
+              "it": "毁",
+              "zh": "诋毁，毁坏"
+            },
+            {
+              "it": "誉",
+              "zh": "赞誉，称赞"
+            }
+          ],
+          "dialogue": [
+            {
+              "speaker": "B",
+              "name": "卫灵公",
+              "text": "卫灵公问陈于孔子。",
+              "zh": "卫灵公问孔子军队布阵的方法。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "俎豆之事，则尝闻之矣；军旅之事，未之学也。",
+              "zh": "礼仪方面的事，我曾经听说过；军队方面的事，我没有学过。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "在陈绝粮，从者病，莫能兴。君子固穷，小人穷斯滥矣。",
+              "zh": "在陈国断了粮食，随从的人都饿病了。君子在困境中仍能坚守，小人一遇困境就无所不为。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "志士仁人，无求生以害仁，有杀身以成仁。",
+              "zh": "志士仁人，不因贪生怕死而损害仁德，只有牺牲自身来成全仁德。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "道不同不相为谋。",
+              "zh": "主张不同就不能互相商议。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "有教无类。",
+              "zh": "教育不分贵贱类别。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "小不忍则乱大谋。",
+              "zh": "小事不忍耐就会败坏大事。"
+            }
+          ],
+          "grammar": [
+            {
+              "rule": "未之学也",
+              "explain": "否定句宾语前置。\"之学\"即\"学之\"。在否定句中代词宾语置于动词之前。",
+              "example": "军旅之事，未之学也。"
+            },
+            {
+              "rule": "无求生以害仁，有杀身以成仁",
+              "explain": "\"无\"通\"毋\"。\"以\"表目的或结果。\"杀身以成仁\"即牺牲自己以成就仁德。成语\"杀身成仁\"即源于此。",
+              "example": "志士仁人，无求生以害仁，有杀身以成仁。"
+            },
+            {
+              "rule": "有教无类",
+              "explain": "\"类\"为类别、种类。意为教育应普及于所有人而不分贵贱贤愚，是孔子最重要的教育理念之一。",
+              "example": "有教无类。"
+            }
+          ],
+          "sentences": [
+            {
+              "it": "志士仁人，无求生以害仁，有杀身以成仁",
+              "zh": "仁人志士不因求生而害仁，宁可牺牲以成仁"
+            },
+            {
+              "it": "道不同不相为谋",
+              "zh": "志趣不同无法共同谋划"
+            },
+            {
+              "it": "小不忍则乱大谋",
+              "zh": "小事不忍会败坏大事"
+            },
+            {
+              "it": "有教无类",
+              "zh": "教育不分贵贱类别"
+            },
+            {
+              "it": "当仁不让于师",
+              "zh": "面临仁德之事即使对老师也不谦让"
+            }
+          ]
+        },
+        {
+          "id": "c4u2",
+          "num": "季氏第十六",
+          "title": "季氏将伐颛臾",
+          "subtitle": "治国与修身",
+          "scene": "《季氏》是《论语》第十六篇，共14章。\"季氏将伐颛臾\"是《论语》中罕有的长篇论政文章，提出了\"不患寡而患不均\"的治国理念。\"益者三友，损者三友\"的择友之道,\"君子三戒\"的修身要诀,\"既来之，则安之\"的名言警句均出自本篇。",
+          "vocab": [
+            {
+              "it": "伐",
+              "zh": "征伐，攻打"
+            },
+            {
+              "it": "颛臾",
+              "zh": "鲁国附庸国"
+            },
+            {
+              "it": "均",
+              "zh": "平均，均衡"
+            },
+            {
+              "it": "安",
+              "zh": "安定，安稳"
+            },
+            {
+              "it": "友",
+              "zh": "朋友，交友"
+            },
+            {
+              "it": "直",
+              "zh": "正直"
+            },
+            {
+              "it": "谅",
+              "zh": "诚信"
+            },
+            {
+              "it": "便佞",
+              "zh": "花言巧语，善于逢迎"
+            },
+            {
+              "it": "戒",
+              "zh": "戒备，警惕"
+            },
+            {
+              "it": "斗筲",
+              "zh": "气量狭小"
+            }
+          ],
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "丘也闻有国有家者，不患寡而患不均，不患贫而患不安。盖均无贫，和无寡，安无倾。",
+              "zh": "我听说，治理国家的人，不怕贫穷而怕不均衡，不怕人少而怕不安定。因为均衡就没有贫穷，和谐就不觉得人少，安定就不会倾覆。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "益者三友，损者三友。友直，友谅，友多闻，益矣。友便辟，友善柔，友便佞，损矣。",
+              "zh": "有益的朋友有三种，有害的朋友有三种。交正直的朋友、诚信的朋友、见闻广博的朋友，就有益。交逢迎拍马的朋友、阳奉阴违的朋友、花言巧语的朋友，就有害。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "君子有三戒：少之时，血气未定，戒之在色；及其壮也，血气方刚，戒之在斗；及其老也，血气既衰，戒之在得。",
+              "zh": "君子有三件事要警惕：年轻时血气未定，要警惕贪恋女色；壮年时血气方刚，要警惕争强好斗；年老时血气已衰，要警惕贪得无厌。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "既来之，则安之。",
+              "zh": "既然使他们来了，就要让他们安心。"
+            }
+          ],
+          "grammar": [
+            {
+              "rule": "不患寡而患不均",
+              "explain": "\"患\"为忧虑。\"而\"表转折。孔子此句抓住了分配公平这个治国核心问题，至今仍有深刻启示。",
+              "example": "不患寡而患不均，不患贫而患不安。"
+            },
+            {
+              "rule": "友直，友谅，友多闻",
+              "explain": "\"友\"用作意动动词（以……为友）。\"直\"（正直）、\"谅\"（诚信）、\"多闻\"（见闻广博）。此为益者三友。",
+              "example": "友直，友谅，友多闻，益矣。"
+            },
+            {
+              "rule": "君子有三戒",
+              "explain": "\"戒\"为警惕、戒备。\"血气\"指生理机能。孔子按照人生三个阶段提出不同的修身重点。",
+              "example": "少之时，血气未定，戒之在色。"
+            }
+          ],
+          "sentences": [
+            {
+              "it": "不患寡而患不均",
+              "zh": "不怕少就怕不公"
+            },
+            {
+              "it": "既来之，则安之",
+              "zh": "既然使他们来了，就要让他们安心"
+            },
+            {
+              "it": "益者三友，损者三友",
+              "zh": "三种有益的朋友，三种有害的朋友"
+            },
+            {
+              "it": "君子有三戒",
+              "zh": "君子有三件要警惕的事"
+            },
+            {
+              "it": "生而知之者上也，学而知之者次也",
+              "zh": "生来就知道的是上等，学习后知道的是次等"
+            }
           ]
         }
       ]
     },
     {
-      title: "Vita Quotidiana",
-      subtitle: "日常篇",
-      units: [
+      "title": "Yang Huo Pian",
+      "subtitle": "阳货篇第十七 ~ 尧曰篇第二十",
+      "units": [
         {
-          id: "c5u1",
-          num: "第1单元",
-          title: "Saluti e Inviti",
-          subtitle: "问候及邀请",
-          scene: "In Italia è normale salutare con un bacio sulla guancia tra amici e conoscenti. Gli italiani sono molto socievoli e amano invitare amici a cena o per un aperitivo. Ecco alcune frasi utili per salutare e fare inviti nella vita quotidiana.",
-          vocab: [
-            { it: "il saluto", zh: "问候" },
-            { it: "l'invito", zh: "邀请" },
-            { it: "l'appuntamento", zh: "约会/约定" },
-            { it: "la festa", zh: "聚会/派对" },
-            { it: "la cena", zh: "晚餐" },
-            { it: "l'aperitivo", zh: "开胃酒/餐前酒会" },
-            { it: "il regalo", zh: "礼物" },
-            { it: "l'ospite", zh: "客人" },
-            { it: "l'invitato", zh: "被邀请的人" },
-            { it: "la scusa", zh: "借口/道歉" },
-            { it: "il compleanno", zh: "生日" },
-            { it: "la scadenza", zh: "截止日期" }
+          "id": "c5u1",
+          "num": "阳货第十七",
+          "title": "阳货欲见孔子",
+          "subtitle": "权变与坚守",
+          "scene": "《阳货》是《论语》第十七篇，共26章。阳货欲见孔子而孔子不见的故事展现了孔子权变与坚守的智慧。\"性相近也，习相远也\"揭示了人类本性相似而习惯塑造差异的教育原理。\"道听而涂说，德之弃也\"批评了不求甚解的学风。\"饱食终日，无所用心\"的批评发人深省。",
+          "vocab": [
+            {
+              "it": "归",
+              "zh": "通\"馈\"，赠送"
+            },
+            {
+              "it": "蒸豚",
+              "zh": "蒸熟的小猪"
+            },
+            {
+              "it": "时",
+              "zh": "伺机，等待时机"
+            },
+            {
+              "it": "亡",
+              "zh": "通\"无\"，不在"
+            },
+            {
+              "it": "性",
+              "zh": "本性，天性"
+            },
+            {
+              "it": "习",
+              "zh": "习染，习惯"
+            },
+            {
+              "it": "上智",
+              "zh": "上等智慧"
+            },
+            {
+              "it": "下愚",
+              "zh": "下等愚昧"
+            },
+            {
+              "it": "道听",
+              "zh": "路上听来的"
+            },
+            {
+              "it": "涂说",
+              "zh": "途中传说"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Marco", text: "Ciao Lucia! Come stai?", zh: "你好露琪亚！你好吗？" },
-            { speaker: "B", name: "Lucia", text: "Ciao Marco! Bene grazie, e tu?", zh: "你好马里奥！我很好，谢谢，你呢？" },
-            { speaker: "A", name: "Marco", text: "Tutto bene grazie. Senti, hai programmi per sabato sera?", zh: "一切都好，谢谢。对了，你周六晚上有安排吗？" },
-            { speaker: "B", name: "Lucia", text: "No, non ho ancora niente in programma. Perché?", zh: "没有，我还没什么计划。怎么了？" },
-            { speaker: "A", name: "Marco", text: "Faccio una festa a casa mia per il mio compleanno. Ti va di venire?", zh: "我在家办一个生日派对。你想来吗？" },
-            { speaker: "B", name: "Lucia", text: "Certo, con piacere! A che ora comincia?", zh: "当然，很乐意！几点开始？" },
-            { speaker: "A", name: "Marco", text: "Dalle 20:00. Porta pure un amico se vuoi.", zh: "晚上8点。你想的话也可以带个朋友来。" },
-            { speaker: "B", name: "Lucia", text: "Perfetto! Cosa devo portare?", zh: "太好了！我需要带什么吗？" },
-            { speaker: "A", name: "Marco", text: "Niente, porta solo te stessa. Forse qualcosa da bere se vuoi.", zh: "不用，你人来就行。如果想带的话可以带点喝的。" },
-            { speaker: "B", name: "Lucia", text: "Va bene, grazie mille per l'invito! Ci vediamo sabato.", zh: "好的，非常感谢邀请！周六见。" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "性相近也，习相远也。",
+              "zh": "人的本性是相近的，后天的习染使人们相差很远。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "唯上知与下愚不移。",
+              "zh": "只有上等智者和下等愚人是不可改变的。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "道听而涂说，德之弃也。",
+              "zh": "在路上听到就沿途传说，这是对道德的抛弃。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "饱食终日，无所用心，难矣哉！不有博弈者乎？为之，犹贤乎已。",
+              "zh": "整天吃饱了饭什么心思都不用，难办啊！不是有下棋的游戏吗？玩玩也比什么都不干好些。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "恭而无礼则劳，慎而无礼则葸，勇而无礼则乱，直而无礼则绞。",
+              "zh": "恭敬而无礼则劳倦，谨慎而无礼则畏缩，勇敢而无礼则作乱，正直而无礼则尖刻。"
+            }
           ],
-          grammar: [
-            { rule: "动词stare（处于/在）的变位", explain: "Stare是常用不规则动词，表示\"处于某种状态\"或\"在某个地方\"。Sto, stai, sta, stiamo, state, stanno。用语问候：Come stai?（你好吗？）", example: "Sto bene, grazie. / Stasera sto a casa." },
-            { rule: "介词a的用法", explain: "A用在时间前表示\"在……点\"：alle 20:00（在晚上8点）。也用在城市前：a Roma（在罗马）、a casa（在家）。", example: "La festa comincia alle 21:00. / Abito a Milano." },
-            { rule: "动词piacere（喜欢）的结构", explain: "Piacere的用法特殊：mi piace + 单数、mi piacciono + 复数。意为\"某事/物让我喜欢\"。", example: "Mi piace molto la cucina italiana. / Mi piacciono i dolci." }
+          "grammar": [
+            {
+              "rule": "性相近也，习相远也",
+              "explain": "\"相\"为互相。\"性\"（先天本性）与\"习\"（后天习染）对举，\"近\"与\"远\"对比。揭示了教育的作用。",
+              "example": "性相近也，习相远也。"
+            },
+            {
+              "rule": "唯上知与下愚不移",
+              "explain": "\"唯\"（只有），\"知\"通\"智\"，\"移\"（改变）。此句常被用于讨论人的可塑性和教育的局限性。",
+              "example": "唯上知与下愚不移。"
+            },
+            {
+              "rule": "恭而无礼则劳",
+              "explain": "\"而\"表转折。\"则\"（就）。五个\"……无礼则……\"排比，说明礼是各种美德的前提和节度。",
+              "example": "恭而无礼则劳，慎而无礼则葸。"
+            }
           ],
-          sentences: [
-            { it: "Ciao, come stai?", zh: "你好，你好吗？" },
-            { it: "Ti va di andare al cinema stasera?", zh: "今晚你想去看电影吗？" },
-            { it: "Grazie per l'invito, ma purtroppo non posso venire.", zh: "谢谢邀请，但很可惜我来不了。" },
-            { it: "A che ora ci vediamo?", zh: "我们几点见？" },
-            { it: "Buon compleanno! Ti auguro il meglio!", zh: "生日快乐！祝你一切顺利！" }
+          "sentences": [
+            {
+              "it": "性相近也，习相远也",
+              "zh": "本性相近，习惯使人大不相同"
+            },
+            {
+              "it": "唯上知与下愚不移",
+              "zh": "只有上智和下愚不可改变"
+            },
+            {
+              "it": "道听而涂说，德之弃也",
+              "zh": "道听途说是对道德的背弃"
+            },
+            {
+              "it": "饱食终日，无所用心",
+              "zh": "整天吃饱不用心"
+            },
+            {
+              "it": "日月逝矣，岁不我与",
+              "zh": "时间流逝不等人"
+            }
           ]
         },
         {
-          id: "c5u2",
-          num: "第2单元",
-          title: "In Farmacia",
-          subtitle: "在药店",
-          scene: "In Italia le farmacie sono riconoscibili dalla croce verde luminosa. I farmacisti italiani sono molto preparati e possono dare consigli medici per problemi comuni. Per i medicinali più forti serve la ricetta medica.",
-          vocab: [
-            { it: "la farmacia", zh: "药店" },
-            { it: "il farmacista", zh: "药剂师" },
-            { it: "la ricetta", zh: "处方" },
-            { it: "la medicina", zh: "药品" },
-            { it: "l'antidolorifico", zh: "止痛药" },
-            { it: "l'antibiotico", zh: "抗生素" },
-            { it: "la febbre", zh: "发烧" },
-            { it: "il raffreddore", zh: "感冒" },
-            { it: "la tosse", zh: "咳嗽" },
-            { it: "il mal di testa", zh: "头痛" },
-            { it: "il cerotto", zh: "创可贴" },
-            { it: "la crema", zh: "药膏/面霜" }
+          "id": "c5u2",
+          "num": "微子第十八",
+          "title": "微子去之",
+          "subtitle": "隐逸与出仕",
+          "scene": "《微子》是《论语》第十八篇，共11章。以殷商末年微子、箕子、比干三仁的故事开篇。\"楚狂接舆\"的隐士形象和\"长沮桀溺耦而耕\"的躬耕避世，与孔子\"无可无不可\"的态度形成鲜明对比。\"往者不可谏，来者犹可追\"是醒世名言。\"四体不勤，五谷不分\"成为批评不事生产者的经典表述。",
+          "vocab": [
+            {
+              "it": "微子",
+              "zh": "商纣王的兄长"
+            },
+            {
+              "it": "去",
+              "zh": "离开，离去"
+            },
+            {
+              "it": "仁",
+              "zh": "仁人"
+            },
+            {
+              "it": "接舆",
+              "zh": "楚国隐士"
+            },
+            {
+              "it": "谏",
+              "zh": "规劝，挽回"
+            },
+            {
+              "it": "追",
+              "zh": "追赶，补救"
+            },
+            {
+              "it": "耦",
+              "zh": "两人并耕"
+            },
+            {
+              "it": "丈人",
+              "zh": "老人，老者"
+            },
+            {
+              "it": "不勤",
+              "zh": "不勤劳"
+            },
+            {
+              "it": "分",
+              "zh": "分辨"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Cliente", text: "Buongiorno, ho bisogno di un consiglio.", zh: "早上好，我需要一些建议。" },
-            { speaker: "B", name: "Farmacista", text: "Buongiorno, mi dica pure. Cosa ha?", zh: "早上好，请说吧。您怎么了？" },
-            { speaker: "A", name: "Cliente", text: "Ho mal di testa da ieri sera. Cosa mi consiglia?", zh: "我从昨晚开始头痛。您推荐什么？" },
-            { speaker: "B", name: "Farmacista", text: "Le consiglio questo antidolorifico. Ne prenda una pastiglia dopo i pasti.", zh: "我推荐这个止痛药。饭后吃一片。" },
-            { speaker: "A", name: "Cliente", text: "Ha bisogno di ricetta?", zh: "需要处方吗？" },
-            { speaker: "B", name: "Farmacista", text: "No, questo è da banco. Ma se il dolore continua, vada dal medico.", zh: "不，这是非处方药。但如果疼痛持续，请去看医生。" },
-            { speaker: "A", name: "Cliente", text: "Va bene, lo prendo. Quanto costa?", zh: "好的，我买了。多少钱？" },
-            { speaker: "B", name: "Farmacista", text: "8 euro e 50. Ha la tessera sanitaria?", zh: "8.5欧元。您有医保卡吗？" },
-            { speaker: "A", name: "Cliente", text: "Sì, eccola. E avete anche cerotti?", zh: "有，给您。你们有创可贴吗？" },
-            { speaker: "B", name: "Farmacista", text: "Certo, ecco una confezione. In tutto sono 10 euro.", zh: "当然，这是一盒。总共是10欧元。" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "微子去之，箕子为之奴，比干谏而死。殷有三仁焉。",
+              "zh": "微子离开了纣王，箕子做了奴隶，比干劝谏而被杀。殷商有三位仁人。"
+            },
+            {
+              "speaker": "B",
+              "name": "楚狂接舆",
+              "text": "楚狂接舆歌而过孔子曰：凤兮凤兮！何德之衰？往者不可谏，来者犹可追。已而已而！今之从政者殆而！",
+              "zh": "楚国的狂人接舆唱着歌经过孔子车旁：\"凤凰啊凤凰，为什么德行这么衰微？过去的事已无法挽回，未来的还来得及补救。算了吧算了吧，现在从政的人太危险了！\""
+            },
+            {
+              "speaker": "C",
+              "name": "长沮",
+              "text": "滔滔者天下皆是也，而谁以易之？且而与其从辟人之士也，岂若从辟世之士哉？",
+              "zh": "天下像洪水一样滔滔混乱，谁能改变呢？你与其跟着避人之士，不如跟着避世之士啊！"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "鸟兽不可与同群。",
+              "zh": "人不能与鸟兽同群（我不同世人在一起又和谁在一起呢？）"
+            }
           ],
-          grammar: [
-            { rule: "动词avere（有）表示身体状况", explain: "Avere + 名词表示身体状况：ho fame（我饿了）、ho sete（我渴了）、ho mal di testa（我头痛）、ho febbre（我发烧）。", example: "Ho mal di stomaco. / Hai la febbre? / Non ho fame." },
-            { rule: "情态动词dovere（必须）", explain: "Dovere + 不定式：devo（我必须）、devi、deve、dobbiamo、dovete、devono。用于表达必要性。", example: "Devo andare dal medico. / Dobbiamo prendere la medicina." },
-            { rule: "礼貌请求：mi consiglia / mi potrebbe", explain: "用条件式更礼貌：Mi consiglia...（您推荐……）、Mi potrebbe dare...（您可以给我……）。", example: "Mi consiglia qualcosa per il mal di gola? / Mi potrebbe dare un antidolorifico?" }
+          "grammar": [
+            {
+              "rule": "往者不可谏，来者犹可追",
+              "explain": "\"者\"字结构名词化：\"往者\"（已过去的事），\"来者\"（未来的事）。\"谏\"为挽回。\"可追\"为来得及补救。",
+              "example": "往者不可谏，来者犹可追。"
+            },
+            {
+              "rule": "四体不勤，五谷不分",
+              "explain": "\"四体\"指四肢，\"勤\"为勤劳。\"五谷\"指稻黍稷麦菽。隐者以此批评孔子不事生产。",
+              "example": "四体不勤，五谷不分。"
+            },
+            {
+              "rule": "与其……岂若……",
+              "explain": "表示取舍关系的反问句式，\"与其……哪里比得上……\"。强烈的反问语气使取舍之意更加鲜明。",
+              "example": "与其从辟人之士也，岂若从辟世之士哉？"
+            }
           ],
-          sentences: [
-            { it: "Ho mal di gola, cosa mi consiglia?", zh: "我喉咙痛，您推荐什么？" },
-            { it: "Questo medicinale ha effetti collaterali?", zh: "这种药有副作用吗？" },
-            { it: "Devo prendere questo farmaco tre volte al giorno.", zh: "这种药我每天要吃三次。" },
-            { it: "C'è una farmacia di turno qui vicino?", zh: "附近有值班药店吗？" },
-            { it: "Vorrei qualcosa per la tosse.", zh: "我想要一些治咳嗽的药。" }
+          "sentences": [
+            {
+              "it": "往者不可谏，来者犹可追",
+              "zh": "过去无法挽回，未来尚可追赶"
+            },
+            {
+              "it": "四体不勤，五谷不分",
+              "zh": "四肢不勤劳，五谷分不清"
+            },
+            {
+              "it": "殷有三仁焉",
+              "zh": "殷商有三位仁人"
+            },
+            {
+              "it": "鸟兽不可与同群",
+              "zh": "不可与鸟兽同群"
+            },
+            {
+              "it": "不降其志，不辱其身",
+              "zh": "不降低志向，不辱没自身"
+            }
           ]
         },
         {
-          id: "c5u3",
-          num: "第3单元",
-          title: "Francobolli e Marche da Bollo",
-          subtitle: "购买邮票与税票",
-          scene: "In Italia i francobolli si comprano principalmente negli uffici postali o nei tabacchi (tabaccherie). Le marche da bollo sono necessarie per molti documenti ufficiali e si acquistano nei tabacchi. Ogni tabaccheria ha un cartello con la lettera 'T' all'esterno.",
-          vocab: [
-            { it: "il francobollo", zh: "邮票" },
-            { it: "la marca da bollo", zh: "印花税票" },
-            { it: "il tabaccaio", zh: "烟草店" },
-            { it: "la cartoleria", zh: "文具店" },
-            { it: "la busta", zh: "信封" },
-            { it: "la cartolina", zh: "明信片" },
-            { it: "la posta", zh: "邮件/邮政系统" },
-            { it: "la raccomandata", zh: "挂号信" },
-            { it: "il pacco", zh: "包裹" },
-            { it: "il destinatario", zh: "收件人" },
-            { it: "il mittente", zh: "寄件人" },
-            { it: "l'indirizzo", zh: "地址" }
+          "id": "c5u3",
+          "num": "子张第十九",
+          "title": "学而致道",
+          "subtitle": "弟子们的传承",
+          "scene": "《子张》是《论语》第十九篇，共25章，全是孔门弟子的言论。子张、子夏、子游、曾子、子贡等弟子的言论风格各异，展现了早期儒家思想的多元性。\"士见危致命，见得思义\"的凛然气节,\"日知其所亡，月无忘其所能\"的治学态度,\"学而优则仕，仕而优则学\"的知行观均出本篇。",
+          "vocab": [
+            {
+              "it": "致命",
+              "zh": "献出生命"
+            },
+            {
+              "it": "思义",
+              "zh": "考虑是否合乎道义"
+            },
+            {
+              "it": "祭",
+              "zh": "祭祀"
+            },
+            {
+              "it": "敬",
+              "zh": "恭敬，敬重"
+            },
+            {
+              "it": "丧",
+              "zh": "丧事"
+            },
+            {
+              "it": "哀",
+              "zh": "哀痛"
+            },
+            {
+              "it": "致",
+              "zh": "致力于"
+            },
+            {
+              "it": "堂",
+              "zh": "厅堂"
+            },
+            {
+              "it": "室",
+              "zh": "内室，更深奥的境界"
+            },
+            {
+              "it": "见危",
+              "zh": "看到危险"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Cliente", text: "Buongiorno, vorrei dei francobolli per la Cina.", zh: "早上好，我想要寄往中国的邮票。" },
-            { speaker: "B", name: "Impiegato", text: "Buongiorno. Per lettera o cartolina?", zh: "早上好。寄信还是明信片？" },
-            { speaker: "A", name: "Cliente", text: "Per una lettera. Quanto costa?", zh: "寄信。多少钱？" },
-            { speaker: "B", name: "Impiegato", text: "2 euro e 50 per la posta prioritaria. Per la posta ordinaria costa 1 euro e 20.", zh: "优先邮件2.5欧元。普通邮件1.2欧元。" },
-            { speaker: "A", name: "Cliente", text: "Allora prioritaria, grazie. E mi serve anche una marca da bollo da 16 euro.", zh: "那要优先的，谢谢。我还需要一张16欧元的印花税票。" },
-            { speaker: "B", name: "Impiegato", text: "Ecco a lei. Ha bisogno di altro?", zh: "给您。还需要别的吗？" },
-            { speaker: "A", name: "Cliente", text: "No, grazie. Quanto pago in tutto?", zh: "不了，谢谢。总共多少钱？" },
-            { speaker: "B", name: "Impiegato", text: "18 euro e 50 in tutto. Buona giornata!", zh: "总共18.5欧元。祝您愉快！" }
+          "dialogue": [
+            {
+              "speaker": "B",
+              "name": "子张",
+              "text": "士见危致命，见得思义，祭思敬，丧思哀，其可已矣。",
+              "zh": "士人看到危险能献出生命，看到利益能想到道义，祭祀时想到恭敬，居丧时想到哀痛，这样就可以了。"
+            },
+            {
+              "speaker": "B",
+              "name": "子夏",
+              "text": "日知其所亡，月无忘其所能，可谓好学也已矣。",
+              "zh": "每天知道自己所不知道的，每月不忘记自己所已经学会的，可以说是好学了。"
+            },
+            {
+              "speaker": "C",
+              "name": "子贡",
+              "text": "君子一言以为知，一言以为不知，言不可不慎也。",
+              "zh": "君子一句话就可以表现出智慧，一句话也可以表现出不智慧，说话不可不谨慎。"
+            },
+            {
+              "speaker": "C",
+              "name": "子贡",
+              "text": "纣之不善，不如是之甚也。是以君子恶居下流，天下之恶皆归焉。",
+              "zh": "纣王的不善，不像传说的那么严重。所以君子憎恶居于下流，一旦如此，天下所有的坏事都会归到他身上。"
+            },
+            {
+              "speaker": "B",
+              "name": "子夏",
+              "text": "学而优则仕，仕而优则学。",
+              "zh": "学习有余力就去做官，做官有余力就去学习。"
+            }
           ],
-          grammar: [
-            { rule: "动词volere（想要）的变位", explain: "Volere是不规则动词：Io voglio, tu vuoi, lui/lei vuole, noi vogliamo, voi volete, loro vogliono。条件式Vorrei更礼貌，表示\"我想要\"。", example: "Vorrei un francobollo. / Vuole qualcos'altro?" },
-            { rule: "数量表达：un / una / dei / delle", explain: "Un/una是单数不定冠词。Dei/delle是复数部分冠词：dei francobolli（一些邮票）、delle cartoline（一些明信片）。", example: "Vorrei dei francobolli per l'Italia. / Mi servono delle marche da bollo." },
-            { rule: "动词servire（需要）", explain: "Servire表示\"需要某物\"，结构同piacere：mi serve（我需要，后跟单数）、mi servono（我需要，后跟复数）。", example: "Mi serve una marca da bollo. / Mi servono dei francobolli." }
+          "grammar": [
+            {
+              "rule": "日知其所亡，月无忘其所能",
+              "explain": "\"日\"（每天）和\"月\"（每月）为时间名词作状语。\"亡\"通\"无\"。\"所能\"即所已学会的。",
+              "example": "日知其所亡，月无忘其所能。"
+            },
+            {
+              "rule": "君子一言以为知",
+              "explain": "\"以为\"即\"以之为\"（凭借它显得）。\"知\"通\"智\"。整句意为君子说一句话就能显出智慧。",
+              "example": "君子一言以为知，一言以为不知。"
+            },
+            {
+              "rule": "学而优则仕",
+              "explain": "\"优\"为有余力，非优秀之义。\"则\"为就。\"学而优则仕\"与\"仕而优则学\"形成循环互动，体现了知行并重的理念。",
+              "example": "学而优则仕，仕而优则学。"
+            }
           ],
-          sentences: [
-            { it: "Vorrei spedire questa lettera in Cina.", zh: "我想把这封信寄到中国。" },
-            { it: "Quanto tempo ci vuole per arrivare?", zh: "需要多长时间能到？" },
-            { it: "Dove posso comprare i francobolli?", zh: "我在哪里可以买到邮票？" },
-            { it: "Devo mandare un pacco all'estero.", zh: "我需要寄一个包裹到国外。" },
-            { it: "La ricevuta, per favore.", zh: "请给我收据。" }
+          "sentences": [
+            {
+              "it": "士见危致命，见得思义",
+              "zh": "士人见危授命，见利思义"
+            },
+            {
+              "it": "日知其所亡，月无忘其所能",
+              "zh": "每天学习新知识，每月巩固旧知识"
+            },
+            {
+              "it": "君子一言以为知",
+              "zh": "君子一句话可显智慧"
+            },
+            {
+              "it": "学而优则仕",
+              "zh": "学习有余力就去做官"
+            },
+            {
+              "it": "仕而优则学",
+              "zh": "做官有余力就去学习"
+            }
           ]
         },
         {
-          id: "c5u4",
-          num: "第4单元",
-          title: "All'Ufficio Postale",
-          subtitle: "办理邮局业务",
-          scene: "L'ufficio postale in Italia offre molti servizi: spedizione di lettere e pacchi, pagamento di bollette, invio di raccomandate e vaglia. Per molti servizi si può prendere il numero dalla macchinetta all'ingresso e aspettare il proprio turno.",
-          vocab: [
-            { it: "l'ufficio postale", zh: "邮局" },
-            { it: "lo sportello", zh: "柜台/窗口" },
-            { it: "il numero", zh: "号码" },
-            { it: "il turno", zh: "轮次" },
-            { it: "la busta", zh: "信封" },
-            { it: "il vaglia", zh: "汇款单" },
-            { it: "la bolletta", zh: "账单" },
-            { it: "la raccomandata", zh: "挂号信" },
-            { it: "l'assicurazione", zh: "保险" },
-            { it: "la ricevuta", zh: "收据" },
-            { it: "il modulo", zh: "表格" },
-            { it: "la coda", zh: "队伍" }
+          "id": "c5u4",
+          "num": "尧曰第二十",
+          "title": "尧曰咨尔舜",
+          "subtitle": "圣王治国之道",
+          "scene": "《尧曰》是《论语》第二十篇，也是最后一篇，共3章。记录了尧、舜、汤、武等圣王禅让和治国的诰命之辞，以超凡的格局俯瞰中华政治文明的精神源头。\"允执其中\"的中道思想贯穿始终。第二章论治国五美四恶，第三章以\"不知命无以为君子，不知礼无以立，不知言无以知人\"作结，为整部《论语》画上圆满句号。",
+          "vocab": [
+            {
+              "it": "咨",
+              "zh": "感叹词，相当于\"嗟\""
+            },
+            {
+              "it": "历",
+              "zh": "历数，天命"
+            },
+            {
+              "it": "躬",
+              "zh": "亲自"
+            },
+            {
+              "it": "中",
+              "zh": "中正，中庸"
+            },
+            {
+              "it": "简",
+              "zh": "简要，简练"
+            },
+            {
+              "it": "权",
+              "zh": "权衡，权变"
+            },
+            {
+              "it": "命",
+              "zh": "天命，命运"
+            },
+            {
+              "it": "言",
+              "zh": "言语，说话"
+            },
+            {
+              "it": "信",
+              "zh": "信用，诚信"
+            }
           ],
-          dialogue: [
-            { speaker: "A", name: "Impiegato", text: "Buongiorno, prego il prossimo!", zh: "早上好，下一位请！" },
-            { speaker: "B", name: "Cliente", text: "Buongiorno, devo spedire un pacco in Cina.", zh: "早上好，我要寄一个包裹到中国。" },
-            { speaker: "A", name: "Impiegato", text: "Va bene. Ha già compilato il modulo doganale?", zh: "好的。您已经填好海关单了吗？" },
-            { speaker: "B", name: "Cliente", text: "No, non sapevo. Me lo può dare?", zh: "没有，我不知道。您能给我吗？" },
-            { speaker: "A", name: "Impiegato", text: "Certo, ecco il modulo. Lo compili e poi torni qui.", zh: "当然，给您表格。您填好后过来这里。" },
-            { speaker: "B", name: "Cliente", text: "Va bene. Scusi, quanto costa spedire un pacco in Cina?", zh: "好的。请问，寄一个包裹到中国多少钱？" },
-            { speaker: "A", name: "Impiegato", text: "Dipende dal peso. Di solito tra i 25 e i 50 euro per via aerea.", zh: "取决于重量。空运通常在25到50欧元之间。" },
-            { speaker: "B", name: "Cliente", text: "Va bene, grazie. Un'ultima cosa: posso pagare qui le bollette?", zh: "好的，谢谢。最后一件事：我可以在这里付账单吗？" },
-            { speaker: "A", name: "Impiegato", text: "Sì, certo. Può pagare allo sportello apposito, quello con il cartello \"Bollette\".", zh: "是的，当然。您可以在专门窗口付款，上面有\"账单\"标志的那个。" },
-            { speaker: "B", name: "Cliente", text: "Perfetto, grazie mille per l'aiuto!", zh: "太好了，非常感谢您的帮助！" }
+          "dialogue": [
+            {
+              "speaker": "A",
+              "name": "尧",
+              "text": "尧曰：咨！尔舜！天之历数在尔躬，允执其中。四海困穷，天禄永终。",
+              "zh": "尧说：\"唉！舜啊，上天的使命落在你身上了，你要真诚地把握中正之道。如果天下百姓陷入困苦，上天给你的禄位就永远终结了。\""
+            },
+            {
+              "speaker": "B",
+              "name": "汤",
+              "text": "予小子履敢用玄牡，敢昭告于皇皇后帝：有罪不敢赦。",
+              "zh": "我小子履（商汤）谨用黑色公牛祭祀，明告伟大的天帝：有罪的人我不敢擅自赦免。"
+            },
+            {
+              "speaker": "A",
+              "name": "孔子",
+              "text": "不知命，无以为君子也；不知礼，无以立也；不知言，无以知人也。",
+              "zh": "不知道天命，就无法成为君子；不知道礼仪，就无法立身处世；不懂得分辨言语，就无法了解他人。"
+            }
           ],
-          grammar: [
-            { rule: "动词spedire（寄送）的变位", explain: "Spedire是-ire结尾动词，属scire类：Io spedisco, tu spedisci, lui/lei spedisce, noi spediamo, voi spedite, loro spediscono。", example: "Spedisco un pacco in Cina. / Spedite lettere all'estero?" },
-            { rule: "动词compilare（填写）", explain: "Compilare是规则-are动词：compilo, compili, compila, compiliamo, compilate, compilano。过去分词：compilato。", example: "Deve compilare questo modulo. / Ho compilato la domanda." },
-            { rule: "表示\"取决于\"的表达：dipendere da", explain: "Dipendere da…表示\"取决于……\"。常用于询问价格、时间等依赖于某个因素的情况。", example: "Dipende dal peso. / Dipende dalla destinazione." }
+          "grammar": [
+            {
+              "rule": "允执其中",
+              "explain": "\"允\"为诚信、确实。\"执\"为把握。\"其中\"指那个中道。这是中华政治哲学的核心理念。",
+              "example": "天之历数在尔躬，允执其中。"
+            },
+            {
+              "rule": "不知……无以……",
+              "explain": "三个\"不知……无以……\"排比递进：知命→知礼→知言，层层推进到君子之道的三重维度。",
+              "example": "不知命，无以为君子也；不知礼，无以立也；不知言，无以知人也。"
+            },
+            {
+              "rule": "兴灭国，继绝世，举逸民",
+              "explain": "三个动宾结构并列排比，表达了儒家对历史文化延续的重视：复兴灭亡之国，延续断绝之世，举用隐逸之民。",
+              "example": "兴灭国，继绝世，举逸民。"
+            }
           ],
-          sentences: [
-            { it: "Devo spedire questo pacco all'estero.", zh: "我需要把这个包裹寄到国外。" },
-            { it: "Quanto costa la spedizione prioritaria?", zh: "优先邮寄多少钱？" },
-            { it: "Vorrei ritirare una raccomandata.", zh: "我想领取一封挂号信。" },
-            { it: "Dove posso prendere il numero?", zh: "我在哪里取号？" },
-            { it: "Che orari fa l'ufficio postale?", zh: "邮局的营业时间是什么？" }
+          "sentences": [
+            {
+              "it": "允执其中",
+              "zh": "真诚地秉持中正之道"
+            },
+            {
+              "it": "兴灭国，继绝世，举逸民",
+              "zh": "复兴灭亡的国家，延续断绝的世族，举用隐逸的人才"
+            },
+            {
+              "it": "不知命，无以为君子",
+              "zh": "不知天命就不能成为君子"
+            },
+            {
+              "it": "不知礼，无以立",
+              "zh": "不懂礼仪就无法立身处世"
+            },
+            {
+              "it": "不知言，无以知人也",
+              "zh": "不懂分辨言语就无法了解人"
+            }
           ]
         }
       ]
