@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>意大利语教材 — 交互式学习工具</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f5;color:#333;display:flex;min-height:100vh}
+/* ====== SIDEBAR ====== */
+#sidebar{width:320px;min-width:320px;background:#1a1a2e;color:#fff;height:100vh;overflow-y:auto;position:sticky;top:0;display:flex;flex-direction:column}
+#sidebar .header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
+#sidebar .header h1{font-size:20px;font-weight:700;color:#fff}
+#sidebar .header p{font-size:13px;color:rgba(255,255,255,.5);margin-top:2px}
+#sidebar .search-wrap{padding:12px 16px}
+#sidebar .search-wrap input{width:100%;padding:8px 12px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:13px;background:rgba(255,255,255,.06);color:#fff;outline:none}
+#sidebar .search-wrap input::placeholder{color:rgba(255,255,255,.3)}
+#tocContainer{flex:1;overflow-y:auto;padding-bottom:60px}
+.chapter-title{padding:14px 20px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:rgba(255,255,255,.85);transition:.2s;border-bottom:1px solid rgba(255,255,255,.05)}
+.chapter-title:hover{color:#fff;background:rgba(255,255,255,.04)}
+.chapter-title .arrow{font-size:10px;transition:.2s}
+.chapter-title.collapsed .arrow{transform:rotate(-90deg)}
+.chapter-title .sub{font-size:11px;opacity:.55;font-weight:400}
+.unit-list{overflow:hidden;transition:max-height .3s;max-height:2000px;background:rgba(255,255,255,.03)}
+.unit-list.collapsed{max-height:0}
+.unit-item{padding:10px 20px 10px 32px;cursor:pointer;font-size:14px;line-height:1.5;border-bottom:1px solid rgba(255,255,255,.04);color:rgba(255,255,255,.7);transition:.15s}
+.unit-item:hover{color:#fff;background:rgba(255,255,255,.06)}
+.unit-item.active{color:#fff;background:rgba(255,255,255,.1);border-left:3px solid #00e5ff}
+.unit-item .unit-num{font-size:12px;opacity:.6;display:block}
+/* ====== MAIN ====== */
+#main{flex:1;min-width:0;padding:40px;max-width:1000px;margin:0 auto}
+.welcome{padding:60px 0;text-align:center;color:#999}
+.welcome h2{font-size:28px;color:#333;margin-bottom:12px}
+.welcome p{font-size:15px;line-height:1.8}
+.unit-content{display:none;animation:fadeIn .3s}
+.unit-content.active{display:block}
+/* Unit header */
+.unit-header{background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;padding:28px 32px;border-radius:16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px}
+.unit-header .label{font-size:13px;text-transform:uppercase;letter-spacing:1px;opacity:.7;margin-bottom:6px}
+.unit-header h2{font-size:24px;font-weight:700;margin-bottom:4px}
+.unit-header .sub{font-size:15px;opacity:.7}
+.speed-bar{display:flex;gap:6px;align-items:center;background:rgba(255,255,255,.1);padding:6px 10px;border-radius:10px}
+.speed-bar .slabel{font-size:12px;opacity:.7;margin-right:4px}
+.speed-btn{padding:5px 12px;border:none;border-radius:7px;font-size:12px;cursor:pointer;background:rgba(255,255,255,.12);color:#fff;transition:.15s;font-family:inherit}
+.speed-btn.active{background:#00e5ff;color:#1a1a2e;font-weight:700}
+.section-title{font-size:18px;font-weight:700;margin:30px 0 14px;padding-bottom:8px;border-bottom:2px solid #e0e0e0;display:flex;align-items:baseline;gap:8px}
+.section-title .it{font-weight:400;font-size:14px;color:#888}
+/* Luogo */
+.luogo-box{background:#fff;border-radius:14px;padding:20px 24px;box-shadow:0 1px 4px rgba(0,0,0,.06);line-height:1.8}
+.luogo-box .lg-row{margin-bottom:8px}
+.luogo-box .lg-key{font-weight:700;color:#1a1a2e;display:inline-block;min-width:60px}
+.luogo-box .lg-val{color:#444}
+/* Vocab */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.vocab-item{display:flex;align-items:center;padding:10px 14px;background:#fff;border-radius:8px;cursor:pointer;transition:.15s;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.vocab-item:hover{box-shadow:0 2px 8px rgba(0,0,0,.1);transform:translateY(-1px)}
+.vocab-item .play-icon{font-size:11px;margin-right:10px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#e8e8e8;transition:.15s;flex-shrink:0}
+.vocab-item .play-icon.playing{background:#00e5ff;color:#fff}
+.vocab-item .it{font-weight:600;color:#333;font-size:15px}
+.vocab-item .zh{color:#888;font-size:14px;margin-left:auto;padding-left:10px}
+/* Sentences */
+.sent-grid{display:grid;gap:8px}
+.sentence-item{display:flex;align-items:center;padding:12px 14px;background:#fff;border-radius:8px;cursor:pointer;transition:.15s;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.sentence-item:hover{box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.sentence-item .s-play{font-size:11px;width:30px;height:30px;border:none;border-radius:50%;background:#e8e8e8;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s;margin-right:12px}
+.sentence-item .s-play.playing{background:#00e5ff;color:#fff}
+.sentence-item .s-text{flex:1;min-width:0}
+.sentence-item .it{font-weight:600;color:#333;font-size:15px}
+.sentence-item .zh{font-size:13px;color:#888;margin-top:2px}
+/* Dialogue */
+.dialogue-seg{background:#fff;border-radius:14px;padding:18px 22px;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:14px}
+.dialogue-seg .d-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.dialogue-seg .d-play{font-size:12px;width:32px;height:32px;border:none;border-radius:50%;background:#1a1a2e;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s}
+.dialogue-seg .d-play.playing{background:#00e5ff;color:#1a1a2e}
+.dialogue-seg .d-tag{font-size:13px;font-weight:700;color:#1a1a2e}
+.dialogue-seg .d-it{font-size:15px;font-weight:500;color:#222;line-height:1.7;white-space:pre-wrap;background:#f8f9ff;padding:12px 14px;border-radius:8px;border-left:3px solid #00e5ff;margin-bottom:8px}
+.dialogue-seg .d-zh{font-size:14px;color:#555;line-height:1.8;white-space:pre-wrap}
+/* Notes */
+.note-grid{display:grid;gap:12px}
+.note-item{padding:16px;background:#fff;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);border-left:3px solid #1a1a2e}
+.note-item .term{font-weight:700;color:#1a1a2e;margin-bottom:4px;font-size:15px}
+.note-item .explain{font-size:14px;color:#555;line-height:1.6}
+.note-item .examples{margin-top:8px}
+.note-item .note-ex{font-size:13px;color:#666;line-height:1.7;padding:4px 0 4px 14px;position:relative}
+.note-item .note-ex:before{content:"•";position:absolute;left:0;color:#00e5ff}
+/* Mobile */
+#sidebarToggle{display:none;position:fixed;bottom:20px;right:20px;width:56px;height:56px;border-radius:50%;background:#1a1a2e;color:#fff;border:none;font-size:24px;cursor:pointer;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+#sidebarOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:50}
+@media(max-width:768px){#sidebar{position:fixed;left:-320px;z-index:99;transition:left .3s}#sidebar.open{left:0}#sidebarToggle{display:flex;align-items:center;justify-content:center}#sidebarOverlay.show{display:block}#main{padding:20px;width:100%}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div class="header">
+    <h1>Italiano</h1>
+    <p>意大利语教材 · 实景会话</p>
+  </div>
+  <div class="search-wrap"><input type="text" id="searchInput" placeholder="搜索单元 / 关键词…" oninput="filterTOC(this.value)"></div>
+  <div id="tocContainer"></div>
+</div>
+
+<div id="main">
+  <div class="welcome" id="welcomePanel">
+    <h2>Benvenuti! 🇮🇹</h2>
+    <p>点击左侧目录选择课程<br>每单元包含：场景人物 · 关键词 · 常用句 · 视频文本 · 词法解析</p>
+  </div>
+  <div id="unitContentContainer"></div>
+</div>
+
+<button id="sidebarToggle" onclick="toggleSidebar()">&#9776;</button>
+<div id="sidebarOverlay"></div>
+
+<script>
+const bookData = __BOOKDATA__;
+
+// ====== TOC ======
+function buildTOC(){
+  const c = document.getElementById('tocContainer');
+  c.innerHTML = '';
+  bookData.chapters.forEach((chap, ci)=>{
+    const ct = document.createElement('div');
+    ct.className = 'chapter-title';
+    ct.innerHTML = `<span>${chap.title} <span class="sub">${chap.subtitle}</span></span><span class="arrow">▼</span>`;
+    const ul = document.createElement('div');
+    ul.className = 'unit-list';
+    chap.units.forEach(u=>{
+      const it = document.createElement('div');
+      it.className = 'unit-item';
+      it.dataset.uid = u.id;
+      it.dataset.search = (u.title+' '+u.subtitle+' '+chap.title+' '+chap.subtitle).toLowerCase();
+      it.innerHTML = `<span class="unit-num">${u.num}</span>${u.title} <span style="opacity:.6">${u.subtitle}</span>`;
+      it.onclick = ()=>showUnit(u.id);
+      ul.appendChild(it);
+    });
+    ct.onclick = ()=>{ ct.classList.toggle('collapsed'); ul.classList.toggle('collapsed'); };
+    c.appendChild(ct); c.appendChild(ul);
+  });
+}
+function filterTOC(q){
+  q=q.trim().toLowerCase();
+  document.querySelectorAll('.unit-item').forEach(it=>{
+    it.style.display = (!q || it.dataset.search.includes(q)) ? '' : 'none';
+  });
+}
+
+// ====== AUDIO ENGINE ======
+let curSpeed='m';
+let audioEl=new Audio();
+let playingBtn=null;
+function stopAudio(){
+  audioEl.pause(); audioEl.currentTime=0;
+  if(playingBtn){ playingBtn.classList.remove('playing'); playingBtn=null; }
+}
+function playUrl(url, btn){
+  if(playingBtn===btn){ stopAudio(); return; }
+  stopAudio();
+  audioEl.src=url;
+  const p=audioEl.play();
+  if(p&&p.catch) p.catch(()=>{});
+  playingBtn=btn; if(btn) btn.classList.add('playing');
+  audioEl.onended=()=>{ if(playingBtn){playingBtn.classList.remove('playing'); playingBtn=null;} };
+}
+function playVocab(btn, url){ playUrl(url, btn); }
+function playSentence(btn, uid, idx){ playUrl(`audio/s/${uid}_${idx}_${curSpeed}.mp3`, btn); }
+function playDialogue(btn, uid, seg){ playUrl(`audio/d/${uid}_${seg}_${curSpeed}.mp3`, btn); }
+function playSeq(urls, btn){
+  if(playingBtn===btn){ stopAudio(); return; }
+  stopAudio();
+  let i=0;
+  playingBtn=btn; btn.classList.add('playing');
+  function next(){
+    if(i>=urls.length){ btn.classList.remove('playing'); playingBtn=null; return; }
+    audioEl.src=urls[i++];
+    audioEl.play().catch(()=>{});
+    audioEl.onended=next;
+  }
+  audioEl.onended=next; next();
+}
+
+// ====== RENDER UNIT ======
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function showUnit(id){
+  document.getElementById('welcomePanel').style.display='none';
+  document.querySelectorAll('.unit-item').forEach(it=>it.classList.toggle('active', it.dataset.uid===id));
+  const u = findUnit(id);
+  const box = document.getElementById('unitContentContainer');
+  box.innerHTML = renderUnit(u);
+  box.firstChild.classList.add('active');
+  document.getElementById('main').scrollTop=0;
+  window.scrollTo(0,0);
+}
+function findUnit(id){
+  for(const c of bookData.chapters) for(const u of c.units) if(u.id===id) return u;
+  return null;
+}
+function renderUnit(u){
+  let html = `<div class="unit-content">`;
+  html += `<div class="unit-header">
+    <div><div class="label">${u.num}</div><h2>${esc(u.title)}</h2><div class="sub">${esc(u.subtitle)}</div></div>
+    <div class="speed-bar"><span class="slabel">语速</span>
+      <button class="speed-btn" data-s="s" onclick="setSpeed('s',this)">慢</button>
+      <button class="speed-btn active" data-s="m" onclick="setSpeed('m',this)">中</button>
+      <button class="speed-btn" data-s="f" onclick="setSpeed('f',this)">快</button>
+    </div></div>`;
+
+  // Luogo
+  if(u.luogo && (u.luogo.place || u.luogo.people)){
+    html += `<div class="section-title">Luogo e Personaggi <span class="it">场景及人物</span></div>`;
+    html += `<div class="luogo-box">`;
+    if(u.luogo.place) html += `<div class="lg-row"><span class="lg-key">地点</span><span class="lg-val">${esc(u.luogo.place)}</span></div>`;
+    if(u.luogo.people) html += `<div class="lg-row"><span class="lg-key">人物</span><span class="lg-val">${esc(u.luogo.people)}</span></div>`;
+    html += `</div>`;
+  }
+  // Vocab
+  if(u.vocab && u.vocab.length){
+    html += `<div class="section-title">Parole chiave <span class="it">关键词</span></div><div class="vocab-grid">`;
+    u.vocab.forEach(v=>{
+      const url = v.audio || '';
+      html += `<div class="vocab-item" onclick="playVocab(this.querySelector('.play-icon'),'${url}')">
+        <span class="play-icon">▶</span><span class="it">${esc(v.it)}</span><span class="zh">${esc(v.zh)}</span></div>`;
+    });
+    html += `</div>`;
+  }
+  // Sentences
+  if(u.sentences && u.sentences.length){
+    const urls = u.sentences.map((s,i)=>`audio/s/${u.id}_${i}_${curSpeed}.mp3`);
+    html += `<div class="section-title">Frasi d'uso comune <span class="it">常用句</span></div>`;
+    html += `<div style="margin-bottom:8px"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="playSeq([${urls.map(x=>`'${x}'`).join(',')}],this)">▶ 播放全部</button></div>`;
+    html += `<div class="sent-grid">`;
+    u.sentences.forEach((s,i)=>{
+      html += `<div class="sentence-item">
+        <button class="s-play" onclick="playSentence(this,'${u.id}',${i})">▶</button>
+        <div class="s-text"><div class="it">${esc(s.it)}</div><div class="zh">${esc(s.zh)}</div></div></div>`;
+    });
+    html += `</div>`;
+  }
+  // Dialogue
+  if(u.dialogue && u.dialogue.length){
+    html += `<div class="section-title">Testo <span class="it">视频文本</span></div>`;
+    u.dialogue.forEach((d,i)=>{
+      html += `<div class="dialogue-seg">
+        <div class="d-head"><button class="d-play" onclick="playDialogue(this,'${u.id}',${i})">▶</button><span class="d-tag">片段 ${i+1}</span></div>
+        <div class="d-it">${esc(d.it)}</div>`;
+      if(d.zh) html += `<div class="d-zh">${esc(d.zh)}</div>`;
+      html += `</div>`;
+    });
+  }
+  // Notes
+  if(u.notes && u.notes.length){
+    html += `<div class="section-title">Note lessicali <span class="it">词法解析</span></div><div class="note-grid">`;
+    u.notes.forEach(n=>{
+      html += `<div class="note-item"><div class="term">${esc(n.term)}</div>`;
+      if(n.explain) html += `<div class="explain">${esc(n.explain)}</div>`;
+      if(n.examples && n.examples.length){
+        html += `<div class="examples">`;
+        n.examples.forEach(ex=>{ html += `<div class="note-ex">${esc(ex)}</div>`; });
+        html += `</div>`;
+      }
+      html += `</div>`;
+    });
+    html += `</div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+function setSpeed(s, btn){
+  curSpeed=s;
+  document.querySelectorAll('.speed-bar .speed-btn').forEach(b=>b.classList.toggle('active', b===btn));
+}
+
+// ====== MOBILE ======
+function toggleSidebar(){ document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebarOverlay').classList.toggle('show'); }
+
+// ====== INIT ======
+buildTOC();
+</script>
+</body>
+</html>
