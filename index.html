@@ -187,13 +187,27 @@ function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').repla
 function luogoVal(s){
   return esc(s).replace(/（[^（）]*）/g, function(m){ return '<span class="lg-zh">'+m+'</span>'; });
 }
+const LS_LAST_UNIT = 'ital_conv_last_unit';
+function saveLastUnit(id){
+  try{ localStorage.setItem(LS_LAST_UNIT, id); }catch(e){}
+}
+function readLastUnit(){
+  try{ return localStorage.getItem(LS_LAST_UNIT); }catch(e){ return null; }
+}
 function showUnit(id){
   document.getElementById('welcomePanel').style.display='none';
-  document.querySelectorAll('.unit-item').forEach(it=>it.classList.toggle('active', it.dataset.uid===id));
+  saveLastUnit(id);
+  let activeItem=null;
+  document.querySelectorAll('.unit-item').forEach(it=>{
+    it.classList.toggle('active', it.dataset.uid===id);
+    if(it.dataset.uid===id) activeItem=it;
+  });
   const u = findUnit(id);
   const box = document.getElementById('unitContentContainer');
   box.innerHTML = renderUnit(u);
   box.firstChild.classList.add('active');
+  // 让侧栏目录滚到当前单元（仅首次直接载入时才有实际效果）
+  if(activeItem && activeItem.scrollIntoView) activeItem.scrollIntoView({block:'nearest'});
   document.getElementById('main').scrollTop=0;
   window.scrollTo(0,0);
 }
@@ -281,6 +295,12 @@ function toggleSidebar(){ document.getElementById('sidebar').classList.toggle('o
 
 // ====== INIT ======
 buildTOC();
+// 首次打开进入 Unità 1；之后打开回到上次浏览的单元
+(function restoreLastUnit(){
+  const saved = readLastUnit();
+  const target = (saved && findUnit(saved)) ? saved : bookData.chapters[0].units[0].id;
+  showUnit(target);
+})();
 </script>
 </body>
 </html>
