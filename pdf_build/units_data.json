@@ -10,8 +10,8 @@
      "title": "AFFITTARE UNA CASA",
      "subtitle": "租房",
      "luogo": {
-      "place": "（地点）：in via Santa Chiara（圣嘉勒路上）",
-      "people": "Aldo Sparice（奥尔多·斯帕里奇）、una signora in cerca di un'abitazione（一位有\n意租房的女士）"
+      "place": "in via Santa Chiara（圣嘉勒路上）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）、una signora in cerca di un'abitazione（一位有意租房的女士）"
      },
      "vocab": [
       {
@@ -236,8 +236,8 @@
      "title": "I SERVIZI TELEFONICI",
      "subtitle": "办理手机业务",
      "luogo": {
-      "place": "（地点）：In un'edicola, in un negozio TIM, casa di Aldo Sparice（报刊亭、TIM移动通信公司\n营业厅、奥尔多·斯帕里奇家）",
-      "people": "Aldo Sparice（奥尔多·斯帕里奇）、edicolante（报刊亭老板）、impiegato\ndella TIM（营业厅工作人员）"
+      "place": "In un'edicola, in un negozio TIM, casa di Aldo Sparice（报刊亭、TIM 移动通信公司营业厅、奥尔多·斯帕里奇家）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）、edicolante（报刊亭老板）、impiegato della TIM（营业厅工作人员）"
      },
      "vocab": [
       {
@@ -416,7 +416,7 @@
      "title": "I SERVIZI BANCARI",
      "subtitle": "办理银行业务",
      "luogo": {
-      "place": "（地点）：Casa di Aldo Sparice, all'ingresso del Banco di Napoli, in un cambio（奥尔多·斯帕\n里奇家、那不勒斯银行入口、货币兑换处）",
+      "place": "Casa di Aldo Sparice, all'ingresso del Banco di Napoli, in un cambio（奥尔多·斯帕里奇家、那不勒斯银行入口、货币兑换处）",
       "people": "Aldo Sparice（奥尔多·斯帕里奇）"
      },
      "vocab": [
@@ -572,8 +572,8 @@
      "title": "RICHIEDERE IL PERMESSO DI SOGGIORNO",
      "subtitle": "申请居留证",
      "luogo": {
-      "place": "（地点）：Casa di Aldo Sparice（奥尔多·斯帕里奇家）",
-      "people": "Aldo Sparice（奥尔多·斯帕里奇）\n•\n•\n•\n•\n•\n•\n•"
+      "place": "Casa di Aldo Sparice（奥尔多·斯帕里奇家）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）"
      },
      "vocab": [
       {
@@ -758,7 +758,7 @@
      "title": "AL CAFFÈ",
      "subtitle": "在咖啡馆",
      "luogo": {
-      "place": "本单元的场景及人物介绍位于扫描起始页（PDF页84）之前，原始扫描未包含，此处从略。",
+      "place": "",
       "people": ""
      },
      "vocab": [
@@ -924,8 +924,8 @@
      "title": "IN PASTICCERIA",
      "subtitle": "在甜品店",
      "luogo": {
-      "place": "Luogo: Pasticceria \"Pastiera Napoletana\" — 地点：“那不勒斯派”甜品店\nPersonaggi: Aldo Sparice, la proprietaria della pasticceria — 人物：奥尔多·斯帕里奇、甜品店女店主",
-      "people": ""
+      "place": "Pasticceria \"Pastiera Napoletana\"（“那不勒斯派”甜品店）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）、la proprietaria della pasticceria（甜品店女店主）"
      },
      "vocab": [
       {
@@ -1075,8 +1075,8 @@
      "title": "IN GELATERIA",
      "subtitle": "在冰激凌店",
      "luogo": {
-      "place": "Luogo: Gelateria \"Scimmia\" — 地点：“猴子”冰激凌店\nPersonaggi: Aldo Sparice — 人物：奥尔多·斯帕里奇",
-      "people": ""
+      "place": "Gelateria \"Scimmia\"（“猴子”冰激凌店）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）"
      },
      "vocab": [
       {
@@ -1215,8 +1215,8 @@
      "title": "IN PIZZERIA",
      "subtitle": "在披萨店",
      "luogo": {
-      "place": "Luogo: Pizzeria \"900\" — 地点：披萨店“900”\nPersonaggi: Aldo Sparice, il cameriere, il pizzaiolo — 人物：奥尔多·斯帕里奇、披萨店服务员、制作披萨的\n厨师",
-      "people": ""
+      "place": "Pizzeria \"900\"（披萨店“900”）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）、il cameriere（披萨店服务员）、il pizzaiolo（制作披萨的厨师）"
      },
      "vocab": [
       {
@@ -1366,8 +1366,8 @@
      "title": "PREPARARE LA PASTA A CASA",
      "subtitle": "在家做意大利面",
      "luogo": {
-      "place": "Luogo: Cucina di Aldo Sparice — 地点：奥尔多·斯帕里奇家的厨房\nPersonaggio: Aldo Sparice — 人物：奥尔多·斯帕里奇",
-      "people": ""
+      "place": "Cucina di Aldo Sparice（奥尔多·斯帕里奇家的厨房）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）"
      },
      "vocab": [
       {
@@ -1721,8 +1721,8 @@
      "title": "PRENDERE I MEZZI PUBBLICI DI TRASPORTO",
      "subtitle": "乘坐公共交",
      "luogo": {
-      "place": "地点（Luogo）：Casa di Aldo Sparice（Aldo Sparice 家）\n人物（Personaggio）：Aldo Sparice（奥尔多·斯帕里奇）",
-      "people": ""
+      "place": "Casa di Aldo Sparice（奥尔多·斯帕里奇家）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）"
      },
      "vocab": [
       {
@@ -1857,8 +1857,8 @@
      "title": "ALLA STAZIONE",
      "subtitle": "在火车站",
      "luogo": {
-      "place": "地点（Luogo）：Stazione di Napoli Centrale（那不勒斯中央火车站）\n人物（Personaggio）：Aldo Sparice（奥尔多·斯帕里奇）",
-      "people": ""
+      "place": "Stazione di Napoli Centrale（那不勒斯中央火车站）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）"
      },
      "vocab": [
       {
@@ -2010,8 +2010,8 @@
      "title": "ALL'AEROPORTO",
      "subtitle": "在机场",
      "luogo": {
-      "place": "地点（Luogo）：Aeroporto Internazionale di Napoli（那不勒斯国际机场）\n人物（Personaggi）：Aldo Sparice（奥尔多·斯帕里奇）、机场工作人员（impiegati dell'aeroporto）",
-      "people": ""
+      "place": "Aeroporto Internazionale di Napoli（那不勒斯国际机场）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）、impiegati dell'aeroporto（机场工作人员）"
      },
      "vocab": [
       {
@@ -2174,8 +2174,8 @@
      "title": "PRENDERE UN TAXI E NOLEGGIARE UNA MACCHINA",
      "subtitle": "乘",
      "luogo": {
-      "place": "地点（Luoghi）：posteggio taxi e il parcheggio autonoleggio（出租车停靠点与租车停车场）\n人物（Personaggio）：Aldo Sparice（奥尔多·斯帕里奇）",
-      "people": ""
+      "place": "Posteggio taxi e il parcheggio autonoleggio（出租车停靠点与租车停车场）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）"
      },
      "vocab": [
       {
@@ -2324,8 +2324,8 @@
      "title": "IN AGENZIA TURISTICA",
      "subtitle": "在旅行社",
      "luogo": {
-      "place": "Luogo: Agenzia turistica（旅行社）\nPersonaggi: Elisa（impiegata，工作人员）、Aldo（turista，游客）",
-      "people": ""
+      "place": "Agenzia turistica（旅行社）",
+      "people": "Elisa（impiegata，工作人员）、Aldo（turista，游客）"
      },
      "vocab": [
       {
@@ -2475,8 +2475,8 @@
      "title": "IN ALBERGO",
      "subtitle": "在宾馆",
      "luogo": {
-      "place": "Luogo: Albergo \"Palazzo Decumani\"（宾馆「Palazzo Decumani」）\nPersonaggi: Aldo Sparice（奥尔多·斯帕里奇）、la receptionist（酒店前台工作人员）",
-      "people": ""
+      "place": "Albergo \"Palazzo Decumani\"（宾馆「Palazzo Decumani」）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）、la receptionist（酒店前台工作人员）"
      },
      "vocab": [
       {
@@ -2608,8 +2608,8 @@
      "title": "AL MUSEO",
      "subtitle": "在博物馆",
      "luogo": {
-      "place": "Luogo: Museo del Chiostro di Santa Chiara（圣嘉勒修道院博物馆）\nPersonaggi: Aldo Sparice（奥尔多·斯帕里奇）、impiegato della biglietteria（博物馆售票处工作人员）",
-      "people": ""
+      "place": "Museo del Chiostro di Santa Chiara（圣嘉勒修道院博物馆）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）、impiegato della biglietteria（博物馆售票处工作人员）"
      },
      "vocab": [
       {
@@ -2742,8 +2742,8 @@
      "title": "COMPRARE PRODOTTI TIPICI",
      "subtitle": "购买特产",
      "luogo": {
-      "place": "•\nLuogo: All'interno di un negozio con i prodotti tipici（特产店内）\nPersonaggi: Aldo Sparice（奥尔多·斯帕里奇）、commesso del negozio（特产店售货员）",
-      "people": ""
+      "place": "All'interno di un negozio con i prodotti tipici（特产店内）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）、commesso del negozio（特产店售货员）"
      },
      "vocab": [
       {
@@ -3054,8 +3054,8 @@
      "title": "IN FARMACIA",
      "subtitle": "在药店",
      "luogo": {
-      "place": "（地点）：药店门口（All'ingresso della farmacia）",
-      "people": "奥尔多 · 斯帕里奇（Aldo Sparice）"
+      "place": "All'ingresso della farmacia（药店门口）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）"
      },
      "vocab": [
       {
@@ -3228,8 +3228,8 @@
      "title": "ACQUISTARE FRANCOBOLLO E MARCHE DA BOLLO",
      "subtitle": "购买邮",
      "luogo": {
-      "place": "（地点）：一家烟草店门前（Davanti ad una tabaccheria）",
-      "people": "奥尔多 · 斯帕里奇（Aldo Sparice）"
+      "place": "Davanti ad una tabaccheria（一家烟草店门前）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）"
      },
      "vocab": [
       {
@@ -3397,8 +3397,8 @@
      "title": "SERVIZI POSTALI",
      "subtitle": "邮政业务",
      "luogo": {
-      "place": "（地点）：奥尔多 · 斯帕里奇家，那不勒斯邮局（Casa di Aldo Sparice, ufficio postale di\nNapoli）",
-      "people": "奥尔多 · 斯帕里奇（Aldo Sparice）"
+      "place": "Casa di Aldo Sparice, ufficio postale di Napoli（奥尔多·斯帕里奇家、那不勒斯邮局）",
+      "people": "Aldo Sparice（奥尔多·斯帕里奇）"
      },
      "vocab": [
       {
