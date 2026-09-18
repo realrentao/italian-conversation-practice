@@ -306,7 +306,7 @@ function renderUnit(u){
         if(conv.length){
           html += `<div class="section-title">${esc(sec.title)}</div><div class="conv">`;
           conv.forEach((ln,ci)=>{
-            const who = ln.speaker==='aldo' ? 'Aldo Sparice' : 'Signora';
+            const who = ln.speaker==='aldo' ? 'Aldo Sparice' : 'Signorina';
             const cls = ln.speaker==='aldo' ? 'aldo' : 'signora';
             html += `<div class="conv-row ${cls}">`
               + `<div class="conv-head"><span class="conv-who">${who}</span>`
