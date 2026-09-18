@@ -97,7 +97,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 .conv-who{font-size:12px;font-weight:600}
 .conv-row.aldo .conv-who{color:#0a7ea4}
 .conv-row.signora .conv-who{color:#d14b8a}
-.conv-bubble{border-radius:16px;padding:10px 14px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.conv-bubble{border-radius:16px;padding:10px 14px;box-shadow:0 1px 3px rgba(0,0,0,.05);cursor:pointer;transition:.15s}
+.conv-bubble:hover{filter:brightness(.985)}
+.conv-bubble.playing{box-shadow:0 0 0 2px #00e5ff}
+.conv-ctl{margin-bottom:10px}
 .conv-row.aldo .conv-bubble{background:#eef7fb;border:1px solid #d3ebf5;border-bottom-left-radius:4px}
 .conv-row.signora .conv-bubble{background:#fdeef5;border:1px solid #f6d6e6;border-bottom-right-radius:4px}
 .conv-bubble .d-it{font-size:15px;font-weight:500;color:#222;line-height:1.6;white-space:pre-wrap;background:transparent;padding:0;margin:0;border:0}
@@ -224,6 +227,29 @@ function playMonoSeq(btn, uid, seg, count){
   }
   audioEl.onended=next; next();
 }
+// 对话全局连播：依次播放每一句并点亮对应气泡
+function playConvSeq(btn){
+  if(playingBtn===btn){ stopAudio(); return; }
+  stopAudio();
+  audioEl.playbackRate = RATE_FACTOR[curSpeed];
+  const convEl = btn.parentElement.nextElementSibling;
+  const bubbles = convEl ? Array.from(convEl.querySelectorAll('.conv-bubble')) : [];
+  let i=0;
+  playingBtn=btn; btn.classList.add('playing');
+  function next(){
+    if(i>=bubbles.length){
+      btn.classList.remove('playing');
+      bubbles.forEach(b=>b.classList.remove('playing'));
+      playingBtn=null; return;
+    }
+    const base = bubbles[i].closest('.conv-row').dataset.audio;
+    audioEl.src = base + '_m.mp3';
+    audioEl.play().catch(()=>{});
+    audioEl.onended = ()=>{ bubbles[i].classList.remove('playing'); i++; next(); };
+    bubbles[i].classList.add('playing');
+  }
+  audioEl.onended=next; next();
+}
 function playSeq(urls, btn){
   if(playingBtn===btn){ stopAudio(); return; }
   stopAudio();
@@ -341,14 +367,15 @@ function renderUnit(u){
       } else if(sec.type==='conversation'){
         const conv = u.conversation||[];
         if(conv.length){
-          html += `<div class="section-title">${esc(sec.title)}</div><div class="conv">`;
+          html += `<div class="section-title">${esc(sec.title)}</div>`;
+          html += `<div class="conv-ctl"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="playConvSeq(this)">▶ 全局连播</button></div>`;
+          html += `<div class="conv">`;
           conv.forEach((ln,ci)=>{
             const who = ln.speaker==='aldo' ? 'Aldo Sparice' : 'Signorina';
             const cls = ln.speaker==='aldo' ? 'aldo' : 'signora';
-            html += `<div class="conv-row ${cls}">`
-              + `<div class="conv-head"><span class="conv-who">${who}</span>`
-              + `<button class="d-play" onclick="playConv(this,'${ln.audio}')">▶</button></div>`
-              + `<div class="conv-bubble"><div class="d-it">${esc(ln.it)}</div><div class="d-zh">${esc(ln.zh)}</div></div>`
+            html += `<div class="conv-row ${cls}" data-audio="${ln.audio}">`
+              + `<div class="conv-head"><span class="conv-who">${who}</span></div>`
+              + `<div class="conv-bubble" onclick="playUrl('${ln.audio}_m.mp3',this)"><div class="d-it">${esc(ln.it)}</div><div class="d-zh">${esc(ln.zh)}</div></div>`
               + `</div>`;
           });
           html += `</div>`;
