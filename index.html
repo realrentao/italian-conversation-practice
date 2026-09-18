@@ -245,7 +245,7 @@ function playMonoSeq(btn, uid, seg, count){
   }
   audioEl.onended=next; next();
 }
-// 对话全局连播：依次播放每一句并点亮对应气泡
+// 对话播放全部：依次播放每一句并点亮对应气泡
 function playConvSeq(btn){
   if(playingBtn===btn){ stopAudio(); return; }
   stopAudio();
@@ -393,7 +393,7 @@ function renderUnit(u){
         const conv = u.conversation||[];
         if(conv.length){
           html += `<div class="section-title">${esc(sec.title)}</div>`;
-          html += `<div style="margin-bottom:8px"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="playConvSeq(this)">▶ 全局连播</button></div>`;
+          html += `<div style="margin-bottom:8px"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="playConvSeq(this)">▶ 播放全部</button></div>`;
           html += `<div class="conv-card">`;
           html += `<div class="conv">`;
           conv.forEach((ln,ci)=>{
