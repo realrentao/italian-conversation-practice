@@ -74,7 +74,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 .dialogue-seg .d-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .dialogue-seg .d-play{font-size:12px;width:32px;height:32px;border:none;border-radius:50%;background:#1a1a2e;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s}
 .dialogue-seg .d-play.playing{background:#00e5ff;color:#1a1a2e}
-.dialogue-seg .d-tag{font-size:13px;font-weight:700;color:#1a1a2e}
+.dialogue-seg .d-tag{font-size:13px;font-weight:500;color:#666}
 .dialogue-seg .d-it{font-size:15px;font-weight:500;color:#222;line-height:1.7;white-space:pre-wrap;background:#f8f9ff;padding:12px 14px;border-radius:8px;border-left:3px solid #00e5ff;margin-bottom:8px}
 .dialogue-seg .d-zh{font-size:14px;color:#555;line-height:1.8;white-space:pre-wrap}
 /* Notes */
@@ -258,12 +258,15 @@ function renderUnit(u){
     });
     html += `</div>`;
   }
-  // Dialogue
+  // Dialogue：取消总标题，每个片段各自成为一个与「常用句」同级的板块
   if(u.dialogue && u.dialogue.length){
-    html += `<div class="section-title">Testo <span class="it">视频文本</span></div>`;
+    const n = u.dialogue.length;
     u.dialogue.forEach((d,i)=>{
+      const lbl = n>1 ? `Testo ${i+1}` : 'Testo';
+      const zl  = n>1 ? `视频文本 ${i+1}` : '视频文本';
+      html += `<div class="section-title">${lbl} <span class="it">${zl}</span></div>`;
       html += `<div class="dialogue-seg">
-        <div class="d-head"><button class="d-play" onclick="playDialogue(this,'${u.id}',${i})">▶</button><span class="d-tag">片段 ${i+1}</span></div>
+        <div class="d-head"><button class="d-play" onclick="playDialogue(this,'${u.id}',${i})">▶</button><span class="d-tag">播放本段</span></div>
         <div class="d-it">${esc(d.it)}</div>`;
       if(d.zh) html += `<div class="d-zh">${esc(d.zh)}</div>`;
       html += `</div>`;
