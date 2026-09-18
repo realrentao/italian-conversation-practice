@@ -98,8 +98,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 .conv-bubble:hover{filter:brightness(.985)}
 .conv-bubble.playing{box-shadow:0 0 0 2px #00e5ff}
 .conv-ctl{margin-bottom:10px}
-.conv-row.aldo .conv-bubble{background:#fff;border:1px solid #e6e8f0;border-bottom-left-radius:4px}
-.conv-row.signora .conv-bubble{background:#fff;border:1px solid #e6e8f0;border-bottom-right-radius:4px}
+.conv-card{background:#fff;border-radius:14px;padding:18px 22px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.conv-row.aldo .conv-bubble{background:#eef7fb;border:1px solid #d3ebf5;border-bottom-left-radius:4px}
+.conv-row.signora .conv-bubble{background:#fdeef5;border:1px solid #f6d6e6;border-bottom-right-radius:4px}
 .conv-bubble .d-it{font-size:18px;font-weight:500;color:#222;line-height:1.6;white-space:pre-wrap;background:transparent;padding:0;margin:0;border:0}
 .conv-bubble .d-zh{font-size:15.6px;color:#667;line-height:1.7;margin-top:3px;white-space:pre-wrap;padding:0}
 /* Notes */
@@ -380,6 +381,7 @@ function renderUnit(u){
         const conv = u.conversation||[];
         if(conv.length){
           html += `<div class="section-title">${esc(sec.title)}</div>`;
+          html += `<div class="conv-card">`;
           html += `<div class="conv-ctl"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="playConvSeq(this)">▶ 全局连播</button></div>`;
           html += `<div class="conv">`;
           conv.forEach((ln,ci)=>{
@@ -390,7 +392,7 @@ function renderUnit(u){
               + `<div class="conv-bubble" onclick="playUrl('${ln.audio}_m.mp3',this)"><div class="d-it">${esc(ln.it)}</div><div class="d-zh">${esc(ln.zh)}</div></div>`
               + `</div>`;
           });
-          html += `</div>`;
+          html += `</div></div>`;
         }
       } else {
         const idxs = sec.notes||[];
