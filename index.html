@@ -197,10 +197,17 @@ function filterTOC(q){
 let curSpeed='m';
 const RATE_FACTOR = {s:0.7, m:1.0, f:1.25};
 let audioEl=new Audio();
+audioEl.preload='none';
 audioEl.playbackRate = RATE_FACTOR[curSpeed];
+// 预加载缓冲：连播时提前拉取下一句音频，消除句间网络空档（提升加载/播放体验）
+let prefetchEl=new Audio();
+prefetchEl.preload='auto';
+function prefetch(url){ try{ if(url) prefetchEl.src=url; }catch(e){} }
+function cancelPrefetch(){ try{ prefetchEl.removeAttribute('src'); }catch(e){} }
 let playingBtn=null;
 function stopAudio(){
   audioEl.pause(); audioEl.currentTime=0;
+  cancelPrefetch();
   // 清除所有高亮（词卡 / 句子 / 对话气泡 / 独白句），避免卡住
   document.querySelectorAll('.playing').forEach(el=>el.classList.remove('playing'));
   playingBtn=null;
@@ -215,7 +222,7 @@ function playUrl(url, btn){
   playingBtn=btn; if(btn) btn.classList.add('playing');
   audioEl.onended=()=>{ if(playingBtn){playingBtn.classList.remove('playing'); playingBtn=null;} };
 }
-function playVocab(btn, url){ playUrl(url, btn); }
+function playVocab(btn){ playUrl(btn.dataset.url, btn); }
 function playSentence(btn, uid, idx){ playUrl(`audio/s/${uid}_${idx}_m.mp3`, btn); }
 function playDialogue(btn, uid, seg){ playUrl(`audio/d/${uid}_${seg}_m.mp3`, btn); }
 function playConv(btn, base){ playUrl(`${base}_m.mp3`, btn); }
@@ -242,6 +249,7 @@ function playMonoSeq(btn, uid, seg, count){
     audioEl.play().catch(()=>{});
     audioEl.onended=()=>{ if(lines[i]) lines[i].classList.remove('playing'); i++; next(); };
     if(lines[i]){ lines[i].classList.add('playing'); lines[i].scrollIntoView({behavior:'smooth', block:'center'}); }
+    prefetch(urls[i+1]);
   }
   audioEl.onended=next; next();
 }
@@ -267,6 +275,8 @@ function playConvSeq(btn){
     audioEl.onended = ()=>{ bubbles[i].classList.remove('playing'); i++; next(); };
     bubbles[i].classList.add('playing');
     bubbles[i].scrollIntoView({behavior:'smooth', block:'center'});
+    const nextBase = (bubbles[i+1] && bubbles[i+1].closest('.conv-row').dataset.audio) || '';
+    prefetch(nextBase ? nextBase + '_m.mp3' : '');
   }
   audioEl.onended=next; next();
 }
@@ -285,6 +295,7 @@ function playSeq(urls, btn){
     audioEl.play().catch(()=>{});
     audioEl.onended=()=>{ if(cards[i]) cards[i].classList.remove('playing'); i++; next(); };
     if(cards[i]){ cards[i].classList.add('playing'); cards[i].scrollIntoView({behavior:'smooth', block:'center'}); }
+    prefetch(urls[i+1]);
   }
   audioEl.onended=next; next();
 }
@@ -297,20 +308,17 @@ function playVocabSeq(btn){
   let wrap = btn.parentElement;
   while(wrap && !wrap.querySelector('.vocab-grid')) wrap = wrap.parentElement;
   const cards = wrap ? Array.from(wrap.querySelectorAll('.vocab-item')) : [];
-  const idxs = cards
-    .map((c,k)=>({k, url:(c.getAttribute('onclick').match(/'([^']*)'$/)||[])[1]||''}))
-    .filter(o=>o.url)
-    .map(o=>o.k);
+  // 直接从 data-url 读取，避免解析 onclick 字符串（原正则因末尾 ')' 导致匹配失败崩溃）
+  const urls = cards.map(c=>(c.dataset.url||'').trim()).filter(Boolean);
   let i=0;
   playingBtn=btn; btn.classList.add('playing');
   function next(){
-    if(i>=idxs.length){ btn.classList.remove('playing'); playingBtn=null; return; }
-    const k=idxs[i];
-    const url = cards[k].getAttribute('onclick').match(/'([^']*)'$/)[1];
-    audioEl.src=url;
+    if(i>=urls.length){ btn.classList.remove('playing'); playingBtn=null; return; }
+    audioEl.src=urls[i];
     audioEl.play().catch(()=>{});
-    audioEl.onended=()=>{ cards[k].classList.remove('playing'); i++; next(); };
-    cards[k].classList.add('playing'); cards[k].scrollIntoView({behavior:'smooth', block:'center'});
+    audioEl.onended=()=>{ cards[i].classList.remove('playing'); i++; next(); };
+    cards[i].classList.add('playing'); cards[i].scrollIntoView({behavior:'smooth', block:'center'});
+    prefetch(urls[i+1]);
   }
   audioEl.onended=next; next();
 }
@@ -376,7 +384,7 @@ function renderUnit(u){
     html += `<div class="vocab-grid">`;
     u.vocab.forEach(v=>{
       const url = v.audio || '';
-      html += `<div class="vocab-item" onclick="playVocab(this,'${url}')">
+      html += `<div class="vocab-item" data-url="${url}" onclick="playVocab(this)">
         <span class="it">${esc(v.it)}</span><span class="zh">${esc(v.zh)}</span></div>`;
     });
     html += `</div>`;
