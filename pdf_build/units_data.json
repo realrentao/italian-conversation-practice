@@ -16,95 +16,118 @@
           "vocab": [
             {
               "it": "affittare",
-              "zh": "出租，租用"
+              "zh": "出租，租用",
+              "audio": "audio/w/4659fa38dbf2.mp3"
             },
             {
               "it": "pavimento",
-              "zh": "地板"
+              "zh": "地板",
+              "audio": "audio/w/f3398a501837.mp3"
             },
             {
               "it": "appartamento",
-              "zh": "公寓"
+              "zh": "公寓",
+              "audio": "audio/w/54ad9f67399f.mp3"
             },
             {
               "it": "mobile",
-              "zh": "家具"
+              "zh": "家具",
+              "audio": "audio/w/83d6311e87d4.mp3"
             },
             {
               "it": "soggiorno",
-              "zh": "起居室"
+              "zh": "起居室",
+              "audio": "audio/w/2de353d7c2d0.mp3"
             },
             {
               "it": "divano",
-              "zh": "长沙发"
+              "zh": "长沙发",
+              "audio": "audio/w/4dc337d549bf.mp3"
             },
             {
               "it": "salotto",
-              "zh": "客厅"
+              "zh": "客厅",
+              "audio": "audio/w/2cfcf81c2d92.mp3"
             },
             {
               "it": "poltrona",
-              "zh": "单人沙发"
+              "zh": "单人沙发",
+              "audio": "audio/w/d91fd83dc53c.mp3"
             },
             {
               "it": "camera da letto",
-              "zh": "卧室"
+              "zh": "卧室",
+              "audio": "audio/w/853d4f1cdacb.mp3"
             },
             {
               "it": "aria condizionata",
-              "zh": "空调"
+              "zh": "空调",
+              "audio": "audio/w/b97ca3877fa9.mp3"
             },
             {
               "it": "studio",
-              "zh": "书房"
+              "zh": "书房",
+              "audio": "audio/w/9a12c50f2f23.mp3"
             },
             {
               "it": "termosifone",
-              "zh": "暖气"
+              "zh": "暖气",
+              "audio": "audio/w/b75081dc2e47.mp3"
             },
             {
               "it": "sala da pranzo",
-              "zh": "餐厅"
+              "zh": "餐厅",
+              "audio": "audio/w/70d9f6bf349f.mp3"
             },
             {
               "it": "scaldabagno",
-              "zh": "热水器"
+              "zh": "热水器",
+              "audio": "audio/w/2a4c1e8ef466.mp3"
             },
             {
               "it": "cucina",
-              "zh": "厨房"
+              "zh": "厨房",
+              "audio": "audio/w/9fbf0a1990ac.mp3"
             },
             {
               "it": "fornello",
-              "zh": "炉灶"
+              "zh": "炉灶",
+              "audio": "audio/w/13404a897cd9.mp3"
             },
             {
               "it": "bagno",
-              "zh": "洗手间"
+              "zh": "洗手间",
+              "audio": "audio/w/3d35ceeafd25.mp3"
             },
             {
               "it": "frigorifero",
-              "zh": "电冰箱"
+              "zh": "电冰箱",
+              "audio": "audio/w/f5b29df6b668.mp3"
             },
             {
               "it": "balcone",
-              "zh": "阳台"
+              "zh": "阳台",
+              "audio": "audio/w/31097eb5b253.mp3"
             },
             {
               "it": "lavatrice",
-              "zh": "洗衣机"
+              "zh": "洗衣机",
+              "audio": "audio/w/6eed4f73c4c1.mp3"
             },
             {
               "it": "scala",
-              "zh": "楼梯"
+              "zh": "楼梯",
+              "audio": "audio/w/54274edafa75.mp3"
             },
             {
               "it": "microonde",
-              "zh": "微波炉"
+              "zh": "微波炉",
+              "audio": "audio/w/bcb14667440e.mp3"
             },
             {
               "it": "soffitto",
-              "zh": "天花板"
+              "zh": "天花板",
+              "audio": "audio/w/a4323cda4721.mp3"
             }
           ],
           "sentences": [
@@ -910,67 +933,83 @@
           "vocab": [
             {
               "it": "fax",
-              "zh": "传真"
+              "zh": "传真",
+              "audio": "audio/w/da41abc0db70.mp3"
             },
             {
               "it": "pronto",
-              "zh": "喂（电话用语）"
+              "zh": "喂（电话用语）",
+              "audio": "audio/w/2726bab396d8.mp3"
             },
             {
               "it": "cellulare",
-              "zh": "手机"
+              "zh": "手机",
+              "audio": "audio/w/48e86bd9945a.mp3"
             },
             {
               "it": "telefono",
-              "zh": "电话"
+              "zh": "电话",
+              "audio": "audio/w/bc61935add10.mp3"
             },
             {
               "it": "linea",
-              "zh": "线路"
+              "zh": "线路",
+              "audio": "audio/w/6b6ea5a3587f.mp3"
             },
             {
               "it": "telefono pubblico",
-              "zh": "公用电话"
+              "zh": "公用电话",
+              "audio": "audio/w/098ad069c04d.mp3"
             },
             {
               "it": "messaggio",
-              "zh": "短信"
+              "zh": "短信",
+              "audio": "audio/w/151a6c958d65.mp3"
             },
             {
               "it": "numero di telefono",
-              "zh": "电话号码"
+              "zh": "电话号码",
+              "audio": "audio/w/238ce26f7051.mp3"
             },
             {
               "it": "prefisso",
-              "zh": "区号"
+              "zh": "区号",
+              "audio": "audio/w/25f913f18719.mp3"
             },
             {
               "it": "occupato",
-              "zh": "占线"
+              "zh": "占线",
+              "audio": "audio/w/e7bdd95a1499.mp3"
             },
             {
               "it": "ricaricare",
-              "zh": "充值"
+              "zh": "充值",
+              "audio": "audio/w/5430e3871868.mp3"
             },
             {
               "it": "parlare",
-              "zh": "讲话"
+              "zh": "讲话",
+              "audio": "audio/w/a8d3594d7c52.mp3"
             },
             {
               "it": "scheda",
-              "zh": "卡片"
+              "zh": "卡片",
+              "audio": "audio/w/3b225a819e05.mp3"
             },
             {
               "it": "richiamare",
-              "zh": "回电话"
+              "zh": "回电话",
+              "audio": "audio/w/35f7ff918e4b.mp3"
             },
             {
               "it": "tariffa",
-              "zh": "话费"
+              "zh": "话费",
+              "audio": "audio/w/94799c1f4a51.mp3"
             },
             {
               "it": "rispondere",
-              "zh": "接电话"
+              "zh": "接电话",
+              "audio": "audio/w/cbddc66479cf.mp3"
             }
           ],
           "sentences": [
@@ -1090,75 +1129,93 @@
           "vocab": [
             {
               "it": "banca",
-              "zh": "银行"
+              "zh": "银行",
+              "audio": "audio/w/1ed6f1a1e8f6.mp3"
             },
             {
               "it": "cambiare",
-              "zh": "兑换"
+              "zh": "兑换",
+              "audio": "audio/w/08486f3a1366.mp3"
             },
             {
               "it": "bancario",
-              "zh": "银行职员"
+              "zh": "银行职员",
+              "audio": "audio/w/a4d36fd078c7.mp3"
             },
             {
               "it": "banconota",
-              "zh": "纸币"
+              "zh": "纸币",
+              "audio": "audio/w/ea6e73f97f81.mp3"
             },
             {
               "it": "sportello",
-              "zh": "窗口"
+              "zh": "窗口",
+              "audio": "audio/w/8f85d10a4294.mp3"
             },
             {
               "it": "moneta",
-              "zh": "硬币"
+              "zh": "硬币",
+              "audio": "audio/w/271c070edb96.mp3"
             },
             {
               "it": "conto",
-              "zh": "账户"
+              "zh": "账户",
+              "audio": "audio/w/315dae015b17.mp3"
             },
             {
               "it": "cambio",
-              "zh": "货币兑换处"
+              "zh": "货币兑换处",
+              "audio": "audio/w/93cf094fbfa7.mp3"
             },
             {
               "it": "prelevare",
-              "zh": "取款"
+              "zh": "取款",
+              "audio": "audio/w/a3cbe3e11c2d.mp3"
             },
             {
               "it": "dollaro",
-              "zh": "美元"
+              "zh": "美元",
+              "audio": "audio/w/3fce21fe7980.mp3"
             },
             {
               "it": "depositare",
-              "zh": "存款"
+              "zh": "存款",
+              "audio": "audio/w/9830445a6e03.mp3"
             },
             {
               "it": "euro",
-              "zh": "欧元"
+              "zh": "欧元",
+              "audio": "audio/w/0eb8b4484399.mp3"
             },
             {
               "it": "deposito a risparmio",
-              "zh": "储蓄存款"
+              "zh": "储蓄存款",
+              "audio": "audio/w/11f6f0bf1940.mp3"
             },
             {
               "it": "centesimo",
-              "zh": "分"
+              "zh": "分",
+              "audio": "audio/w/4528857fea2e.mp3"
             },
             {
               "it": "interesse",
-              "zh": "利息"
+              "zh": "利息",
+              "audio": "audio/w/375d24e2770c.mp3"
             },
             {
               "it": "assegno bancario",
-              "zh": "支票"
+              "zh": "支票",
+              "audio": "audio/w/2e3d40d729d6.mp3"
             },
             {
               "it": "bonifico",
-              "zh": "转账"
+              "zh": "转账",
+              "audio": "audio/w/c9847339f054.mp3"
             },
             {
               "it": "carta di credito",
-              "zh": "信用卡"
+              "zh": "信用卡",
+              "audio": "audio/w/de79f76c8968.mp3"
             }
           ],
           "sentences": [
@@ -1246,67 +1303,83 @@
           "vocab": [
             {
               "it": "questura",
-              "zh": "警察局"
+              "zh": "警察局",
+              "audio": "audio/w/0c8e38e10241.mp3"
             },
             {
               "it": "rilasciare",
-              "zh": "发放"
+              "zh": "发放",
+              "audio": "audio/w/903493aa71b3.mp3"
             },
             {
               "it": "ufficio",
-              "zh": "办公室"
+              "zh": "办公室",
+              "audio": "audio/w/dbf2fd0876ce.mp3"
             },
             {
               "it": "prolungare",
-              "zh": "延长"
+              "zh": "延长",
+              "audio": "audio/w/00468fc81517.mp3"
             },
             {
               "it": "documento",
-              "zh": "证件"
+              "zh": "证件",
+              "audio": "audio/w/287ca5e51760.mp3"
             },
             {
               "it": "rinnovare",
-              "zh": "更新，延期"
+              "zh": "更新，延期",
+              "audio": "audio/w/9280efe66d6e.mp3"
             },
             {
               "it": "valido",
-              "zh": "有效"
+              "zh": "有效",
+              "audio": "audio/w/c8950dc40ee8.mp3"
             },
             {
               "it": "scaduto",
-              "zh": "到期"
+              "zh": "到期",
+              "audio": "audio/w/d6d04ef6048c.mp3"
             },
             {
               "it": "passaporto",
-              "zh": "护照"
+              "zh": "护照",
+              "audio": "audio/w/e28efd074889.mp3"
             },
             {
               "it": "modulo",
-              "zh": "表格"
+              "zh": "表格",
+              "audio": "audio/w/1af60b7b96e0.mp3"
             },
             {
               "it": "visto",
-              "zh": "签证"
+              "zh": "签证",
+              "audio": "audio/w/fd67b2f66592.mp3"
             },
             {
               "it": "allegato",
-              "zh": "附带，附件"
+              "zh": "附带，附件",
+              "audio": "audio/w/707343ccefaa.mp3"
             },
             {
               "it": "permesso di soggiorno",
-              "zh": "居留证"
+              "zh": "居留证",
+              "audio": "audio/w/0104af42f520.mp3"
             },
             {
               "it": "compilare",
-              "zh": "填写"
+              "zh": "填写",
+              "audio": "audio/w/619737d4c7e0.mp3"
             },
             {
               "it": "richiesta",
-              "zh": "申请"
+              "zh": "申请",
+              "audio": "audio/w/d3610cf483f4.mp3"
             },
             {
               "it": "trattenersi",
-              "zh": "停留"
+              "zh": "停留",
+              "audio": "audio/w/fe4dd841d728.mp3"
             }
           ],
           "sentences": [
@@ -1432,79 +1505,98 @@
           "vocab": [
             {
               "it": "cameriere",
-              "zh": "服务员"
+              "zh": "服务员",
+              "audio": "audio/w/9041d3998682.mp3"
             },
             {
               "it": "cliente",
-              "zh": "顾客"
+              "zh": "顾客",
+              "audio": "audio/w/d94019fd760a.mp3"
             },
             {
               "it": "banco",
-              "zh": "柜台"
+              "zh": "柜台",
+              "audio": "audio/w/8339f984a030.mp3"
             },
             {
               "it": "tavolo",
-              "zh": "桌子"
+              "zh": "桌子",
+              "audio": "audio/w/cb38c875e526.mp3"
             },
             {
               "it": "tazzina da caffè",
-              "zh": "咖啡杯"
+              "zh": "咖啡杯",
+              "audio": "audio/w/9bd482966a60.mp3"
             },
             {
               "it": "acqua",
-              "zh": "水"
+              "zh": "水",
+              "audio": "audio/w/11c8629474d4.mp3"
             },
             {
               "it": "bevanda",
-              "zh": "饮料"
+              "zh": "饮料",
+              "audio": "audio/w/2120712248a8.mp3"
             },
             {
               "it": "latte",
-              "zh": "牛奶"
+              "zh": "牛奶",
+              "audio": "audio/w/bd191b34cfc2.mp3"
             },
             {
               "it": "frutta",
-              "zh": "水果"
+              "zh": "水果",
+              "audio": "audio/w/04c6186fdb95.mp3"
             },
             {
               "it": "arancia",
-              "zh": "橙子"
+              "zh": "橙子",
+              "audio": "audio/w/24c5f45cdb83.mp3"
             },
             {
               "it": "mela",
-              "zh": "苹果"
+              "zh": "苹果",
+              "audio": "audio/w/19eddb45b28b.mp3"
             },
             {
               "it": "spremere",
-              "zh": "榨，挤"
+              "zh": "榨，挤",
+              "audio": "audio/w/7cd21268cd1e.mp3"
             },
             {
               "it": "caffè",
-              "zh": "咖啡，咖啡馆"
+              "zh": "咖啡，咖啡馆",
+              "audio": "audio/w/d575593a480b.mp3"
             },
             {
               "it": "caffettiera",
-              "zh": "咖啡壶"
+              "zh": "咖啡壶",
+              "audio": "audio/w/ff5db9e800c3.mp3"
             },
             {
               "it": "espresso",
-              "zh": "浓缩咖啡"
+              "zh": "浓缩咖啡",
+              "audio": "audio/w/76db555888e8.mp3"
             },
             {
               "it": "cappuccino",
-              "zh": "卡布奇诺（意式奶沫咖啡）"
+              "zh": "卡布奇诺（意式奶沫咖啡）",
+              "audio": "audio/w/c5fcba503d07.mp3"
             },
             {
               "it": "schiuma",
-              "zh": "泡沫"
+              "zh": "泡沫",
+              "audio": "audio/w/243f015e082c.mp3"
             },
             {
               "it": "zucchero",
-              "zh": "糖"
+              "zh": "糖",
+              "audio": "audio/w/962ff646e3a0.mp3"
             },
             {
               "it": "cornetto",
-              "zh": "牛角包"
+              "zh": "牛角包",
+              "audio": "audio/w/92e791bf1750.mp3"
             }
           ],
           "sentences": [
@@ -1598,67 +1690,83 @@
           "vocab": [
             {
               "it": "dolce",
-              "zh": "甜品"
+              "zh": "甜品",
+              "audio": "audio/w/0066475e20a9.mp3"
             },
             {
               "it": "pasticceria",
-              "zh": "甜品店"
+              "zh": "甜品店",
+              "audio": "audio/w/909fb6a47f44.mp3"
             },
             {
               "it": "cioccolato",
-              "zh": "巧克力"
+              "zh": "巧克力",
+              "audio": "audio/w/20e3290a76fd.mp3"
             },
             {
               "it": "torta",
-              "zh": "蛋糕"
+              "zh": "蛋糕",
+              "audio": "audio/w/85f750f1d8ea.mp3"
             },
             {
               "it": "ricotta",
-              "zh": "鲜奶酪，凝乳"
+              "zh": "鲜奶酪，凝乳",
+              "audio": "audio/w/2e5bfcd4dc80.mp3"
             },
             {
               "it": "amarena",
-              "zh": "酸樱桃"
+              "zh": "酸樱桃",
+              "audio": "audio/w/1f80c97b1048.mp3"
             },
             {
               "it": "babà",
-              "zh": "朗姆酒糕"
+              "zh": "朗姆酒糕",
+              "audio": "audio/w/cb73343e3289.mp3"
             },
             {
               "it": "cannolo siciliano",
-              "zh": "西西里奶酪卷"
+              "zh": "西西里奶酪卷",
+              "audio": "audio/w/ffef0a2aec57.mp3"
             },
             {
               "it": "castagnole",
-              "zh": "炸糖球"
+              "zh": "炸糖球",
+              "audio": "audio/w/a5255fcfe50e.mp3"
             },
             {
               "it": "chiacchiere",
-              "zh": "糖霜条"
+              "zh": "糖霜条",
+              "audio": "audio/w/d40276a14c06.mp3"
             },
             {
               "it": "diplomatico",
-              "zh": "外交官（蛋糕）"
+              "zh": "外交官（蛋糕）",
+              "audio": "audio/w/a5f8d216278c.mp3"
             },
             {
               "it": "ferratelle",
-              "zh": "松饼"
+              "zh": "松饼",
+              "audio": "audio/w/2d78033e12be.mp3"
             },
             {
               "it": "ostie",
-              "zh": "蜂蜜杏仁夹"
+              "zh": "蜂蜜杏仁夹",
+              "audio": "audio/w/80c5ba3f36c1.mp3"
             },
             {
               "it": "pastiera napoletana",
-              "zh": "那不勒斯派"
+              "zh": "那不勒斯派",
+              "audio": "audio/w/a31917e6ffbd.mp3"
             },
             {
               "it": "sfogliatella",
-              "zh": "贝壳酥"
+              "zh": "贝壳酥",
+              "audio": "audio/w/0ccaf20699d0.mp3"
             },
             {
               "it": "tiramisù",
-              "zh": "提拉米苏"
+              "zh": "提拉米苏",
+              "audio": "audio/w/1bbff2ff9214.mp3"
             }
           ],
           "sentences": [
@@ -1749,71 +1857,88 @@
           "vocab": [
             {
               "it": "gelato",
-              "zh": "冰激凌"
+              "zh": "冰激凌",
+              "audio": "audio/w/0d9f0bcac672.mp3"
             },
             {
               "it": "gelateria",
-              "zh": "冰激凌店"
+              "zh": "冰激凌店",
+              "audio": "audio/w/58a21d5ed165.mp3"
             },
             {
               "it": "gusto",
-              "zh": "口味"
+              "zh": "口味",
+              "audio": "audio/w/969598327e06.mp3"
             },
             {
               "it": "cono",
-              "zh": "蛋卷"
+              "zh": "蛋卷",
+              "audio": "audio/w/3f27a2107e4f.mp3"
             },
             {
               "it": "coppa",
-              "zh": "杯装冰激凌"
+              "zh": "杯装冰激凌",
+              "audio": "audio/w/bb0d77711a78.mp3"
             },
             {
               "it": "pallina",
-              "zh": "冰激凌球"
+              "zh": "冰激凌球",
+              "audio": "audio/w/f26093976340.mp3"
             },
             {
               "it": "panna",
-              "zh": "奶油"
+              "zh": "奶油",
+              "audio": "audio/w/fcba1509dec7.mp3"
             },
             {
               "it": "ananas",
-              "zh": "菠萝"
+              "zh": "菠萝",
+              "audio": "audio/w/755bd810d2be.mp3"
             },
             {
               "it": "ciliegia",
-              "zh": "樱桃"
+              "zh": "樱桃",
+              "audio": "audio/w/9ed636860040.mp3"
             },
             {
               "it": "cocomero",
-              "zh": "西瓜"
+              "zh": "西瓜",
+              "audio": "audio/w/d592e8a274f3.mp3"
             },
             {
               "it": "fragola",
-              "zh": "草莓"
+              "zh": "草莓",
+              "audio": "audio/w/d5d7b3a6c1e5.mp3"
             },
             {
               "it": "limone",
-              "zh": "柠檬"
+              "zh": "柠檬",
+              "audio": "audio/w/ece77f54eccb.mp3"
             },
             {
               "it": "nocciola",
-              "zh": "榛子"
+              "zh": "榛子",
+              "audio": "audio/w/9cfb31cf3f4c.mp3"
             },
             {
               "it": "pistacchio",
-              "zh": "开心果"
+              "zh": "开心果",
+              "audio": "audio/w/49b0f343ceb0.mp3"
             },
             {
               "it": "vaniglia",
-              "zh": "香草"
+              "zh": "香草",
+              "audio": "audio/w/7ac2fa9ff41e.mp3"
             },
             {
               "it": "uva",
-              "zh": "葡萄"
+              "zh": "葡萄",
+              "audio": "audio/w/2d2c2a1400d9.mp3"
             },
             {
               "it": "torrone",
-              "zh": "果仁糖"
+              "zh": "果仁糖",
+              "audio": "audio/w/497b8a150cd2.mp3"
             }
           ],
           "sentences": [
@@ -1889,83 +2014,103 @@
           "vocab": [
             {
               "it": "pizza",
-              "zh": "披萨"
+              "zh": "披萨",
+              "audio": "audio/w/1f6ccd2be75f.mp3"
             },
             {
               "it": "pizzeria",
-              "zh": "披萨店"
+              "zh": "披萨店",
+              "audio": "audio/w/23c4d7910348.mp3"
             },
             {
               "it": "ristorante",
-              "zh": "餐厅"
+              "zh": "餐厅",
+              "audio": "audio/w/aa57dd99c0e9.mp3"
             },
             {
               "it": "trattoria",
-              "zh": "小餐馆"
+              "zh": "小餐馆",
+              "audio": "audio/w/0debee20cecb.mp3"
             },
             {
               "it": "specialità",
-              "zh": "特色菜"
+              "zh": "特色菜",
+              "audio": "audio/w/de27eab399fa.mp3"
             },
             {
               "it": "cuoco",
-              "zh": "厨师"
+              "zh": "厨师",
+              "audio": "audio/w/68f35479eb8c.mp3"
             },
             {
               "it": "coltello",
-              "zh": "餐刀"
+              "zh": "餐刀",
+              "audio": "audio/w/9717c1f4703c.mp3"
             },
             {
               "it": "forchetta",
-              "zh": "叉子"
+              "zh": "叉子",
+              "audio": "audio/w/440a2111e590.mp3"
             },
             {
               "it": "colazione",
-              "zh": "早餐"
+              "zh": "早餐",
+              "audio": "audio/w/cc5eda1b3537.mp3"
             },
             {
               "it": "pranzo",
-              "zh": "午餐"
+              "zh": "午餐",
+              "audio": "audio/w/89f261d63fdb.mp3"
             },
             {
               "it": "cena",
-              "zh": "晚餐"
+              "zh": "晚餐",
+              "audio": "audio/w/62e5582aace0.mp3"
             },
             {
               "it": "antipasto",
-              "zh": "冷盘"
+              "zh": "冷盘",
+              "audio": "audio/w/16985a74b307.mp3"
             },
             {
               "it": "minestra",
-              "zh": "汤"
+              "zh": "汤",
+              "audio": "audio/w/56aa1e74d60c.mp3"
             },
             {
               "it": "formaggio",
-              "zh": "奶酪"
+              "zh": "奶酪",
+              "audio": "audio/w/bee9ed168227.mp3"
             },
             {
               "it": "olio d'oliva",
-              "zh": "橄榄油"
+              "zh": "橄榄油",
+              "audio": "audio/w/fb9844bcf346.mp3"
             },
             {
               "it": "pomodoro",
-              "zh": "西红柿"
+              "zh": "西红柿",
+              "audio": "audio/w/539b31b6587e.mp3"
             },
             {
               "it": "prosciutto",
-              "zh": "火腿"
+              "zh": "火腿",
+              "audio": "audio/w/738cb7af8fba.mp3"
             },
             {
               "it": "aglio",
-              "zh": "大蒜"
+              "zh": "大蒜",
+              "audio": "audio/w/ab50b3f471fb.mp3"
             },
             {
               "it": "basilico",
-              "zh": "罗勒"
+              "zh": "罗勒",
+              "audio": "audio/w/585ac6552b4f.mp3"
             },
             {
               "it": "origano",
-              "zh": "牛至"
+              "zh": "牛至",
+              "audio": "audio/w/f85afbb08969.mp3"
             }
           ],
           "sentences": [
@@ -2040,83 +2185,103 @@
           "vocab": [
             {
               "it": "broccoli",
-              "zh": "西兰花"
+              "zh": "西兰花",
+              "audio": "audio/w/14400de41171.mp3"
             },
             {
               "it": "carota",
-              "zh": "胡萝卜"
+              "zh": "胡萝卜",
+              "audio": "audio/w/8181c520aa2f.mp3"
             },
             {
               "it": "cipolla",
-              "zh": "洋葱"
+              "zh": "洋葱",
+              "audio": "audio/w/1d9365b91c6e.mp3"
             },
             {
               "it": "fagiolino",
-              "zh": "豆角"
+              "zh": "豆角",
+              "audio": "audio/w/ac3d0a48de03.mp3"
             },
             {
               "it": "melanzana",
-              "zh": "茄子"
+              "zh": "茄子",
+              "audio": "audio/w/7cdad6ed4990.mp3"
             },
             {
               "it": "ingrediente",
-              "zh": "食材，调料"
+              "zh": "食材，调料",
+              "audio": "audio/w/c69313b2ab9d.mp3"
             },
             {
               "it": "pepe",
-              "zh": "胡椒"
+              "zh": "胡椒",
+              "audio": "audio/w/265392dc2782.mp3"
             },
             {
               "it": "salsa di soia",
-              "zh": "酱油"
+              "zh": "酱油",
+              "audio": "audio/w/23dfa641faff.mp3"
             },
             {
               "it": "lavare",
-              "zh": "洗"
+              "zh": "洗",
+              "audio": "audio/w/a60cd5931958.mp3"
             },
             {
               "it": "tagliare",
-              "zh": "切"
+              "zh": "切",
+              "audio": "audio/w/943c8cf55ca7.mp3"
             },
             {
               "it": "cuocere",
-              "zh": "煮"
+              "zh": "煮",
+              "audio": "audio/w/02c9337eb49e.mp3"
             },
             {
               "it": "arrostire",
-              "zh": "烤"
+              "zh": "烤",
+              "audio": "audio/w/5fe89253f3f1.mp3"
             },
             {
               "it": "friggere",
-              "zh": "炸"
+              "zh": "炸",
+              "audio": "audio/w/710dc27845b4.mp3"
             },
             {
               "it": "infarinare",
-              "zh": "裹面粉"
+              "zh": "裹面粉",
+              "audio": "audio/w/cb43ec63c53e.mp3"
             },
             {
               "it": "riscaldare",
-              "zh": "加热"
+              "zh": "加热",
+              "audio": "audio/w/23877807ce78.mp3"
             },
             {
               "it": "bollire",
-              "zh": "煮沸"
+              "zh": "煮沸",
+              "audio": "audio/w/be3c22a54aae.mp3"
             },
             {
               "it": "versare",
-              "zh": "倒"
+              "zh": "倒",
+              "audio": "audio/w/6efef284a449.mp3"
             },
             {
               "it": "asciugare",
-              "zh": "擦干"
+              "zh": "擦干",
+              "audio": "audio/w/864a0d4f1a5d.mp3"
             },
             {
               "it": "scolare",
-              "zh": "沥干"
+              "zh": "沥干",
+              "audio": "audio/w/1fe984266a5b.mp3"
             },
             {
               "it": "macinare",
-              "zh": "磨碎"
+              "zh": "磨碎",
+              "audio": "audio/w/0e690d8a72f6.mp3"
             }
           ],
           "sentences": [
@@ -2210,67 +2375,83 @@
           "vocab": [
             {
               "it": "destinazione",
-              "zh": "目的地"
+              "zh": "目的地",
+              "audio": "audio/w/8f4b363ad228.mp3"
             },
             {
               "it": "incrocio",
-              "zh": "十字路口"
+              "zh": "十字路口",
+              "audio": "audio/w/b6ad27386441.mp3"
             },
             {
               "it": "mappa",
-              "zh": "地图"
+              "zh": "地图",
+              "audio": "audio/w/e000b49648cf.mp3"
             },
             {
               "it": "piazza",
-              "zh": "广场"
+              "zh": "广场",
+              "audio": "audio/w/53f6c379be5d.mp3"
             },
             {
               "it": "indirizzo",
-              "zh": "地址"
+              "zh": "地址",
+              "audio": "audio/w/47d34ef65f33.mp3"
             },
             {
               "it": "sottopassaggio",
-              "zh": "地下通道"
+              "zh": "地下通道",
+              "audio": "audio/w/ae5f13972133.mp3"
             },
             {
               "it": "direzione",
-              "zh": "方向"
+              "zh": "方向",
+              "audio": "audio/w/f32786fd2263.mp3"
             },
             {
               "it": "sovrapasso",
-              "zh": "天桥"
+              "zh": "天桥",
+              "audio": "audio/w/516f6166386a.mp3"
             },
             {
               "it": "informazione",
-              "zh": "信息"
+              "zh": "信息",
+              "audio": "audio/w/05180208d75e.mp3"
             },
             {
               "it": "stazione",
-              "zh": "车站"
+              "zh": "车站",
+              "audio": "audio/w/83a64c73a666.mp3"
             },
             {
               "it": "destra",
-              "zh": "右边"
+              "zh": "右边",
+              "audio": "audio/w/c5a1ad5b7e63.mp3"
             },
             {
               "it": "salire",
-              "zh": "上来"
+              "zh": "上来",
+              "audio": "audio/w/99b294a6b1ad.mp3"
             },
             {
               "it": "sinistra",
-              "zh": "左边"
+              "zh": "左边",
+              "audio": "audio/w/1ce2596b1ee7.mp3"
             },
             {
               "it": "scendere",
-              "zh": "下来"
+              "zh": "下来",
+              "audio": "audio/w/d9dd4c1e30df.mp3"
             },
             {
               "it": "girare",
-              "zh": "转弯"
+              "zh": "转弯",
+              "audio": "audio/w/7de16b863887.mp3"
             },
             {
               "it": "marciapiede",
-              "zh": "人行道"
+              "zh": "人行道",
+              "audio": "audio/w/80b0f9afc8a1.mp3"
             }
           ],
           "sentences": [
@@ -2395,59 +2576,73 @@
           "vocab": [
             {
               "it": "autobus",
-              "zh": "公交车"
+              "zh": "公交车",
+              "audio": "audio/w/016ccee7270f.mp3"
             },
             {
               "it": "capolinea",
-              "zh": "起点站，终点站"
+              "zh": "起点站，终点站",
+              "audio": "audio/w/3b4c78aa11fd.mp3"
             },
             {
               "it": "metropolitana",
-              "zh": "地铁"
+              "zh": "地铁",
+              "audio": "audio/w/178460c35fc8.mp3"
             },
             {
               "it": "pullman",
-              "zh": "巴士"
+              "zh": "巴士",
+              "audio": "audio/w/006072ca12d8.mp3"
             },
             {
               "it": "fermata",
-              "zh": "车站"
+              "zh": "车站",
+              "audio": "audio/w/184ced9da209.mp3"
             },
             {
               "it": "tram",
-              "zh": "有轨电车"
+              "zh": "有轨电车",
+              "audio": "audio/w/aaf2dd34829d.mp3"
             },
             {
               "it": "fermare",
-              "zh": "停车"
+              "zh": "停车",
+              "audio": "audio/w/083a9cdcff5c.mp3"
             },
             {
               "it": "prezzo",
-              "zh": "价格"
+              "zh": "价格",
+              "audio": "audio/w/23f68a2f3720.mp3"
             },
             {
               "it": "timbrare",
-              "zh": "打票，检票"
+              "zh": "打票，检票",
+              "audio": "audio/w/b6a84b2783ee.mp3"
             },
             {
               "it": "biglietto",
-              "zh": "票"
+              "zh": "票",
+              "audio": "audio/w/8fa0556f6bd5.mp3"
             },
             {
               "it": "scadenza",
-              "zh": "有效期"
+              "zh": "有效期",
+              "audio": "audio/w/2943478b164c.mp3"
             },
             {
               "it": "bigliettaio",
-              "zh": "售票员"
+              "zh": "售票员",
+              "audio": "audio/w/abd5d883a16d.mp3"
             },
             {
               "it": "controllore",
-              "zh": "查票员"
+              "zh": "查票员",
+              "audio": "audio/w/d1f9ecb0534b.mp3"
             },
             {
               "it": "biglietteria",
-              "zh": "售票处"
+              "zh": "售票处",
+              "audio": "audio/w/86981db63ac8.mp3"
             }
           ],
           "sentences": [
@@ -2531,67 +2726,83 @@
           "vocab": [
             {
               "it": "ferrovia",
-              "zh": "铁路"
+              "zh": "铁路",
+              "audio": "audio/w/190becb0605f.mp3"
             },
             {
               "it": "binario",
-              "zh": "车道，站台"
+              "zh": "车道，站台",
+              "audio": "audio/w/008673cffe7e.mp3"
             },
             {
               "it": "itinerario",
-              "zh": "路线"
+              "zh": "路线",
+              "audio": "audio/w/26310610dd94.mp3"
             },
             {
               "it": "sala d'attesa",
-              "zh": "候车室"
+              "zh": "候车室",
+              "audio": "audio/w/e27ba4ff6cc4.mp3"
             },
             {
               "it": "orario ferroviario",
-              "zh": "列车时刻表"
+              "zh": "列车时刻表",
+              "audio": "audio/w/ea951c9007e7.mp3"
             },
             {
               "it": "vagone",
-              "zh": "车厢"
+              "zh": "车厢",
+              "audio": "audio/w/ba393ab738b2.mp3"
             },
             {
               "it": "andata",
-              "zh": "去程"
+              "zh": "去程",
+              "audio": "audio/w/ea254de4cd6e.mp3"
             },
             {
               "it": "cuccetta",
-              "zh": "卧铺"
+              "zh": "卧铺",
+              "audio": "audio/w/717f0403b2cf.mp3"
             },
             {
               "it": "ritorno",
-              "zh": "返程"
+              "zh": "返程",
+              "audio": "audio/w/9502651a15e4.mp3"
             },
             {
               "it": "posto",
-              "zh": "座位"
+              "zh": "座位",
+              "audio": "audio/w/625e1feb434b.mp3"
             },
             {
               "it": "partenza",
-              "zh": "启程"
+              "zh": "启程",
+              "audio": "audio/w/00d32b14757f.mp3"
             },
             {
               "it": "prendere il treno",
-              "zh": "乘火车"
+              "zh": "乘火车",
+              "audio": "audio/w/145eca24924c.mp3"
             },
             {
               "it": "arrivo",
-              "zh": "到达"
+              "zh": "到达",
+              "audio": "audio/w/067e18287a15.mp3"
             },
             {
               "it": "cambiare treno",
-              "zh": "换乘火车"
+              "zh": "换乘火车",
+              "audio": "audio/w/fc1934c5a347.mp3"
             },
             {
               "it": "ritardo",
-              "zh": "延误"
+              "zh": "延误",
+              "audio": "audio/w/fb8c685d2c2d.mp3"
             },
             {
               "it": "perdere il treno",
-              "zh": "误火车"
+              "zh": "误火车",
+              "audio": "audio/w/9b9a96a33e24.mp3"
             }
           ],
           "sentences": [
@@ -2684,63 +2895,78 @@
           "vocab": [
             {
               "it": "aereo",
-              "zh": "飞机"
+              "zh": "飞机",
+              "audio": "audio/w/85206cf3e3a3.mp3"
             },
             {
               "it": "bagaglio",
-              "zh": "行李"
+              "zh": "行李",
+              "audio": "audio/w/c87e7ed05c01.mp3"
             },
             {
               "it": "aeroporto",
-              "zh": "机场"
+              "zh": "机场",
+              "audio": "audio/w/886813d602bf.mp3"
             },
             {
               "it": "classe economica",
-              "zh": "经济舱"
+              "zh": "经济舱",
+              "audio": "audio/w/427772fae604.mp3"
             },
             {
               "it": "volo",
-              "zh": "航班"
+              "zh": "航班",
+              "audio": "audio/w/dad2f3287cac.mp3"
             },
             {
               "it": "prima classe",
-              "zh": "头等舱"
+              "zh": "头等舱",
+              "audio": "audio/w/74a685c158e4.mp3"
             },
             {
               "it": "decollare",
-              "zh": "起飞"
+              "zh": "起飞",
+              "audio": "audio/w/f7d3237ab0a7.mp3"
             },
             {
               "it": "cintura di sicurezza",
-              "zh": "安全带"
+              "zh": "安全带",
+              "audio": "audio/w/cf4d8a3f7db6.mp3"
             },
             {
               "it": "atterrare",
-              "zh": "着陆"
+              "zh": "着陆",
+              "audio": "audio/w/0e0c7e7cbecb.mp3"
             },
             {
               "it": "velocità",
-              "zh": "速度"
+              "zh": "速度",
+              "audio": "audio/w/d6dfb2fe625a.mp3"
             },
             {
               "it": "scalo",
-              "zh": "中途着陆，转机"
+              "zh": "中途着陆，转机",
+              "audio": "audio/w/44b9f3ebe5cd.mp3"
             },
             {
               "it": "dogana",
-              "zh": "海关"
+              "zh": "海关",
+              "audio": "audio/w/604551eae115.mp3"
             },
             {
               "it": "biglietto d'aereo",
-              "zh": "机票"
+              "zh": "机票",
+              "audio": "audio/w/749cb11d7b6a.mp3"
             },
             {
               "it": "tax-free",
-              "zh": "免税"
+              "zh": "免税",
+              "audio": "audio/w/9781a9fe4b3d.mp3"
             },
             {
               "it": "carta d'imbarco",
-              "zh": "登机牌"
+              "zh": "登机牌",
+              "audio": "audio/w/d7bde4407cbd.mp3"
             }
           ],
           "sentences": [
@@ -2848,71 +3074,88 @@
           "vocab": [
             {
               "it": "taxi (tassì)",
-              "zh": "出租车"
+              "zh": "出租车",
+              "audio": "audio/w/10c69b8dc1d0.mp3"
             },
             {
               "it": "meta",
-              "zh": "终点，目的地"
+              "zh": "终点，目的地",
+              "audio": "audio/w/cb030491157b.mp3"
             },
             {
               "it": "tassista",
-              "zh": "出租车司机"
+              "zh": "出租车司机",
+              "audio": "audio/w/d058de93dac6.mp3"
             },
             {
               "it": "tariffa",
-              "zh": "车费"
+              "zh": "车费",
+              "audio": "audio/w/94799c1f4a51.mp3"
             },
             {
               "it": "autista",
-              "zh": "司机"
+              "zh": "司机",
+              "audio": "audio/w/cf26d8d36e48.mp3"
             },
             {
               "it": "supplemento",
-              "zh": "增加，加价"
+              "zh": "增加，加价",
+              "audio": "audio/w/48e5810a1194.mp3"
             },
             {
               "it": "guidare",
-              "zh": "驾驶"
+              "zh": "驾驶",
+              "audio": "audio/w/214583e9adbc.mp3"
             },
             {
               "it": "tassametro",
-              "zh": "计价器"
+              "zh": "计价器",
+              "audio": "audio/w/46106374620f.mp3"
             },
             {
               "it": "macchina",
-              "zh": "汽车"
+              "zh": "汽车",
+              "audio": "audio/w/f0f081d29aa8.mp3"
             },
             {
               "it": "noleggiare",
-              "zh": "出租，租用"
+              "zh": "出租，租用",
+              "audio": "audio/w/508d75fc51d3.mp3"
             },
             {
               "it": "patente di guida",
-              "zh": "驾照"
+              "zh": "驾照",
+              "audio": "audio/w/90ccc62e7003.mp3"
             },
             {
               "it": "prenotare",
-              "zh": "预订"
+              "zh": "预订",
+              "audio": "audio/w/dcc96a9533bc.mp3"
             },
             {
               "it": "veloce",
-              "zh": "快的"
+              "zh": "快的",
+              "audio": "audio/w/071cf1119e1c.mp3"
             },
             {
               "it": "restituire",
-              "zh": "归还"
+              "zh": "归还",
+              "audio": "audio/w/6a6fbaf5a0c7.mp3"
             },
             {
               "it": "lento",
-              "zh": "慢的"
+              "zh": "慢的",
+              "audio": "audio/w/6b8b1fb497e1.mp3"
             },
             {
               "it": "ritirare",
-              "zh": "提取"
+              "zh": "提取",
+              "audio": "audio/w/58f484147e81.mp3"
             },
             {
               "it": "autostrada",
-              "zh": "高速公路"
+              "zh": "高速公路",
+              "audio": "audio/w/89babdc4167e.mp3"
             }
           ],
           "sentences": [
@@ -2998,71 +3241,88 @@
           "vocab": [
             {
               "it": "agenzia turistica",
-              "zh": "旅行社"
+              "zh": "旅行社",
+              "audio": "audio/w/35db303a06d2.mp3"
             },
             {
               "it": "entrata",
-              "zh": "进入"
+              "zh": "进入",
+              "audio": "audio/w/25f43fef86f3.mp3"
             },
             {
               "it": "impiegato",
-              "zh": "工作人员"
+              "zh": "工作人员",
+              "audio": "audio/w/1235ff27c37f.mp3"
             },
             {
               "it": "uscita",
-              "zh": "出口"
+              "zh": "出口",
+              "audio": "audio/w/268660a3e3ae.mp3"
             },
             {
               "it": "partire",
-              "zh": "出发"
+              "zh": "出发",
+              "audio": "audio/w/7de95fa7a572.mp3"
             },
             {
               "it": "acquistare",
-              "zh": "购买"
+              "zh": "购买",
+              "audio": "audio/w/2bee06ddc33c.mp3"
             },
             {
               "it": "arrivare",
-              "zh": "到达"
+              "zh": "到达",
+              "audio": "audio/w/1397f889e050.mp3"
             },
             {
               "it": "cartina",
-              "zh": "地图"
+              "zh": "地图",
+              "audio": "audio/w/0e78cd7a1f12.mp3"
             },
             {
               "it": "turista",
-              "zh": "游客"
+              "zh": "游客",
+              "audio": "audio/w/4ec76f2e1dee.mp3"
             },
             {
               "it": "souvenir",
-              "zh": "纪念品"
+              "zh": "纪念品",
+              "audio": "audio/w/e59e3db3939e.mp3"
             },
             {
               "it": "viaggio",
-              "zh": "旅行"
+              "zh": "旅行",
+              "audio": "audio/w/e854436bc639.mp3"
             },
             {
               "it": "sconto",
-              "zh": "折扣"
+              "zh": "折扣",
+              "audio": "audio/w/f82bd0b5c9c7.mp3"
             },
             {
               "it": "monumenti",
-              "zh": "名胜古迹"
+              "zh": "名胜古迹",
+              "audio": "audio/w/9907109ba8ea.mp3"
             },
             {
               "it": "guida",
-              "zh": "导游"
+              "zh": "导游",
+              "audio": "audio/w/4024e66005b8.mp3"
             },
             {
               "it": "chiesa",
-              "zh": "教堂"
+              "zh": "教堂",
+              "audio": "audio/w/a3a0a96bd2a1.mp3"
             },
             {
               "it": "mancia",
-              "zh": "小费"
+              "zh": "小费",
+              "audio": "audio/w/cc4a70ebab11.mp3"
             },
             {
               "it": "duomo",
-              "zh": "主教座堂"
+              "zh": "主教座堂",
+              "audio": "audio/w/d6e3797cedd8.mp3"
             }
           ],
           "sentences": [
@@ -3149,67 +3409,83 @@
           "vocab": [
             {
               "it": "albergo",
-              "zh": "宾馆"
+              "zh": "宾馆",
+              "audio": "audio/w/6c0c33076168.mp3"
             },
             {
               "it": "carta d'identità",
-              "zh": "身份证"
+              "zh": "身份证",
+              "audio": "audio/w/7a290b602dda.mp3"
             },
             {
               "it": "reception",
-              "zh": "前台"
+              "zh": "前台",
+              "audio": "audio/w/44057e3fd5f1.mp3"
             },
             {
               "it": "check-in",
-              "zh": "入住登记"
+              "zh": "入住登记",
+              "audio": "audio/w/94c0fbc3a911.mp3"
             },
             {
               "it": "camera singola",
-              "zh": "单人间"
+              "zh": "单人间",
+              "audio": "audio/w/3427002591db.mp3"
             },
             {
               "it": "check-out",
-              "zh": "退房"
+              "zh": "退房",
+              "audio": "audio/w/4142bde32ac8.mp3"
             },
             {
               "it": "camera a due letti",
-              "zh": "双人标准间"
+              "zh": "双人标准间",
+              "audio": "audio/w/a37299f0a5fc.mp3"
             },
             {
               "it": "ascensore",
-              "zh": "电梯"
+              "zh": "电梯",
+              "audio": "audio/w/7b944fba886b.mp3"
             },
             {
               "it": "camera matrimoniale",
-              "zh": "大床房"
+              "zh": "大床房",
+              "audio": "audio/w/1df36c1e6902.mp3"
             },
             {
               "it": "chiave",
-              "zh": "钥匙，门卡"
+              "zh": "钥匙，门卡",
+              "audio": "audio/w/22b15892f8d7.mp3"
             },
             {
               "it": "camera con bagno",
-              "zh": "带卫生间的房间"
+              "zh": "带卫生间的房间",
+              "audio": "audio/w/c20b7f680cb2.mp3"
             },
             {
               "it": "valigia",
-              "zh": "行李箱"
+              "zh": "行李箱",
+              "audio": "audio/w/b58963587dcc.mp3"
             },
             {
               "it": "senza pensione",
-              "zh": "不含餐"
+              "zh": "不含餐",
+              "audio": "audio/w/5630656f9e57.mp3"
             },
             {
               "it": "soggiorno",
-              "zh": "逗留"
+              "zh": "逗留",
+              "audio": "audio/w/2de353d7c2d0.mp3"
             },
             {
               "it": "tassa",
-              "zh": "税"
+              "zh": "税",
+              "audio": "audio/w/a01a77513c3f.mp3"
             },
             {
               "it": "sveglia",
-              "zh": "叫醒"
+              "zh": "叫醒",
+              "audio": "audio/w/4b15f21af012.mp3"
             }
           ],
           "sentences": [
@@ -3282,63 +3558,78 @@
           "vocab": [
             {
               "it": "galleria",
-              "zh": "美术馆"
+              "zh": "美术馆",
+              "audio": "audio/w/4f4e8be12f3c.mp3"
             },
             {
               "it": "intero",
-              "zh": "全价的"
+              "zh": "全价的",
+              "audio": "audio/w/959702370c64.mp3"
             },
             {
               "it": "museo",
-              "zh": "博物馆"
+              "zh": "博物馆",
+              "audio": "audio/w/f62af2d0bf91.mp3"
             },
             {
               "it": "abbonamento",
-              "zh": "长期票"
+              "zh": "长期票",
+              "audio": "audio/w/60eba9bcae07.mp3"
             },
             {
               "it": "orario",
-              "zh": "时刻表"
+              "zh": "时刻表",
+              "audio": "audio/w/b0d2ece6dc9b.mp3"
             },
             {
               "it": "gruppo",
-              "zh": "团体"
+              "zh": "团体",
+              "audio": "audio/w/6cc020103495.mp3"
             },
             {
               "it": "aprire",
-              "zh": "打开"
+              "zh": "打开",
+              "audio": "audio/w/086420602f38.mp3"
             },
             {
               "it": "ridotto",
-              "zh": "减免的"
+              "zh": "减免的",
+              "audio": "audio/w/38fcb36119b3.mp3"
             },
             {
               "it": "chiudere",
-              "zh": "关闭"
+              "zh": "关闭",
+              "audio": "audio/w/a6d2d751d3db.mp3"
             },
             {
               "it": "audioguida",
-              "zh": "自动讲解器"
+              "zh": "自动讲解器",
+              "audio": "audio/w/c609972e3d6a.mp3"
             },
             {
               "it": "ingresso",
-              "zh": "入口"
+              "zh": "入口",
+              "audio": "audio/w/1fd785c6b807.mp3"
             },
             {
               "it": "brochure",
-              "zh": "宣传册"
+              "zh": "宣传册",
+              "audio": "audio/w/3605000e13de.mp3"
             },
             {
               "it": "festivo",
-              "zh": "节假日的"
+              "zh": "节假日的",
+              "audio": "audio/w/dbdacdd43261.mp3"
             },
             {
               "it": "piantina",
-              "zh": "导览图"
+              "zh": "导览图",
+              "audio": "audio/w/4f4205b74919.mp3"
             },
             {
               "it": "tariffa",
-              "zh": "票价"
+              "zh": "票价",
+              "audio": "audio/w/94799c1f4a51.mp3"
             }
           ],
           "sentences": [
@@ -3416,75 +3707,93 @@
           "vocab": [
             {
               "it": "negozio",
-              "zh": "商店"
+              "zh": "商店",
+              "audio": "audio/w/fe8903725c2c.mp3"
             },
             {
               "it": "lungo",
-              "zh": "长"
+              "zh": "长",
+              "audio": "audio/w/2d48c13127cb.mp3"
             },
             {
               "it": "prodotto",
-              "zh": "商品，产品"
+              "zh": "商品，产品",
+              "audio": "audio/w/9a04bd224a14.mp3"
             },
             {
               "it": "corto",
-              "zh": "短"
+              "zh": "短",
+              "audio": "audio/w/a523e5667a5c.mp3"
             },
             {
               "it": "specialità",
-              "zh": "特产，特色"
+              "zh": "特产，特色",
+              "audio": "audio/w/de27eab399fa.mp3"
             },
             {
               "it": "leggero",
-              "zh": "轻"
+              "zh": "轻",
+              "audio": "audio/w/21cc766fd9cd.mp3"
             },
             {
               "it": "tipico",
-              "zh": "典型的，代表性的"
+              "zh": "典型的，代表性的",
+              "audio": "audio/w/17ae42a155b5.mp3"
             },
             {
               "it": "pesante",
-              "zh": "重"
+              "zh": "重",
+              "audio": "audio/w/09e4e62dc1c5.mp3"
             },
             {
               "it": "peso",
-              "zh": "重量"
+              "zh": "重量",
+              "audio": "audio/w/b0c7efa6f3eb.mp3"
             },
             {
               "it": "verdura",
-              "zh": "蔬菜"
+              "zh": "蔬菜",
+              "audio": "audio/w/c63cd472abf9.mp3"
             },
             {
               "it": "annusare",
-              "zh": "闻"
+              "zh": "闻",
+              "audio": "audio/w/7975f38efc35.mp3"
             },
             {
               "it": "carne",
-              "zh": "肉"
+              "zh": "肉",
+              "audio": "audio/w/8ecc854e0639.mp3"
             },
             {
               "it": "assaggiare",
-              "zh": "品尝"
+              "zh": "品尝",
+              "audio": "audio/w/dfac8c47837f.mp3"
             },
             {
               "it": "pasta",
-              "zh": "意大利面"
+              "zh": "意大利面",
+              "audio": "audio/w/46139b0b16d7.mp3"
             },
             {
               "it": "sentire",
-              "zh": "感觉"
+              "zh": "感觉",
+              "audio": "audio/w/e2416464b5e5.mp3"
             },
             {
               "it": "birra",
-              "zh": "啤酒"
+              "zh": "啤酒",
+              "audio": "audio/w/71ce98a6e50f.mp3"
             },
             {
               "it": "toccare",
-              "zh": "碰，触摸"
+              "zh": "碰，触摸",
+              "audio": "audio/w/edd4402faa32.mp3"
             },
             {
               "it": "liquore",
-              "zh": "烈酒"
+              "zh": "烈酒",
+              "audio": "audio/w/d53f44078d01.mp3"
             }
           ],
           "sentences": [
@@ -3559,59 +3868,73 @@
           "vocab": [
             {
               "it": "buongiorno",
-              "zh": "早上好"
+              "zh": "早上好",
+              "audio": "audio/w/f0fa9097a41d.mp3"
             },
             {
               "it": "invitare",
-              "zh": "邀请"
+              "zh": "邀请",
+              "audio": "audio/w/17fc64dcf548.mp3"
             },
             {
               "it": "buonasera",
-              "zh": "晚上好"
+              "zh": "晚上好",
+              "audio": "audio/w/c3eb54e68a19.mp3"
             },
             {
               "it": "accettare",
-              "zh": "接受"
+              "zh": "接受",
+              "audio": "audio/w/460091f43087.mp3"
             },
             {
               "it": "buonanotte",
-              "zh": "晚安"
+              "zh": "晚安",
+              "audio": "audio/w/fab33a7549d2.mp3"
             },
             {
               "it": "rifiutare",
-              "zh": "拒绝"
+              "zh": "拒绝",
+              "audio": "audio/w/dda74417f81b.mp3"
             },
             {
               "it": "buona festa",
-              "zh": "节日快乐"
+              "zh": "节日快乐",
+              "audio": "audio/w/fb255d9667e6.mp3"
             },
             {
               "it": "arrivederci",
-              "zh": "再见"
+              "zh": "再见",
+              "audio": "audio/w/0fd32ba65c5e.mp3"
             },
             {
               "it": "salutare",
-              "zh": "问候"
+              "zh": "问候",
+              "audio": "audio/w/fc57b070fe00.mp3"
             },
             {
               "it": "augurio",
-              "zh": "祝福"
+              "zh": "祝福",
+              "audio": "audio/w/9c47c544082c.mp3"
             },
             {
               "it": "abbracciare",
-              "zh": "拥抱"
+              "zh": "拥抱",
+              "audio": "audio/w/b9647e6a5c51.mp3"
             },
             {
               "it": "congratulazione",
-              "zh": "恭喜"
+              "zh": "恭喜",
+              "audio": "audio/w/274bb234b73f.mp3"
             },
             {
               "it": "baciare",
-              "zh": "亲吻"
+              "zh": "亲吻",
+              "audio": "audio/w/2b319db5848c.mp3"
             },
             {
               "it": "piacere",
-              "zh": "很高兴"
+              "zh": "很高兴",
+              "audio": "audio/w/bd787610f8b1.mp3"
             }
           ],
           "sentences": [
@@ -3728,103 +4051,128 @@
           "vocab": [
             {
               "it": "ospedale",
-              "zh": "医院"
+              "zh": "医院",
+              "audio": "audio/w/3baa35787113.mp3"
             },
             {
               "it": "medicinale",
-              "zh": "药品"
+              "zh": "药品",
+              "audio": "audio/w/9968973ee79a.mp3"
             },
             {
               "it": "dottore",
-              "zh": "医生，大夫"
+              "zh": "医生，大夫",
+              "audio": "audio/w/cbea60a00b9f.mp3"
             },
             {
               "it": "prescrizione",
-              "zh": "处方"
+              "zh": "处方",
+              "audio": "audio/w/2e9222907493.mp3"
             },
             {
               "it": "medico",
-              "zh": "医生"
+              "zh": "医生",
+              "audio": "audio/w/c83be042605c.mp3"
             },
             {
               "it": "ricetta",
-              "zh": "处方"
+              "zh": "处方",
+              "audio": "audio/w/8662e9dd35f3.mp3"
             },
             {
               "it": "infermiera",
-              "zh": "护士"
+              "zh": "护士",
+              "audio": "audio/w/32a8a4b8ce5b.mp3"
             },
             {
               "it": "farmaci senza obbligo di ricetta",
-              "zh": "非处方药"
+              "zh": "非处方药",
+              "audio": "audio/w/45b357bd29c1.mp3"
             },
             {
               "it": "farmacia",
-              "zh": "药店，药房"
+              "zh": "药店，药房",
+              "audio": "audio/w/fb430e74e540.mp3"
             },
             {
               "it": "farmacista",
-              "zh": "药剂师"
+              "zh": "药剂师",
+              "audio": "audio/w/bd3873e90ce6.mp3"
             },
             {
               "it": "antibiotico",
-              "zh": "抗生素"
+              "zh": "抗生素",
+              "audio": "audio/w/f113b3eca9e1.mp3"
             },
             {
               "it": "allergia",
-              "zh": "过敏"
+              "zh": "过敏",
+              "audio": "audio/w/0b6860be825f.mp3"
             },
             {
               "it": "allergico",
-              "zh": "过敏的"
+              "zh": "过敏的",
+              "audio": "audio/w/29f328ba14d0.mp3"
             },
             {
               "it": "collirio",
-              "zh": "眼药水"
+              "zh": "眼药水",
+              "audio": "audio/w/79fa5b7ead00.mp3"
             },
             {
               "it": "diarrea",
-              "zh": "腹泻"
+              "zh": "腹泻",
+              "audio": "audio/w/5e37750bdcb3.mp3"
             },
             {
               "it": "capsula",
-              "zh": "胶囊"
+              "zh": "胶囊",
+              "audio": "audio/w/3812751cd99b.mp3"
             },
             {
               "it": "febbre",
-              "zh": "发烧"
+              "zh": "发烧",
+              "audio": "audio/w/2f96e364fdec.mp3"
             },
             {
               "it": "pillola",
-              "zh": "药丸"
+              "zh": "药丸",
+              "audio": "audio/w/15c98d9ada1d.mp3"
             },
             {
               "it": "frattura",
-              "zh": "骨折"
+              "zh": "骨折",
+              "audio": "audio/w/752d9470334e.mp3"
             },
             {
               "it": "pomata",
-              "zh": "药膏"
+              "zh": "药膏",
+              "audio": "audio/w/cfcd14afa87c.mp3"
             },
             {
               "it": "nausea",
-              "zh": "恶心"
+              "zh": "恶心",
+              "audio": "audio/w/01845c6018d7.mp3"
             },
             {
               "it": "benda",
-              "zh": "绷带"
+              "zh": "绷带",
+              "audio": "audio/w/5e5f5b19813c.mp3"
             },
             {
               "it": "raffreddore",
-              "zh": "感冒"
+              "zh": "感冒",
+              "audio": "audio/w/bda4346a9cbd.mp3"
             },
             {
               "it": "termometro",
-              "zh": "体温计"
+              "zh": "体温计",
+              "audio": "audio/w/c12fd43f5dc4.mp3"
             },
             {
               "it": "tosse",
-              "zh": "咳嗽"
+              "zh": "咳嗽",
+              "audio": "audio/w/03e72727f79d.mp3"
             }
           ],
           "sentences": [
@@ -3902,63 +4250,78 @@
           "vocab": [
             {
               "it": "ufficio postale",
-              "zh": "邮局"
+              "zh": "邮局",
+              "audio": "audio/w/822255e1a936.mp3"
             },
             {
               "it": "mandare",
-              "zh": "寄送"
+              "zh": "寄送",
+              "audio": "audio/w/f648c753eb93.mp3"
             },
             {
               "it": "postino",
-              "zh": "邮递员"
+              "zh": "邮递员",
+              "audio": "audio/w/8661663c1e42.mp3"
             },
             {
               "it": "spedire",
-              "zh": "寄送"
+              "zh": "寄送",
+              "audio": "audio/w/4f8a4ba9cb0d.mp3"
             },
             {
               "it": "tabaccheria",
-              "zh": "烟草店"
+              "zh": "烟草店",
+              "audio": "audio/w/281a8b632346.mp3"
             },
             {
               "it": "imbucare",
-              "zh": "投信"
+              "zh": "投信",
+              "audio": "audio/w/f1f674c563ba.mp3"
             },
             {
               "it": "tabaccaio",
-              "zh": "烟草店老板"
+              "zh": "烟草店老板",
+              "audio": "audio/w/19a4adde3c32.mp3"
             },
             {
               "it": "lettera",
-              "zh": "信件"
+              "zh": "信件",
+              "audio": "audio/w/ec08d7188123.mp3"
             },
             {
               "it": "buca postale",
-              "zh": "邮筒"
+              "zh": "邮筒",
+              "audio": "audio/w/2a481cc6fce7.mp3"
             },
             {
               "it": "pacco",
-              "zh": "包裹"
+              "zh": "包裹",
+              "audio": "audio/w/69cd46d9711d.mp3"
             },
             {
               "it": "francobollo",
-              "zh": "邮票"
+              "zh": "邮票",
+              "audio": "audio/w/ccd5685735e3.mp3"
             },
             {
               "it": "mittente",
-              "zh": "发信人"
+              "zh": "发信人",
+              "audio": "audio/w/c807e3ab071e.mp3"
             },
             {
               "it": "marca da bollo",
-              "zh": "印花税票"
+              "zh": "印花税票",
+              "audio": "audio/w/6a869a7dfc22.mp3"
             },
             {
               "it": "destinatario",
-              "zh": "收信人"
+              "zh": "收信人",
+              "audio": "audio/w/91f6a375ea4f.mp3"
             },
             {
               "it": "attaccare",
-              "zh": "粘贴"
+              "zh": "粘贴",
+              "audio": "audio/w/16f7beed2737.mp3"
             }
           ],
           "sentences": [
@@ -4071,67 +4434,83 @@
           "vocab": [
             {
               "it": "posta",
-              "zh": "邮局，邮件"
+              "zh": "邮局，邮件",
+              "audio": "audio/w/48895a7662df.mp3"
             },
             {
               "it": "intestatario",
-              "zh": "持票人"
+              "zh": "持票人",
+              "audio": "audio/w/9e287f680ba8.mp3"
             },
             {
               "it": "busta",
-              "zh": "信封"
+              "zh": "信封",
+              "audio": "audio/w/3d5466f7aae5.mp3"
             },
             {
               "it": "causale",
-              "zh": "事由"
+              "zh": "事由",
+              "audio": "audio/w/109e7245d40b.mp3"
             },
             {
               "it": "cartolina",
-              "zh": "明信片"
+              "zh": "明信片",
+              "audio": "audio/w/cb2ccb69efb2.mp3"
             },
             {
               "it": "versamento",
-              "zh": "存款"
+              "zh": "存款",
+              "audio": "audio/w/2815769eb598.mp3"
             },
             {
               "it": "raccomandata",
-              "zh": "挂号信"
+              "zh": "挂号信",
+              "audio": "audio/w/4dad6e43da5c.mp3"
             },
             {
               "it": "tasse di iscrizione",
-              "zh": "（学校）注册费"
+              "zh": "（学校）注册费",
+              "audio": "audio/w/5421f1e2733f.mp3"
             },
             {
               "it": "ritiro",
-              "zh": "取（信）"
+              "zh": "取（信）",
+              "audio": "audio/w/10622d6cce90.mp3"
             },
             {
               "it": "C.A.P.",
-              "zh": "邮政编码"
+              "zh": "邮政编码",
+              "audio": "audio/w/4557363331c4.mp3"
             },
             {
               "it": "importo",
-              "zh": "数额，款项"
+              "zh": "数额，款项",
+              "audio": "audio/w/85f2e0e47003.mp3"
             },
             {
               "it": "autosigillante",
-              "zh": "自动封口的"
+              "zh": "自动封口的",
+              "audio": "audio/w/56e6837d2e12.mp3"
             },
             {
               "it": "pagamento",
-              "zh": "支付，付款"
+              "zh": "支付，付款",
+              "audio": "audio/w/70b940abd78a.mp3"
             },
             {
               "it": "bolletino",
-              "zh": "票据，汇款单"
+              "zh": "票据，汇款单",
+              "audio": "audio/w/dce06c5db3d8.mp3"
             },
             {
               "it": "utenza",
-              "zh": "使用"
+              "zh": "使用",
+              "audio": "audio/w/56b13379283d.mp3"
             },
             {
               "it": "precompilato",
-              "zh": "预先填好的"
+              "zh": "预先填好的",
+              "audio": "audio/w/c4cda43e8fd5.mp3"
             }
           ],
           "sentences": [
