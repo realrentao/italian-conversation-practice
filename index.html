@@ -223,7 +223,7 @@ function playMonoSeq(btn, uid, seg, count){
     audioEl.src=urls[i];
     audioEl.play().catch(()=>{});
     audioEl.onended=()=>{ if(lines[i]) lines[i].classList.remove('playing'); i++; next(); };
-    if(lines[i]) lines[i].classList.add('playing');
+    if(lines[i]){ lines[i].classList.add('playing'); lines[i].scrollIntoView({behavior:'smooth', block:'center'}); }
   }
   audioEl.onended=next; next();
 }
@@ -247,6 +247,7 @@ function playConvSeq(btn){
     audioEl.play().catch(()=>{});
     audioEl.onended = ()=>{ bubbles[i].classList.remove('playing'); i++; next(); };
     bubbles[i].classList.add('playing');
+    bubbles[i].scrollIntoView({behavior:'smooth', block:'center'});
   }
   audioEl.onended=next; next();
 }
@@ -254,13 +255,17 @@ function playSeq(urls, btn){
   if(playingBtn===btn){ stopAudio(); return; }
   stopAudio();
   audioEl.playbackRate = RATE_FACTOR[curSpeed];
+  let wrap = btn.parentElement;
+  while(wrap && !wrap.querySelector('.sent-grid')) wrap = wrap.parentElement;
+  const cards = wrap ? Array.from(wrap.querySelectorAll('.sentence-item')) : [];
   let i=0;
   playingBtn=btn; btn.classList.add('playing');
   function next(){
     if(i>=urls.length){ btn.classList.remove('playing'); playingBtn=null; return; }
-    audioEl.src=urls[i++];
+    audioEl.src=urls[i];
     audioEl.play().catch(()=>{});
-    audioEl.onended=next;
+    audioEl.onended=()=>{ if(cards[i]) cards[i].classList.remove('playing'); i++; next(); };
+    if(cards[i]){ cards[i].classList.add('playing'); cards[i].scrollIntoView({behavior:'smooth', block:'center'}); }
   }
   audioEl.onended=next; next();
 }
