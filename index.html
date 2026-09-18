@@ -58,6 +58,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 .vocab-item:hover{box-shadow:0 2px 8px rgba(0,0,0,.1);transform:translateY(-1px)}
 .vocab-item .play-icon{font-size:11px;margin-right:10px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#e8e8e8;transition:.15s;flex-shrink:0}
 .vocab-item .play-icon.playing{background:#00e5ff;color:#fff}
+.vocab-item.playing{box-shadow:0 0 0 2px #00e5ff,0 2px 10px rgba(0,0,0,.12);background:#e8fbff}
 .vocab-item .it{font-weight:600;color:#333;font-size:15px}
 .vocab-item .zh{color:#888;font-size:14px;margin-left:auto;padding-left:10px}
 /* Sentences */
@@ -66,6 +67,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 .sentence-item:hover{box-shadow:0 2px 8px rgba(0,0,0,.1)}
 .sentence-item .s-play{font-size:11px;width:30px;height:30px;border:none;border-radius:50%;background:#e8e8e8;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s;margin-right:12px}
 .sentence-item .s-play.playing{background:#00e5ff;color:#fff}
+.sentence-item.playing{box-shadow:0 0 0 2px #00e5ff,0 2px 10px rgba(0,0,0,.12);background:#e8fbff}
 .sentence-item .s-text{flex:1;min-width:0}
 .sentence-item .it{font-weight:600;color:#333;font-size:15px}
 .sentence-item .zh{font-size:13px;color:#888;margin-top:2px}
@@ -263,8 +265,8 @@ function renderUnit(u){
     html += `<div class="section-title">Parole chiave <span class="it">关键词</span></div><div class="vocab-grid">`;
     u.vocab.forEach(v=>{
       const url = v.audio || '';
-      html += `<div class="vocab-item" onclick="playVocab(this.querySelector('.play-icon'),'${url}')">
-        <span class="play-icon">▶</span><span class="it">${esc(v.it)}</span><span class="zh">${esc(v.zh)}</span></div>`;
+      html += `<div class="vocab-item" onclick="playVocab(this,'${url}')">
+        <span class="it">${esc(v.it)}</span><span class="zh">${esc(v.zh)}</span></div>`;
     });
     html += `</div>`;
   }
@@ -275,8 +277,7 @@ function renderUnit(u){
     html += `<div style="margin-bottom:8px"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="playSeq([${urls.map(x=>`'${x}'`).join(',')}],this)">▶ 播放全部</button></div>`;
     html += `<div class="sent-grid">`;
     u.sentences.forEach((s,i)=>{
-      html += `<div class="sentence-item">
-        <button class="s-play" onclick="playSentence(this,'${u.id}',${i})">▶</button>
+      html += `<div class="sentence-item" onclick="playSentence(this,'${u.id}',${i})">
         <div class="s-text"><div class="it">${esc(s.it)}</div><div class="zh">${esc(s.zh)}</div></div></div>`;
     });
     html += `</div>`;
