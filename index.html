@@ -167,7 +167,9 @@ function filterTOC(q){
 
 // ====== AUDIO ENGINE ======
 let curSpeed='m';
+const RATE_FACTOR = {s:0.7, m:1.0, f:1.25};
 let audioEl=new Audio();
+audioEl.playbackRate = RATE_FACTOR[curSpeed];
 let playingBtn=null;
 function stopAudio(){
   audioEl.pause(); audioEl.currentTime=0;
@@ -177,18 +179,20 @@ function playUrl(url, btn){
   if(playingBtn===btn){ stopAudio(); return; }
   stopAudio();
   audioEl.src=url;
+  audioEl.playbackRate = RATE_FACTOR[curSpeed];
   const p=audioEl.play();
   if(p&&p.catch) p.catch(()=>{});
   playingBtn=btn; if(btn) btn.classList.add('playing');
   audioEl.onended=()=>{ if(playingBtn){playingBtn.classList.remove('playing'); playingBtn=null;} };
 }
 function playVocab(btn, url){ playUrl(url, btn); }
-function playSentence(btn, uid, idx){ playUrl(`audio/s/${uid}_${idx}_${curSpeed}.mp3`, btn); }
-function playDialogue(btn, uid, seg){ playUrl(`audio/d/${uid}_${seg}_${curSpeed}.mp3`, btn); }
-function playConv(btn, base){ playUrl(`${base}_${curSpeed}.mp3`, btn); }
+function playSentence(btn, uid, idx){ playUrl(`audio/s/${uid}_${idx}_m.mp3`, btn); }
+function playDialogue(btn, uid, seg){ playUrl(`audio/d/${uid}_${seg}_m.mp3`, btn); }
+function playConv(btn, base){ playUrl(`${base}_m.mp3`, btn); }
 function playSeq(urls, btn){
   if(playingBtn===btn){ stopAudio(); return; }
   stopAudio();
+  audioEl.playbackRate = RATE_FACTOR[curSpeed];
   let i=0;
   playingBtn=btn; btn.classList.add('playing');
   function next(){
@@ -266,7 +270,7 @@ function renderUnit(u){
   }
   // Sentences
   if(u.sentences && u.sentences.length){
-    const urls = u.sentences.map((s,i)=>`audio/s/${u.id}_${i}_${curSpeed}.mp3`);
+    const urls = u.sentences.map((s,i)=>`audio/s/${u.id}_${i}_m.mp3`);
     html += `<div class="section-title">Frasi d'uso comune <span class="it">常用句</span></div>`;
     html += `<div style="margin-bottom:8px"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="playSeq([${urls.map(x=>`'${x}'`).join(',')}],this)">▶ 播放全部</button></div>`;
     html += `<div class="sent-grid">`;
@@ -369,6 +373,8 @@ function renderUnit(u){
 function setSpeed(s, btn){
   curSpeed=s;
   document.querySelectorAll('.speed-bar .speed-btn').forEach(b=>b.classList.toggle('active', b===btn));
+  // 播放中实时变速：立即改变 playbackRate，不暂停、不丢进度
+  if(audioEl && !audioEl.paused){ audioEl.playbackRate = RATE_FACTOR[s]; }
 }
 
 // ====== MOBILE ======
