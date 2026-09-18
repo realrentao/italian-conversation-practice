@@ -79,12 +79,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 .dialogue-seg .d-tag{font-size:13px;font-weight:500;color:#666}
 .dialogue-seg .d-it{font-size:15px;font-weight:500;color:#222;line-height:1.7;white-space:pre-wrap;background:#f8f9ff;padding:12px 14px;border-radius:8px;border-left:3px solid #00e5ff;margin-bottom:8px}
 .dialogue-seg .d-zh{font-size:14px;color:#555;line-height:1.8;white-space:pre-wrap}
-.pair-line{position:relative;padding:9px 10px 9px 34px;border-bottom:1px dashed #e6e8f0;cursor:pointer;transition:.15s;border-radius:8px;margin:0 -10px}
-.pair-line:before{content:"▶";position:absolute;left:12px;top:11px;font-size:11px;color:#00a0c0;opacity:.45;transition:.15s}
+.pair-line{position:relative;padding:9px 10px;border-bottom:1px dashed #e6e8f0;cursor:pointer;transition:.15s;border-radius:8px;margin:0 -10px}
 .pair-line:hover{background:#f0faff}
-.pair-line:hover:before{opacity:1}
 .pair-line.playing{background:#e8fbff;box-shadow:0 0 0 2px #00e5ff}
-.pair-line.playing:before{color:#00e5ff;opacity:1}
 .pair-line:last-child{border-bottom:none}
 .pair-line .d-it{border-left:none;background:transparent;padding:0;margin-bottom:3px;font-size:16px}
 .pair-line .d-zh{padding:0}
@@ -376,7 +373,7 @@ function renderUnit(u){
           html += `<div class="conv-ctl"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="playConvSeq(this)">▶ 全局连播</button></div>`;
           html += `<div class="conv">`;
           conv.forEach((ln,ci)=>{
-            const who = ln.speaker==='aldo' ? 'Aldo Sparice' : 'Signorina';
+            const who = ln.speaker==='aldo' ? 'Aldo Sparice' : 'Signora';
             const cls = ln.speaker==='aldo' ? 'aldo' : 'signora';
             html += `<div class="conv-row ${cls}" data-audio="${ln.audio}">`
               + `<div class="conv-head"><span class="conv-who">${who}</span></div>`
