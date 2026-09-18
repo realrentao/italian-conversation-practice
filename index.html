@@ -79,7 +79,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 .dialogue-seg .d-tag{font-size:13px;font-weight:500;color:#666}
 .dialogue-seg .d-it{font-size:15px;font-weight:500;color:#222;line-height:1.7;white-space:pre-wrap;background:#f8f9ff;padding:12px 14px;border-radius:8px;border-left:3px solid #00e5ff;margin-bottom:8px}
 .dialogue-seg .d-zh{font-size:14px;color:#555;line-height:1.8;white-space:pre-wrap}
-.pair-line{padding:9px 0;border-bottom:1px dashed #e6e8f0}
+.pair-line{position:relative;padding:9px 10px 9px 34px;border-bottom:1px dashed #e6e8f0;cursor:pointer;transition:.15s;border-radius:8px;margin:0 -10px}
+.pair-line:before{content:"▶";position:absolute;left:12px;top:11px;font-size:11px;color:#00a0c0;opacity:.45;transition:.15s}
+.pair-line:hover{background:#f0faff}
+.pair-line:hover:before{opacity:1}
+.pair-line.playing{background:#e8fbff;box-shadow:0 0 0 2px #00e5ff}
+.pair-line.playing:before{color:#00e5ff;opacity:1}
 .pair-line:last-child{border-bottom:none}
 .pair-line .d-it{border-left:none;background:transparent;padding:0;margin-bottom:3px;font-size:16px}
 .pair-line .d-zh{padding:0}
@@ -175,7 +180,9 @@ audioEl.playbackRate = RATE_FACTOR[curSpeed];
 let playingBtn=null;
 function stopAudio(){
   audioEl.pause(); audioEl.currentTime=0;
-  if(playingBtn){ playingBtn.classList.remove('playing'); playingBtn=null; }
+  // 清除所有高亮（词卡 / 句子 / 对话气泡 / 独白句），避免卡住
+  document.querySelectorAll('.playing').forEach(el=>el.classList.remove('playing'));
+  playingBtn=null;
 }
 function playUrl(url, btn){
   if(playingBtn===btn){ stopAudio(); return; }
@@ -191,6 +198,32 @@ function playVocab(btn, url){ playUrl(url, btn); }
 function playSentence(btn, uid, idx){ playUrl(`audio/s/${uid}_${idx}_m.mp3`, btn); }
 function playDialogue(btn, uid, seg){ playUrl(`audio/d/${uid}_${seg}_m.mp3`, btn); }
 function playConv(btn, base){ playUrl(`${base}_m.mp3`, btn); }
+// 独白逐句独立播放：audio/d/<uid>_<seg>_<pidx>_m.mp3
+function playMonoPair(btn, uid, seg, pidx){ playUrl(`audio/d/${uid}_${seg}_${pidx}_m.mp3`, btn); }
+// 独白逐句连播：依次点亮每一句气泡
+function playMonoSeq(btn, uid, seg, count){
+  if(playingBtn===btn){ stopAudio(); return; }
+  stopAudio();
+  audioEl.playbackRate = RATE_FACTOR[curSpeed];
+  const segEl = btn.closest('.dialogue-seg');
+  const lines = segEl ? Array.from(segEl.querySelectorAll('.pair-line')) : [];
+  const urls = [];
+  for(let i=0;i<count;i++) urls.push(`audio/d/${uid}_${seg}_${i}_m.mp3`);
+  let i=0;
+  playingBtn=btn; btn.classList.add('playing');
+  function next(){
+    if(i>=urls.length){
+      btn.classList.remove('playing');
+      lines.forEach(l=>l.classList.remove('playing'));
+      playingBtn=null; return;
+    }
+    audioEl.src=urls[i];
+    audioEl.play().catch(()=>{});
+    audioEl.onended=()=>{ if(lines[i]) lines[i].classList.remove('playing'); i++; next(); };
+    if(lines[i]) lines[i].classList.add('playing');
+  }
+  audioEl.onended=next; next();
+}
 function playSeq(urls, btn){
   if(playingBtn===btn){ stopAudio(); return; }
   stopAudio();
@@ -290,11 +323,14 @@ function renderUnit(u){
         html += `<div class="section-title">${esc(sec.title)}</div>`;
         (sec.segs||[]).forEach(seg=>{
           const d = u.dialogue[seg]; if(!d) return;
-          html += `<div class="dialogue-seg">
-            <div class="d-head"><button class="d-play" onclick="playDialogue(this,'${u.id}',${seg})">▶</button><span class="d-tag">播放本段</span></div>`;
+          const nPairs = (d.pairs && d.pairs.length) ? d.pairs.length : 0;
+          const headBtn = nPairs>0
+            ? `<button class="d-play" onclick="playMonoSeq(this,'${u.id}',${seg},${nPairs})">▶</button><span class="d-tag">逐句连播</span>`
+            : `<button class="d-play" onclick="playDialogue(this,'${u.id}',${seg})">▶</button><span class="d-tag">播放本段</span>`;
+          html += `<div class="dialogue-seg"><div class="d-head">${headBtn}</div>`;
           if(d.pairs && d.pairs.length){
-            d.pairs.forEach(p=>{
-              html += `<div class="pair-line"><div class="d-it">${esc(p.it)}</div><div class="d-zh">${esc(p.zh)}</div></div>`;
+            d.pairs.forEach((p,pi)=>{
+              html += `<div class="pair-line" onclick="playMonoPair(this,'${u.id}',${seg},${pi})"><div class="d-it">${esc(p.it)}</div><div class="d-zh">${esc(p.zh)}</div></div>`;
             });
           } else {
             html += `<div class="d-it">${esc(d.it)}</div>`;
