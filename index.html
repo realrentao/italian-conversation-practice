@@ -215,7 +215,7 @@ function playMonoSeq(btn, uid, seg, count){
   if(playingBtn===btn){ stopAudio(); return; }
   stopAudio();
   audioEl.playbackRate = RATE_FACTOR[curSpeed];
-  const segEl = btn.closest('.dialogue-seg');
+  const segEl = btn.nextElementSibling;
   const lines = segEl ? Array.from(segEl.querySelectorAll('.pair-line')) : [];
   const urls = [];
   for(let i=0;i<count;i++) urls.push(`audio/d/${uid}_${seg}_${i}_m.mp3`);
@@ -365,8 +365,8 @@ function renderUnit(u){
           const playAll = nPairs>0
             ? `playMonoSeq(this,'${u.id}',${seg},${nPairs})`
             : `playDialogue(this,'${u.id}',${seg})`;
-          html += `<div class="dialogue-seg">`;
           html += `<div style="margin-bottom:8px"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="${playAll}">▶ 播放全部</button></div>`;
+          html += `<div class="dialogue-seg">`;
           if(d.pairs && d.pairs.length){
             d.pairs.forEach((p,pi)=>{
               html += `<div class="pair-line" onclick="playMonoPair(this,'${u.id}',${seg},${pi})"><div class="d-it">${esc(p.it)}</div><div class="d-zh">${esc(p.zh)}</div></div>`;
