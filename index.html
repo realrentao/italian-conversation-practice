@@ -250,7 +250,8 @@ function playConvSeq(btn){
   if(playingBtn===btn){ stopAudio(); return; }
   stopAudio();
   audioEl.playbackRate = RATE_FACTOR[curSpeed];
-  const convEl = btn.parentElement.nextElementSibling;
+  const card = btn.parentElement.nextElementSibling;
+  const convEl = card ? card.querySelector('.conv') : null;
   const bubbles = convEl ? Array.from(convEl.querySelectorAll('.conv-bubble')) : [];
   let i=0;
   playingBtn=btn; btn.classList.add('playing');
@@ -392,8 +393,8 @@ function renderUnit(u){
         const conv = u.conversation||[];
         if(conv.length){
           html += `<div class="section-title">${esc(sec.title)}</div>`;
+          html += `<div style="margin-bottom:8px"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="playConvSeq(this)">▶ 全局连播</button></div>`;
           html += `<div class="conv-card">`;
-          html += `<div class="conv-ctl"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="playConvSeq(this)">▶ 全局连播</button></div>`;
           html += `<div class="conv">`;
           conv.forEach((ln,ci)=>{
             const who = ln.speaker==='aldo' ? 'Aldo Sparice' : 'Signora';
