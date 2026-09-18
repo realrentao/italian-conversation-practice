@@ -361,10 +361,11 @@ function renderUnit(u){
         (sec.segs||[]).forEach(seg=>{
           const d = u.dialogue[seg]; if(!d) return;
           const nPairs = (d.pairs && d.pairs.length) ? d.pairs.length : 0;
-          const headBtn = nPairs>0
-            ? `<button class="d-play" onclick="playMonoSeq(this,'${u.id}',${seg},${nPairs})">▶</button><span class="d-tag">逐句连播</span>`
-            : `<button class="d-play" onclick="playDialogue(this,'${u.id}',${seg})">▶</button><span class="d-tag">播放本段</span>`;
-          html += `<div class="dialogue-seg"><div class="d-head">${headBtn}</div>`;
+          const playAll = nPairs>0
+            ? `playMonoSeq(this,'${u.id}',${seg},${nPairs})`
+            : `playDialogue(this,'${u.id}',${seg})`;
+          html += `<div class="dialogue-seg">`;
+          html += `<div style="margin-bottom:8px"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="${playAll}">▶ 播放全部</button></div>`;
           if(d.pairs && d.pairs.length){
             d.pairs.forEach((p,pi)=>{
               html += `<div class="pair-line" onclick="playMonoPair(this,'${u.id}',${seg},${pi})"><div class="d-it">${esc(p.it)}</div><div class="d-zh">${esc(p.zh)}</div></div>`;
