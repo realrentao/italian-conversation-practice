@@ -289,6 +289,32 @@ function playSeq(urls, btn){
   audioEl.onended=next; next();
 }
 
+// 关键词全局连播：依次播放每个单词并点亮对应卡片
+function playVocabSeq(btn){
+  if(playingBtn===btn){ stopAudio(); return; }
+  stopAudio();
+  audioEl.playbackRate = RATE_FACTOR[curSpeed];
+  let wrap = btn.parentElement;
+  while(wrap && !wrap.querySelector('.vocab-grid')) wrap = wrap.parentElement;
+  const cards = wrap ? Array.from(wrap.querySelectorAll('.vocab-item')) : [];
+  const idxs = cards
+    .map((c,k)=>({k, url:(c.getAttribute('onclick').match(/'([^']*)'$/)||[])[1]||''}))
+    .filter(o=>o.url)
+    .map(o=>o.k);
+  let i=0;
+  playingBtn=btn; btn.classList.add('playing');
+  function next(){
+    if(i>=idxs.length){ btn.classList.remove('playing'); playingBtn=null; return; }
+    const k=idxs[i];
+    const url = cards[k].getAttribute('onclick').match(/'([^']*)'$/)[1];
+    audioEl.src=url;
+    audioEl.play().catch(()=>{});
+    audioEl.onended=()=>{ cards[k].classList.remove('playing'); i++; next(); };
+    cards[k].classList.add('playing'); cards[k].scrollIntoView({behavior:'smooth', block:'center'});
+  }
+  audioEl.onended=next; next();
+}
+
 // ====== RENDER UNIT ======
 function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 // 场景人物：括号内的中文译文降级显示，保持「意语（中文）」的统一层次
@@ -345,7 +371,9 @@ function renderUnit(u){
   }
   // Vocab
   if(u.vocab && u.vocab.length){
-    html += `<div class="section-title">Parole chiave <span class="it">关键词</span></div><div class="vocab-grid">`;
+    html += `<div class="section-title">Parole chiave <span class="it">关键词</span></div>`;
+    html += `<div style="margin-bottom:8px"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="playVocabSeq(this)">▶ 播放全部</button></div>`;
+    html += `<div class="vocab-grid">`;
     u.vocab.forEach(v=>{
       const url = v.audio || '';
       html += `<div class="vocab-item" onclick="playVocab(this,'${url}')">
