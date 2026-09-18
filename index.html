@@ -226,7 +226,7 @@ function playMonoSeq(btn, uid, seg, count){
   if(playingBtn===btn){ stopAudio(); return; }
   stopAudio();
   audioEl.playbackRate = RATE_FACTOR[curSpeed];
-  const segEl = btn.nextElementSibling;
+  const segEl = btn.parentElement.nextElementSibling;
   const lines = segEl ? Array.from(segEl.querySelectorAll('.pair-line')) : [];
   const urls = [];
   for(let i=0;i<count;i++) urls.push(`audio/d/${uid}_${seg}_${i}_m.mp3`);
