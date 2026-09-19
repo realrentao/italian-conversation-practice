@@ -2112,20 +2112,24 @@
               ]
             },
             {
-              "it": "Questa è una novità anche per me: puoi cambiare lo Yuan qui in Italia, e credo nella maggior parte delle città europee.\nAnzi, più è grande l'importo che cambi, più è favorevole il tuo cambio.\nRisparmierai sulle commissioni, almeno in questo cambio qui.",
-              "zh": "这对我来说也是个新发现：你可以在意大利——我想在欧洲大部分城市也一样——兑换人民币。\n而且，你兑换的金额越大，汇率对你越优惠。\n至少在这个兑换点，你能省下一些手续费。",
+              "it": "Questa è una nuova informazione, anche per me, puoi anche cambiare lo Yuan, qui in Italia e credo nella maggior parte delle città europee.\nAnzi più è grande l'importo che cambi, più è favorevole il tuo cambio.\nAndrai a risparmiare sulle commissioni.\nPer lo meno in questo cambio qui.",
+              "zh": "即便对我来，这也是个新的信息。你可以在意大利——我相信也能在欧洲大部分城市——兑换人民币。\n不仅如此，兑换的金额越大，汇率对你越划算。\n你可以节省一些手续费。\n至少在这个兑换点是这样的。",
               "pairs": [
                 {
-                  "it": "Questa è una novità anche per me: puoi cambiare lo Yuan qui in Italia, e credo nella maggior parte delle città europee.",
-                  "zh": "这对我来说也是个新发现：你可以在意大利——我想在欧洲大部分城市也一样——兑换人民币。"
+                  "it": "Questa è una nuova informazione, anche per me, puoi anche cambiare lo Yuan, qui in Italia e credo nella maggior parte delle città europee.",
+                  "zh": "即便对我来，这也是个新的信息。你可以在意大利——我相信也能在欧洲大部分城市——兑换人民币。"
                 },
                 {
-                  "it": "Anzi, più è grande l'importo che cambi, più è favorevole il tuo cambio.",
-                  "zh": "而且，你兑换的金额越大，汇率对你越优惠。"
+                  "it": "Anzi più è grande l'importo che cambi, più è favorevole il tuo cambio.",
+                  "zh": "不仅如此，兑换的金额越大，汇率对你越划算。"
                 },
                 {
-                  "it": "Risparmierai sulle commissioni, almeno in questo cambio qui.",
-                  "zh": "至少在这个兑换点，你能省下一些手续费。"
+                  "it": "Andrai a risparmiare sulle commissioni.",
+                  "zh": "你可以节省一些手续费。"
+                },
+                {
+                  "it": "Per lo meno in questo cambio qui.",
+                  "zh": "至少在这个兑换点是这样的。"
                 }
               ]
             }
@@ -2375,7 +2379,7 @@
             },
             {
               "type": "text",
-              "title": "Cambiare lo Yuan 兑换人民币",
+              "title": "Dove si possono cambiare valute estere? 在哪儿能兑换外币？",
               "segs": [
                 4
               ]
