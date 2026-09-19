@@ -2613,79 +2613,505 @@
             {
               "it": "Cos'altro devo fare?",
               "zh": "我还有其他需要办理的手续吗？"
+            },
+            {
+              "it": "Quali moduli ci sono nel kit?",
+              "zh": "黄色信封里有哪些表格？"
             }
           ],
           "dialogue": [
             {
-              "it": "L'impresa di oggi non è tra le più semplici.\nHo da poco ritirato per un mio amico questa busta (questo kit), che contiene la modulistica per la\nrichiesta di rilascio oppure per il rinnovo del permesso di soggiorno, per cittadini stranieri.\nVediamo cosa c'è.\nUn bel po' di roba.\nIl bollettino di conto corrente postale.\nQuesto è in parte precompilato, dove indicheremo l'importo in base ai mesi di validità del rilascio del\npermesso di soggiorno.\nImportante (ma credo che tu abbia bisogno di un aiutino) è il modello che ti dà delle spiegazioni di\ncome compilare un modello che si chiama 209, o I, o II.\nIl Modello I è questo, ed è quello che interessa alla maggior parte dei cinesi che vengono qui a\nstudiare.\nIl Modello II può interessare a tutte le altre persone (tutte le altre straniere) che vengono per qualsiasi\naltro motivo, ad esempio, per lavorare, o come liberi professionisti.\nAncora ci sono degli altri modelli, questo è circa le informazioni generali.\nQuesto, tabella allegata n. 1.\nQuesto modello si chiama tabella (tabella allegata n. 1), perché ti dà una lista di nomi che a te\ninteressa solo unicamente per sapere qual è la sigla del tuo Paese.\nPer la Cina Popolare, è CHN, che poi dovrai indicare in una parte del modulo.\nPer compilare questo modello, il numero I, dovrai indicare il tuo cognome, il tuo nome (se ne hai più di\nuno, dovrai indicarli tutti), la provincia di domicilio (quindi dove ti troverai, dove ti trovi, o dove vuoi\nstabilirti, per il periodo di soggiorno), il comune, il motivo per cui richiedi il rilascio.\nSe hai già un permesso di soggiorno e devi rinnovarlo, devi indicare qui il numero.\nQui è la data di scadenza del permesso.\nQui dovrai indicare quali e quanti modelli hai compilato. Indica il numero totale dei fogli.\nQui questa frase significa che sei responsabile nel caso in cui non dici la verità.",
-              "zh": "今天的事儿不太容易办。\n刚才，我给一个朋友拿回了这信封（一套材料），里面装有申请办理或延期外国居民居留证的表格。\n我们看看都有些什么。\n东西还真不少。\n邮政账户汇款单。\n这是预先填好的部分，我们只要勾选与居留证有效期相对应的申请费金额就好了。\n重要的是这份说明表（我觉得你可能需要一点儿帮助），它将告诉你如何填写第209号表格，表格一或表格\n二。\n这是表格一，是大多数来这里学习的中国人都需要填写的表格。\n表格二涉及到出于其他目的到意大利来的人（所有其他外国人），比如出于工作目的，或者是作为自由职业\n者。\n这边还有一些其他表格，这张表上有一些通用信息。\n这张是附表一。\n这张表叫做\"附表（附表一）\"，提供了一系列国家名，你只需知道你的国家的缩写。\n中华人民共和国的缩写是CHN，随后你要将这个缩写填在表格的某个地方。\n填写这张表（表格一）时，你要写上你的姓、名（如果你有不止一个名字，要把所有的都写上）、居留省份\n（也就是你将前往的地方，你所在的地方，或者是你在居留期间想要居住的地方）、城市名称以及申请发放\n居留证的原因。\n如果你已有居留证，想要办理延期，就要在这里填写你的居留证号。\n这里是居留证到期日。\n在这里标明你一共填写了哪些表格以及表格的数量。把所填表格的总数写下来。\n这里这句话的意思是：如果没有如实填写，你将为此承担责任。"
+              "it": "L'impresa di oggi non è tra le più semplici.\nHo da poco ritirato per un mio amico questa busta (questo kit), che contiene la modulistica per la richiesta di rilascio oppure per il rinnovo del permesso di soggiorno, per cittadini stranieri.\nVediamo cosa c'è.\nUn bel po' di roba.\nIl bollettino di conto corrente postale.\nQuesto è in parte precompilato, dove indicheremo l'importo in base ai mesi di validità del rilascio del permesso di soggiorno.\nImportante (ma credo che tu abbia bisogno di un aiutino) è il modello che ti dà delle spiegazioni di come compilare un modello che si chiama 209, o I, o II.\nIl Modello I è questo, ed è quello che interessa alla maggior parte dei cinesi che vengono qui a studiare.\nIl Modello II può interessare a tutte le altre persone (tutte le altre straniere) che vengono per qualsiasi altro motivo, ad esempio, per lavorare, o come liberi professionisti.\nAncora ci sono degli altri modelli, questo è circa le informazioni generali.\nQuesto, tabella allegata n. 1.\nQuesto modello si chiama tabella (tabella allegata n. 1), perché ti dà una lista di nomi che a te interessa solo unicamente per sapere qual è la sigla del tuo Paese.\nPer la Cina Popolare, è CHN, che poi dovrai indicare in una parte del modulo.\nPer compilare questo modello, il numero I, dovrai indicare il tuo cognome, il tuo nome (se ne hai più di uno, dovrai indicarli tutti), la provincia di domicilio (quindi dove ti troverai, dove ti trovi, o dove vuoi stabilirti, per il periodo di soggiorno), il comune, il motivo per cui richiedi il rilascio.\nSe hai già un permesso di soggiorno e devi rinnovarlo, devi indicare qui il numero.\nQui è la data di scadenza del permesso.\nQui dovrai indicare quali e quanti modelli hai compilato. Indica il numero totale dei fogli.\nQui questa frase significa che sei responsabile nel caso in cui non dici la verità.",
+              "zh": "今天的事儿不太容易办。\n刚才，我给一个朋友拿回了这信封（一套材料），里面装有申请办理或延期外国居民居留证的表格。\n我们看看都有些什么。\n东西还真不少。\n邮政账户汇款单。\n这是预先填好的部分，我们只要勾选与居留证有效期相对应的申请费金额就好了。\n重要的是这份说明表（我觉得你可能需要一点儿帮助），它将告诉你如何填写第209号表格，表格一或表格二。\n这是表格一，是大多数来这里学习的中国人都需要填写的表格。\n表格二涉及到出于其他目的到意大利来的人（所有其他外国人），比如出于工作目的，或者是作为自由职业者。\n这边还有一些其他表格，这张表上有一些通用信息。\n这张是附表一。\n这张表叫做“附表（附表一）”，提供了一系列国家名，你只需知道你的国家的缩写。\n中华人民共和国的缩写是CHN，随后你要将这个缩写填在表格的某个地方。\n填写这张表（表格一）时，你要写上你的姓、名（如果你有不止一个名字，要把所有的都写上）、居留省份（也就是你将前往的地方，你所在的地方，或者是你在居留期间想要居住的地方）、城市名称以及申请发放居留证的原因。\n如果你已有居留证，想要办理延期，就要在这里填写你的居留证号。\n这里是居留证到期日。\n在这里标明你一共填写了哪些表格以及表格的数量。把所填表格的总数写下来。\n这里这句话的意思是：如果没有如实填写，你将为此承担责任。",
+              "pairs": [
+                {
+                  "it": "L'impresa di oggi non è tra le più semplici.",
+                  "zh": "今天的事儿不太容易办。"
+                },
+                {
+                  "it": "Ho da poco ritirato per un mio amico questa busta (questo kit), che contiene la modulistica per la richiesta di rilascio oppure per il rinnovo del permesso di soggiorno, per cittadini stranieri.",
+                  "zh": "刚才，我给一个朋友拿回了这信封（一套材料），里面装有申请办理或延期外国居民居留证的表格。"
+                },
+                {
+                  "it": "Vediamo cosa c'è.",
+                  "zh": "我们看看都有些什么。"
+                },
+                {
+                  "it": "Un bel po' di roba.",
+                  "zh": "东西还真不少。"
+                },
+                {
+                  "it": "Il bollettino di conto corrente postale.",
+                  "zh": "邮政账户汇款单。"
+                },
+                {
+                  "it": "Questo è in parte precompilato, dove indicheremo l'importo in base ai mesi di validità del rilascio del permesso di soggiorno.",
+                  "zh": "这是预先填好的部分，我们只要勾选与居留证有效期相对应的申请费金额就好了。"
+                },
+                {
+                  "it": "Importante (ma credo che tu abbia bisogno di un aiutino) è il modello che ti dà delle spiegazioni di come compilare un modello che si chiama 209, o I, o II.",
+                  "zh": "重要的是这份说明表（我觉得你可能需要一点儿帮助），它将告诉你如何填写第209号表格，表格一或表格二。"
+                },
+                {
+                  "it": "Il Modello I è questo, ed è quello che interessa alla maggior parte dei cinesi che vengono qui a studiare.",
+                  "zh": "这是表格一，是大多数来这里学习的中国人都需要填写的表格。"
+                },
+                {
+                  "it": "Il Modello II può interessare a tutte le altre persone (tutte le altre straniere) che vengono per qualsiasi altro motivo, ad esempio, per lavorare, o come liberi professionisti.",
+                  "zh": "表格二涉及到出于其他目的到意大利来的人（所有其他外国人），比如出于工作目的，或者是作为自由职业者。"
+                },
+                {
+                  "it": "Ancora ci sono degli altri modelli, questo è circa le informazioni generali.",
+                  "zh": "这边还有一些其他表格，这张表上有一些通用信息。"
+                },
+                {
+                  "it": "Questo, tabella allegata n. 1.",
+                  "zh": "这张是附表一。"
+                },
+                {
+                  "it": "Questo modello si chiama tabella (tabella allegata n. 1), perché ti dà una lista di nomi che a te interessa solo unicamente per sapere qual è la sigla del tuo Paese.",
+                  "zh": "这张表叫做“附表（附表一）”，提供了一系列国家名，你只需知道你的国家的缩写。"
+                },
+                {
+                  "it": "Per la Cina Popolare, è CHN, che poi dovrai indicare in una parte del modulo.",
+                  "zh": "中华人民共和国的缩写是CHN，随后你要将这个缩写填在表格的某个地方。"
+                },
+                {
+                  "it": "Per compilare questo modello, il numero I, dovrai indicare il tuo cognome, il tuo nome (se ne hai più di uno, dovrai indicarli tutti), la provincia di domicilio (quindi dove ti troverai, dove ti trovi, o dove vuoi stabilirti, per il periodo di soggiorno), il comune, il motivo per cui richiedi il rilascio.",
+                  "zh": "填写这张表（表格一）时，你要写上你的姓、名（如果你有不止一个名字，要把所有的都写上）、居留省份（也就是你将前往的地方，你所在的地方，或者是你在居留期间想要居住的地方）、城市名称以及申请发放居留证的原因。"
+                },
+                {
+                  "it": "Se hai già un permesso di soggiorno e devi rinnovarlo, devi indicare qui il numero.",
+                  "zh": "如果你已有居留证，想要办理延期，就要在这里填写你的居留证号。"
+                },
+                {
+                  "it": "Qui è la data di scadenza del permesso.",
+                  "zh": "这里是居留证到期日。"
+                },
+                {
+                  "it": "Qui dovrai indicare quali e quanti modelli hai compilato. Indica il numero totale dei fogli.",
+                  "zh": "在这里标明你一共填写了哪些表格以及表格的数量。把所填表格的总数写下来。"
+                },
+                {
+                  "it": "Qui questa frase significa che sei responsabile nel caso in cui non dici la verità.",
+                  "zh": "这里这句话的意思是：如果没有如实填写，你将为此承担责任。"
+                }
+              ]
             },
             {
-              "it": "Dopo aver effettuato il pagamento del bollettino con il relativo importo, e dopo aver acquistato una\nmarca da bollo (dovrai vedere l'importo corrispondente quando compilerai il modello), la dovrai\napplicare qui: marca da bollo, per rendere tutto il modello legale.\nDopodiché inserisci tutto nella busta.\nTi dovrai recare all'ufficio postale (perché questa busta è troppo grande per imbucarla in una buca\nnormale) e spedirla.\nL'impiegato ti dirà quando sarai richiamato in questura per le informazioni.\nDopo circa 40 giorni ti arriverà il permesso di soggiorno elettronico, è come una carta.",
-              "zh": "在完成相应金额的邮政汇款，并购买印花税票后（填表时要留意相应的印花税面额），把印花税票贴在这\n里，这张申请表就具有了法律效力。\n然后，将所有文件装入信封。\n你必须去邮局寄这个信封（因为这个信封太大了，无法投入普通邮筒）。\n工作人员会告诉你应该什么时候去警察局核对信息。\n大约40天以后，你会收到电子居留证，就像一张卡片。"
+              "it": "Dopo aver effettuato il pagamento del bollettino con il relativo importo, e dopo aver acquistato una marca da bollo (dovrai vedere l'importo corrispondente quando compilerai il modello), la dovrai applicare qui: marca da bollo, per rendere tutto il modello legale.\nDopodiché inserisci tutto nella busta.\nTi dovrai recare all'ufficio postale (perché questa busta è troppo grande per imbucarla in una buca normale) e spedirla.\nL'impiegato ti dirà quando sarai richiamato in questura per le informazioni.\nDopo circa 40 giorni ti arriverà il permesso di soggiorno elettronico, è come una carta.",
+              "zh": "在完成相应金额的邮政汇款，并购买印花税票后（填表时要留意相应的印花税面额），把印花税票贴在这里，这张申请表就具有了法律效力。\n然后，将所有文件装入信封。\n你必须去邮局寄这个信封（因为这个信封太大了，无法投入普通邮筒）。\n工作人员会告诉你应该什么时候去警察局核对信息。\n大约40天以后，你会收到电子居留证，就像一张卡片。",
+              "pairs": [
+                {
+                  "it": "Dopo aver effettuato il pagamento del bollettino con il relativo importo, e dopo aver acquistato una marca da bollo (dovrai vedere l'importo corrispondente quando compilerai il modello), la dovrai applicare qui: marca da bollo, per rendere tutto il modello legale.",
+                  "zh": "在完成相应金额的邮政汇款，并购买印花税票后（填表时要留意相应的印花税面额），把印花税票贴在这里，这张申请表就具有了法律效力。"
+                },
+                {
+                  "it": "Dopodiché inserisci tutto nella busta.",
+                  "zh": "然后，将所有文件装入信封。"
+                },
+                {
+                  "it": "Ti dovrai recare all'ufficio postale (perché questa busta è troppo grande per imbucarla in una buca normale) e spedirla.",
+                  "zh": "你必须去邮局寄这个信封（因为这个信封太大了，无法投入普通邮筒）。"
+                },
+                {
+                  "it": "L'impiegato ti dirà quando sarai richiamato in questura per le informazioni.",
+                  "zh": "工作人员会告诉你应该什么时候去警察局核对信息。"
+                },
+                {
+                  "it": "Dopo circa 40 giorni ti arriverà il permesso di soggiorno elettronico, è come una carta.",
+                  "zh": "大约40天以后，你会收到电子居留证，就像一张卡片。"
+                }
+              ]
             }
           ],
           "notes": [
             {
-              "term": "da poco",
-              "explain": "不久前。",
+              "term": "da poco：不久前。",
+              "explain": "",
               "examples": [
-                "a) Mi sono laureato da poco. 我刚刚毕业。",
-                "b) Ha cominciato a studiare l'italiano da poco. 他不久前开始学习意大利语。"
+                "Mi sono laureato da poco.\n我刚刚毕业。",
+                "Ha cominciato a studiare l'italiano da poco.\n他不久前开始学习意大利语。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u4_t0_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u4_e0_0_m.mp3",
+                  "audio/n/c1u4_e0_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "contenere：包含，容纳。",
+              "explain": "",
+              "examples": [
+                "Lo stadio può contenere 5.000 spettatori.\n这个体育馆可以容纳5000名观众。",
+                "Questa stanza conteneva parecchi mobili di valore.\n这个房间曾经放有不少值钱的家具。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u4_t1_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u4_e1_0_m.mp3",
+                  "audio/n/c1u4_e1_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "in base a...：根据，依据……。",
+              "explain": "",
+              "examples": [
+                "In base alle ultime informazioni, daremo l'esame finale il 5 giugno 2016.\n根据最新消息，我们将在2016年6月5日期末考试。",
+                "Agire in base alla verità.\n根据实际情况采取行动。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u4_t2_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u4_e2_0_m.mp3",
+                  "audio/n/c1u4_e2_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "interessare：与……相关。",
+              "explain": "",
+              "examples": [
+                "È una decisione che interessa a tutti.\n这是与所有人都相关的一个决定。",
+                "La salute interessa a me quanto a te.\n我与您一样在乎健康。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u4_t3_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u4_e3_0_m.mp3",
+                  "audio/n/c1u4_e3_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "qualsiasi：无论哪个，任何的。",
+              "explain": "",
+              "examples": [
+                "Telefonami in qualsiasi momento.\n什么时候给我打电话都可以。",
+                "Sconfiggeremo qualsiasi attacco.\n我们将打退一切进攻。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u4_t4_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u4_e4_0_m.mp3",
+                  "audio/n/c1u4_e4_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "ad esempio：例如，比如。",
+              "explain": "常缩写为 ad e. 或者ad es.，含义同per esempio。",
+              "examples": [
+                "Alcuni fiori amano l'ombra, ad esempio le violette e i gelsomini.\n有一些花喜阴，比如紫罗兰和茉莉。",
+                "Ho comprato molte cose con Paolo, ad esempio latte, pane, prosciutto e banana.\n我跟保罗买了很多东西，比如牛奶，面包，火腿和香蕉。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u4_t5_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u4_e5_0_m.mp3",
+                  "audio/n/c1u4_e5_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "nel caso (in cui)：假如，如果。",
+              "explain": "在该短语引导出的假设从句中，应使用虚拟式动词。视频中人物使用了直陈式，是一种口头表达的形式，在笔语表达中不够规范。",
+              "examples": [
+                "Nel caso aveste bisogno di aiuto, potrei venire da voi subito.\n如果你们需要帮助，我可以马上过来找你们。",
+                "Non andremo a fare una passeggiata nel caso in cui piova tra poco.\n过会儿如果下雨，我们就不去散步了。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u4_t6_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u4_e6_0_m.mp3",
+                  "audio/n/c1u4_e6_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "corrispondente (a)...：相符的，相应的。",
+              "explain": "",
+              "examples": [
+                "Ha ottenuto uno stipendio corrispondente al suo lavoro.\n他得到了一份与所做工作相符的工资。",
+                "Le sue parole non sono corrispondenti alla realtà oggettiva.\n他的言语不符合客观实际。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u4_t7_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u4_e7_0_m.mp3",
+                  "audio/n/c1u4_e7_1_m.mp3"
+                ]
+              }
+            }
+          ],
+          "sections": [
+            {
+              "type": "text",
+              "title": "Il kit per il permesso di soggiorno 居留证申请材料包",
+              "segs": [
+                0
               ]
             },
             {
-              "term": "contenere",
-              "explain": "包含，容纳。",
-              "examples": [
-                "a) Lo stadio può contenere 5.000 spettatori. 这个体育馆可以容纳5000名观众。",
-                "b) Questa stanza conteneva parecchi mobili di valore. 这个房间曾经放有不少值钱的家具。"
+              "type": "notes",
+              "title": "Note lessicali 词法解析",
+              "notes": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
               ]
             },
             {
-              "term": "in base a...",
-              "explain": "根据，依据……。",
-              "examples": [
-                "a) In base alle ultime informazioni, daremo l'esame finale il 5 giugno 2016. 根据最新消息，我们将在",
-                "2016年6月5日期末考试。",
-                "b) Agire in base alla verità."
+              "type": "text",
+              "title": "Cosa bisogna fare dopo aver compilato i moduli? 填好表格后需要做什么？",
+              "segs": [
+                1
               ]
             },
             {
-              "term": "interessare",
-              "explain": "与……相关。",
-              "examples": [
-                "a) È una decisione che interessa a tutti. 这是与所有人都相关的一个决定。",
-                "b) La salute interessa a me quanto a te. 我与您一样在乎健康。"
+              "type": "notes",
+              "title": "Note lessicali 词法解析",
+              "notes": [
+                7
               ]
             },
             {
-              "term": "qualsiasi",
-              "explain": "无论哪个，任何的。",
-              "examples": [
-                "a) Telefonami in qualsiasi momento. 什么时候给我打电话都可以。",
-                "b) Sconfiggeremo qualsiasi attacco. 我们将打退一切进攻。"
-              ]
-            },
-            {
-              "term": "ad esempio",
-              "explain": "例如，比如。常缩写为 *ad es.* 或者 *ad es.*，含义同 *per esempio*。",
-              "examples": [
-                "a) Alcuni fiori amano l'ombra, ad esempio le violette e i gelsomini. 有一些花喜阴，比如紫罗兰和茉",
-                "莉。",
-                "b) Ho comprato molte cose con Paolo, ad esempio latte, pane, prosciutto e banana."
-              ]
-            },
-            {
-              "term": "nel caso (in cui)",
-              "explain": "假如，如果。在该短语引导出的假设从句中，应使用虚拟式动词。视频中人物使用了",
-              "examples": [
-                "直陈式，是一种口头表达的形式，在笔语表达中不够规范。",
-                "a) Nel caso aveste bisogno di aiuto, potrei venire da voi subito. 如果你们需要帮助，我可以马上过来",
-                "找你们。",
-                "b) Non andremo a fare una passeggiata nel caso in cui piova tra poco. 过会儿如果下雨，我们就不",
-                "去散步了。",
-                "Cosa bisogna fare dopo aver compilato i moduli? 填好表格后需要做什么？"
+              "type": "info",
+              "title": "Informazioni utili 实用信息",
+              "blocks": [
+                {
+                  "subtitle": "居留证是什么？（Permesso di Soggiorno）",
+                  "intro": "居留证（permesso di soggiorno）是非欧盟国家公民在意大利境内长期合法停留的重要身份证明，分为学习居留、工作居留和亲人团聚居留等不同类型。根据意大利法律规定，外国学生入境意大利学习需在抵达的8个工作日内（以邮戳日期为准）通过邮局向当地警察局（questura）递交居留申请。办理学习居留需要哪些材料，具体的办理流程又是怎样的呢？",
+                  "items": [
+                    {
+                      "term": "学习居留 Permesso per studio",
+                      "text": "面向在意大利注册大学或语言课程的非欧盟学生，首次申请有效期通常覆盖整个学年或课程周期。"
+                    },
+                    {
+                      "term": "工作居留 Permesso per lavoro",
+                      "text": "面向受雇或自雇（自由职业者）人士，需提供劳动合同或营业证明。"
+                    },
+                    {
+                      "term": "家庭团聚居留 Permesso per ricongiungimento",
+                      "text": "面向在意大利合法居留者的配偶、未成年子女等直系亲属。"
+                    },
+                    {
+                      "term": "8个工作日规则",
+                      "text": "自入境之日起8个工作日内（以邮局收件邮戳为准）须将申请材料投入邮局“Amico”窗口，逾期可能面临罚款或遣返风险。"
+                    }
+                  ]
+                },
+                {
+                  "subtitle": "申请学习居留应做何准备？（材料清单）",
+                  "intro": "办理学习居留的手续较为繁琐，时间也比较长，但只要按照要求耐心准备各项材料，所有问题都将迎刃而解。申请居留所需的文件如下：",
+                  "items": [
+                    {
+                      "term": "护照 passaporto 及复印件",
+                      "text": "护照个人信息页、意大利签证页及含其他签证和出入境章页的复印件。"
+                    },
+                    {
+                      "term": "税号 codice fiscale",
+                      "text": "可在国税局（Agenzia delle Entrate）办理，后续开户、签约均会用到。"
+                    },
+                    {
+                      "term": "大学证明",
+                      "text": "所在大学的邀请函及注册证明，或经驻华使领馆认证返回的复印件。"
+                    },
+                    {
+                      "term": "财力证明",
+                      "text": "证明居留期间经济来源的文件，如银行存款证明、奖学金证明等。"
+                    },
+                    {
+                      "term": "健康保险 polizza assicurativa",
+                      "text": "可在邮局柜台索要缴费单（bollettino），费用通常为0–6个月49欧元、6–12个月98欧元（以当年官方公布为准）。"
+                    },
+                    {
+                      "term": "印花税票 marca da bollo",
+                      "text": "面额16欧元，需在烟草店（tabaccheria）购买，贴于申请表指定位置使材料具有法律效力。"
+                    },
+                    {
+                      "term": "电子居留卡制作费 PSE",
+                      "text": "大信封内含一张预先填好收款人的账单，专门用于缴纳制作卡费用30.46欧元。"
+                    },
+                    {
+                      "term": "政府规费 contributo di soggiorno（2026新增提示）",
+                      "text": "按居留时长缴纳：3个月至1年40欧元、1至2年50欧元、长期居留（UE lungo periodo）100欧元，于邮局与印花税票、制作费一并结算。"
+                    }
+                  ]
+                },
+                {
+                  "subtitle": "如何填写居留申请表？（Kit 黄色信封）",
+                  "intro": "全套居留申请材料及具体填写说明，装在一个黄色的信封（kit）里。截至2026年，这一邮局“Kit Postale”办理方式仍在沿用。此外，大多数大学亦设有新生接待点（Welcoming Point），指导留学生办理居留。无论是邮局还是学校，都有专人指导学生完成表格的填写。大信封（kit）内有两份表格（Modulo I, Modulo II）和一本填写说明，申请学生居留仅填写表格一。填写时应注意：",
+                  "items": [
+                    {
+                      "term": "书写工具",
+                      "text": "使用黑色签字笔书写，字迹务必清晰工整。"
+                    },
+                    {
+                      "term": "字母大写",
+                      "text": "所有字母均为大写。"
+                    },
+                    {
+                      "term": "选择符号",
+                      "text": "选择项目使用符号“×”（而非中国人惯用的“√”）。"
+                    },
+                    {
+                      "term": "Modulo I 与 Modulo II",
+                      "text": "申请学生居留仅填写表格一（Modello I）；表格二（Modello II）适用于工作、自由职业等其他目的。"
+                    }
+                  ]
+                },
+                {
+                  "subtitle": "如何提交填好的表格及后续步骤？（邮局办理）",
+                  "intro": "填写完毕后，应将所有需递交的文件交由邮局相关工作人员检查，工作人员确认无误后，将相关信息录入系统。申请人缴纳30欧元的邮递服务费后，邮局返还两张收据（ricevuta）、一张照片及指纹采集的预约单（convocazione）。",
+                  "items": [
+                    {
+                      "term": "指纹采集 fotosegnalamento",
+                      "text": "根据预约单所示日期和时间，携带护照和邮局收据到警察局移民办公室（Ufficio Immigrazione）完成照片及指纹采集。"
+                    },
+                    {
+                      "term": "保管收据 ricevuta",
+                      "text": "请妥善保管邮局发放的收据！该收据既是正式居留发放前的临时凭证，也是日后上网查询居留办理进度的重要依据。"
+                    },
+                    {
+                      "term": "邮递服务费 spese postali",
+                      "text": "在邮局窗口缴纳30欧元邮递服务费（与印花税票、制作费、政府规费一并结算）。"
+                    }
+                  ]
+                },
+                {
+                  "subtitle": "多久能拿到居留？（办理周期）",
+                  "intro": "领取居留的通知（convocazione）一般在照片和指纹采集后的1–2个月通过手机短信告知。建议在等待期间时常登录 questure.poliziadistato.it/stranieri 或 www.portaleimmigrazione.it 网站查询办理进度，以防因材料缺失耽误居留发放。收据左上角数字为查询时的用户名，右上角为密码（password，只需输入12位数字即可）。",
+                  "items": [
+                    {
+                      "term": "领取通知",
+                      "text": "照片与指纹采集后约1–2个月，警察局会以短信通知领取。"
+                    },
+                    {
+                      "term": "进度查询",
+                      "text": "登录 questure.poliziadistato.it/stranieri 或 portaleimmigrazione.it，输入收据上的用户名与12位密码查询。"
+                    },
+                    {
+                      "term": "本人领取",
+                      "text": "领取居留时，必须由本人携带护照和两张邮局收据，否则无法领取。"
+                    }
+                  ]
+                },
+                {
+                  "subtitle": "关于居留，有哪些注意事项？",
+                  "intro": "居留未发放前，不能离开意大利，否则会有无法再次入境意大利的风险。居留是在意大利停留期间的个人身份证明，请妥善保管，如有遗失应及时挂失、补办。",
+                  "items": [
+                    {
+                      "term": "不离境",
+                      "text": "居留正式发放前切勿离境，否则可能无法再次入境意大利。"
+                    },
+                    {
+                      "term": "妥善保管 / 挂失",
+                      "text": "居留证请妥善保管；如有遗失须及时挂失并补办。"
+                    },
+                    {
+                      "term": "学生优惠",
+                      "text": "学生居留须与学生证一同使用，方可享受部分景点（如博物馆、教堂等）的优惠价格。"
+                    },
+                    {
+                      "term": "申根通行",
+                      "text": "在签证过期的情况下，也可凭有效居留自由出入欧盟申根区国家。"
+                    }
+                  ]
+                },
+                {
+                  "subtitle": "表格填写必备词汇（居留申请表 Modulo 1 常用字段）",
+                  "intro": "填写表格一时，以下为申请表中常见的意大利语字段及其中文含义，供对照参考：",
+                  "items": [
+                    {
+                      "term": "所在城市",
+                      "text": "comune"
+                    },
+                    {
+                      "term": "所在省份",
+                      "text": "provincia"
+                    },
+                    {
+                      "term": "更新（延期）",
+                      "text": "rinnovo"
+                    },
+                    {
+                      "term": "申请 / 发放",
+                      "text": "richiesta / rilascio"
+                    },
+                    {
+                      "term": "居留",
+                      "text": "permesso di soggiorno"
+                    },
+                    {
+                      "term": "税号",
+                      "text": "codice fiscale"
+                    },
+                    {
+                      "term": "出生国",
+                      "text": "stato di nascita"
+                    },
+                    {
+                      "term": "国籍（CHN）",
+                      "text": "nazionalità (CHN)"
+                    },
+                    {
+                      "term": "护照",
+                      "text": "passaporto"
+                    },
+                    {
+                      "term": "护照号码",
+                      "text": "numero di passaporto"
+                    },
+                    {
+                      "term": "有效期至",
+                      "text": "valido fino al"
+                    },
+                    {
+                      "term": "签发地点",
+                      "text": "luogo di rilascio"
+                    },
+                    {
+                      "term": "详细地址",
+                      "text": "indirizzo"
+                    },
+                    {
+                      "term": "门牌号",
+                      "text": "numero civico"
+                    },
+                    {
+                      "term": "内部门牌",
+                      "text": "interno"
+                    },
+                    {
+                      "term": "手机号",
+                      "text": "numero di cellulare"
+                    }
+                  ]
+                }
               ]
             }
           ]
