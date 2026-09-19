@@ -1984,20 +1984,20 @@
           ],
           "dialogue": [
             {
-              "it": "Oggi parliamo di monete e di banconote.\nParliamo della valuta europea, che è in uso anche in Italia: è molto semplice.\nIniziamo dalle monete. Purtroppo non ho a disposizione monete nuove di zecca, quindi appena uscite dall'edificio dove vengono coniate o stampate.\nSi conia una moneta, si stampa una carta moneta, quindi un biglietto.\nQuesta è quasi nuova di zecca, perché è molto lucida.\nQuando sono proprio nuove, mai toccate, mai usate, l'espressione da usare è «nuova di zecca», che si può usare anche per tante altre cose.",
-              "zh": "今天我们来说一说硬币和纸币。\n也就是欧盟货币，在意大利也通行，非常简单。\n我们从硬币说起。可惜我没有崭新的硬币，也就是刚从造币厂铸造出来的钱币。\n铸造一枚硬币；印刷一张纸币，也就是钞票。\n这一枚基本上是全新的，因为它非常光亮。\n当它们是全新的、从没被触碰或使用过时，所用的表达就是“nuova di zecca（崭新的）”，这个词也可以形容许多别的东西。",
+              "it": "Oggi parliamo di monete e di banconote.\nQuindi parliamo della valuta europea, che è in uso anche in Italia, è molto semplice.\nIniziamo dalle monete, purtroppo non ho a disposizione monete nuove di zecca, quindi appena uscite dall'edificio dove vengono coniate o stampate.\nSi conia una moneta, si stampa una carta moneta, quindi un biglietto.\nQuesta è quasi nuova di zecca, perché è molto lucida.\nQuindi quando sono proprio nuove, mai toccate, mai usate, l'espressione da usare è *nuova di zecca*, che si può usare anche per tante altre cose.\nQuesta è la moneta da un centesimo di euro, e purtroppo non vale quasi nulla.\nSpesso te la daranno come resto, ma spesso non la vorranno quando vorrai usarla per pagare.\nLo stesso vale per i due centesimi di euro.\nLa moneta immediatamente più grande è questa, cinque centesimi.\nEd ora dieci, ancora venti, cinquanta centesimi, quindi mezzo euro, un euro, e siamo giunti all'ultima moneta che ha il valore di 2 euro.\nÈ inutile dirti che ogni moneta dall'altro lato può avere un'altra immagine, ha un'immagine diversa, a seconda del paese europeo dove viene coniata, ma è troppo lunga la cosa.\nEd ora passiamo alle banconote.\nLa più piccola è questa da cinque, verde, poi questa rossa, vale 10 euro, ora impariamo anche i colori.\nCorreggiamo questo, perché è un po' grigio.\nLa banconota da venti, blu, abbastanza chiaro.\nUn arancione quasi albicocca, cinquanta euro.\nPer noi l'ultima sarà questa, cento euro, un bel colore verde, molto vivido.\nE purtroppo non posso continuare perché non ho a disposizione la banconota che vale duecento euro che è gialla, e quella da cinquecento euro che è un bel viola, ma la vediamo raramente!\nE queste sono le banconote e le monete della valuta europea in uso anche in Italia.",
+              "zh": "今天我们来说一说硬币和纸币。\n也就是欧盟货币，在意大利也通行，非常简单。\n我们从这些硬币开始说，可惜我没有崭新的硬币，也就是刚从造币厂铸造出来的钱币。\n铸造一枚硬币；印刷一张纸币，也就是钞票。\n这一枚基本上是全新的，因为它非常光亮。\n所以当它们是全新的时候，就是从来没被人触碰过也没被人使用过的，这种表达方式是\"nuova di zecca（崭新的）\"，这个词也可以用来形容其他崭新的东西。\n这是1欧分的硬币，可惜用它基本买不了什么。\n通常是作为找零的钱，当你用它付款的时候，人们都不愿意收。\n2欧分的硬币也是一样。\n接下来这枚更大的硬币是5欧分。\n这是10欧分、20欧分、50欧分（也就是0.5欧元）、1欧元。现在到了最后一枚，这是价值2欧元的硬币。\n不说你也知道，每一枚硬币的背面，根据其铸造国家的不同，都有不同的图案，若是细讲，就说来说长了。\n现在我们来纸币。\n最小的纸币是5欧元的，绿色的；然后是红色的，面额10欧元。这里我们先学习一下关于颜色的词汇。\n更正一下，这张（5欧元钞票）更接近灰色。\n20欧元的纸币是比较浅的蓝色的。\n橙色（接近杏色）的是50欧元。\n我们看到的最后一张纸币是这个100欧元，有着很好看的绿色，一种非常明亮的颜色。\n很可惜我不能继续讲解下去了，因为我手头没有面额200欧元的黄色纸币以及面额为500欧元的纯正紫罗兰色纸币，那种面额的纸币很少见。\n以上就是在意大利也使用的欧元纸币和硬币。",
               "pairs": [
                 {
                   "it": "Oggi parliamo di monete e di banconote.",
                   "zh": "今天我们来说一说硬币和纸币。"
                 },
                 {
-                  "it": "Parliamo della valuta europea, che è in uso anche in Italia: è molto semplice.",
+                  "it": "Quindi parliamo della valuta europea, che è in uso anche in Italia, è molto semplice.",
                   "zh": "也就是欧盟货币，在意大利也通行，非常简单。"
                 },
                 {
-                  "it": "Iniziamo dalle monete. Purtroppo non ho a disposizione monete nuove di zecca, quindi appena uscite dall'edificio dove vengono coniate o stampate.",
-                  "zh": "我们从硬币说起。可惜我没有崭新的硬币，也就是刚从造币厂铸造出来的钱币。"
+                  "it": "Iniziamo dalle monete, purtroppo non ho a disposizione monete nuove di zecca, quindi appena uscite dall'edificio dove vengono coniate o stampate.",
+                  "zh": "我们从这些硬币开始说，可惜我没有崭新的硬币，也就是刚从造币厂铸造出来的钱币。"
                 },
                 {
                   "it": "Si conia una moneta, si stampa una carta moneta, quindi un biglietto.",
@@ -2008,22 +2008,16 @@
                   "zh": "这一枚基本上是全新的，因为它非常光亮。"
                 },
                 {
-                  "it": "Quando sono proprio nuove, mai toccate, mai usate, l'espressione da usare è «nuova di zecca», che si può usare anche per tante altre cose.",
-                  "zh": "当它们是全新的、从没被触碰或使用过时，所用的表达就是“nuova di zecca（崭新的）”，这个词也可以形容许多别的东西。"
-                }
-              ]
-            },
-            {
-              "it": "Questa è la moneta da un centesimo di euro, e purtroppo non vale quasi nulla.\nSpesso te la daranno come resto, ma spesso non la vorranno quando vorrai usarla per pagare.\nLo stesso vale per i due centesimi di euro.\nLa moneta immediatamente più grande è questa, cinque centesimi.\nEd ora dieci, venti, cinquanta centesimi, quindi mezzo euro, un euro, e siamo giunti all'ultima moneta che ha il valore di 2 euro.\nOgni moneta, dall'altro lato, può avere un'immagine diversa a seconda del paese europeo dove viene coniata.",
-              "zh": "这是1欧分的硬币，可惜用它基本买不了什么。\n它通常用作找零，但当你要用它付款时，人们往往不愿意收。\n2欧分的硬币也是一样。\n接下来这枚更大的硬币是5欧分。\n接着是10欧分、20欧分、50欧分（也就是0.5欧元）、1欧元。现在到了最后一枚，这是价值2欧元的硬币。\n每枚硬币的背面，根据其铸造国家的不同，都有不同的图案。",
-              "pairs": [
+                  "it": "Quindi quando sono proprio nuove, mai toccate, mai usate, l'espressione da usare è *nuova di zecca*, che si può usare anche per tante altre cose.",
+                  "zh": "所以当它们是全新的时候，就是从来没被人触碰过也没被人使用过的，这种表达方式是\"nuova di zecca（崭新的）\"，这个词也可以用来形容其他崭新的东西。"
+                },
                 {
                   "it": "Questa è la moneta da un centesimo di euro, e purtroppo non vale quasi nulla.",
                   "zh": "这是1欧分的硬币，可惜用它基本买不了什么。"
                 },
                 {
                   "it": "Spesso te la daranno come resto, ma spesso non la vorranno quando vorrai usarla per pagare.",
-                  "zh": "它通常用作找零，但当你要用它付款时，人们往往不愿意收。"
+                  "zh": "通常是作为找零的钱，当你用它付款的时候，人们都不愿意收。"
                 },
                 {
                   "it": "Lo stesso vale per i due centesimi di euro.",
@@ -2034,52 +2028,56 @@
                   "zh": "接下来这枚更大的硬币是5欧分。"
                 },
                 {
-                  "it": "Ed ora dieci, venti, cinquanta centesimi, quindi mezzo euro, un euro, e siamo giunti all'ultima moneta che ha il valore di 2 euro.",
-                  "zh": "接着是10欧分、20欧分、50欧分（也就是0.5欧元）、1欧元。现在到了最后一枚，这是价值2欧元的硬币。"
+                  "it": "Ed ora dieci, ancora venti, cinquanta centesimi, quindi mezzo euro, un euro, e siamo giunti all'ultima moneta che ha il valore di 2 euro.",
+                  "zh": "这是10欧分、20欧分、50欧分（也就是0.5欧元）、1欧元。现在到了最后一枚，这是价值2欧元的硬币。"
                 },
                 {
-                  "it": "Ogni moneta, dall'altro lato, può avere un'immagine diversa a seconda del paese europeo dove viene coniata.",
-                  "zh": "每枚硬币的背面，根据其铸造国家的不同，都有不同的图案。"
+                  "it": "È inutile dirti che ogni moneta dall'altro lato può avere un'altra immagine, ha un'immagine diversa, a seconda del paese europeo dove viene coniata, ma è troppo lunga la cosa.",
+                  "zh": "不说你也知道，每一枚硬币的背面，根据其铸造国家的不同，都有不同的图案，若是细讲，就说来说长了。"
+                },
+                {
+                  "it": "Ed ora passiamo alle banconote.",
+                  "zh": "现在我们来纸币。"
+                },
+                {
+                  "it": "La più piccola è questa da cinque, verde, poi questa rossa, vale 10 euro, ora impariamo anche i colori.",
+                  "zh": "最小的纸币是5欧元的，绿色的；然后是红色的，面额10欧元。这里我们先学习一下关于颜色的词汇。"
+                },
+                {
+                  "it": "Correggiamo questo, perché è un po' grigio.",
+                  "zh": "更正一下，这张（5欧元钞票）更接近灰色。"
+                },
+                {
+                  "it": "La banconota da venti, blu, abbastanza chiaro.",
+                  "zh": "20欧元的纸币是比较浅的蓝色的。"
+                },
+                {
+                  "it": "Un arancione quasi albicocca, cinquanta euro.",
+                  "zh": "橙色（接近杏色）的是50欧元。"
+                },
+                {
+                  "it": "Per noi l'ultima sarà questa, cento euro, un bel colore verde, molto vivido.",
+                  "zh": "我们看到的最后一张纸币是这个100欧元，有着很好看的绿色，一种非常明亮的颜色。"
+                },
+                {
+                  "it": "E purtroppo non posso continuare perché non ho a disposizione la banconota che vale duecento euro che è gialla, e quella da cinquecento euro che è un bel viola, ma la vediamo raramente!",
+                  "zh": "很可惜我不能继续讲解下去了，因为我手头没有面额200欧元的黄色纸币以及面额为500欧元的纯正紫罗兰色纸币，那种面额的纸币很少见。"
+                },
+                {
+                  "it": "E queste sono le banconote e le monete della valuta europea in uso anche in Italia.",
+                  "zh": "以上就是在意大利也使用的欧元纸币和硬币。"
                 }
               ]
             },
             {
-              "it": "Ed ora passiamo alle banconote.\nLa più piccola è questa da cinque, verde; poi questa rossa, vale 10 euro. Ora impariamo anche i colori.\nCorreggiamo: questa da cinque è in realtà un po' grigia.\nLa banconota da venti è blu, abbastanza chiaro.\nUn arancione quasi albicocca per i cinquanta euro.\nL'ultima che vediamo è questa da cento euro, un bel verde molto vivido.\nPurtroppo non posso continuare: non ho la banconota da duecento euro, gialla, né quella da cinquecento, un bel viola, che si vede raramente.\nE queste sono le banconote e le monete della valuta europea, in uso anche in Italia.",
-              "zh": "现在我们来认识纸币。\n最小的是这张5欧元，绿色；然后是红色的，面额10欧元。这里我们顺便也学一下颜色的词汇。\n更正一下：这张5欧元的其实更接近灰色。\n20欧元纸币是蓝色，比较浅。\n50欧元是接近杏色的橙色。\n我们看到的最后一张是100欧元，是很漂亮的明亮绿色。\n很遗憾我没法继续：我手头没有200欧元的黄色纸币，也没有500欧元的漂亮紫罗兰色纸币，那种面额的纸币很少见。\n以上就是在意大利也使用的欧元纸币和硬币。",
-              "pairs": [
-                {
-                  "it": "Ed ora passiamo alle banconote.",
-                  "zh": "现在我们来认识纸币。"
-                },
-                {
-                  "it": "La più piccola è questa da cinque, verde; poi questa rossa, vale 10 euro. Ora impariamo anche i colori.",
-                  "zh": "最小的是这张5欧元，绿色；然后是红色的，面额10欧元。这里我们顺便也学一下颜色的词汇。"
-                },
-                {
-                  "it": "Correggiamo: questa da cinque è in realtà un po' grigia.",
-                  "zh": "更正一下：这张5欧元的其实更接近灰色。"
-                },
-                {
-                  "it": "La banconota da venti è blu, abbastanza chiaro.",
-                  "zh": "20欧元纸币是蓝色，比较浅。"
-                },
-                {
-                  "it": "Un arancione quasi albicocca per i cinquanta euro.",
-                  "zh": "50欧元是接近杏色的橙色。"
-                },
-                {
-                  "it": "L'ultima che vediamo è questa da cento euro, un bel verde molto vivido.",
-                  "zh": "我们看到的最后一张是100欧元，是很漂亮的明亮绿色。"
-                },
-                {
-                  "it": "Purtroppo non posso continuare: non ho la banconota da duecento euro, gialla, né quella da cinquecento, un bel viola, che si vede raramente.",
-                  "zh": "很遗憾我没法继续：我手头没有200欧元的黄色纸币，也没有500欧元的漂亮紫罗兰色纸币，那种面额的纸币很少见。"
-                },
-                {
-                  "it": "E queste sono le banconote e le monete della valuta europea, in uso anche in Italia.",
-                  "zh": "以上就是在意大利也使用的欧元纸币和硬币。"
-                }
-              ]
+              "it": "",
+              "zh": "",
+              "pairs": []
+            },
+            {
+              "it": "",
+              "zh": "",
+              "pairs": []
             },
             {
               "it": "Questo è un bancomat.\nAvevo bisogno di prelevare dei soldi.\nHo speso tutto.\nHo comprato un libro, ho acquistato un'altra SIM telefonica per chiamare in Cina e avevo proprio bisogno di contanti.\nHo inserito la mia carta, ho aspettato per la dicitura prelievo.\nDopodiché ho digitato il mio PIN e l'importo che volevo.\nFatto.",
@@ -2347,11 +2345,9 @@
           "sections": [
             {
               "type": "text",
-              "title": "Monete e banconote 认识欧元的硬币与纸币",
+              "title": "Conosciamo le monete e le banconote in euro!  认识欧元的硬币与纸币！",
               "segs": [
-                0,
-                1,
-                2
+                0
               ]
             },
             {
