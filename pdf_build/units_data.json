@@ -2132,11 +2132,11 @@
           ],
           "notes": [
             {
-              "term": "a disposizione：可以使用/支配的（avere qc. a disposizione）",
-              "explain": "a disposizione 表示“可供使用、听候差遣”。常用结构：avere qualcosa a disposizione（有某物可供使用）或 essere a disposizione di qualcuno（听候某人差遣）。",
+              "term": "a disposizione：处理，使用，支配。",
+              "explain": "",
               "examples": [
                 "Non abbiamo molto tempo a disposizione.\n我们能用的时间不多了。",
-                "Se hai bisogno, sono a tua disposizione.\n如果你需要，我随时听候差遣。"
+                "Se ha bisogno sono a Sua disposizione.\n如有需要，我随时为您效劳。"
               ],
               "audio": {
                 "term": [
@@ -2149,11 +2149,11 @@
               }
             },
             {
-              "term": "nuovo di zecca：崭新的",
-              "explain": "字面意为“刚出铸造厂的（硬币）”，引申为“崭新的、全新的”，可形容任何刚买或未使用过的物品。",
+              "term": "nuovo di zecca：崭新的。",
+              "explain": "",
               "examples": [
-                "Mi ha regalato un cappello nuovo di zecca.\n他送了我一顶崭新的帽子。",
-                "Questo libro è nuovo di zecca.\n这本书是全新的。"
+                "Mi ha regalato un cappello nuovo di zecca.\n他送给我一顶崭新的帽子。",
+                "Guarda come veste questo soprabito nuovo di zecca!\n看，这件崭新的大衣穿上多合适啊！"
               ],
               "audio": {
                 "term": [
@@ -2166,16 +2166,15 @@
               }
             },
             {
-              "term": "si conia / si stampa：被铸造 / 被印刷（si 无人称被动）",
-              "explain": "意大利语可用“si + 动词第三人称单数”构成无人称被动，表示“人们……／被……”。这里 si conia una moneta 意为“（人们）铸造一枚硬币／硬币被铸造”。",
+              "term": "valere：价值，值。",
+              "explain": "",
               "examples": [
-                "Si vende il pane in panetteria.\n面包在面包店出售。",
-                "Qui si parla italiano.\n这里说意大利语。"
+                "Questo vaso vale mezzo milione di dollari.\n这个花瓶价值50万美元。",
+                "Questa villa antica vale un patrimonio.\n这座古老的别墅价值连城。"
               ],
               "audio": {
                 "term": [
-                  "audio/n/c1u3_t2_0_m.mp3",
-                  "audio/n/c1u3_t2_1_m.mp3"
+                  "audio/n/c1u3_t2_0_m.mp3"
                 ],
                 "examples": [
                   "audio/n/c1u3_e2_0_m.mp3",
@@ -2184,11 +2183,11 @@
               }
             },
             {
-              "term": "valere：价值，值",
-              "explain": "表示“值……钱”，第三人称单数 vale。也常用于 vale la pena（值得）。",
+              "term": "a seconda di...：按照，依据……。",
+              "explain": "",
               "examples": [
-                "Questa moneta vale due euro.\n这枚硬币价值2欧元。",
-                "Non vale la pena discutere.\n不值得争论。"
+                "Uno deve imparare a regolarsi a seconda dei casi.\n要学会随机应变。",
+                "Possiamo elaborare diversi programmi a seconda del tempo.\n我们可以根据天气情况制定不同的计划。"
               ],
               "audio": {
                 "term": [
@@ -2201,11 +2200,11 @@
               }
             },
             {
-              "term": "a seconda di：根据……而定，取决于",
-              "explain": "后接名词或 di + 从句，表示“视……而定”。",
+              "term": "venire fatto：被……。",
+              "explain": "在意大利语中，动词被动语态的一种形式是由助动词（essere/venire/andare）加上实义动词的过去分词共同构成的。与用 essere作助动词的被动语态相比，以venire作助动词的被动语态更强调动作进行的动态过程。需要注意的是，以venire为助动词的被动语态仅能用于简单时态，不能用于复合时态。",
               "examples": [
-                "Il prezzo cambia a seconda della stagione.\n价格随季节而变化。",
-                "A seconda del paese, la moneta ha un'immagine diversa.\n根据国家不同，硬币有不同图案。"
+                "Spero che questi libri vengano letti da tutti gli studenti, perché sono troppo importanti.\n我希望所有的学生都去读读这些书，因为它们太重要了。",
+                "Dopo aver compiuto brillantemente il lavoro, veniva lodato da tutti.\n顺利完成工作后，他得到所有人的赞扬。"
               ],
               "audio": {
                 "term": [
@@ -2218,11 +2217,11 @@
               }
             },
             {
-              "term": "da：介词，表示“面值/面额为”（后接金额，如 da un euro）",
-              "explain": "da + 数量 可表示“价值……的、面额为……的”，如 moneta da un euro（1欧元硬币）、banconota da cinquanta euro（50欧元纸币）。",
+              "term": "raramente：难得地，少见地。",
+              "explain": "",
               "examples": [
-                "Vorrei una banconota da venti euro.\n我想要一张20欧元的纸币。",
-                "Hai monete da un centesimo?\n你有1欧分的硬币吗？"
+                "Si vede raramente la meteora.\n流星很罕见。",
+                "Vado raramente ai ristoranti giapponesi.\n我很少去日式餐厅。"
               ],
               "audio": {
                 "term": [
