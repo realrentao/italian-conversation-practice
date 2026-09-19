@@ -2082,8 +2082,8 @@
               ]
             },
             {
-              "it": "Questo è un bancomat.\nAvevo bisogno di prelevare dei soldi.\nHo speso tutto: ho comprato un libro e un'altra SIM telefonica per chiamare in Cina, quindi avevo proprio bisogno di contanti.\nHo inserito la mia carta e ho aspettato la dicitura «prelievo».\nDopodiché ho digitato il mio PIN e l'importo che volevo.\nFatto.",
-              "zh": "这是一台自动取款机。\n我当时需要取一些现金。\n我把钱都花光了：我买了一本书，又新买了一张往中国打电话的手机SIM卡，所以我确实需要一些现金。\n我插入银行卡，等待屏幕上出现“取款”的提示。\n随后我输入了密码和想取的金额。\n完成。",
+              "it": "Questo è un bancomat.\nAvevo bisogno di prelevare dei soldi.\nHo speso tutto.\nHo comprato un libro, ho acquistato un'altra SIM telefonica per chiamare in Cina e avevo proprio bisogno di contanti.\nHo inserito la mia carta, ho aspettato per la dicitura prelievo.\nDopodiché ho digitato il mio PIN e l'importo che volevo.\nFatto.",
+              "zh": "这是一台自动取款机。\n我需要取一点儿钱。\n我把所有钱都花光了。\n我买了一本书，又新买了一张往中国打电话的手机SIM卡，所以我需要一些现金。\n我把卡插进去，等待取款提示，\n随后输入银行卡密码以及我想取款的金额。\n完成。",
               "pairs": [
                 {
                   "it": "Questo è un bancomat.",
@@ -2091,19 +2091,23 @@
                 },
                 {
                   "it": "Avevo bisogno di prelevare dei soldi.",
-                  "zh": "我当时需要取一些现金。"
+                  "zh": "我需要取一点儿钱。"
                 },
                 {
-                  "it": "Ho speso tutto: ho comprato un libro e un'altra SIM telefonica per chiamare in Cina, quindi avevo proprio bisogno di contanti.",
-                  "zh": "我把钱都花光了：我买了一本书，又新买了一张往中国打电话的手机SIM卡，所以我确实需要一些现金。"
+                  "it": "Ho speso tutto.",
+                  "zh": "我把所有钱都花光了。"
                 },
                 {
-                  "it": "Ho inserito la mia carta e ho aspettato la dicitura «prelievo».",
-                  "zh": "我插入银行卡，等待屏幕上出现“取款”的提示。"
+                  "it": "Ho comprato un libro, ho acquistato un'altra SIM telefonica per chiamare in Cina e avevo proprio bisogno di contanti.",
+                  "zh": "我买了一本书，又新买了一张往中国打电话的手机SIM卡，所以我需要一些现金。"
+                },
+                {
+                  "it": "Ho inserito la mia carta, ho aspettato per la dicitura prelievo.",
+                  "zh": "我把卡插进去，等待取款提示，"
                 },
                 {
                   "it": "Dopodiché ho digitato il mio PIN e l'importo che volevo.",
-                  "zh": "随后我输入了密码和想取的金额。"
+                  "zh": "随后输入银行卡密码以及我想取款的金额。"
                 },
                 {
                   "it": "Fatto.",
@@ -2364,7 +2368,7 @@
             },
             {
               "type": "text",
-              "title": "Al bancomat 在自动取款机取款",
+              "title": "Ho bisogno di prelevare dei soldi 我需要取款",
               "segs": [
                 3
               ]
