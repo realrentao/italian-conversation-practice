@@ -1984,43 +1984,509 @@
           ],
           "dialogue": [
             {
-              "it": "Oggi parliamo di monete e di banconote.\nQuindi parliamo della valuta europea, che è in uso anche in Italia, è molto semplice.\nIniziamo dalle monete, purtroppo non ho a disposizione monete nuove di zecca, quindi appena uscite\ndall'edificio dove vengono coniate o stampate.\nSi conia una moneta, si stampa una carta moneta, quindi un biglietto.\nQuesta è quasi nuova di zecca, perché è molto lucida.\nQuindi quando sono proprio nuove, mai toccate, mai usate, l'espressione da usare è *nuova di zecca*,\nche si può usare anche per tante altre cose.",
-              "zh": "今天我们来说一说硬币和纸币。\n也就是欧盟货币，在意大利也通行，非常简单。\n我们从这些硬币开始说，可惜我没有崭新的硬币，也就是刚从造币厂铸造出来的钱币。\n铸造一枚硬币；印刷一张纸币，也就是钞票。\n这一枚基本上是全新的，因为它非常光亮。\n所以当它们是全新的时候，就是从来没被人触碰过也没被人使用过的，这种表达方式是\"nuova di zecca\n（崭新的）\"，这个词也可以用来……"
+              "it": "Oggi parliamo di monete e di banconote.\nParliamo della valuta europea, che è in uso anche in Italia: è molto semplice.\nIniziamo dalle monete. Purtroppo non ho a disposizione monete nuove di zecca, quindi appena uscite dall'edificio dove vengono coniate o stampate.\nSi conia una moneta, si stampa una carta moneta, quindi un biglietto.\nQuesta è quasi nuova di zecca, perché è molto lucida.\nQuando sono proprio nuove, mai toccate, mai usate, l'espressione da usare è «nuova di zecca», che si può usare anche per tante altre cose.",
+              "zh": "今天我们来说一说硬币和纸币。\n也就是欧盟货币，在意大利也通行，非常简单。\n我们从硬币说起。可惜我没有崭新的硬币，也就是刚从造币厂铸造出来的钱币。\n铸造一枚硬币；印刷一张纸币，也就是钞票。\n这一枚基本上是全新的，因为它非常光亮。\n当它们是全新的、从没被触碰或使用过时，所用的表达就是“nuova di zecca（崭新的）”，这个词也可以形容许多别的东西。",
+              "pairs": [
+                {
+                  "it": "Oggi parliamo di monete e di banconote.",
+                  "zh": "今天我们来说一说硬币和纸币。"
+                },
+                {
+                  "it": "Parliamo della valuta europea, che è in uso anche in Italia: è molto semplice.",
+                  "zh": "也就是欧盟货币，在意大利也通行，非常简单。"
+                },
+                {
+                  "it": "Iniziamo dalle monete. Purtroppo non ho a disposizione monete nuove di zecca, quindi appena uscite dall'edificio dove vengono coniate o stampate.",
+                  "zh": "我们从硬币说起。可惜我没有崭新的硬币，也就是刚从造币厂铸造出来的钱币。"
+                },
+                {
+                  "it": "Si conia una moneta, si stampa una carta moneta, quindi un biglietto.",
+                  "zh": "铸造一枚硬币；印刷一张纸币，也就是钞票。"
+                },
+                {
+                  "it": "Questa è quasi nuova di zecca, perché è molto lucida.",
+                  "zh": "这一枚基本上是全新的，因为它非常光亮。"
+                },
+                {
+                  "it": "Quando sono proprio nuove, mai toccate, mai usate, l'espressione da usare è «nuova di zecca», che si può usare anche per tante altre cose.",
+                  "zh": "当它们是全新的、从没被触碰或使用过时，所用的表达就是“nuova di zecca（崭新的）”，这个词也可以形容许多别的东西。"
+                }
+              ]
             },
             {
-              "it": "Questa è la moneta da un centesimo di euro, e purtroppo non vale quasi nulla.\nSpesso te la daranno come resto, ma spesso non la vorranno quando vorrai usarla per pagare.\nLo stesso vale per i due centesimi di euro.\nLa moneta immediatamente più grande è questa, cinque centesimi.\nEd ora dieci, ancora venti, cinquanta centesimi, quindi mezzo euro, un euro, e siamo giunti all'ultima\nmoneta che ha il valore di 2 euro.\nÈ inutile dirti che ogni moneta dall'altro lato può avere un'altra immagine, ha un'immagine diversa, a\nseconda del paese europeo dove viene coniata, ma è troppo lunga la cosa.",
-              "zh": "这是1欧分的硬币，可惜用它基本买不了什么。\n通常是作为找零的钱，当你用它付款的时候，人们都不愿意收。\n2欧分的硬币也是一样。\n接下来这枚更大的硬币是5欧分。\n这是10欧分、20欧分、50欧分（也就是0.5欧元）、1欧元。现在到了最后一枚，这是价值2欧元的硬币。\n不说你也知道，每一枚硬币的背面，根据其铸造国家的不同，都有不同的图案，若是细讲，就说来说长\n了。"
+              "it": "Questa è la moneta da un centesimo di euro, e purtroppo non vale quasi nulla.\nSpesso te la daranno come resto, ma spesso non la vorranno quando vorrai usarla per pagare.\nLo stesso vale per i due centesimi di euro.\nLa moneta immediatamente più grande è questa, cinque centesimi.\nEd ora dieci, venti, cinquanta centesimi, quindi mezzo euro, un euro, e siamo giunti all'ultima moneta che ha il valore di 2 euro.\nOgni moneta, dall'altro lato, può avere un'immagine diversa a seconda del paese europeo dove viene coniata.",
+              "zh": "这是1欧分的硬币，可惜用它基本买不了什么。\n它通常用作找零，但当你要用它付款时，人们往往不愿意收。\n2欧分的硬币也是一样。\n接下来这枚更大的硬币是5欧分。\n接着是10欧分、20欧分、50欧分（也就是0.5欧元）、1欧元。现在到了最后一枚，这是价值2欧元的硬币。\n每枚硬币的背面，根据其铸造国家的不同，都有不同的图案。",
+              "pairs": [
+                {
+                  "it": "Questa è la moneta da un centesimo di euro, e purtroppo non vale quasi nulla.",
+                  "zh": "这是1欧分的硬币，可惜用它基本买不了什么。"
+                },
+                {
+                  "it": "Spesso te la daranno come resto, ma spesso non la vorranno quando vorrai usarla per pagare.",
+                  "zh": "它通常用作找零，但当你要用它付款时，人们往往不愿意收。"
+                },
+                {
+                  "it": "Lo stesso vale per i due centesimi di euro.",
+                  "zh": "2欧分的硬币也是一样。"
+                },
+                {
+                  "it": "La moneta immediatamente più grande è questa, cinque centesimi.",
+                  "zh": "接下来这枚更大的硬币是5欧分。"
+                },
+                {
+                  "it": "Ed ora dieci, venti, cinquanta centesimi, quindi mezzo euro, un euro, e siamo giunti all'ultima moneta che ha il valore di 2 euro.",
+                  "zh": "接着是10欧分、20欧分、50欧分（也就是0.5欧元）、1欧元。现在到了最后一枚，这是价值2欧元的硬币。"
+                },
+                {
+                  "it": "Ogni moneta, dall'altro lato, può avere un'immagine diversa a seconda del paese europeo dove viene coniata.",
+                  "zh": "每枚硬币的背面，根据其铸造国家的不同，都有不同的图案。"
+                }
+              ]
             },
             {
-              "it": "Ed ora passiamo alle banconote.\nLa più piccola è questa da cinque, verde, poi questa rossa, vale 10 euro, ora impariamo anche i colori.\nCorreggiamo questo, perché è un po' grigio.\nLa banconota da venti, blu, abbastanza chiaro.\nUn arancione quasi albicocca, cinquanta euro.\nPer noi l'ultima sarà questa, cento euro, un bel colore verde, molto vivido.\nE purtroppo non posso continuare perché non ho a disposizione la banconota che vale duecento euro\nche è gialla, e quella da cinquecento euro che è un bel viola, ma la vediamo raramente!\nE queste sono le banconote e le monete della valuta europea in uso anche in Italia.",
-              "zh": "现在我们来纸币。\n最小的纸币是5欧元的，绿色的；然后是红色的，面额10欧元。这里我们先学习一下关于颜色的词汇。\n更正一下，这张（5欧元钞票）更接近灰色。\n20欧元的纸币是比较浅的蓝色的。\n橙色（接近杏色）的是50欧元。\n我们看到的最后一张纸币是这个100欧元，有着很好看的绿色，一种非常明亮的颜色。\n很可惜我不能继续讲解下去了，因为我手头没有面额200欧元的黄色纸币以及面额为500欧元的纯正紫罗兰\n色纸币，那种面额的纸币很少见。\n以上就是在意大利也使用的欧元纸币和硬币。"
+              "it": "Ed ora passiamo alle banconote.\nLa più piccola è questa da cinque, verde; poi questa rossa, vale 10 euro. Ora impariamo anche i colori.\nCorreggiamo: questa da cinque è in realtà un po' grigia.\nLa banconota da venti è blu, abbastanza chiaro.\nUn arancione quasi albicocca per i cinquanta euro.\nL'ultima che vediamo è questa da cento euro, un bel verde molto vivido.\nPurtroppo non posso continuare: non ho la banconota da duecento euro, gialla, né quella da cinquecento, un bel viola, che si vede raramente.\nE queste sono le banconote e le monete della valuta europea, in uso anche in Italia.",
+              "zh": "现在我们来认识纸币。\n最小的是这张5欧元，绿色；然后是红色的，面额10欧元。这里我们顺便也学一下颜色的词汇。\n更正一下：这张5欧元的其实更接近灰色。\n20欧元纸币是蓝色，比较浅。\n50欧元是接近杏色的橙色。\n我们看到的最后一张是100欧元，是很漂亮的明亮绿色。\n很遗憾我没法继续：我手头没有200欧元的黄色纸币，也没有500欧元的漂亮紫罗兰色纸币，那种面额的纸币很少见。\n以上就是在意大利也使用的欧元纸币和硬币。",
+              "pairs": [
+                {
+                  "it": "Ed ora passiamo alle banconote.",
+                  "zh": "现在我们来认识纸币。"
+                },
+                {
+                  "it": "La più piccola è questa da cinque, verde; poi questa rossa, vale 10 euro. Ora impariamo anche i colori.",
+                  "zh": "最小的是这张5欧元，绿色；然后是红色的，面额10欧元。这里我们顺便也学一下颜色的词汇。"
+                },
+                {
+                  "it": "Correggiamo: questa da cinque è in realtà un po' grigia.",
+                  "zh": "更正一下：这张5欧元的其实更接近灰色。"
+                },
+                {
+                  "it": "La banconota da venti è blu, abbastanza chiaro.",
+                  "zh": "20欧元纸币是蓝色，比较浅。"
+                },
+                {
+                  "it": "Un arancione quasi albicocca per i cinquanta euro.",
+                  "zh": "50欧元是接近杏色的橙色。"
+                },
+                {
+                  "it": "L'ultima che vediamo è questa da cento euro, un bel verde molto vivido.",
+                  "zh": "我们看到的最后一张是100欧元，是很漂亮的明亮绿色。"
+                },
+                {
+                  "it": "Purtroppo non posso continuare: non ho la banconota da duecento euro, gialla, né quella da cinquecento, un bel viola, che si vede raramente.",
+                  "zh": "很遗憾我没法继续：我手头没有200欧元的黄色纸币，也没有500欧元的漂亮紫罗兰色纸币，那种面额的纸币很少见。"
+                },
+                {
+                  "it": "E queste sono le banconote e le monete della valuta europea, in uso anche in Italia.",
+                  "zh": "以上就是在意大利也使用的欧元纸币和硬币。"
+                }
+              ]
             },
             {
-              "it": "Questo è un bancomat.\nAvevo bisogno di prelevare dei soldi.\nHo speso tutto.\nHo comprato un libro, ho acquistato un'altra SIM telefonica per chiamare in Cina e avevo proprio\nbisogno di contanti.\nHo inserito la mia carta, ho aspettato per la dicitura prelievo.\nDopodiché ho digitato il mio PIN e l'importo che volevo.\nFatto.",
-              "zh": "这是一台自动取款机。\n我需要取一点儿钱。\n我把所有钱都花光了。\n我买了一本书，又新买了一张往中国打电话的手机SIM卡，所以我需要一些现金。\n我把卡插进去，等待取款提示，随后输入银行卡密码以及我想取款的金额。\n完成。"
+              "it": "Questo è un bancomat.\nAvevo bisogno di prelevare dei soldi.\nHo speso tutto: ho comprato un libro e un'altra SIM telefonica per chiamare in Cina, quindi avevo proprio bisogno di contanti.\nHo inserito la mia carta e ho aspettato la dicitura «prelievo».\nDopodiché ho digitato il mio PIN e l'importo che volevo.\nFatto.",
+              "zh": "这是一台自动取款机。\n我当时需要取一些现金。\n我把钱都花光了：我买了一本书，又新买了一张往中国打电话的手机SIM卡，所以我确实需要一些现金。\n我插入银行卡，等待屏幕上出现“取款”的提示。\n随后我输入了密码和想取的金额。\n完成。",
+              "pairs": [
+                {
+                  "it": "Questo è un bancomat.",
+                  "zh": "这是一台自动取款机。"
+                },
+                {
+                  "it": "Avevo bisogno di prelevare dei soldi.",
+                  "zh": "我当时需要取一些现金。"
+                },
+                {
+                  "it": "Ho speso tutto: ho comprato un libro e un'altra SIM telefonica per chiamare in Cina, quindi avevo proprio bisogno di contanti.",
+                  "zh": "我把钱都花光了：我买了一本书，又新买了一张往中国打电话的手机SIM卡，所以我确实需要一些现金。"
+                },
+                {
+                  "it": "Ho inserito la mia carta e ho aspettato la dicitura «prelievo».",
+                  "zh": "我插入银行卡，等待屏幕上出现“取款”的提示。"
+                },
+                {
+                  "it": "Dopodiché ho digitato il mio PIN e l'importo che volevo.",
+                  "zh": "随后我输入了密码和想取的金额。"
+                },
+                {
+                  "it": "Fatto.",
+                  "zh": "完成。"
+                }
+              ]
             },
             {
-              "it": "Questa è una nuova informazione, anche per me, puoi anche cambiare lo Yuan, qui in Italia e credo\nnella maggior parte delle città europee.\nAnzi più è grande l'importo che cambi, più è favorevole il tuo cambio.\nAndrai a risparmiare sulle commissioni.\nPer lo meno in questo cambio qui.",
-              "zh": "即便对我来，这也是个新的信息。你可以在意大利——我相信也能在欧洲大部分城市——兑换人民币。\n不仅如此，兑换的金额越大，汇率对你越划算。\n你可以节省一些手续费。\n至少在这个兑换点是这样的。"
+              "it": "Questa è una novità anche per me: puoi cambiare lo Yuan qui in Italia, e credo nella maggior parte delle città europee.\nAnzi, più è grande l'importo che cambi, più è favorevole il tuo cambio.\nRisparmierai sulle commissioni, almeno in questo cambio qui.",
+              "zh": "这对我来说也是个新发现：你可以在意大利——我想在欧洲大部分城市也一样——兑换人民币。\n而且，你兑换的金额越大，汇率对你越优惠。\n至少在这个兑换点，你能省下一些手续费。",
+              "pairs": [
+                {
+                  "it": "Questa è una novità anche per me: puoi cambiare lo Yuan qui in Italia, e credo nella maggior parte delle città europee.",
+                  "zh": "这对我来说也是个新发现：你可以在意大利——我想在欧洲大部分城市也一样——兑换人民币。"
+                },
+                {
+                  "it": "Anzi, più è grande l'importo che cambi, più è favorevole il tuo cambio.",
+                  "zh": "而且，你兑换的金额越大，汇率对你越优惠。"
+                },
+                {
+                  "it": "Risparmierai sulle commissioni, almeno in questo cambio qui.",
+                  "zh": "至少在这个兑换点，你能省下一些手续费。"
+                }
+              ]
             }
           ],
           "notes": [
             {
-              "term": "a disposizione",
-              "explain": "处理，使用，支配。",
+              "term": "a disposizione：可以使用/支配的（avere qc. a disposizione）",
+              "explain": "a disposizione 表示“可供使用、听候差遣”。常用结构：avere qualcosa a disposizione（有某物可供使用）或 essere a disposizione di qualcuno（听候某人差遣）。",
               "examples": [
-                "a) Non abbiamo molto tempo a disposizione. 我们能用的时间不多了。",
-                "b) Se ha bisogno sono a Sua disposizione."
+                "Non abbiamo molto tempo a disposizione.\n我们能用的时间不多了。",
+                "Se hai bisogno, sono a tua disposizione.\n如果你需要，我随时听候差遣。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u3_t0_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u3_e0_0_m.mp3",
+                  "audio/n/c1u3_e0_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "nuovo di zecca：崭新的",
+              "explain": "字面意为“刚出铸造厂的（硬币）”，引申为“崭新的、全新的”，可形容任何刚买或未使用过的物品。",
+              "examples": [
+                "Mi ha regalato un cappello nuovo di zecca.\n他送了我一顶崭新的帽子。",
+                "Questo libro è nuovo di zecca.\n这本书是全新的。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u3_t1_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u3_e1_0_m.mp3",
+                  "audio/n/c1u3_e1_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "si conia / si stampa：被铸造 / 被印刷（si 无人称被动）",
+              "explain": "意大利语可用“si + 动词第三人称单数”构成无人称被动，表示“人们……／被……”。这里 si conia una moneta 意为“（人们）铸造一枚硬币／硬币被铸造”。",
+              "examples": [
+                "Si vende il pane in panetteria.\n面包在面包店出售。",
+                "Qui si parla italiano.\n这里说意大利语。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u3_t2_0_m.mp3",
+                  "audio/n/c1u3_t2_1_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u3_e2_0_m.mp3",
+                  "audio/n/c1u3_e2_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "valere：价值，值",
+              "explain": "表示“值……钱”，第三人称单数 vale。也常用于 vale la pena（值得）。",
+              "examples": [
+                "Questa moneta vale due euro.\n这枚硬币价值2欧元。",
+                "Non vale la pena discutere.\n不值得争论。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u3_t3_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u3_e3_0_m.mp3",
+                  "audio/n/c1u3_e3_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "a seconda di：根据……而定，取决于",
+              "explain": "后接名词或 di + 从句，表示“视……而定”。",
+              "examples": [
+                "Il prezzo cambia a seconda della stagione.\n价格随季节而变化。",
+                "A seconda del paese, la moneta ha un'immagine diversa.\n根据国家不同，硬币有不同图案。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u3_t4_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u3_e4_0_m.mp3",
+                  "audio/n/c1u3_e4_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "da：介词，表示“面值/面额为”（后接金额，如 da un euro）",
+              "explain": "da + 数量 可表示“价值……的、面额为……的”，如 moneta da un euro（1欧元硬币）、banconota da cinquanta euro（50欧元纸币）。",
+              "examples": [
+                "Vorrei una banconota da venti euro.\n我想要一张20欧元的纸币。",
+                "Hai monete da un centesimo?\n你有1欧分的硬币吗？"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u3_t5_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u3_e5_0_m.mp3",
+                  "audio/n/c1u3_e5_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "avere bisogno di：需要",
+              "explain": "avere bisogno di + 名词/动词原形 表示“需要……”。",
+              "examples": [
+                "Ho bisogno di contanti.\n我需要现金。",
+                "Hai bisogno di aiuto?\n你需要帮助吗？"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u3_t6_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u3_e6_0_m.mp3",
+                  "audio/n/c1u3_e6_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "dopodiché：之后，然后",
+              "explain": "副词，用于叙述一连串动作，相当于 poi / dopo（之后）。",
+              "examples": [
+                "Inserisco la carta, dopodiché digito il PIN.\n我插卡，然后输入密码。",
+                "Fai la spesa, dopodiché torniamo a casa.\n买完东西，然后我们回家。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u3_t7_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u3_e7_0_m.mp3",
+                  "audio/n/c1u3_e7_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "cambiare：兑换（名词 cambio 指汇率或兑换处）",
+              "explain": "动词 cambiare 在此意为“兑换（货币）”；名词 cambio 可指“汇率”（il cambio）或“货币兑换处”（un cambio）。",
+              "examples": [
+                "Vorrei cambiare 100 dollari in euro.\n我想把100美元换成欧元。",
+                "Qual è il cambio tra lo yuan e l'euro?\n人民币和欧元的汇率是多少？"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u3_t8_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u3_e8_0_m.mp3",
+                  "audio/n/c1u3_e8_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "più... più...：越……越……",
+              "explain": "più + 形容词/副词, più + 句子 表示“越……越……”。",
+              "examples": [
+                "Più studi, più impari.\n你学得越多，懂得越多。",
+                "Più è grande l'importo, più è favorevole il cambio.\n金额越大，汇率越优惠。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u3_t9_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u3_e9_0_m.mp3",
+                  "audio/n/c1u3_e9_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "risparmiare：节省，节约",
+              "explain": "及物或不及物，表示“节省（钱/时间）”或“储蓄”。",
+              "examples": [
+                "Risparmio sui biglietti del treno.\n我在火车票上省钱。",
+                "Devo risparmiare per comprare una casa.\n我得存钱买房。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u3_t10_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u3_e10_0_m.mp3",
+                  "audio/n/c1u3_e10_1_m.mp3"
+                ]
+              }
+            },
+            {
+              "term": "commissione：手续费，佣金",
+              "explain": "指银行或兑换机构收取的“手续费、佣金”。",
+              "examples": [
+                "Questo cambio non ha commissioni.\n这笔兑换不收手续费。",
+                "La banca applica una commissione del 2%.\n银行收取2%的手续费。"
+              ],
+              "audio": {
+                "term": [
+                  "audio/n/c1u3_t11_0_m.mp3"
+                ],
+                "examples": [
+                  "audio/n/c1u3_e11_0_m.mp3",
+                  "audio/n/c1u3_e11_1_m.mp3"
+                ]
+              }
+            }
+          ],
+          "sections": [
+            {
+              "type": "text",
+              "title": "Monete e banconote 认识欧元的硬币与纸币",
+              "segs": [
+                0,
+                1,
+                2
               ]
             },
             {
-              "term": "nuovo di zecca",
-              "explain": "崭新的。",
-              "examples": [
-                "a) Mi ha regalato un cappello nuovo di zecca. 他送给我一顶崭新的帽子。",
-                "b) Guarda come veste questo soprabito nuovo di zecca!",
-                "Conosciamo le monete e le banconote in euro!（二）认识欧元的硬币与纸币！",
-                "（二）"
+              "type": "notes",
+              "title": "Note lessicali 词法解析",
+              "notes": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            {
+              "type": "text",
+              "title": "Al bancomat 在自动取款机取款",
+              "segs": [
+                3
+              ]
+            },
+            {
+              "type": "notes",
+              "title": "Note lessicali 词法解析",
+              "notes": [
+                6,
+                7
+              ]
+            },
+            {
+              "type": "text",
+              "title": "Cambiare lo Yuan 兑换人民币",
+              "segs": [
+                4
+              ]
+            },
+            {
+              "type": "notes",
+              "title": "Note lessicali 词法解析",
+              "notes": [
+                8,
+                9,
+                10,
+                11
+              ]
+            },
+            {
+              "type": "info",
+              "title": "Informazioni utili 实用信息",
+              "blocks": [
+                {
+                  "subtitle": "意大利有哪些银行与金融机构？（银行角色）",
+                  "intro": "意大利银行业在 2025–2026 年经历了显著整合。按资产与网点规模，头部机构包括：联合圣保罗银行（Intesa Sanpaolo，意大利第一大行）、裕信银行（UniCredit，欧洲系统性重要银行）、MPS 锡耶纳牧山银行（2025 年完成对 Mediobanca 的收购，跻身头部）、BPER 银行（2025 年收购 Banca Popolare di Sondrio，网点大幅扩张）、Banco BPM（大型综合性银行）。此外还有 BNL（属法国巴黎银行集团）、Poste Italiane 旗下的 BancoPosta / PostePay（邮局银行，网点遍布城乡，外籍人士开户便利），以及 N26、Revolut、Fineco、ING 等数字化/在线银行。选择银行时建议对比账户管理费（canone）、跨行取款费与中文服务支持。",
+                  "items": [
+                    {
+                      "term": "大型传统银行",
+                      "text": "Intesa Sanpaolo、UniCredit、Banco BPM、MPS（锡耶纳牧山银行，2025 年收购 Mediobanca）、BPER（2025 年整合 Banca Popolare di Sondrio）。网点多、服务全，但部分账户有月费。"
+                    },
+                    {
+                      "term": "邮局银行 BancoPosta / PostePay",
+                      "text": "依托 Poste Italiane 遍布城乡的网点，外籍人士与游客开户方便；可办借记卡（Postepay）、储蓄与基础转账，手续费相对低廉。"
+                    },
+                    {
+                      "term": "数字银行与 Neobank",
+                      "text": "N26、Revolut、Fineco、ING 等提供全在线开户与多币种账户，适合短期停留与跨境收付；注意部分服务需绑定意大利税号（codice fiscale）或居留。"
+                    },
+                    {
+                      "term": "选行建议",
+                      "text": "短期游客优先选网点广、支持银联/Visa/MasterCard 取现的银行；长期居留建议对比 canone 月费、免费跨行 ATM 额度与中文客服。"
+                    }
+                  ]
+                },
+                {
+                  "subtitle": "如何开户与销户？（开户销户）",
+                  "intro": "在意大利银行开户须实名并通常提供税号（codice fiscale）。外国公民凭护照即可办理大部分基础账户，但开立带自动扣费或信用卡的账户通常需居留许可（permesso di soggiorno）与税号。2026 年起，为落实欧盟反洗钱（AML）与身份验证新规，多数银行对“非居民”会做一次性的身份与税务居民身份（FATCA/CRS）核查。",
+                  "items": [
+                    {
+                      "term": "必备证件",
+                      "text": "护照（passaporto）、税号（codice fiscale，可在国税局 Agenzia delle Entrate 办理）、居留许可（长期账户/信用卡常需）；部分银行要地址证明（如租房合同）。"
+                    },
+                    {
+                      "term": "账户类型",
+                      "text": "外籍人士常用“非居民账户（conto per non residenti）”或基础支付账户（conto di base，费用受监管上限约束，面向居留居民）；可同时申领 IBAN 与借记卡。"
+                    },
+                    {
+                      "term": "开户流程",
+                      "text": "线上或临柜填写模组、出示证件、签署协议、设置 IBAN 与网银/App；部分银行支持凭护照办理用于短期停留的临时账户。"
+                    },
+                    {
+                      "term": "销户与休眠",
+                      "text": "销户（chiudere il conto）需结清余额与未结费用，并确认取消所有自动扣款；长期不动且余额极低的账户可能被转休眠并收费，离境前建议主动结清。"
+                    }
+                  ]
+                },
+                {
+                  "subtitle": "如何存取款与转账？（存取款转账）",
+                  "intro": "现金交易在意大利受严格限制：自 2026 年起，个人现金支付与收款的门槛仍为 5,000 欧元（此前拟上调至 10,000 欧元的提案已被撤回），超过限额须走银行转账或持卡支付。存取款主要通过银行柜台、ATM/bancomat 与邮局完成；跨行 ATM 取现可能收费。转账方面，意大利已全面接入 SEPA（单一欧元支付区），并根据欧盟 2024/886 号条例自 2025 年起强制提供“即时转账（Bonifico Istantaneo / SEPA Instant）”：到账时间低于 10 秒、费用与普通转账相同、单笔上限 100,000 欧元，且自 2025 年 10 月起收付款双方银行须支持“收款人验证（Verification of Payee, VoP）”，核对户名与 IBAN 是否一致以防诈骗。",
+                  "items": [
+                    {
+                      "term": "现金限额",
+                      "text": "2026 年意大利现金收付上限仍为 5,000 欧元；大额交易请使用转账、借记卡或信用卡，避免违规。"
+                    },
+                    {
+                      "term": "取款与存款",
+                      "text": "在银行 ATM（bancomat）插卡、选 lingua、输入 PIN 与金额即可取现；部分 ATM 与邮局（Postamat）支持现金存款（versamento contanti）。"
+                    },
+                    {
+                      "term": "SEPA 即时转账",
+                      "text": "通过网银/App 选择“Bonifico Istantaneo”，秒级到账、费用等同普通转账；欧元区跨境亦适用，单笔最高 100,000 欧元。"
+                    },
+                    {
+                      "term": "收款人验证 VoP",
+                      "text": "2025 年 10 月起，向新 IBAN 转账时银行会提示户名与账号是否匹配，务必核对，谨防误转与电信诈骗。"
+                    },
+                    {
+                      "term": "IBAN 与手续费",
+                      "text": "意大利 IBAN 以 IT 开头；欧元区 SEPA 转账通常不收跨境附加费，但跨行或即时转账可能收取小额费用，以各银行公示为准。"
+                    }
+                  ]
+                },
+                {
+                  "subtitle": "如何绑定第三方支付与钱包？（绑定第三方支付）",
+                  "intro": "在意大利，Apple Pay、Google Pay、Samsung Pay 以及 PayPal 已广泛被商户与银行支持。多数银行借记卡/信用卡可直接绑定到上述钱包；PayPal 既能绑定银行卡，也能绑定意大利银行账户（conto corrente）用于收付款。对于华人用户，支付宝（Alipay）与微信支付（WeChat Pay）在部分中国城商户、免税店与旅游城市已可扫码使用，但本地日常覆盖仍有限。需注意：绑定境外钱包或跨境收款可能触发银行的反洗钱二次验证，且大额绑定/解绑建议保留凭证。",
+                  "items": [
+                    {
+                      "term": "Apple / Google / Samsung Pay",
+                      "text": "在银行 App 或钱包 App 中添加卡片即可；线下“tap”非接触支付（contactless）普及，单笔 50 欧元以下常免密。"
+                    },
+                    {
+                      "term": "PayPal",
+                      "text": "绑定意大利银行卡或 BancoPosta 账户即可收付；网购与跨境小额付款常用，注意跨境提现汇率与手续费。"
+                    },
+                    {
+                      "term": "支付宝 / 微信支付",
+                      "text": "在华人超市、免税店、部分旅游城市商户支持扫码；并非全意通用，建议同时备好银行卡。"
+                    },
+                    {
+                      "term": "安全提示",
+                      "text": "开启银行 App 的 3D Secure / 短信动态码；不在公共 WiFi 下绑定或支付；发现盗刷立即挂失并冻结卡片。"
+                    }
+                  ]
+                }
               ]
             }
           ]
