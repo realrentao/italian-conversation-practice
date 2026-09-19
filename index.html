@@ -576,6 +576,14 @@ buildTOC();
   const target = (saved && findUnit(saved)) ? saved : bookData.chapters[0].units[0].id;
   showUnit(target);
 })();
+
+// ====== SERVICE WORKER（音频缓存 + 离线 + 断网兜底，提升加载效率）======
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
+      .catch(function (e) { console.warn('SW register failed:', e); });
+  });
+}
 </script>
 </body>
 </html>
