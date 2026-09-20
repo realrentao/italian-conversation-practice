@@ -3660,7 +3660,7 @@
      "sections": [
       {
        "type": "conversation",
-       "title": "Al caffè 在咖啡馆",
+       "title": "Una spremuta di frutta fresca! 来一杯果汁！",
        "range": [
         0,
         12
@@ -3677,7 +3677,7 @@
       },
       {
        "type": "conversation",
-       "title": "La spremuta d'arancia 鲜榨橙汁",
+       "title": "Ecco una spremuta di arancia fresca! 看，新鲜的橙汁！",
        "range": [
         12,
         20
@@ -3693,7 +3693,7 @@
       },
       {
        "type": "conversation",
-       "title": "Una macchina per fare l'espresso 制作浓缩咖啡的机器",
+       "title": "Un espresso, un cappucchino o un macchiato? 浓缩咖啡、卡布奇诺还是玛琪朵？",
        "range": [
         20,
         32
