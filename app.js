@@ -170,7 +170,7 @@ function loadUnit(id){
   if(UNIT_CACHE[id]) return Promise.resolve(UNIT_CACHE[id]);
   return new Promise((resolve,reject)=>{
     const s=document.createElement('script');
-    s.src='data/'+id+'.js';
+    s.src='data/'+id+'.js?v='+(window.APP_VER||'0');
     s.onload=()=>{
       const u=(window.__UNITS__ && window.__UNITS__[id]) || null;
       if(u){ UNIT_CACHE[id]=u; resolve(u); } else { reject(new Error('unit data missing: '+id)); }
