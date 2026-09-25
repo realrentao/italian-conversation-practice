@@ -182,6 +182,8 @@ function loadUnit(id){
 
 // ====== RENDER UNIT ======
 function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+// 支持 **加粗** 标记：先转义 HTML 再转换为 <strong>，避免信息块里的 **…** 原样显示成星号
+function md(s){ return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>'); }
 // 场景人物：括号内的中文译文降级显示，保持「意语（中文）」的统一层次
 function luogoVal(s){
   return esc(s).replace(/（[^（）]*）/g, function(m){ return '<span class="lg-zh">'+m+'</span>'; });
@@ -307,10 +309,10 @@ function renderUnit(u){
           html += `<div class="section-title">${esc(sec.title)}</div><div class="info-card">`;
           sec.blocks.forEach(b=>{
             html += `<div class="info-block">`;
-            if(b.subtitle) html += `<div class="info-sub">${esc(b.subtitle)}</div>`;
-            if(b.intro) html += `<div class="info-intro">${esc(b.intro)}</div>`;
+            if(b.subtitle) html += `<div class="info-sub">${md(b.subtitle)}</div>`;
+            if(b.intro) html += `<div class="info-intro">${md(b.intro)}</div>`;
             (b.items||[]).forEach(it=>{
-              html += `<div class="info-item"><span class="info-term">${esc(it.term)}</span> <span class="info-text">${esc(it.text)}</span></div>`;
+              html += `<div class="info-item"><span class="info-term">${md(it.term)}</span> <span class="info-text">${md(it.text)}</span></div>`;
             });
             html += `</div>`;
           });
