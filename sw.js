@@ -5,7 +5,7 @@
  *  - 其余资源（html/js/css）一律不拦截，直接走网络 —— 站点改版永远不会被旧缓存挡住
  * 部署新内容时请把下方 CACHE 版本号 +1（如 ital-conv-v2 -> v3），旧缓存会自动清理。
  */
-const CACHE = 'ital-conv-v3';
+const CACHE = 'ital-conv-v4';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
