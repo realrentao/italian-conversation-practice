@@ -134,11 +134,13 @@ function playVocabSeq(btn){
 
 // ====== 音频预取（悬停 / 触摸 / 空闲预热：让「第一次点击」也秒播）======
 // 说明：预取请求同样会被 sw.js 拦截并写入音频缓存，因此命中后播放零等待。
-let lastWarmUrl='';
-function warmAudio(url){
-  if(!url||url===lastWarmUrl) return;
-  lastWarmUrl=url;
+const warmedUrls=new Set();
+// hi=true：高优先级抓取（用户极可能马上点它）；hi=false：低优先级 hint（让路给关键资源）
+function warmAudio(url, hi){
+  if(!url||warmedUrls.has(url)) return;
+  warmedUrls.add(url);
   try{
+    if(hi && window.fetch){ fetch(url).catch(function(){}); return; }
     const l=document.createElement('link');
     l.rel='prefetch'; l.as='audio'; l.href=url;
     document.head.appendChild(l);
@@ -161,7 +163,7 @@ document.addEventListener('mouseover',e=>{
 },{passive:true});
 document.addEventListener('touchstart',e=>{
   const u=audioUrlFrom(e.target);
-  if(u) warmAudio(u);
+  if(u) warmAudio(u, true);   // 触摸=确定要播，高优先级
 },{passive:true});
 
 // 单元渲染后：空闲时低并发预热本单元前若干条音频（限量 + 尊重省流量模式），点开即秒播
@@ -181,7 +183,9 @@ function warmUnitAudio(u){
   let i=0;
   (function pump(){
     if(token!==warmToken || document.hidden || i>=q.length) return;
-    q.slice(i,i+2).forEach(warmAudio);
+    const batch=q.slice(i,i+2);
+    // 排在最前（用户最先看到/最可能点）的 4 条用高优先级，其余低优先级让路
+    for(let k=0;k<batch.length;k++) warmAudio(batch[k], (i+k)<4);
     i+=2;
     idle(pump);
   })();
