@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🇮🇹意大利语实景会话</title>
+<link rel="icon" href="data:,">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f5;color:#333;display:flex;min-height:100vh}
@@ -136,7 +137,29 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 #sidebarOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:50}
 @media(max-width:768px){#sidebar{position:fixed;left:-320px;z-index:99;transition:left .3s}#sidebar.open{left:0}#sidebarToggle{display:flex;align-items:center;justify-content:center}#sidebarOverlay.show{display:block}#main{padding:20px;width:100%}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+/* 长列表延迟渲染：屏外条目跳过布局/绘制，长单元（100+ 对话气泡）首屏更快 */
+.vocab-item,.sentence-item,.conv-row,.note-item{content-visibility:auto}
+.vocab-item{contain-intrinsic-size:auto 48px}
+.sentence-item{contain-intrinsic-size:auto 70px}
+.conv-row{contain-intrinsic-size:auto 96px}
+.note-item{contain-intrinsic-size:auto 124px}
 </style>
+<!-- APP_VER 每次内容更新 +1，强制浏览器拉取新资源，避免嵌入 webview / 浏览器缓存旧版 -->
+<script>window.APP_VER='20260927h';</script>
+<!-- 关键提速：解析阶段即预加载「即将打开的单元」数据脚本（读上次浏览记录，默认首单元），
+     与 app.js 并行下载 —— 消除「app.js 执行后才开始拉单元数据」的二级瀑布，首屏少等一个来回 -->
+<script>
+(function(){try{
+  var id=null;try{id=localStorage.getItem('ital_conv_last_unit')}catch(e){}
+  if(!id)id='c1u1';
+  if(!/^[a-z0-9]{2,12}$/i.test(id))id='c1u1';
+  var l=document.createElement('link');
+  l.rel='preload';l.as='script';
+  l.setAttribute('fetchpriority','high');
+  l.href='data/'+id+'.js?v='+window.APP_VER;
+  document.head.appendChild(l);
+}catch(e){}})();
+</script>
 </head>
 <body>
 
@@ -160,9 +183,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 <div id="sidebarOverlay" onclick="closeSidebar()"></div>
 
 <!-- 数据分层：首屏只加载极小的目录索引；点开单元才按需加载对应 data/<id>.js -->
-<!-- APP_VER 每次内容更新 +1，强制浏览器拉取新资源，避免嵌入 webview / 浏览器缓存旧版 -->
-<script>window.APP_VER='20260927g';</script>
-<script defer src="data/index.js?v=20260926f"></script>
-<script defer src="app.js?v=20260926f"></script>
+<script defer src="data/index.js?v=20260927h"></script>
+<script defer src="app.js?v=20260927h"></script>
 </body>
 </html>
