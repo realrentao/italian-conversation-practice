@@ -132,6 +132,61 @@ function playVocabSeq(btn){
   audioEl.onended=next; next();
 }
 
+// ====== 音频预取（悬停 / 触摸 / 空闲预热：让「第一次点击」也秒播）======
+// 说明：预取请求同样会被 sw.js 拦截并写入音频缓存，因此命中后播放零等待。
+let lastWarmUrl='';
+function warmAudio(url){
+  if(!url||url===lastWarmUrl) return;
+  lastWarmUrl=url;
+  try{
+    const l=document.createElement('link');
+    l.rel='prefetch'; l.as='audio'; l.href=url;
+    document.head.appendChild(l);
+  }catch(e){}
+}
+// 统一从 DOM 上取音频地址：优先 [data-url]，其次对话行 .conv-row[data-audio]
+function audioUrlFrom(el){
+  if(!el||!el.closest) return '';
+  const d=el.closest('[data-url]');
+  if(d&&d.dataset.url) return d.dataset.url;
+  const row=el.closest('.conv-row');
+  if(row&&row.dataset.audio) return row.dataset.audio+'_m.mp3';
+  return '';
+}
+let hoverTimer=null;
+document.addEventListener('mouseover',e=>{
+  clearTimeout(hoverTimer);
+  const u=audioUrlFrom(e.target);
+  if(u) hoverTimer=setTimeout(()=>warmAudio(u),90);
+},{passive:true});
+document.addEventListener('touchstart',e=>{
+  const u=audioUrlFrom(e.target);
+  if(u) warmAudio(u);
+},{passive:true});
+
+// 单元渲染后：空闲时低并发预热本单元前若干条音频（限量 + 尊重省流量模式），点开即秒播
+let warmToken=0;
+function warmUnitAudio(u){
+  let conn=null;
+  try{ conn=navigator.connection||{}; }catch(e){}
+  if(conn && conn.saveData) return;
+  const token=++warmToken;
+  const urls=[];
+  (u.vocab||[]).forEach(v=>{ if(v.audio) urls.push(v.audio); });
+  (u.sentences||[]).forEach((s,i)=>urls.push('audio/s/'+u.id+'_'+i+'_m.mp3'));
+  (u.conversation||[]).slice(0,8).forEach(ln=>{ if(ln.audio) urls.push(ln.audio+'_m.mp3'); });
+  const q=urls.slice(0,16);
+  if(!q.length) return;
+  const idle=fn=> window.requestIdleCallback ? requestIdleCallback(fn,{timeout:3000}) : setTimeout(fn,1500);
+  let i=0;
+  (function pump(){
+    if(token!==warmToken || document.hidden || i>=q.length) return;
+    q.slice(i,i+2).forEach(warmAudio);
+    i+=2;
+    idle(pump);
+  })();
+}
+
 // ====== TOC（基于 __IDX__ 目录索引）======
 function buildTOC(){
   const c = document.getElementById('tocContainer');
@@ -214,6 +269,8 @@ function showUnit(id){
     if(activeItem && activeItem.scrollIntoView) activeItem.scrollIntoView({block:'nearest'});
     document.getElementById('main').scrollTop=0;
     window.scrollTo(0,0);
+    // 空闲预热本单元音频：首次点击也秒播
+    warmUnitAudio(u);
   }).catch(()=>{
     box.innerHTML = '<div class="unit-content"><div class="welcome" style="padding:40px 0">❌ 单元加载失败，请重试</div></div>';
   });
@@ -255,7 +312,7 @@ function renderUnit(u){
     html += `<div style="margin-bottom:8px"><button class="speed-btn" style="background:#1a1a2e;color:#fff" onclick="playSeq([${urls.map(x=>`'${x}'`).join(',')}],this)">▶ 播放全部</button></div>`;
     html += `<div class="sent-grid">`;
     u.sentences.forEach((s,i)=>{
-      html += `<div class="sentence-item" onclick="playSentence(this,'${u.id}',${i})">
+      html += `<div class="sentence-item" data-url="audio/s/${u.id}_${i}_m.mp3" onclick="playSentence(this,'${u.id}',${i})">
         <div class="s-text"><div class="it">${esc(s.it)}</div><div class="zh">${esc(s.zh)}</div></div></div>`;
     });
     html += `</div>`;
@@ -276,7 +333,7 @@ function renderUnit(u){
           html += `<div class="dialogue-seg">`;
           if(d.pairs && d.pairs.length){
             d.pairs.forEach((p,pi)=>{
-              html += `<div class="pair-line" onclick="playMonoPair(this,'${u.id}',${seg},${pi})"><div class="d-it">${esc(p.it)}</div><div class="d-zh">${esc(p.zh)}</div></div>`;
+              html += `<div class="pair-line" data-url="audio/d/${u.id}_${seg}_${pi}_m.mp3" onclick="playMonoPair(this,'${u.id}',${seg},${pi})"><div class="d-it">${esc(p.it)}</div><div class="d-zh">${esc(p.zh)}</div></div>`;
             });
           } else {
             html += `<div class="d-it">${esc(d.it)}</div>`;
@@ -332,7 +389,7 @@ function renderUnit(u){
             html += `<div class="note-item"><div class="term">`;
             parts.forEach((p,k)=>{
               const path = ta[k] || (ta[0]||'');
-              html += `<span class="term-word" onclick="playUrl('${path}',this)">${esc(p)}</span>`;
+              html += `<span class="term-word" data-url="${path}" onclick="playUrl('${path}',this)">${esc(p)}</span>`;
               if(k<parts.length-1) html += ` <span class="term-slash">/</span> `;
             });
             if(zhPart) html += `<span class="term-zh">：${esc(zhPart)}</span>`;
@@ -347,7 +404,7 @@ function renderUnit(u){
                 const exIt = exLines[0];
                 const exZh = exLines.slice(1).join('\n');
                 const exPath = ea[ei] || '';
-                html += `<div class="note-ex" onclick="playUrl('${exPath}',this)"><span class="ex-it">${esc(exIt)}</span>` + (exZh?`<span class="ex-zh">${esc(exZh)}</span>`:'') + `</div>`;
+                html += `<div class="note-ex" data-url="${exPath}" onclick="playUrl('${exPath}',this)"><span class="ex-it">${esc(exIt)}</span>` + (exZh?`<span class="ex-zh">${esc(exZh)}</span>`:'') + `</div>`;
               });
               html += `</div>`;
             }
@@ -441,9 +498,12 @@ buildTOC();
 })();
 
 // ====== SERVICE WORKER（仅缓存音频 mp3，提升重复播放与离线体验）======
+// 尽早注册（不必等 load）：越早激活，越早开始缓存音频
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function () {
+  var __regSW = function () {
     navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' })
       .catch(function (e) { console.warn('SW register failed:', e); });
-  });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', __regSW, { once: true });
+  else __regSW();
 }
