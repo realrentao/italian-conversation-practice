@@ -13,6 +13,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 #sidebar .header{padding:24px 20px 16px;border-bottom:1px solid rgba(255,255,255,.08)}
 #sidebar .header h1{font-size:20px;font-weight:700;color:#fff}
 #sidebar .header p{font-size:13px;color:rgba(255,255,255,.5);margin-top:2px}
+/* 涛子办事处 · 品牌标识（logo + 彩色文字） */
+#sidebar .brand{display:flex;align-items:center;gap:8px;margin-top:12px}
+#sidebar .brand img{width:32px;height:32px;border-radius:9px;object-fit:cover;flex-shrink:0;box-shadow:0 0 0 1.5px rgba(255,255,255,.18),0 2px 6px rgba(0,0,0,.35)}
+#sidebar .brand .brand-name{font-size:17px;font-weight:800;letter-spacing:2px;background:linear-gradient(92deg,#ff4d6d 0%,#ff9f45 20%,#ffe14d 38%,#3ddc84 58%,#38b6ff 78%,#b06bff 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:brandShine 6s linear infinite}
+@keyframes brandShine{from{background-position:0% 50%}to{background-position:200% 50%}}
 #sidebar .search-wrap{padding:12px 16px}
 #sidebar .search-wrap input{width:100%;padding:8px 12px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:13px;background:rgba(255,255,255,.06);color:#fff;outline:none}
 #sidebar .search-wrap input::placeholder{color:rgba(255,255,255,.3)}
@@ -145,7 +150,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 .note-item{contain-intrinsic-size:auto 124px}
 </style>
 <!-- APP_VER 每次内容更新 +1，强制浏览器拉取新资源，避免嵌入 webview / 浏览器缓存旧版 -->
-<script>window.APP_VER='20260927i';</script>
+<script>window.APP_VER='20260927j';</script>
 <!-- 关键提速：解析阶段即预加载「即将打开的单元」数据脚本（读上次浏览记录，默认首单元），
      与 app.js 并行下载 —— 消除「app.js 执行后才开始拉单元数据」的二级瀑布，首屏少等一个来回 -->
 <script>
@@ -166,6 +171,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 <div id="sidebar">
   <div class="header">
     <h1>🇮🇹意大利语实景会话</h1>
+    <div class="brand">
+      <picture><source srcset="logo-piano.webp" type="image/webp"><img src="logo-piano.jpg" alt="涛子办事处 logo" width="32" height="32" loading="eager" decoding="async"></picture>
+      <span class="brand-name">涛子办事处</span>
+    </div>
   </div>
   <div class="search-wrap"><input type="text" id="searchInput" placeholder="搜索单元 / 关键词…" oninput="filterTOC(this.value)"></div>
   <div id="tocContainer"></div>
@@ -183,7 +192,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'PingFang SC
 <div id="sidebarOverlay" onclick="closeSidebar()"></div>
 
 <!-- 数据分层：首屏只加载极小的目录索引；点开单元才按需加载对应 data/<id>.js -->
-<script defer src="data/index.js?v=20260927i"></script>
-<script defer src="app.js?v=20260927i"></script>
+<script defer src="data/index.js?v=20260927j"></script>
+<script defer src="app.js?v=20260927j"></script>
 </body>
 </html>
